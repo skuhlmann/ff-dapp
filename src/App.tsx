@@ -1,6 +1,9 @@
 import "./App.css";
 
 import { usePrivy } from "@privy-io/react-auth";
+import { Layout } from "./components/Layout";
+import { Mint } from "./components/Mint";
+import { Wallets } from "./components/Wallets";
 // import { Wallets } from "./components/Wallets";
 
 function App() {
@@ -14,23 +17,41 @@ function App() {
   // todo - nft mint if logged in
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Peach Tycoon</h1>
-        {/* If the user is not authenticated, show a login button */}
-        {/* If the user is authenticated, show the user object and a logout button */}
-        {ready && authenticated ? (
-          <div>
-            <textarea
-              readOnly
-              value={JSON.stringify(user, null, 2)}
-              style={{ width: "600px", height: "250px", borderRadius: "6px" }}
-            />
-            <br />
+    <Layout>
+      <div className="App">
+        <header className="App-header">
+          <h1>Peach Tycoon</h1>
+          {/* If the user is not authenticated, show a login button */}
+          {/* If the user is authenticated, show the user object and a logout button */}
+          {ready && authenticated ? (
+            <div>
+              <textarea
+                readOnly
+                value={JSON.stringify(user, null, 2)}
+                style={{ width: "600px", height: "250px", borderRadius: "6px" }}
+              />
+              <br />
+              <button
+                onClick={logout}
+                style={{
+                  marginTop: "20px",
+                  padding: "12px",
+                  backgroundColor: "rgb(227, 108, 30)",
+                  color: "#FFF",
+                  border: "none",
+                  borderRadius: "6px",
+                }}
+              >
+                Log Out
+              </button>
+
+              <Mint />
+              <Wallets />
+            </div>
+          ) : (
             <button
-              onClick={logout}
+              onClick={login}
               style={{
-                marginTop: "20px",
                 padding: "12px",
                 backgroundColor: "rgb(227, 108, 30)",
                 color: "#FFF",
@@ -38,27 +59,12 @@ function App() {
                 borderRadius: "6px",
               }}
             >
-              Log Out
+              Log In
             </button>
-
-            {/* <Wallets /> */}
-          </div>
-        ) : (
-          <button
-            onClick={login}
-            style={{
-              padding: "12px",
-              backgroundColor: "rgb(227, 108, 30)",
-              color: "#FFF",
-              border: "none",
-              borderRadius: "6px",
-            }}
-          >
-            Log In
-          </button>
-        )}
-      </header>
-    </div>
+          )}
+        </header>
+      </div>
+    </Layout>
   );
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+
 import { PrivyProvider } from "@privy-io/react-auth";
 import { PrivyWagmiConnector } from "@privy-io/wagmi-connector";
 import { sepolia } from "@wagmi/chains";
@@ -13,10 +15,17 @@ window.Buffer = Buffer;
 // https://wagmi.sh/react/providers/configuring-chains#multiple-providers
 import { publicProvider } from "wagmi/providers/public";
 
-import App from "./App.tsx";
+import { Routes } from "./Routes.tsx";
+// import App from "./App.tsx";
 import "./index.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme.ts";
+import { Fonts } from "./Fonts.tsx";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const configureChainsConfig = configureChains([sepolia], [publicProvider()]);
+
+const queryClient = new QueryClient();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleLogin = (user: any) => {
@@ -26,21 +35,32 @@ const handleLogin = (user: any) => {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PrivyProvider
-      appId={import.meta.env.VITE_PRIVY_APP_ID}
-      onSuccess={handleLogin}
-      config={{
-        loginMethods: ["email", "wallet"],
-        appearance: {
-          theme: "light",
-          accentColor: "#676FFF",
-          logo: "https://your-logo-url",
-        },
-      }}
-    >
-      <PrivyWagmiConnector wagmiChainsConfig={configureChainsConfig}>
-        <App />
-      </PrivyWagmiConnector>
-    </PrivyProvider>
+    <HashRouter>
+      <QueryClientProvider client={queryClient}>
+        <PrivyProvider
+          appId={import.meta.env.VITE_PRIVY_APP_ID}
+          onSuccess={handleLogin}
+          config={{
+            defaultChain: sepolia,
+            loginMethods: ["email", "wallet", "google"],
+            appearance: {
+              theme: "light",
+              accentColor: "#676FFF",
+              logo: "https://your-logo-url",
+            },
+            embeddedWallets: {
+              createOnLogin: "users-without-wallets", // or 'all-users'
+            },
+          }}
+        >
+          <PrivyWagmiConnector wagmiChainsConfig={configureChainsConfig}>
+            <ChakraProvider theme={theme}>
+              <Fonts />
+              <Routes />
+            </ChakraProvider>
+          </PrivyWagmiConnector>
+        </PrivyProvider>
+      </QueryClientProvider>
+    </HashRouter>
   </React.StrictMode>
 );
