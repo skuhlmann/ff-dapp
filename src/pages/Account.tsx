@@ -1,13 +1,5 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  ListItem,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
-import { Wallets } from "../components/Wallets";
 import { PageHeader } from "../components/PageHeader";
 import { RouteLink } from "../components/RouteLink";
 import { AccountAvatar } from "../components/AccountAvatar";
@@ -33,7 +25,7 @@ function Account() {
     return null;
   }
 
-  console.log("user", user?.wallet?.address);
+  // console.log("user", user?.wallet?.address);
 
   return (
     <PageHeader>

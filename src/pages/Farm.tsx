@@ -2,7 +2,6 @@
 import { usePrivy } from "@privy-io/react-auth";
 
 import { PageHeader } from "../components/PageHeader";
-import { TreePreview } from "../components/TreePreview";
 import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";
 import { Box } from "@chakra-ui/react";
@@ -17,8 +16,6 @@ import { RouteLink } from "../components/RouteLink";
 
 function Farm() {
   const { ready, authenticated, user } = usePrivy();
-
-  console.log("user", user);
 
   return (
     <>

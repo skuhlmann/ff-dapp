@@ -1,4 +1,3 @@
-import { Link as RouterLink } from "react-router-dom";
 import { usePrivy } from "@privy-io/react-auth";
 
 import { PageHeader } from "../components/PageHeader";
@@ -7,9 +6,6 @@ import { LogIn } from "../components/LogIn";
 import { BalanceCheck } from "../components/BalanceCheck";
 import { NFT_MINT_PRICE } from "../utils/constants";
 import { Mint } from "../components/Mint";
-import { Flex, Link } from "@chakra-ui/react";
-import { HiArrowLongRight } from "react-icons/hi2";
-import { brandColors } from "../theme";
 import { RouteLink } from "../components/RouteLink";
 
 // states
@@ -21,8 +17,6 @@ import { RouteLink } from "../components/RouteLink";
 
 function Play() {
   const { ready, authenticated, user } = usePrivy();
-
-  console.log("user", user);
 
   return (
     <>

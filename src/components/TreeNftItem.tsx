@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Text, Tooltip } from "@chakra-ui/react";
+import { Button, Flex, Image, Text, Tooltip } from "@chakra-ui/react";
 import { TreeNft } from "../utils/types";
 import styled from "styled-components";
 import { brandColors } from "../theme";

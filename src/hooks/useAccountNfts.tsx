@@ -27,8 +27,6 @@ const fetchNftsForAccount = async ({
     includeMetadata: true,
   });
 
-  console.log("nftBalances", nftBalances);
-
   return { balances: nftBalances, page: nftBalances.page };
 };
 
