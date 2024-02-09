@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
 
@@ -24,18 +25,20 @@ export const NavBar = () => {
       bg={["orange.500", "orange.500", "orange.500", "orange.500"]}
       color={["white", "white", "primary.700", "primary.700"]}
     >
-      <Flex
-        alignItems="center"
-        gap="0.5rem;"
-        w={["205px", "300px"]}
-        color={["white", "white", "primary.500", "primary.500"]}
-      >
-        <Image src={PeachAvatar} width="35px" />
+      <Link to="/">
+        <Flex
+          alignItems="center"
+          gap="0.5rem;"
+          w={["205px", "300px"]}
+          color={["white", "white", "primary.500", "primary.500"]}
+        >
+          <Image src={PeachAvatar} width="35px" />
 
-        <Heading fontSize="20px" color="white">
-          PEACH TYCOON
-        </Heading>
-      </Flex>
+          <Heading fontSize="20px" color="white">
+            PEACH TYCOON
+          </Heading>
+        </Flex>
+      </Link>
       <Box display={{ base: "block", md: "none" }} onClick={toggle}>
         {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
       </Box>

@@ -20,7 +20,6 @@ export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem to="/">Home</MenuItem>
         <Connect />
         {ready && authenticated && user?.wallet && (
           <MenuItem to="/account">

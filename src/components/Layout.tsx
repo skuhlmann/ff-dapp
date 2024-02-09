@@ -6,7 +6,7 @@ export const Layout = () => {
   return (
     <>
       <NavBar />
-      <Box p={8}>
+      <Box p={8} w={["100%", "100%", "980px"]} mx="auto">
         <Outlet />
       </Box>
     </>

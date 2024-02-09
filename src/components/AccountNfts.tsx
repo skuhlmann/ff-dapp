@@ -8,9 +8,6 @@ export const AccountNfts = ({ address }: { address: string }) => {
     accountAddress: address,
   });
 
-  console.log("isLoading", isLoading);
-  console.log("accountNfts", accountNfts);
-
   return (
     <Box>
       <Heading fontSize="20px" mb="1rem">
@@ -22,7 +19,7 @@ export const AccountNfts = ({ address }: { address: string }) => {
       {accountNfts?.balances && accountNfts?.balances.length > 0 && (
         <Flex direction="column" gap="1rem">
           {accountNfts.balances.map((token: TreeNft) => {
-            return <TreeNftItem tree={token} />;
+            return <TreeNftItem tree={token} key={token.tokenID} />;
           })}
         </Flex>
       )}

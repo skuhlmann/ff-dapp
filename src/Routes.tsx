@@ -3,12 +3,14 @@ import { Layout } from "./components/Layout";
 import Home from "./pages/Home";
 import TreeMint from "./pages/TreeMint";
 import Account from "./pages/Account";
+import Play from "./pages/Play";
 
 export const Routes = () => {
   return (
     <Router>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="play" element={<Play />} />
         <Route path="tree" element={<TreeMint />} />
         <Route path="account" element={<Account />} />
       </Route>
