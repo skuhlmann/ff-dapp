@@ -3,7 +3,7 @@ import { useAccountNfts } from "../hooks/useAccountNfts";
 import { TreeNftItem } from "./TreeNftItem";
 import { TreeNft } from "../utils/types";
 
-export const AccountNfts = ({ address }: { address: string }) => {
+export const TreeList = ({ address }: { address: string }) => {
   const { accountNfts, isLoading } = useAccountNfts({
     accountAddress: address,
   });

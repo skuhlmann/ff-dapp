@@ -1,4 +1,4 @@
-import { useBalance, useContractWrite, usePrepareContractWrite } from "wagmi";
+import { useContractWrite, usePrepareContractWrite } from "wagmi";
 
 import {
   BLOCK_EXPLORER_URL,
@@ -8,9 +8,12 @@ import {
 import erc721Abi from "../abis/ERC721.json";
 import { useState } from "react";
 import { Button, Text } from "@chakra-ui/react";
+import { brandColors } from "../theme";
+import { getDisplayPrice } from "../utils/formatting";
 
 export const Mint = () => {
   const [pendingTx, setPendingTx] = useState<`0x${string}` | undefined>();
+  const [successMessage, setSuccessMessage] = useState<string | undefined>();
 
   const { config, error } = usePrepareContractWrite({
     address: NFT_CONTRACT_ADDRESS,
@@ -29,6 +32,7 @@ export const Mint = () => {
     onSettled(data, error) {
       console.log("Settled", { data, error });
       setPendingTx(data?.hash);
+      setSuccessMessage("Success! Go to your farm to take a look.");
     },
     onSuccess(data) {
       console.log("Success", data);
@@ -61,21 +65,28 @@ export const Mint = () => {
         size="lg"
         height="64px"
         width="300px"
+        _hover={{ bg: "transparent", color: "orange.300" }}
         isDisabled={pendingTx !== undefined || error === undefined}
         isLoading={mintLoading}
         onClick={() => write?.()}
       >
-        Mint
+        Buy/Mint for {getDisplayPrice()}
       </Button>
 
       {error && <Text>do you have enough eth in your wallet?</Text>}
 
       {pendingTx && (
-        <p>
+        <Text my="1rem">
           <a href={`${BLOCK_EXPLORER_URL}tx/${pendingTx}`} target="_blank">
             VIEW TX
           </a>
-        </p>
+        </Text>
+      )}
+
+      {successMessage && (
+        <Text fontSize="2xl" as="b" color={brandColors.orange}>
+          {successMessage}
+        </Text>
       )}
 
       {mintLoading && <p>waiting for confirmation...</p>}

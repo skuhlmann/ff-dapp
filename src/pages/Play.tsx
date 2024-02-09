@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { usePrivy } from "@privy-io/react-auth";
 
 import { PageHeader } from "../components/PageHeader";
@@ -6,6 +6,11 @@ import { TreePreview } from "../components/TreePreview";
 import { LogIn } from "../components/LogIn";
 import { BalanceCheck } from "../components/BalanceCheck";
 import { NFT_MINT_PRICE } from "../utils/constants";
+import { Mint } from "../components/Mint";
+import { Flex, Link } from "@chakra-ui/react";
+import { HiArrowLongRight } from "react-icons/hi2";
+import { brandColors } from "../theme";
+import { RouteLink } from "../components/RouteLink";
 
 // states
 // // unconnected - login/signup
@@ -15,7 +20,6 @@ import { NFT_MINT_PRICE } from "../utils/constants";
 // todo: add gas to target
 
 function Play() {
-  // const [playState, setPlayState] = useState("unconnected");
   const { ready, authenticated, user } = usePrivy();
 
   console.log("user", user);
@@ -30,12 +34,21 @@ function Play() {
         {ready && !authenticated && <LogIn />}
 
         {ready && authenticated && user?.wallet && (
-          <BalanceCheck
-            address={user.wallet.address}
-            targetBalance={NFT_MINT_PRICE}
-          >
-            <p>poopin</p>
-          </BalanceCheck>
+          <>
+            <BalanceCheck
+              address={user.wallet.address}
+              targetBalance={NFT_MINT_PRICE}
+              message="You don't have enough ETH to buy a tree"
+            >
+              <Mint />
+            </BalanceCheck>
+
+            <RouteLink
+              linkText="Visit your farm"
+              path="/farm"
+              direction="right"
+            />
+          </>
         )}
       </PageHeader>
     </>
