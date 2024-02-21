@@ -44,9 +44,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             defaultChain: sepolia,
             loginMethods: ["email", "wallet", "google"],
             appearance: {
-              theme: "light",
-              accentColor: "#676FFF",
-              logo: "https://your-logo-url",
+              theme: "dark",
+              accentColor: "#E46C1E",
+              logo: "/src/assets/Header-Logo.png",
             },
             embeddedWallets: {
               createOnLogin: "users-without-wallets", // or 'all-users'

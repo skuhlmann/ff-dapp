@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,9 @@ export const MenuItem = ({
 }) => {
   return (
     <Link to={to}>
-      <Text display="block">{children}</Text>
+      <Heading color="brand.orange" display="block">
+        {children}
+      </Heading>
     </Link>
   );
 };

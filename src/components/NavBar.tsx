@@ -1,48 +1,79 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { usePrivy } from "@privy-io/react-auth";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
 
 import { MenuLinks } from "./MenuLinks";
 
+import { MenuItem } from "./MenuItem";
+import { AccountIcon } from "./AccountButton";
+import { Connect } from "./Connect";
+
+import HeaderLogo from "../assets/Header-Logo.png";
+import MobileLogo from "../assets/Mobile-Logo.png";
 import PeachAvatar from "../assets/peaches_avatar.png";
 
 export const NavBar = () => {
+  const location = useLocation();
+  const { ready, authenticated, user } = usePrivy();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
-  return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      w="100%"
-      mb={8}
-      p={8}
-      bg={["orange.500", "orange.500", "orange.500", "orange.500"]}
-      color={["white", "white", "primary.700", "primary.700"]}
-    >
-      <Link to="/">
-        <Flex
-          alignItems="center"
-          gap="0.5rem;"
-          w={["205px", "300px"]}
-          color={["white", "white", "primary.500", "primary.500"]}
-        >
-          <Image src={PeachAvatar} width="35px" />
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
-          <Heading fontSize="20px" color="white">
-            PEACH TYCOON
-          </Heading>
+  return (
+    <>
+      <Flex
+        as="nav"
+        align="center"
+        justify="space-between"
+        wrap="wrap"
+        w="100%"
+        mb={8}
+        p={8}
+        color="brand.orange"
+      >
+        <Link to="/">
+          <>
+            <Flex
+              alignItems="center"
+              gap="0.5rem;"
+              display={{ base: "none", sm: "block" }}
+              w={{ base: "250px", md: "400px" }}
+            >
+              <Image src={HeaderLogo} />
+            </Flex>
+            <Flex
+              direction="row"
+              alignItems="center"
+              gap="0.5rem;"
+              display={{ base: "flex", sm: "none" }}
+              w="100%"
+            >
+              <Image src={PeachAvatar} w="36px" />
+              <Image src={MobileLogo} />
+            </Flex>
+          </>
+        </Link>
+        <Flex align="center" justify="space-between" gap="1rem">
+          {ready && authenticated && user?.wallet && (
+            <MenuItem to="/account">
+              <AccountIcon />
+            </MenuItem>
+          )}
+          <Connect />
+          <Box onClick={toggle}>
+            {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
+          </Box>
         </Flex>
-      </Link>
-      <Box display={{ base: "block", md: "none" }} onClick={toggle}>
-        {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
-      </Box>
+      </Flex>
       <MenuLinks isOpen={isOpen} />
-    </Flex>
+    </>
   );
 };

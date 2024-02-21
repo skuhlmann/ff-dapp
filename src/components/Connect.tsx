@@ -13,12 +13,30 @@ export const Connect = () => {
     <>
       {ready && authenticated ? (
         <div>
-          <Button size="sm" onClick={logout}>
+          <Button
+            size="sm"
+            onClick={logout}
+            variant="outline"
+            border="1px"
+            borderColor="brand.orange"
+            borderRadius="200px;"
+            color="brand.red"
+            _hover={{ bg: "transparent", color: "brand.white" }}
+          >
             Log Out
           </Button>
         </div>
       ) : (
-        <Button onClick={login} size="sm">
+        <Button
+          onClick={login}
+          size="sm"
+          variant="outline"
+          border="1px"
+          borderColor="brand.orange"
+          borderRadius="200px;"
+          color="brand.red"
+          _hover={{ bg: "transparent", color: "brand.white" }}
+        >
           Log In
         </Button>
       )}
