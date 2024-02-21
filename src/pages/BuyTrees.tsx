@@ -15,7 +15,7 @@ import { RouteLink } from "../components/RouteLink";
 
 // todo: add gas to target
 
-function Play() {
+function BuyTrees() {
   const { ready, authenticated, user } = usePrivy();
 
   return (
@@ -49,4 +49,4 @@ function Play() {
   );
 }
 
-export default Play;
+export default BuyTrees;

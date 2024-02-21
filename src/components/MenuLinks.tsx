@@ -20,12 +20,24 @@ export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <Connect />
+        <MenuItem to="/">
+          <p>Home</p>
+        </MenuItem>
+        <MenuItem to="/buy-trees">
+          <p>Buy Trees</p>
+        </MenuItem>
+        <MenuItem to="/farm">
+          <p>Farm</p>
+        </MenuItem>
+        <MenuItem to="/about">
+          <p>About</p>
+        </MenuItem>
         {ready && authenticated && user?.wallet && (
           <MenuItem to="/account">
             <AccountIcon address={user.wallet.address} />
           </MenuItem>
         )}
+        <Connect />
       </Stack>
     </Box>
   );
