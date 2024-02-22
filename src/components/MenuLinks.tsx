@@ -18,7 +18,8 @@ export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/buy-trees">Buy Trees</MenuItem>
-        <MenuItem to="/farm">Farm</MenuItem>
+        <MenuItem to="/farm">My Farm</MenuItem>
+        <MenuItem to="/account">My Account</MenuItem>
         <MenuItem to="/about">About</MenuItem>
       </Stack>
     </Box>
