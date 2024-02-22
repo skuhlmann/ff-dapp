@@ -62,13 +62,8 @@ export const NavBar = () => {
           </>
         </Link>
         <Flex align="center" justify="space-between" gap="1rem">
-          {ready && authenticated && user?.wallet && (
-            <MenuItem to="/account">
-              <AccountIcon />
-            </MenuItem>
-          )}
           <Connect />
-          <Box onClick={toggle}>
+          <Box onClick={toggle} fontSize="30px">
             {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
           </Box>
         </Flex>

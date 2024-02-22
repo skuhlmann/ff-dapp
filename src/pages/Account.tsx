@@ -1,70 +1,86 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, useToast, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
-import { PageHeader } from "../components/PageHeader";
-import { RouteLink } from "../components/RouteLink";
 import { AccountAvatar } from "../components/AccountAvatar";
-import { AccountActions } from "../components/AccountActions";
-// import { useEnsAvatar, useEnsName } from "wagmi";
-// import { normalize } from "viem/ens";
+import { LogIn } from "../components/LogIn";
+import { LuClipboardCopy } from "react-icons/lu";
+import { truncateAddress } from "../utils/formatting";
 
 function Account() {
-  const { ready, authenticated, user } = usePrivy();
+  const toast = useToast();
 
-  // const result = useEnsName({
-  //   address: user?.wallet?.address as `0x${string}` | undefined,
-  // });
-
-  // const avatarResult = useEnsAvatar{
-  //   name: normalize("wevm.eth"),
-  // });
-
-  // console.log("result", result.data);
-  // console.log("avatarResult", avatarResult);
+  const { ready, authenticated, user, logout } = usePrivy();
 
   if (!ready) {
     return null;
   }
 
-  // console.log("user", user?.wallet?.address);
+  console.log("user", user);
+
+  const handleCopy = () => {
+    if (!user?.wallet?.address) return;
+    navigator.clipboard.writeText(user.wallet.address);
+    toast({
+      title: `${truncateAddress(user.wallet.address)} copied to clipboard.`,
+      duration: 9000,
+      isClosable: true,
+    });
+  };
 
   return (
-    <PageHeader>
-      {authenticated && user && user.wallet ? (
-        <>
-          <AccountAvatar address={user?.wallet.address} />
-          <AccountActions />
-        </>
-      ) : (
-        <Text>No Wallet found</Text>
-      )}
+    <>
+      <Box w="100%" textAlign="center" mb="3rem">
+        <Heading size="4xl">ACCOUNT</Heading>
+      </Box>
+      <Flex w="100%" justify="center">
+        {authenticated && user && user.wallet ? (
+          <Flex
+            direction="column"
+            alignItems="flex-start"
+            w={["100%", "50%"]}
+            mb="15rem"
+          >
+            <AccountAvatar
+              address={user?.wallet.address}
+              email={user?.email?.address}
+              handleCopy={handleCopy}
+            />
 
-      <Flex justifyContent="space-around" w="100%" flexWrap="wrap">
-        <RouteLink linkText="Market" path="/play" direction="right" />
-        <RouteLink linkText="Your Farm" path="/farm" direction="right" />
+            <Text mb="1rem">
+              To fund your wallet send Base Eth to this address:{" "}
+              {user?.wallet.address}
+            </Text>
+            <Button _hover={{ cursor: "pointer" }} onClick={handleCopy}>
+              Copy to your clipboard
+              <LuClipboardCopy
+                style={{ fontSize: "18px", marginLeft: ".5rem" }}
+              />
+            </Button>
+            <Button
+              onClick={logout}
+              variant="outline"
+              fontFamily="heading"
+              fontSize="xl"
+              fontStyle="italic"
+              fontWeight="700"
+              border="1px"
+              borderColor="brand.orange"
+              borderRadius="200px;"
+              color="brand.red"
+              size="lg"
+              height="60px"
+              width="272px"
+              my="3rem"
+              _hover={{ bg: "transparent", color: "brand.white" }}
+            >
+              Logout
+            </Button>
+          </Flex>
+        ) : (
+          <LogIn />
+        )}
       </Flex>
-    </PageHeader>
+    </>
   );
 }
 
 export default Account;
-
-//  {/* {ready && authenticated && (
-//     <textarea
-//       readOnly
-//       value={JSON.stringify(user, null, 2)}
-//       style={{ width: "600px", height: "250px", borderRadius: "6px" }}
-//     />
-//   )}
-
-//   <Wallets /> */}
-
-//   {/* <Text>Actions</Text>
-//   <Box border="1px solid white">
-//     <UnorderedList>
-//       <ListItem>Fund your wallet...</ListItem>
-//       <ListItem>Export wallet...</ListItem>
-//       <ListItem>Update settings...</ListItem>
-//       <ListItem>Unlink email...</ListItem>
-//       <ListItem>Add a password...</ListItem>
-//     </UnorderedList>
-//   </Box> */}

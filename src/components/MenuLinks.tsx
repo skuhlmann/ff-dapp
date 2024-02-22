@@ -1,8 +1,16 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Heading, Stack } from "@chakra-ui/react";
 
 import { MenuItem } from "./MenuItem";
+import { usePrivy } from "@privy-io/react-auth";
+import { AccountIcon } from "./AccountButton";
 
 export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
+  const { ready, authenticated, login, logout } = usePrivy();
+
+  if (!ready) {
+    return null;
+  }
+
   return (
     <Box
       display={{ base: isOpen ? "block" : "none" }}
@@ -21,6 +29,15 @@ export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
         <MenuItem to="/farm">My Farm</MenuItem>
         <MenuItem to="/account">My Account</MenuItem>
         <MenuItem to="/about">About</MenuItem>
+        {ready && authenticated && (
+          <Heading
+            onClick={logout}
+            color="brand.red"
+            _hover={{ cursor: "pointer" }}
+          >
+            Log Out
+          </Heading>
+        )}
       </Stack>
     </Box>
   );

@@ -1,5 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Box } from "@chakra-ui/react";
+// import { mainnet } from "wagmi/chains";
 import { RiAccountPinCircleLine } from "react-icons/ri";
+import { LuClipboardCopy } from "react-icons/lu";
+
 import styled from "styled-components";
 import { useBalance } from "wagmi";
 import { SiEthereum } from "react-icons/si";
@@ -10,7 +13,15 @@ const AvatarWrapper = styled(Flex)`
   font-size: 2rem;
 `;
 
-export const AccountAvatar = ({ address }: { address?: string }) => {
+export const AccountAvatar = ({
+  address,
+  email,
+  handleCopy,
+}: {
+  address?: string;
+  email?: string;
+  handleCopy: () => void;
+}) => {
   const result = useBalance({
     address: address as `0x${string}`,
   });
@@ -18,15 +29,27 @@ export const AccountAvatar = ({ address }: { address?: string }) => {
   if (!address) return null;
 
   return (
-    <Flex direction="column" alignItems="flex-start" w={["100%", "50%"]}>
-      <AvatarWrapper alignItems="center" gap="1rem">
+    <>
+      <AvatarWrapper alignItems="center" gap="1rem" mb="1rem">
         <RiAccountPinCircleLine />
-        <p>{truncateAddress(address)}</p>
+        {email ? (
+          <Text fontSize="3xl">{email}</Text>
+        ) : (
+          <>
+            <Text fontSize="3xl">{truncateAddress(address)}</Text>
+            <Box _hover={{ cursor: "pointer" }}>
+              <LuClipboardCopy
+                style={{ fontSize: "18px" }}
+                onClick={handleCopy}
+              />
+            </Box>
+          </>
+        )}
       </AvatarWrapper>
-      <Flex align="center">
+      <Flex align="center" fontSize="2xl" gap="1rem" mb="3rem">
         <SiEthereum />
-        <Text fontSize="lg">{Number(result.data?.formatted).toFixed(3)}</Text>
+        <Text>{Number(result.data?.formatted).toFixed(3)}</Text>
       </Flex>
-    </Flex>
+    </>
   );
 };

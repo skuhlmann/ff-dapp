@@ -1,8 +1,11 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
+import { RiAccountPinCircleLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import { truncateAddress } from "../utils/formatting";
 
 export const Connect = () => {
-  const { ready, authenticated, login, logout } = usePrivy();
+  const { ready, authenticated, login, user } = usePrivy();
 
   // Wait until the Privy client is ready before taking any actions
   if (!ready) {
@@ -14,8 +17,9 @@ export const Connect = () => {
       {ready && authenticated ? (
         <div>
           <Button
+            as={Link}
+            to="/account"
             size="sm"
-            onClick={logout}
             variant="outline"
             border="1px"
             borderColor="brand.orange"
@@ -23,7 +27,12 @@ export const Connect = () => {
             color="brand.red"
             _hover={{ bg: "transparent", color: "brand.white" }}
           >
-            Log Out
+            <RiAccountPinCircleLine color="white" />
+            {user?.wallet?.address && (
+              <Text ml=".24rem" fontSize="xs">
+                {truncateAddress(user?.wallet.address)}
+              </Text>
+            )}
           </Button>
         </div>
       ) : (

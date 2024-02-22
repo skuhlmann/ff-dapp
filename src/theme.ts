@@ -8,6 +8,7 @@ export const brandColors = {
   green: `#419361`,
   white: `#ffffff`,
   gray: `#1f1f1f`,
+  blue: "#9EB4C7",
 };
 
 const theme = extendTheme({
@@ -51,6 +52,7 @@ const theme = extendTheme({
       green: brandColors.green,
       darkOrange: brandColors.darkOrange,
       gray: brandColors.gray,
+      blue: brandColors.blue,
     },
   },
 });

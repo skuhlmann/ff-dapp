@@ -14,20 +14,21 @@ export const LogIn = () => {
         <Button
           onClick={login}
           variant="outline"
-          colorScheme="orange"
           fontFamily="heading"
           fontSize="2xl"
           fontStyle="italic"
-          fontWeight="900"
-          border="2px"
-          borderColor="orange.500"
+          fontWeight="700"
+          border="1px"
+          borderColor="brand.orange"
+          borderRadius="200px;"
+          color="brand.red"
           size="lg"
-          height="64px"
-          width="300px"
+          height="72px"
+          width="398px"
           my="3rem"
-          _hover={{ bg: "transparent", color: "orange.300" }}
+          _hover={{ bg: "transparent", color: "brand.white" }}
         >
-          Log in/Sign Up
+          Log in
         </Button>
       )}
     </>
