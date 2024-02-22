@@ -2,10 +2,12 @@ import { extendTheme } from "@chakra-ui/react";
 
 export const brandColors = {
   orange: `#E46C1E`,
+  darkOrange: `rgba(228, 108, 30, 0.3)`,
   black: `#0E1418`,
   red: `#F5253D`,
   green: `#419361`,
   white: `#ffffff`,
+  gray: `#1f1f1f`,
 };
 
 const theme = extendTheme({
@@ -15,6 +17,13 @@ const theme = extendTheme({
         fontWeight: 600,
         fontStyle: "italic",
         color: brandColors.white,
+      },
+      sizes: {},
+      variants: {},
+    },
+    Text: {
+      baseStyle: {
+        fontSize: "18px",
       },
       sizes: {},
       variants: {},
@@ -40,6 +49,8 @@ const theme = extendTheme({
       orange: brandColors.orange,
       red: brandColors.red,
       green: brandColors.green,
+      darkOrange: brandColors.darkOrange,
+      gray: brandColors.gray,
     },
   },
 });

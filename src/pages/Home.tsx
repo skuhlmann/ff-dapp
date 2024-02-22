@@ -5,6 +5,9 @@ import HomePeach from "../assets/Home-Peach.png";
 import HomeTree from "../assets/Home-Tree.png";
 import HeaderLogo from "../assets/Header-Logo.png";
 import { HomeSectionOne } from "../components/HomeSectionOne";
+import { HomeSectionTwo } from "../components/HomeSectionTwo";
+import { HomeSectionThree } from "../components/HomeSectionThree";
+import { HomeSectionFour } from "../components/HomeSectionFour";
 
 function Home() {
   return (
@@ -31,10 +34,10 @@ function Home() {
         <Flex
           direction={{ base: "column", md: "row" }}
           justify="space-between"
+          align="center"
           gap={{ base: "1.5rem", md: "0.5rem" }}
-          mt="3rem"
         >
-          <Image src={HomeTree} w={{ base: "300px" }} />
+          <Image src={HomeTree} w={{ base: "250px" }} />
           <Flex direction="column" align="center">
             <Image src={HeaderLogo} />
             <Text color="brand.orange">Buy now, munch later.</Text>
@@ -60,11 +63,20 @@ function Home() {
               GET STARTED
             </Button>
           </Flex>
-          <Image src={HomePeach} w={{ base: "300px" }} />
+          <Image src={HomePeach} w={{ base: "250px" }} />
         </Flex>
       </Box>
-      <Box mb="3rem">
+      <Box mb="5rem">
         <HomeSectionOne />
+      </Box>
+      <Box mb="5rem">
+        <HomeSectionTwo />
+      </Box>
+      <Box mb="5rem">
+        <HomeSectionThree />
+      </Box>
+      <Box mb="5rem">
+        <HomeSectionFour />
       </Box>
     </>
   );
