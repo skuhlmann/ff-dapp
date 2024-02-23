@@ -89,8 +89,9 @@ export const HomeSectionOne = () => {
         </PeachCard>
         <Box textAlign="center" w={{ base: "293px", md: "426px" }}>
           <Text fontSize="xs" color="brand.orange">
-            * 1 tree gauranties 2 boxes of peaches. You can increase this number
-            by doing grow-actions.
+            * One tree guarantees two boxes of peaches. Water, prune, fertilize
+            and protect your trees from pests in order to earn additional peach
+            boxes.
           </Text>
         </Box>
       </Flex>
