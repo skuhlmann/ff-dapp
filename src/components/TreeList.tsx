@@ -1,32 +1,35 @@
-import { Flex, Heading, Spinner, Text, Box } from "@chakra-ui/react";
+import { Flex, Spinner, Text, Box } from "@chakra-ui/react";
 import { useAccountNfts } from "../hooks/useAccountNfts";
-import { TreeNftItem } from "./TreeNftItem";
 import { TreeNft } from "../utils/types";
+import { TreeCard } from "./TreeCard";
 
 export const TreeList = ({ address }: { address: string }) => {
   const { accountNfts, isLoading } = useAccountNfts({
     accountAddress: address,
   });
 
-  return (
-    <Box>
-      <Heading fontSize="20px" mb="1rem">
-        Your Trees
-      </Heading>
+  console.log("accountNfts", accountNfts);
 
+  return (
+    <Box mb="5rem">
       {isLoading && <Spinner />}
 
       {accountNfts?.balances && accountNfts?.balances.length > 0 && (
-        <Flex direction="column" gap="1rem">
+        <Flex
+          gap="1rem"
+          wrap="wrap"
+          direction={{ base: "column", md: "row" }}
+          align="center"
+        >
           {accountNfts.balances.map((token: TreeNft) => {
-            return <TreeNftItem tree={token} key={token.tokenID} />;
+            return <TreeCard tree={token} key={token.tokenID} />;
           })}
         </Flex>
       )}
 
       {!accountNfts?.balances ||
         (!accountNfts?.balances.length && (
-          <Text>You don't have any trees</Text>
+          <Text color="brand.orange">You don’t own any trees yet!</Text>
         ))}
     </Box>
   );

@@ -4,6 +4,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { BsTelegram } from "react-icons/bs";
 
 import FooterLogo from "../assets/Footer-Logo.png";
+import { BLOCK_EXPLORER_URL, NFT_CONTRACT_ADDRESS } from "../utils/constants";
 
 export const Footer = () => {
   return (
@@ -27,7 +28,7 @@ export const Footer = () => {
               </Link>
             </Flex>
             <Link
-              href="https://etherscan.io/address/0x82E0E0E70972877Ee70F11454c4808AdB49Bb405"
+              href={`${BLOCK_EXPLORER_URL}address/${NFT_CONTRACT_ADDRESS}`}
               isExternal
             >
               <Heading color="brand.black" size="md">

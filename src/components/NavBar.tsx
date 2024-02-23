@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { usePrivy } from "@privy-io/react-auth";
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
 
 import { MenuLinks } from "./MenuLinks";
 
-import { MenuItem } from "./MenuItem";
-import { AccountIcon } from "./AccountButton";
 import { Connect } from "./Connect";
 
 import HeaderLogo from "../assets/Header-Logo.png";
@@ -17,7 +14,6 @@ import PeachAvatar from "../assets/peaches_avatar.png";
 
 export const NavBar = () => {
   const location = useLocation();
-  const { ready, authenticated, user } = usePrivy();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -68,7 +64,7 @@ export const NavBar = () => {
           </Box>
         </Flex>
       </Flex>
-      <MenuLinks isOpen={isOpen} />
+      <MenuLinks isOpen={isOpen} toggle={toggle} />
     </>
   );
 };

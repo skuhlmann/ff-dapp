@@ -4,8 +4,19 @@ import { MenuItem } from "./MenuItem";
 import { usePrivy } from "@privy-io/react-auth";
 import { AccountIcon } from "./AccountButton";
 
-export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
-  const { ready, authenticated, login, logout } = usePrivy();
+export const MenuLinks = ({
+  isOpen,
+  toggle,
+}: {
+  isOpen: boolean;
+  toggle: () => void;
+}) => {
+  const { ready, authenticated, logout } = usePrivy();
+
+  const handleLogout = () => {
+    logout();
+    toggle();
+  };
 
   if (!ready) {
     return null;
@@ -31,7 +42,7 @@ export const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
         <MenuItem to="/about">About</MenuItem>
         {ready && authenticated && (
           <Heading
-            onClick={logout}
+            onClick={handleLogout}
             color="brand.red"
             _hover={{ cursor: "pointer" }}
           >

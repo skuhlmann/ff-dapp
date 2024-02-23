@@ -1,38 +1,50 @@
-// import { useState } from "react";
+import { RouteLink } from "../components/RouteLink";
 import { usePrivy } from "@privy-io/react-auth";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
-import { PageHeader } from "../components/PageHeader";
 import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";
-import { Box } from "@chakra-ui/react";
-import { RouteLink } from "../components/RouteLink";
-
-// states
-// // unconnected - login/signup
-// // connected && needs funds - or needs funds is more on the mint and used elsewhere
-// //  connected = mint && see farm
-
-// todo: add gas to target
+import { Link } from "react-router-dom";
 
 function Farm() {
   const { ready, authenticated, user } = usePrivy();
 
   return (
     <>
-      <PageHeader title="THE FARM" superTitle="PΞACH TYCOON">
+      <Text mb="3rem">My trees</Text>
+      {/* <Box borderBottom="1px dotted white" width="100%" /> */}
+      <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
         {!ready && null}
 
         {ready && !authenticated && <LogIn />}
 
         {ready && authenticated && user?.wallet?.address && (
-          <Box mt="3rem">
-            <Box mb="3rem">
-              <TreeList address={user.wallet.address} />
-            </Box>
-            <RouteLink linkText="Back" path="/play" direction="left" />
-          </Box>
+          <TreeList address={user.wallet.address} />
         )}
-      </PageHeader>
+      </Flex>
+
+      <Flex w="100%" justify="flex-end">
+        <Button
+          as={Link}
+          to="/buy-trees"
+          variant="outline"
+          fontFamily="heading"
+          fontSize="xl"
+          fontStyle="italic"
+          fontWeight="700"
+          border="1px"
+          borderColor="brand.green"
+          borderRadius="200px;"
+          color="brand.orange"
+          size="lg"
+          height="60px"
+          width="220px"
+          my="1rem"
+          _hover={{ bg: "transparent", color: "brand.white" }}
+        >
+          BUY TREES
+        </Button>
+      </Flex>
     </>
   );
 }

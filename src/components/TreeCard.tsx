@@ -1,0 +1,71 @@
+import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { TreeNft } from "../utils/types";
+import { truncateAddress } from "../utils/formatting";
+import { BLOCK_EXPLORER_URL, NFT_CONTRACT_ADDRESS } from "../utils/constants";
+import { TreeStats } from "./TreeStats";
+
+import tempNftImg from "../assets/Temp-NFT-Img.png";
+import peachAvatar from "../assets/peach-avatar-trans.png";
+import { TreeActions } from "./TreeActions";
+
+export const TreeCard = ({
+  tree,
+  account,
+}: {
+  tree: TreeNft;
+  account?: string;
+}) => {
+  console.log("account", account);
+  return (
+    <Flex direction="column" align="center" gap="1rem">
+      <Box
+        w={{ base: "320px" }}
+        bg="brand.gray"
+        borderRadius="20px"
+        p="26px 14px 26px 29px"
+      >
+        <Flex direction="row" gap="1rem">
+          <Flex direction="column" align="center">
+            <Flex w="100%" justify="flex-start" mb="1rem">
+              <Link
+                href={`${BLOCK_EXPLORER_URL}nft/${NFT_CONTRACT_ADDRESS}/${tree.tokenID}`}
+                isExternal
+                fontSize="xs"
+                color="brand.orange"
+              >
+                {truncateAddress(tree.contractAddress)}
+              </Link>
+            </Flex>
+            <Image mb=".5rem" src={tempNftImg ?? tree.tokenMetadata?.image} />
+            <Text fontSize="xs" mb="1rem">
+              {tree.tokenMetadata?.name}
+            </Text>
+            <TreeActions />
+            <Box
+              w="100%"
+              textAlign="center"
+              borderBottom="1px dotted black"
+              paddingBottom="2rem"
+            />
+
+            <Flex w="100%" justify="space-between" align="center" mt="1.5rem">
+              <Text fontSize="xs" color="brand.green">
+                Current yield:
+              </Text>
+              <Flex align="center" gap=".5rem">
+                <Heading size="md" color="brand.green">
+                  2 X
+                </Heading>
+                <Image src={peachAvatar} w="32px" />
+              </Flex>
+            </Flex>
+            {/* <BuyTreeButton /> */}
+          </Flex>
+          <Box w="40px">
+            <TreeStats />
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
+  );
+};
