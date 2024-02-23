@@ -1,6 +1,5 @@
-import { RouteLink } from "../components/RouteLink";
 import { usePrivy } from "@privy-io/react-auth";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";

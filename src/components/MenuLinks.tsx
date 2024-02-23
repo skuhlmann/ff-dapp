@@ -2,7 +2,6 @@ import { Box, Heading, Stack } from "@chakra-ui/react";
 
 import { MenuItem } from "./MenuItem";
 import { usePrivy } from "@privy-io/react-auth";
-import { AccountIcon } from "./AccountButton";
 
 export const MenuLinks = ({
   isOpen,
