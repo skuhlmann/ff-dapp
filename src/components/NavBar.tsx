@@ -8,9 +8,10 @@ import { MenuLinks } from "./MenuLinks";
 
 import { Connect } from "./Connect";
 
-import HeaderLogo from "../assets/Header-Logo.png";
 import MobileLogo from "../assets/Mobile-Logo.png";
-import PeachAvatar from "../assets/peaches_avatar.png";
+import PeachAvatar from "../assets/Peach_logo.png";
+import PeachWordmark from "../assets/Peach_wordmark.png";
+import TycoonWordmark from "../assets/Tycoon_wordmark.png";
 
 export const NavBar = () => {
   const location = useLocation();
@@ -38,12 +39,16 @@ export const NavBar = () => {
         <Link to="/">
           <>
             <Flex
-              alignItems="center"
+            direction="row"
+              alignItems="start"
+              justifyContent="center"
               gap="0.5rem;"
               display={{ base: "none", sm: "block" }}
               w={{ base: "250px", md: "400px" }}
             >
-              <Image src={HeaderLogo} />
+              <Image width="56px" src={PeachAvatar} />
+              <Image width="97px" src={PeachWordmark} />
+              <Image src={TycoonWordmark} />
             </Flex>
             <Flex
               direction="row"
