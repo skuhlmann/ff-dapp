@@ -17,16 +17,14 @@ import erc721Abi from "../abis/ERC721.json";
 import { MintTx } from "./MintTx";
 import {
   BLOCK_EXPLORER_URL,
+  COMING_SOON,
   NFT_CONTRACT_ADDRESS,
   NFT_MINT_PRICE,
 } from "../utils/constants";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import { useState } from "react";
 import { useQueryClient } from "react-query";
-import { usePrivy } from "@privy-io/react-auth";
 import { getNetwork } from "wagmi/actions";
-
-const comingSoon = false;
 
 const getCritterId = () => {
   return Math.floor(Math.random() * 4);
@@ -88,12 +86,13 @@ export const BuyTreeButton = ({
   });
 
   console.log("error", error);
+  console.log("mintError", mintError);
 
   // if (isError) {
   //   return <p>Mint Error: {mintError?.message}</p>;
   // }
 
-  const isDisabled = comingSoon || mintLoading || chain?.unsupported;
+  const isDisabled = COMING_SOON || mintLoading || chain?.unsupported;
 
   return (
     <>
@@ -111,15 +110,14 @@ export const BuyTreeButton = ({
         height="60px"
         width="220px"
         my="1rem"
-        disabled={isDisabled}
+        isDisabled={isDisabled}
         _hover={{
           bg: "transparent",
           color: "brand.orange",
-          cursor: isDisabled ? "not-allowed" : "pointer",
         }}
         onClick={() => write?.()}
       >
-        {comingSoon ? "MINT COMING SOON" : "MINT"}
+        {COMING_SOON ? "MINT COMING SOON" : "MINT"}
       </Button>
 
       <Modal

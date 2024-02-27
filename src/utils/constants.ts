@@ -30,3 +30,5 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
     value: 2,
   },
 ];
+
+export const COMING_SOON = true;
