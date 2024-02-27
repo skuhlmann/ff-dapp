@@ -26,6 +26,11 @@ export const MenuLinks = ({
       display={{ base: isOpen ? "block" : "none" }}
       borderBottom="1px solid white"
       pb="3rem"
+      position="fixed"
+      zIndex="12"
+      mt="120px"
+      w="full"
+      background={"brand.black"}
     >
       <Stack
         spacing={8}

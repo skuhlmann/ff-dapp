@@ -5,9 +5,9 @@ import { LabelBadge, PeachCard } from "./SharedLayout";
 
 export const HomeSectionOne = () => {
   return (
-    <Flex wrap="wrap" justify="space-between">
-      <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-        <Flex gap="1rem" align="center" mb="1rem">
+    <Flex mt={{ base: "0", md: "160px"}} direction={{ base: "column", md: "row" }} justifyContent="start" alignItems="start" px="10vw">
+     <Box flex="1" mb="2rem">
+        <Flex gap="1rem" align="center">
           <Heading color="brand.orange">1.</Heading>
           <LabelBadge
             bg="brand.green"
@@ -20,18 +20,18 @@ export const HomeSectionOne = () => {
             • Available now •
           </LabelBadge>
         </Flex>
-        <Heading size="4xl" mb="2rem">
+        <Text fontFamily="auster" maxWidth="597px" fontWeight="bold" fontSize={{base:"56px", xl:"80px"}} lineHeight={{base:"60px", xl:"96px"}} mb={4}>
           Get Trees!
-        </Heading>
-        <Text mb="2rem">
+        </Text>
+        <Text maxW="460px" mb="2rem">
           Welcome to PΞACHES Season Two - PΞACH Tycoon! For this season, we are
           inviting all humble farmers to try their hand at growing peaches.
         </Text>
-        <Text mb="2rem" fontWeight="700">
+        <Text maxW="460px" mb="2rem" fontWeight="700">
           Every tree NFT purchased is guaranteed to produce two (2) peach boxes
           that each include a farmer’s dozen (13) delicious, Palisade peaches.
         </Text>
-        <Text>
+        <Text maxW="460px">
           Palisade peaches are amongst the best in the world due to the unique
           climate that produces high sugars and tender fruit. Check out the
           <Link as={RouterLink} to="/about" color="brand.orange" mx=".5rem">
@@ -41,30 +41,33 @@ export const HomeSectionOne = () => {
         </Text>
       </Box>
       <Flex
-        w={{ base: "100%", md: "50%" }}
         direction="column"
         alignItems={{ base: "center", md: "flex-end" }}
       >
         <PeachCard w={{ base: "293px", md: "426px" }} h="504px" mb="1rem">
           <Flex direction="column" align="center">
-            <Box
+            <Flex
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
               w="268px"
               height="268px"
               style={{
                 borderRadius: "50%",
-                border: "7px solid black",
-
+                border: "10px solid rgba(14,20,24,0.25)",
                 textAlign: "center",
               }}
             >
-              <Heading
-                size="sm"
+              <Text
+                fontSize="30px"
+                lineHeight="30px"
                 color="brand.orange"
-                style={{ lineHeight: "268px" }}
+                fontWeight="bold"
+                fontFamily="auster"
               >
-                1 Tree = 2 boxes of peaches*
-              </Heading>
-            </Box>
+                1 tree =<br /> 2 boxes of peaches*
+              </Text>
+            </Flex>
             <Button
               as={RouterLink}
               to="/buy-trees"
@@ -89,8 +92,9 @@ export const HomeSectionOne = () => {
         </PeachCard>
         <Box textAlign="center" w={{ base: "293px", md: "426px" }}>
           <Text fontSize="xs" color="brand.orange">
-            * 1 tree gauranties 2 boxes of peaches. You can increase this number
-            by doing grow-actions.
+            * One tree guarantees two boxes of peaches. Water, prune, fertilize
+            and protect your trees from pests in order to earn additional peach
+            boxes.
           </Text>
         </Box>
       </Flex>

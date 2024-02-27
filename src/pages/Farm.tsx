@@ -1,5 +1,5 @@
 import { usePrivy } from "@privy-io/react-auth";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Divider, Flex, Text } from "@chakra-ui/react";
 
 import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";
@@ -10,7 +10,13 @@ function Farm() {
 
   return (
     <>
-      <Text mb="3rem">My trees</Text>
+      <Flex w="full" border="none" direction="row" alignItems="center" justifyContent="start" mt={10} mb={20}>
+        <Divider mt={4} mr={4} width='10vw' borderTop="dotted 1px" borderColor={'brand.white'} borderBottom="none" background="none" />
+        <Text fontFamily="auster" color="brand.white" fontSize="20px" fontWeight="bold">
+          My trees
+        </Text>
+        <Divider mt={4} ml={4} flex="1" borderTop="dotted 1px" borderColor={'brand.white'} borderBottom="none" background="none" />
+      </Flex>
       {/* <Box borderBottom="1px dotted white" width="100%" /> */}
       <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
         {!ready && null}
@@ -21,8 +27,8 @@ function Farm() {
           <TreeList address={user.wallet.address} />
         )}
       </Flex>
-
-      <Flex w="100%" justify="flex-end">
+      <Divider ml={4} flex="1" borderTop="dotted 1px" borderColor={'brand.white'} borderBottom="none" background="none" />
+      <Flex w="100%" pt={8} pb={20} px={20} justify="flex-end">
         <Button
           as={Link}
           to="/buy-trees"
