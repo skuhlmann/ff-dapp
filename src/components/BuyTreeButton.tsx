@@ -1,6 +1,8 @@
 import { Button } from "@chakra-ui/react";
 
 export const BuyTreeButton = () => {
+  const comingSoon = true;
+
   return (
     <Button
       variant="outline"
@@ -16,14 +18,14 @@ export const BuyTreeButton = () => {
       height="60px"
       width="220px"
       my="1rem"
-      disabled={true}
+      disabled={comingSoon}
       _hover={{
         bg: "transparent",
         color: "brand.orange",
         cursor: "not-allowed",
       }}
     >
-      MINT COMING SOON
+      {comingSoon ? "MINT COMING SOON" : "MINT"}
     </Button>
   );
 };
