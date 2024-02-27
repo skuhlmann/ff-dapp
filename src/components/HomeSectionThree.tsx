@@ -8,15 +8,14 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import { LabelBadge, PeachCard } from "./SharedLayout";
+import { LabelBadge } from "./SharedLayout";
 
-import unredeemedImg from "../assets/10-peach-trans.png";
-import redeemedImg from "../assets/10-bite-trans.png";
+import PeachCards from "../assets/peach-cards.png";
 
 export const HomeSectionThree = () => {
   return (
-    <Flex wrap="wrap" justify="space-between">
-      <Box w={{ base: "100%", md: "50%" }} mb="2rem">
+    <Flex mt={{ base: "0", md: "140px"}} direction={{ base: "column", md: "row" }} justifyContent="start" alignItems="start" px="10vw">
+      <Box flex="1" mb="2rem">
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">3.</Heading>
           <LabelBadge
@@ -30,17 +29,16 @@ export const HomeSectionThree = () => {
             Available soon
           </LabelBadge>
         </Flex>
-        <Heading size="4xl" mb="2rem">
+        <Text fontFamily="auster" maxWidth="597px" fontWeight="bold" fontSize="80px" lineHeight="96px" mb={4}>
           Get peaches!
-        </Heading>
-        <Text mb="2rem">
+        </Text>
+        <Text  maxW="460px" mb="2rem">
           Upon harvest, you will be able to redeem your peach boxes to enjoy
           yourself, send to a friend or sell them at the Farmers Marketplace at
           a price you set. Peach lovers will be invited to purchase peach boxes
           from the marketplace. Every peach box includes a unique, generative
           PΞACH NFT.
-        </Text>
-        <Text mb="2rem">
+          <br /><br />
           Upon redemption, your PΞACH will evolve to reveal a juicy bite and
           your unique PΞACH pit design. All buyers within the continental US
           will receive a box of fresh, juicy peaches. International orders will
@@ -69,24 +67,8 @@ export const HomeSectionThree = () => {
           SEE 2023 PΞACH DROP
         </Button>
       </Box>
-      <Flex
-        w={{ base: "100%", md: "50%" }}
-        direction="column"
-        alignItems={{ base: "center", md: "flex-end" }}
-      >
-        <PeachCard w={{ base: "293px", md: "399px" }} h="539px" mb="1rem">
-          <Flex direction="column" align="center">
-            <Image src={unredeemedImg} h="210px" />
-            <Image src={redeemedImg} h="210px" />
-          </Flex>
-        </PeachCard>
-        <Box textAlign="center" w={{ base: "293px", md: "426px" }}>
-          <Text fontSize="xs" color="brand.orange">
-            * 1 tree garanties 2 boxes of peaches. You can increase this number
-            by doing grow-actions.
-          </Text>
-        </Box>
-      </Flex>
+      <Image width="666px" src={PeachCards} />
+
     </Flex>
   );
 };

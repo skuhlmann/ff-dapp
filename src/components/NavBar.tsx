@@ -8,9 +8,10 @@ import { MenuLinks } from "./MenuLinks";
 
 import { Connect } from "./Connect";
 
-import HeaderLogo from "../assets/Header-Logo.png";
 import MobileLogo from "../assets/Mobile-Logo.png";
-import PeachAvatar from "../assets/peaches_avatar.png";
+import PeachAvatar from "../assets/Peach_logo.png";
+import PeachWordmark from "../assets/Peach_wordmark.png";
+import TycoonWordmark from "../assets/Tycoon_wordmark.png";
 
 export const NavBar = () => {
   const location = useLocation();
@@ -32,24 +33,30 @@ export const NavBar = () => {
         wrap="wrap"
         w="100%"
         mb={8}
-        p={8}
+        py={8}
+        px={10}
         color="brand.orange"
+        position="fixed"
+        background="brand.black"
+        zIndex={9}
       >
         <Link to="/">
           <>
             <Flex
+              direction="row"
               alignItems="center"
-              gap="0.5rem;"
-              display={{ base: "none", sm: "block" }}
-              w={{ base: "250px", md: "400px" }}
+              justifyContent="start"
+              display={{ base: "none", md: "flex" }}
             >
-              <Image src={HeaderLogo} />
+              <Image width="56px" src={PeachAvatar} />
+              <Image width="97px" m="10px 10px 0 20px" src={PeachWordmark} />
+              <Image width="210px" mt="10px" src={TycoonWordmark} />
             </Flex>
             <Flex
               direction="row"
               alignItems="center"
               gap="0.5rem;"
-              display={{ base: "flex", sm: "none" }}
+              display={{ base: "flex", md: "none" }}
               w="100%"
             >
               <Image src={PeachAvatar} w="36px" />
