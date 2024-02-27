@@ -33,28 +33,30 @@ export const NavBar = () => {
         wrap="wrap"
         w="100%"
         mb={8}
-        p={8}
+        py={8}
+        px={10}
         color="brand.orange"
+        position="fixed"
+        background="brand.black"
+        zIndex={9}
       >
         <Link to="/">
           <>
             <Flex
-            direction="row"
-              alignItems="start"
-              justifyContent="center"
-              gap="0.5rem;"
-              display={{ base: "none", sm: "block" }}
-              w={{ base: "250px", md: "400px" }}
+              direction="row"
+              alignItems="center"
+              justifyContent="start"
+              display={{ base: "none", md: "flex" }}
             >
               <Image width="56px" src={PeachAvatar} />
-              <Image width="97px" src={PeachWordmark} />
-              <Image src={TycoonWordmark} />
+              <Image width="97px" m="10px 10px 0 20px" src={PeachWordmark} />
+              <Image width="210px" mt="10px" src={TycoonWordmark} />
             </Flex>
             <Flex
               direction="row"
               alignItems="center"
               gap="0.5rem;"
-              display={{ base: "flex", sm: "none" }}
+              display={{ base: "flex", md: "none" }}
               w="100%"
             >
               <Image src={PeachAvatar} w="36px" />

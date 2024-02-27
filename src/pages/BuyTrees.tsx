@@ -13,7 +13,8 @@ function BuyTrees() {
       <Flex
         gap="1rem"
         direction={{ base: "column", md: "row" }}
-        align="center"
+        alignItems="center"
+        justifyContent="center"
         mb="15rem"
       >
         {TREE_NFT_DATA.map((tree: NftTreeMeta) => {

@@ -16,7 +16,7 @@ const theme = extendTheme({
     Heading: {
       baseStyle: {
         fontFamily: "Helsinki",
-        fontWeight: 600,
+        fontWeight: 100,
         color: brandColors.white,
       },
       sizes: {},
