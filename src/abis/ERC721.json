@@ -54,6 +54,38 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_fromTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_toTokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "BatchMetadataUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "MetadataUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "previousOwner",
@@ -95,13 +127,6 @@
     "type": "event"
   },
   {
-    "inputs": [],
-    "name": "activationTimestamp",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       { "internalType": "address", "name": "to", "type": "address" },
       { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
@@ -122,13 +147,6 @@
   },
   {
     "inputs": [],
-    "name": "beneficiary",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "contractURI",
     "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
     "stateMutability": "view",
@@ -136,7 +154,28 @@
   },
   {
     "inputs": [],
-    "name": "deactivationTimestamp",
+    "name": "currentSeason",
+    "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "farmAccount",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "farmerCoopAccount",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "farmerCoopCut",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
@@ -168,17 +207,20 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "metdataFrozen",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
+    "inputs": [
+      { "internalType": "uint8", "name": "_trunkId", "type": "uint8" },
+      { "internalType": "uint8", "name": "_critterId", "type": "uint8" }
+    ],
+    "name": "mint",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "mint",
-    "outputs": [],
-    "stateMutability": "payable",
+    "name": "mintEnd",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -189,12 +231,10 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address[]", "name": "_addresses", "type": "address[]" }
-    ],
-    "name": "mintTo",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "inputs": [],
+    "name": "mintStart",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -252,19 +292,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_newActivationTimestamp",
-        "type": "uint256"
-      }
-    ],
-    "name": "setActivationTimestamp",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
       { "internalType": "address", "name": "operator", "type": "address" },
       { "internalType": "bool", "name": "approved", "type": "bool" }
     ],
@@ -275,10 +302,9 @@
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "_newBaseURI", "type": "string" },
-      { "internalType": "bool", "name": "_isRedeemSetter", "type": "bool" }
+      { "internalType": "string", "name": "_newBaseURI", "type": "string" }
     ],
-    "name": "setBaseURI",
+    "name": "setBaseURIS",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -294,22 +320,41 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_newDeactivationTimestamp",
-        "type": "uint256"
-      }
+      { "internalType": "uint256", "name": "_newMintEnd", "type": "uint256" }
     ],
-    "name": "setDeactivationTimestamp",
+    "name": "setMintEnd",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_newPrice", "type": "uint256" }
+      { "internalType": "uint256", "name": "_newMintStart", "type": "uint256" }
+    ],
+    "name": "setMintStart",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_newPrice", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "_newFarmerCoopCut",
+        "type": "uint256"
+      }
     ],
     "name": "setPrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint8", "name": "_newSeason", "type": "uint8" }
+    ],
+    "name": "setSeason",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -327,6 +372,16 @@
     "inputs": [],
     "name": "symbol",
     "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "tokenMetas",
+    "outputs": [
+      { "internalType": "uint8", "name": "trunkId", "type": "uint8" },
+      { "internalType": "uint8", "name": "critterId", "type": "uint8" }
+    ],
     "stateMutability": "view",
     "type": "function"
   },

@@ -1,7 +1,6 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 
 import peachOne from "../assets/peach-box-11.png";
-import peachTwo from "../assets/peach-box-12.png";
 import peachThree from "../assets/peach-box-13.png";
 import peachFour from "../assets/freeze-dried.jpg";
 import peachFive from "../assets/box-1.jpg";
@@ -47,7 +46,6 @@ export const HomeSectionFour = () => {
       </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center">
         <Image src={peachOne} w="420px" />
-        <Image src={peachTwo} w="420px" />
         <Image src={peachThree} w="420px" />
         <Image src={peachFour} w="420px" />
         <Image src={peachFive} w="420px" />

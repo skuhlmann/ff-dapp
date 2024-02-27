@@ -3,6 +3,15 @@ import { NFT_MINT_PRICE, NftTreeMeta } from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { BuyTreeButton } from "./BuyTreeButton";
 import { fromWei } from "../utils/formatting";
+import { LogIn } from "./LogIn";
+import { BalanceCheck } from "./BalanceCheck";
+import { TreeNft } from "../utils/types";
+import { TokenBalance } from "0xsequence/dist/declarations/src/indexer";
+
+const holdingCount = (name: string, nfts?: TokenBalance[]) => {
+  if (!nfts) return 0;
+  return nfts.filter((nft) => nft.tokenMetadata?.description === name).length;
+};
 
 const AccountNftCount = ({
   account,
@@ -16,7 +25,7 @@ const AccountNftCount = ({
   console.log("accountNfts", accountNfts);
   return (
     <Text color="brand.white" fontSize="xs">
-      You own 0 {name}
+      You own {`${holdingCount(name, accountNfts?.balances)} ${name}`}
     </Text>
   );
 };
@@ -50,7 +59,17 @@ export const TreeMintCard = ({
             {`${fromWei(NFT_MINT_PRICE.toString())} BASE ETH`}
           </Heading>
         </Box>
-        <BuyTreeButton />
+        {account && (
+          <BalanceCheck address={account} targetBalance={NFT_MINT_PRICE}>
+            <BuyTreeButton trunkId={tree.value} account={account} />
+          </BalanceCheck>
+        )}
+        {!account && (
+          <>
+            <Text>Login to Mint</Text>
+            <LogIn />
+          </>
+        )}
       </Flex>
       {account && <AccountNftCount account={account} name={tree.name} />}
     </Flex>
