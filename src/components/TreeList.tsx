@@ -8,8 +8,6 @@ export const TreeList = ({ address }: { address: string }) => {
     accountAddress: address,
   });
 
-  console.log("accountNfts", accountNfts);
-
   return (
     <Box mb="5rem">
       {isLoading && <Spinner />}

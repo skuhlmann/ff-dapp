@@ -32,20 +32,21 @@ export const BalanceCheck = ({
           as={Link}
           to="/account"
           variant="outline"
-          colorScheme="orange"
           fontFamily="heading"
-          fontSize="2xl"
+          fontSize="xl"
           fontStyle="italic"
-          fontWeight="900"
-          border="2px"
-          borderColor="orange.500"
+          fontWeight="700"
+          border="1px"
+          borderColor="brand.green"
+          borderRadius="200px;"
+          color="brand.orange"
           size="lg"
-          height="64px"
-          width="300px"
+          height="60px"
+          width="220px"
           my="0.5rem"
           _hover={{ bg: "transparent", color: "orange.300" }}
         >
-          Add Funds
+          Add Funds To Mint
         </Button>
       </>
     );

@@ -23,8 +23,6 @@ export const LogIn = () => {
           borderRadius="200px;"
           color="brand.red"
           size="lg"
-          height="72px"
-          width="398px"
           my="3rem"
           _hover={{ bg: "transparent", color: "brand.white" }}
         >
