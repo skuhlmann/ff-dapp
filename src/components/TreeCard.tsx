@@ -4,9 +4,13 @@ import { truncateAddress } from "../utils/formatting";
 import { BLOCK_EXPLORER_URL, NFT_CONTRACT_ADDRESS } from "../utils/constants";
 import { TreeStats } from "./TreeStats";
 
-import tempNftImg from "../assets/Temp-NFT-Img.png";
 import peachAvatar from "../assets/peach-avatar-trans.png";
 import { TreeActions } from "./TreeActions";
+
+const dhImagePath = (path?: string) => {
+  if (!path) return;
+  return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
+};
 
 export const TreeCard = ({
   tree,
@@ -36,9 +40,10 @@ export const TreeCard = ({
                 {truncateAddress(tree.contractAddress)}
               </Link>
             </Flex>
-            <Image mb=".5rem" src={tempNftImg ?? tree.tokenMetadata?.image} />
-            <Text fontSize="xs" mb="1rem">
-              {tree.tokenMetadata?.name}
+            <Image mb=".5rem" src={dhImagePath(tree.tokenMetadata?.image)} />
+            <Text fontSize="xs">{tree.tokenMetadata?.name}</Text>
+            <Text fontSize="sm" mb="1rem" fontWeight="700">
+              {tree.tokenMetadata?.description}
             </Text>
             <TreeActions />
             <Box

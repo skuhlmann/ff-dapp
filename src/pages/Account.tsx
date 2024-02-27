@@ -14,8 +14,6 @@ function Account() {
     return null;
   }
 
-  console.log("user", user);
-
   const handleCopy = () => {
     if (!user?.wallet?.address) return;
     navigator.clipboard.writeText(user.wallet.address);

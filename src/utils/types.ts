@@ -4,5 +4,6 @@ export type TreeNft = {
   tokenMetadata?: {
     image: string;
     name: string;
+    description: string;
   };
 };
