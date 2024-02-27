@@ -5,7 +5,6 @@ import { BuyTreeButton } from "./BuyTreeButton";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
 import { BalanceCheck } from "./BalanceCheck";
-import { TreeNft } from "../utils/types";
 import { TokenBalance } from "0xsequence/dist/declarations/src/indexer";
 
 const holdingCount = (name: string, nfts?: TokenBalance[]) => {
