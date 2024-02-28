@@ -1,7 +1,6 @@
-import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
+import { Divider, Flex, Image, Text } from "@chakra-ui/react";
 
 import peachOne from "../assets/peach-box-11.png";
-import peachThree from "../assets/peach-box-13.png";
 import peachFour from "../assets/freeze-dried.jpg";
 import peachFive from "../assets/box-1.jpg";
 import peachSix from "../assets/box-2.jpg";
