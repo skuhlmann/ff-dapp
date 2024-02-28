@@ -9,7 +9,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Spinner,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 
