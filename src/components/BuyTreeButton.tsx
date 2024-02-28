@@ -132,7 +132,7 @@ export const BuyTreeButton = ({
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="orange.500">Minting</ModalHeader>
+          <ModalHeader color="brand.green">Minting</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -143,8 +143,7 @@ export const BuyTreeButton = ({
             >
               {!isIdle && !isError && !txComplete && (
                 <>
-                  <Text>Minting</Text>
-                  <Spinner />
+                  <Spinner size="xl" color="brand.green" thickness="8px" />
                 </>
               )}
 
