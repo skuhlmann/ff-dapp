@@ -54,9 +54,8 @@ export const HomeSectionTwo = () => {
           <br />
           <br />
           In addition, a portion of all transactions will be added to the
-          ‘Farmer’s Pot’ to be split amongst all farmers (tree owners). The
-          better you farm, the more points you earn and a larger percentage of
-          the pot you can win!
+          ‘Farmer’s Pot’. The better you farm, the more points you earn and a
+          larger percentage of the pot you can win!
         </Text>
       </Flex>
       <SimpleGrid columns={2} spacing="1rem" mb="1rem">

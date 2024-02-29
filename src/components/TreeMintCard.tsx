@@ -21,7 +21,6 @@ const AccountNftCount = ({
 }) => {
   const { accountNfts } = useAccountNfts({ accountAddress: account });
 
-  console.log("accountNfts", accountNfts);
   return (
     <Text color="brand.white" fontSize="xs">
       You own {`${holdingCount(name, accountNfts?.balances)} ${name}`}

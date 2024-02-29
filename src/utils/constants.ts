@@ -3,15 +3,16 @@ import treeTwo from "../assets/Tree-2.png";
 import treeThree from "../assets/Tree-3.png";
 
 export const NFT_CONTRACT_ADDRESS =
-  "0x0facf9f9ca77744b8a3a972253e8124149d1d753";
-export const NFT_MINT_PRICE = BigInt(1000000000000000);
+  "0xA9d3c833df8415233e1626F29E33ccBA37d2A187";
+export const NFT_MINT_PRICE = BigInt(88800000000000000);
 
-export const BLOCK_EXPLORER_URL = "https://sepolia.etherscan.io/";
+export const BLOCK_EXPLORER_URL = "https://basescan.org/";
 
-export const SEQUENCE_ENDPOINT = "https://sepolia-indexer.sequence.app";
-// "https://base-indexer.sequence.app"
+export const SEQUENCE_ENDPOINT = "https://base-indexer.sequence.app";
 
 export type NftTreeMeta = { name: string; img: string; value: number };
+
+export const CRITTER_COUNT_PLUS_ONE = 5;
 
 export const TREE_NFT_DATA: NftTreeMeta[] = [
   {
@@ -31,4 +32,4 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
   },
 ];
 
-export const COMING_SOON = false;
+export const COMING_SOON = true;

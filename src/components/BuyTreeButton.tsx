@@ -17,6 +17,7 @@ import { MintTx } from "./MintTx";
 import {
   BLOCK_EXPLORER_URL,
   COMING_SOON,
+  CRITTER_COUNT_PLUS_ONE,
   NFT_CONTRACT_ADDRESS,
   NFT_MINT_PRICE,
 } from "../utils/constants";
@@ -26,7 +27,7 @@ import { useQueryClient } from "react-query";
 import { getNetwork } from "wagmi/actions";
 
 const getCritterId = () => {
-  return Math.floor(Math.random() * 4);
+  return Math.floor(Math.random() * CRITTER_COUNT_PLUS_ONE);
 };
 
 export const BuyTreeButton = ({
@@ -42,8 +43,6 @@ export const BuyTreeButton = ({
   const { chain } = getNetwork();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  console.log("chain", chain);
-
   const { config, error } = usePrepareContractWrite({
     address: NFT_CONTRACT_ADDRESS,
     abi: erc721Abi,
@@ -52,7 +51,7 @@ export const BuyTreeButton = ({
     args: [trunkId, getCritterId()],
   });
 
-  console.log("error", error);
+  console.log("config", config);
 
   const {
     write,
@@ -84,7 +83,6 @@ export const BuyTreeButton = ({
     },
   });
 
-  console.log("error", error);
   console.log("mintError", mintError);
 
   // if (isError) {
