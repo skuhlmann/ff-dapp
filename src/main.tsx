@@ -4,7 +4,7 @@ import { HashRouter } from "react-router-dom";
 
 import { PrivyProvider } from "@privy-io/react-auth";
 import { PrivyWagmiConnector } from "@privy-io/wagmi-connector";
-import { sepolia } from "@wagmi/chains";
+import { base } from "@wagmi/chains";
 import { configureChains } from "wagmi";
 
 import { Buffer } from "buffer/";
@@ -23,15 +23,15 @@ import theme from "./theme.ts";
 import { Fonts } from "./Fonts.tsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const configureChainsConfig = configureChains([sepolia], [publicProvider()]);
+const configureChainsConfig = configureChains([base], [publicProvider()]);
 
 const queryClient = new QueryClient();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const handleLogin = (user: any) => {
-  console.log(`User ${user.id} logged in!`);
-  console.log("user", user);
-};
+// const handleLogin = (user: any) => {
+//   console.log(`User ${user.id} logged in!`);
+//   console.log("user", user);
+// };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -39,9 +39,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <QueryClientProvider client={queryClient}>
         <PrivyProvider
           appId={import.meta.env.VITE_PRIVY_APP_ID}
-          onSuccess={handleLogin}
+          // onSuccess={handleLogin}
           config={{
-            defaultChain: sepolia,
+            defaultChain: base,
             loginMethods: ["email", "wallet", "google"],
             appearance: {
               theme: "dark",

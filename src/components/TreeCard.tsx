@@ -12,14 +12,7 @@ const dhImagePath = (path?: string) => {
   return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
 };
 
-export const TreeCard = ({
-  tree,
-  account,
-}: {
-  tree: TreeNft;
-  account?: string;
-}) => {
-  console.log("account", account);
+export const TreeCard = ({ tree }: { tree: TreeNft; account?: string }) => {
   return (
     <Flex direction="column" align="center" gap="1rem">
       <Box
