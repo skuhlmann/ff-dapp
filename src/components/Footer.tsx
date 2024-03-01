@@ -44,7 +44,13 @@ export const Footer = () => {
                 Opensea
               </Heading>
             </Link>
-            <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text>
+            {/* <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text> */}
+            <Text fontSize="sm">
+              Made with ❤️ by{" "}
+              <Link isExternal href="https://www.metacartel.org/">
+                🌶️
+              </Link>
+            </Text>
           </Flex>
         </Flex>
         <Flex direction="column" gap=".5rem">
