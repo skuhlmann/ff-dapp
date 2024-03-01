@@ -36,11 +36,14 @@ export const Footer = () => {
                 BaseScan
               </Heading>
             </Link>
-            {/* <Link href="https://opensea.io/collection/peach-drop" isExternal>
+            <Link
+              href="https://opensea.io/collection/peach-tycoon-trees"
+              isExternal
+            >
               <Heading color="brand.black" size="md">
                 Opensea
               </Heading>
-            </Link> */}
+            </Link>
             <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text>
           </Flex>
         </Flex>
