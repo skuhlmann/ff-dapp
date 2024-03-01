@@ -42,11 +42,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           // onSuccess={handleLogin}
           config={{
             defaultChain: base,
-            loginMethods: ["email", "wallet", "google"],
+            loginMethods: ["email", "wallet"],
             appearance: {
               theme: "dark",
               accentColor: "#E46C1E",
-              logo: "/src/assets/Header-Logo.png",
+              logo: "https://peachtycoon.com/assets/Peach_logo-pI9PBUaM.png",
             },
             embeddedWallets: {
               createOnLogin: "users-without-wallets", // or 'all-users'
