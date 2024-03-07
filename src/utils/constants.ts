@@ -12,7 +12,7 @@ export const SEQUENCE_ENDPOINT = "https://base-indexer.sequence.app";
 
 export type NftTreeMeta = { name: string; img: string; value: number };
 
-export const CRITTER_COUNT_PLUS_ONE = 5;
+export const CRITTER_COUNT_PLUS_ONE = 7;
 
 export const TREE_NFT_DATA: NftTreeMeta[] = [
   {
