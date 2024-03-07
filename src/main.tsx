@@ -42,7 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           // onSuccess={handleLogin}
           config={{
             defaultChain: base,
-            loginMethods: ["email", "wallet"],
+            loginMethods: ["email", "wallet", "farcaster"],
             appearance: {
               theme: "dark",
               accentColor: "#E46C1E",
