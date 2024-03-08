@@ -81,7 +81,7 @@ export const HomeSectionThree = () => {
           SEE 2023 PΞACH DROP
         </Button>
       </Box>
-      <Image width="666px" src={PeachCards} />
+      <Image width={{base:"full",md:"40vw"}} src={PeachCards} />
     </Flex>
   );
 };

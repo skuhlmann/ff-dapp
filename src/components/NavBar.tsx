@@ -64,9 +64,9 @@ export const NavBar = () => {
             </Flex>
           </>
         </Link>
-        <Flex align="center" justify="space-between" gap="1rem">
-          <Connect />
-          <Box onClick={toggle} fontSize="30px">
+        <Flex align="center" gap="1rem">
+            <Connect />
+          <Box cursor="pointer" onClick={toggle} fontSize="30px">
             {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
           </Box>
         </Flex>

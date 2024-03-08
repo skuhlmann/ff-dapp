@@ -53,6 +53,7 @@ function Account() {
                 style={{ fontSize: "18px", marginLeft: ".5rem" }}
               />
             </Button>
+            <Box w="272px" position="relative" mt="3rem">
             <Button
               onClick={logout}
               variant="outline"
@@ -60,18 +61,25 @@ function Account() {
               fontSize="xl"
               fontStyle="italic"
               fontWeight="700"
-              border="1px"
+              border="2px"
               borderColor="brand.orange"
               borderRadius="200px;"
               color="brand.red"
               size="lg"
-              height="60px"
-              width="272px"
-              my="3rem"
-              _hover={{ bg: "transparent", color: "brand.white" }}
+              height="72px"
+              width="full"
+              _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
+              _focus={{transform:"translate(0px, 0px)",bg:"brand.black"}}
+              position="absolute"
+              bg="brand.black"
+              zIndex="2"
+              transform="translate(0px, -12px)"
             >
               Logout
             </Button>
+            <Box w="full" height="72px" position="absolute" border="2px" borderColor="brand.orange" borderRadius="200px;"></Box>
+
+            </Box>
           </Flex>
         ) : (
           <LogIn />

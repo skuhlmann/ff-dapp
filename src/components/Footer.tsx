@@ -69,7 +69,7 @@ export const Footer = () => {
               My Farm
             </Heading>
           </RouterLink>
-          <RouterLink to="/my-account">
+          <RouterLink to="/account">
             <Heading color="brand.black" size="md">
               My Account
             </Heading>
