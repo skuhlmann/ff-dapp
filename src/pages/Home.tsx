@@ -160,8 +160,14 @@ function Home() {
                   size="lg"
                   height="72px"
                   w="full"
-                  _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
-                  _focus={{transform:"translate(0px, 0px)",bg:"brand.black"}}
+                  _hover={{
+                    transform: "translate(0px, -10px)",
+                    color: "brand.white",
+                  }}
+                  _focus={{
+                    transform: "translate(0px, 0px)",
+                    bg: "brand.black",
+                  }}
                   position="absolute"
                   bg="brand.black"
                   zIndex="2"
@@ -169,7 +175,14 @@ function Home() {
                 >
                   GET STARTED
                 </Button>
-                <Box w="full" height="72px" position="absolute" border="2px" borderColor="brand.orange" borderRadius="200px;"></Box>
+                <Box
+                  w="full"
+                  height="72px"
+                  position="absolute"
+                  border="2px"
+                  borderColor="brand.orange"
+                  borderRadius="200px;"
+                ></Box>
               </Box>
             </Flex>
             <Image
@@ -196,12 +209,12 @@ function Home() {
         <HomeSectionTwo />
       </Box>
 
-     <Box mb="5rem">
+      <Box mb="5rem">
         <HomeSectionThree />
       </Box>
-       {/* <Box mb="5rem">
+      <Box mb="5rem">
         <HomeSectionFour />
-      </Box> */}
+      </Box>
     </>
   );
 }
