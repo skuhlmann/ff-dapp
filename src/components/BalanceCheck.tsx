@@ -1,5 +1,5 @@
 import { ReactNode, useMemo } from "react";
-import { Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useBalance } from "wagmi";
 
@@ -26,8 +26,8 @@ export const BalanceCheck = ({
 
   if (!hasBalance) {
     return (
-      <>
-        {message && <Text>{message}</Text>}
+      <Box w="full" h="72px" mt="2rem" position="relative">
+      {message && <Text>{message}</Text>}
         <Button
           as={Link}
           to="/account"
@@ -36,19 +36,24 @@ export const BalanceCheck = ({
           fontSize="xl"
           fontStyle="italic"
           fontWeight="700"
-          border="1px"
+          border="2px"
           borderColor="brand.green"
           borderRadius="200px;"
           color="brand.orange"
           size="lg"
           height="60px"
-          width="220px"
-          my="0.5rem"
-          _hover={{ bg: "transparent", color: "orange.300" }}
+          width="full"
+          _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
+          _focus={{transform:"translate(0px, 0px)",bg:"#1f1f1f"}}
+          position="absolute"
+          bg="#1f1f1f"
+          zIndex="2"
+          transform="translate(0px, -12px)"
         >
           Add Funds To Mint
         </Button>
-      </>
+        <Box w="full" height="60px" position="absolute" border="2px" borderColor="brand.green" borderRadius="200px;"></Box>
+      </Box>
     );
   }
 

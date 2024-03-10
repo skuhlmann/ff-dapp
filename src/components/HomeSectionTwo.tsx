@@ -22,6 +22,7 @@ export const HomeSectionTwo = () => {
         justifyContent="end"
         flex="1"
         mb="2rem"
+        ml={{base:"0px",md:"50px"}}
       >
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">2.</Heading>
@@ -43,6 +44,7 @@ export const HomeSectionTwo = () => {
           fontSize={{ base: "56px", xl: "80px" }}
           lineHeight={{ base: "60px", xl: "96px" }}
           mb={4}
+          textAlign="right"
         >
           Get Growing!
         </Text>
