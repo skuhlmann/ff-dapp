@@ -1,7 +1,8 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { NftTreeMeta, TREE_NFT_DATA } from "../utils/constants";
 import { TreeMintCard } from "../components/TreeMintCard";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { RemainingTreeSupply } from "../components/RemainingTreeSupply";
 
 function BuyTrees() {
   const { ready, user } = usePrivy();
@@ -9,9 +10,7 @@ function BuyTrees() {
   return (
     <>
       {!ready && null}
-      <Box mb="2rem" textAlign="center">
-        <Heading size="lg">Only 200 Trees Available</Heading>
-      </Box>
+      <RemainingTreeSupply />
 
       <Flex
         gap="1rem"
