@@ -20,6 +20,7 @@ import {
   CRITTER_COUNT_PLUS_ONE,
   NFT_CONTRACT_ADDRESS,
   NFT_MINT_PRICE,
+  TARGET_NETWORK,
 } from "../utils/constants";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import { useState } from "react";
@@ -44,14 +45,14 @@ export const BuyTreeButton = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { config, error } = usePrepareContractWrite({
-    address: NFT_CONTRACT_ADDRESS,
+    address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
     abi: erc721Abi,
     functionName: "mint",
-    value: NFT_MINT_PRICE,
+    value: NFT_MINT_PRICE[TARGET_NETWORK],
     args: [trunkId, getCritterId()],
   });
 
-  console.log("config", config);
+  console.log("chain", chain);
 
   const {
     write,
@@ -148,7 +149,10 @@ export const BuyTreeButton = ({
                 <MintTx txHash={data?.hash} setTxComplete={setTxComplete} />
               )}
               {pendingTx && (
-                <Link isExternal href={`${BLOCK_EXPLORER_URL}/tx/${pendingTx}`}>
+                <Link
+                  isExternal
+                  href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}/tx/${pendingTx}`}
+                >
                   View tx
                 </Link>
               )}

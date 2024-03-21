@@ -1,5 +1,9 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { NFT_MINT_PRICE, NftTreeMeta } from "../utils/constants";
+import {
+  NFT_MINT_PRICE,
+  NftTreeMeta,
+  TARGET_NETWORK,
+} from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { BuyTreeButton } from "./BuyTreeButton";
 import { fromWei } from "../utils/formatting";
@@ -54,11 +58,14 @@ export const TreeMintCard = ({
         >
           <p>{tree.name}</p>
           <Heading size="md" color="brand.blue">
-            {`${fromWei(NFT_MINT_PRICE.toString())} BASE ETH`}
+            {`${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
           </Heading>
         </Box>
         {account && (
-          <BalanceCheck address={account} targetBalance={NFT_MINT_PRICE}>
+          <BalanceCheck
+            address={account}
+            targetBalance={NFT_MINT_PRICE[TARGET_NETWORK]}
+          >
             <BuyTreeButton trunkId={tree.value} account={account} />
           </BalanceCheck>
         )}

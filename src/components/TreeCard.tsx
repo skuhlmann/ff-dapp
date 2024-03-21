@@ -1,7 +1,11 @@
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { TreeNft } from "../utils/types";
 import { truncateAddress } from "../utils/formatting";
-import { BLOCK_EXPLORER_URL, NFT_CONTRACT_ADDRESS } from "../utils/constants";
+import {
+  BLOCK_EXPLORER_URL,
+  NFT_CONTRACT_ADDRESS,
+  TARGET_NETWORK,
+} from "../utils/constants";
 import { TreeStats } from "./TreeStats";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
@@ -25,7 +29,7 @@ export const TreeCard = ({ tree }: { tree: TreeNft; account?: string }) => {
           <Flex direction="column" align="center">
             <Flex w="100%" justify="flex-start" mb="1rem">
               <Link
-                href={`${BLOCK_EXPLORER_URL}nft/${NFT_CONTRACT_ADDRESS}/${tree.tokenID}`}
+                href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}nft/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}/${tree.tokenID}`}
                 isExternal
                 fontSize="xs"
                 color="brand.orange"

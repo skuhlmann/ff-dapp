@@ -1,37 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 import { PrivyProvider } from "@privy-io/react-auth";
 import { PrivyWagmiConnector } from "@privy-io/wagmi-connector";
-import { base } from "@wagmi/chains";
 import { configureChains } from "wagmi";
+import { publicProvider } from "wagmi/providers/public";
+import { base, sepolia } from "@wagmi/chains";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import { Buffer } from "buffer/";
-// @ts-expect-error tbd
+// @ts-expect-error buffer
 window.Buffer = Buffer;
 
-// You may replace this with your preferred providers
-// https://wagmi.sh/react/providers/configuring-chains#multiple-providers
-import { publicProvider } from "wagmi/providers/public";
-
 import { Routes } from "./Routes.tsx";
-// import App from "./App.tsx";
-import "./index.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { TARGET_NETWORK } from "./utils/constants.ts";
 import theme from "./theme.ts";
 import { Fonts } from "./Fonts.tsx";
-import { QueryClient, QueryClientProvider } from "react-query";
+import "./index.css";
 
-const configureChainsConfig = configureChains([base], [publicProvider()]);
+const chainObj = TARGET_NETWORK === "0x2105" ? base : sepolia;
+
+const configureChainsConfig = configureChains([chainObj], [publicProvider()]);
 
 const queryClient = new QueryClient();
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// const handleLogin = (user: any) => {
-//   console.log(`User ${user.id} logged in!`);
-//   console.log("user", user);
-// };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -41,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           appId={import.meta.env.VITE_PRIVY_APP_ID}
           // onSuccess={handleLogin}
           config={{
-            defaultChain: base,
+            defaultChain: chainObj,
             loginMethods: ["email", "wallet", "farcaster"],
             appearance: {
               theme: "dark",

@@ -1,13 +1,17 @@
 import { useContractRead } from "wagmi";
 import { Box, Heading } from "@chakra-ui/react";
 
-import { NFT_CONTRACT_ADDRESS } from "../utils/constants";
+import { NFT_CONTRACT_ADDRESS, TARGET_NETWORK } from "../utils/constants";
 import erc721Abi from "../abis/ERC721.json";
 import { fromBigNumber } from "../utils/formaters";
 
 export const RemainingTreeSupply = () => {
+  console.log(
+    "NFT_CONTRACT_ADDRESS[TARGET_NETWORK]",
+    NFT_CONTRACT_ADDRESS[TARGET_NETWORK]
+  );
   const totalSupply = useContractRead({
-    address: NFT_CONTRACT_ADDRESS,
+    address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
     abi: erc721Abi,
     functionName: "totalSupply",
     watch: true,

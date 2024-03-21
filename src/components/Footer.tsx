@@ -4,7 +4,11 @@ import { BsTwitterX } from "react-icons/bs";
 import { BsTelegram } from "react-icons/bs";
 
 import FooterLogo from "../assets/Footer-Logo.png";
-import { BLOCK_EXPLORER_URL, NFT_CONTRACT_ADDRESS } from "../utils/constants";
+import {
+  BLOCK_EXPLORER_URL,
+  NFT_CONTRACT_ADDRESS,
+  TARGET_NETWORK,
+} from "../utils/constants";
 
 export const Footer = () => {
   return (
@@ -28,7 +32,7 @@ export const Footer = () => {
               </Link>
             </Flex>
             <Link
-              href={`${BLOCK_EXPLORER_URL}address/${NFT_CONTRACT_ADDRESS}`}
+              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
               isExternal
             >
               <Heading color="brand.black" size="md">

@@ -1,5 +1,5 @@
 import { formatEther } from "viem";
-import { NFT_MINT_PRICE } from "./constants";
+import { NFT_MINT_PRICE, TARGET_NETWORK } from "./constants";
 
 export type Noun = {
   singular: string;
@@ -31,5 +31,5 @@ export const isJSON = (obj: unknown) => {
   }
 };
 export const getDisplayPrice = () => {
-  return `${fromWei(NFT_MINT_PRICE.toString())} ETH`;
+  return `${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} ETH`;
 };
