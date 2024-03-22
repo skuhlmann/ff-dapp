@@ -1,7 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 import { useWaitForTransactionReceipt } from "wagmi";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 const SuccessContainer = styled(Box)`
@@ -12,7 +11,7 @@ const SuccessContainer = styled(Box)`
   gap: 2rem;
 `;
 
-export const MintTx = ({
+export const PruneTx = ({
   txHash,
   setTxComplete,
 }: {
@@ -36,21 +35,7 @@ export const MintTx = ({
 
   return (
     <SuccessContainer>
-      <RouterLink to="/farm">
-        <Button
-          variant="outline"
-          fontFamily="Helsinki"
-          fontSize="2xl"
-          border="1px"
-          borderColor="brand.green"
-          borderRadius="200px;"
-          color="brand.orange"
-          size="lg"
-          height="72px"
-        >
-          Checkout Your New Tree
-        </Button>
-      </RouterLink>
+      <Heading size="xl">Pruning is Done!</Heading>
     </SuccessContainer>
   );
 };

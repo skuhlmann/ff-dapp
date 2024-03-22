@@ -4,6 +4,8 @@ import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
 import sprayIcon from "../assets/icon_spray.png";
 import fertIcon from "../assets/icon_fert.png";
+import { fromWei } from "../utils/formatting";
+import { BOOST_POINTS, PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
 
 type BoostData = {
   img: string;
@@ -15,15 +17,16 @@ type BoostData = {
   isActive: boolean;
 };
 
+export const PRUNE_DESCRIPTION = `To get started, you will need to prune your tree. Pruning is a critical practice for maintaining the health and productivity of your trees. It encourages new fruiting wood, which increases fruit production and allows for greater sunlight and air circulation , which is crucial for fruit growth and ripening. You can only prune once and before your trees go into spring blossom, so don't delay! Every pruned tree will earn an additional peach box and ${BOOST_POINTS.PRUNE} points towards the Farmer's Pot`;
+
 const boosts: BoostData[] = [
   {
     img: pruneIcon,
     color: "brand.green",
     name: "Prune",
-    description:
-      "To get started, you will need to prune your tree. Pruning is a critical practice for maintaining the health and productivity of your trees. It encourages new fruiting wood, which increases fruit production and allows for greater sunlight and air circulation , which is crucial for fruit growth and ripening. You can only prune once and before your trees go into spring blossom, so don't delay! Every pruned tree will earn an additional peach box and X points towards the Farmer's Pot",
+    description: PRUNE_DESCRIPTION,
     frequency: "Once",
-    cost: ".01 ETH",
+    cost: `${fromWei(PRUNE_PRICE[TARGET_NETWORK].toString())} BASE ETH`,
     isActive: true,
   },
   {
@@ -75,7 +78,12 @@ export const BoostContent = () => {
       <Flex direction="column" gap="2.5rem">
         {boosts.map((boost) => {
           return (
-            <Flex direction="row" wrap="wrap" justify="flex-start">
+            <Flex
+              direction="row"
+              wrap="wrap"
+              justify="flex-start"
+              key={boost.name}
+            >
               <Box w={{ base: "10%", md: "10%" }}>
                 <Image src={boost.img} />
               </Box>

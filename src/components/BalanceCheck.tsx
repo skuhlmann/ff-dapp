@@ -27,7 +27,7 @@ export const BalanceCheck = ({
   if (!hasBalance) {
     return (
       <Box w="full" h="72px" mt="2rem" position="relative">
-      {message && <Text>{message}</Text>}
+        {message && <Text>{message}</Text>}
         <Button
           as={Link}
           to="/account"
@@ -43,16 +43,23 @@ export const BalanceCheck = ({
           size="lg"
           height="60px"
           width="full"
-          _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
-          _focus={{transform:"translate(0px, 0px)",bg:"#1f1f1f"}}
+          _hover={{ transform: "translate(0px, -10px)", color: "brand.white" }}
+          _focus={{ transform: "translate(0px, 0px)", bg: "#1f1f1f" }}
           position="absolute"
           bg="#1f1f1f"
           zIndex="2"
           transform="translate(0px, -12px)"
         >
-          Add Funds To Mint
+          Fund Your Account
         </Button>
-        <Box w="full" height="60px" position="absolute" border="2px" borderColor="brand.green" borderRadius="200px;"></Box>
+        <Box
+          w="full"
+          height="60px"
+          position="absolute"
+          border="2px"
+          borderColor="brand.green"
+          borderRadius="200px;"
+        ></Box>
       </Box>
     );
   }

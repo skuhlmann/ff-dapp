@@ -22,7 +22,7 @@ import {
   NFT_MINT_PRICE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { useWriteContract, useSimulateContract } from "wagmi";
 import { useState } from "react";
 import { useQueryClient } from "react-query";
 import { getNetwork } from "wagmi/actions";
@@ -44,7 +44,7 @@ export const BuyTreeButton = ({
   const { chain } = getNetwork();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { config, error } = usePrepareContractWrite({
+  const { data, error } = useSimulateContract({
     address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
     abi: erc721Abi,
     functionName: "mint",
@@ -55,14 +55,14 @@ export const BuyTreeButton = ({
   console.log("chain", chain);
 
   const {
-    write,
+    writeContract,
     isError,
     error: mintError,
     isLoading: mintLoading,
     isIdle,
     data,
-  } = useContractWrite({
-    ...config,
+  } = useWriteContract({
+    ...data,
     onSettled(data) {
       console.log("Settled", { data, error });
       setPendingTx(data?.hash);
@@ -113,7 +113,7 @@ export const BuyTreeButton = ({
           bg: "transparent",
           color: "brand.orange",
         }}
-        onClick={() => write?.()}
+        onClick={() => writeContract?.()}
       >
         {COMING_SOON ? "MINT COMING SOON" : "MINT"}
       </Button>

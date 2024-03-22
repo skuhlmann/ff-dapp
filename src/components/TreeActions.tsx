@@ -2,12 +2,70 @@ import { Image, Text, Flex, Button, Box } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa6";
 
 import waterIcon from "../assets/icon_water.png";
-import fertIcon from "../assets/icon_fert.png";
+import pruneIcon from "../assets/icon_prune.png";
+import { BalanceCheck } from "./BalanceCheck";
+import { PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
+import { PruneButton } from "./PruneButton";
+import { useTreePoints } from "../hooks/useTreePoints";
+import { PiCheckFatFill } from "react-icons/pi";
 
-export const TreeActions = () => {
+export const TreeActions = ({
+  tokenId,
+  account,
+}: {
+  tokenId: string;
+  account: string;
+}) => {
+  const { prune } = useTreePoints({
+    tokenId: tokenId,
+  });
+
   return (
-    <Flex direction="column" align="center" opacity="30%">
+    <Flex direction="column" align="center">
+      {!prune && (
+        <BalanceCheck
+          address={account}
+          targetBalance={PRUNE_PRICE[TARGET_NETWORK]}
+        >
+          <PruneButton tokenId={tokenId} />
+        </BalanceCheck>
+      )}
+      {prune && (
+        <>
+          <Button
+            opacity="30%"
+            variant="outline"
+            fontFamily="heading"
+            fontSize="xl"
+            fontStyle="italic"
+            fontWeight="700"
+            border="1px"
+            borderColor="brand.green"
+            borderRadius="200px;"
+            color="brand.green"
+            size="lg"
+            height="60px"
+            width="220px"
+            mt=".5rem"
+            disabled={true}
+            _hover={{
+              bg: "transparent",
+              color: "brand.green",
+              cursor: "not-allowed",
+            }}
+          >
+            <Image src={pruneIcon} w="44px" mr=".5rem" />
+            PRUNE
+            {prune && (
+              <Text ml=".25rem">
+                <PiCheckFatFill />
+              </Text>
+            )}
+          </Button>
+        </>
+      )}
       <Button
+        opacity="30%"
         variant="outline"
         fontFamily="heading"
         fontSize="xl"
@@ -33,31 +91,7 @@ export const TreeActions = () => {
       </Button>
 
       <Button
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
-        fontWeight="700"
-        border="1px"
-        borderColor="brand.orange"
-        borderRadius="200px;"
-        color="brand.orange"
-        size="lg"
-        height="60px"
-        width="220px"
-        my=".5rem"
-        disabled={true}
-        _hover={{
-          bg: "transparent",
-          color: "brand.orange",
-          cursor: "not-allowed",
-        }}
-      >
-        <Image src={fertIcon} w="44px" mr=".5rem" />
-        FERTILIZE
-      </Button>
-
-      <Button
+        opacity="30%"
         variant="outline"
         fontFamily="heading"
         fontSize="xl"

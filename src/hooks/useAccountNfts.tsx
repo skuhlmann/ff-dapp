@@ -23,7 +23,10 @@ const fetchNftsForAccount = async ({
     throw new Error("Invalid ChainId");
   }
 
-  const indexer = new SequenceIndexer(sequenceEndPoint);
+  const indexer = new SequenceIndexer(
+    sequenceEndPoint,
+    import.meta.env.VITE_SEQUENCE_API_KEY
+  );
 
   const nftBalances = await indexer.getTokenBalances({
     contractAddress: contractAddress,

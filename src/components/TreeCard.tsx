@@ -10,13 +10,23 @@ import { TreeStats } from "./TreeStats";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
 import { TreeActions } from "./TreeActions";
+import { useTreePoints } from "../hooks/useTreePoints";
 
 const dhImagePath = (path?: string) => {
   if (!path) return;
   return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
 };
 
-export const TreeCard = ({ tree }: { tree: TreeNft; account?: string }) => {
+export const TreeCard = ({
+  tree,
+  account,
+}: {
+  tree: TreeNft;
+  account: string;
+}) => {
+  const { peachBoxes } = useTreePoints({
+    tokenId: tree.tokenID,
+  });
   return (
     <Flex direction="column" align="center" gap="1rem">
       <Box
@@ -42,7 +52,7 @@ export const TreeCard = ({ tree }: { tree: TreeNft; account?: string }) => {
             <Text fontSize="sm" mb="1rem" fontWeight="700">
               {tree.tokenMetadata?.description}
             </Text>
-            <TreeActions />
+            <TreeActions tokenId={tree.tokenID} account={account} />
             <Box
               w="100%"
               textAlign="center"
@@ -56,15 +66,14 @@ export const TreeCard = ({ tree }: { tree: TreeNft; account?: string }) => {
               </Text>
               <Flex align="center" gap=".5rem">
                 <Heading size="md" color="brand.green">
-                  2 X
+                  {peachBoxes} X
                 </Heading>
                 <Image src={peachAvatar} w="32px" />
               </Flex>
             </Flex>
-            {/* <BuyTreeButton /> */}
           </Flex>
           <Box w="40px">
-            <TreeStats />
+            <TreeStats tree={tree} />
           </Box>
         </Flex>
       </Box>

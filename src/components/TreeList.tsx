@@ -4,9 +4,9 @@ import { TreeNft } from "../utils/types";
 import { TreeCard } from "./TreeCard";
 import { Link } from "react-router-dom";
 
-export const TreeList = ({ address }: { address: string }) => {
+export const TreeList = ({ account }: { account: string }) => {
   const { accountNfts, isLoading } = useAccountNfts({
-    accountAddress: address,
+    accountAddress: account,
   });
 
   return (
@@ -21,7 +21,9 @@ export const TreeList = ({ address }: { address: string }) => {
           align="center"
         >
           {accountNfts.balances.map((token: TreeNft) => {
-            return <TreeCard tree={token} key={token.tokenID} />;
+            return (
+              <TreeCard tree={token} key={token.tokenID} account={account} />
+            );
           })}
         </Flex>
       )}
