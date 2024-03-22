@@ -1,5 +1,5 @@
 import { SequenceIndexer } from "@0xsequence/indexer";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   NFT_CONTRACT_ADDRESS,
   SEQUENCE_ENDPOINT,
@@ -42,15 +42,15 @@ export const useAccountNfts = ({
 }: {
   accountAddress: string;
 }) => {
-  const { data, error, ...rest } = useQuery(
-    [`accountNfts-${accountAddress}`],
-    () =>
+  const { data, error, ...rest } = useQuery({
+    queryKey: [`accountNfts-${accountAddress}`],
+    queryFn: () =>
       fetchNftsForAccount({
         accountAddress,
         contractAddress: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
       }),
-    { enabled: !!NFT_CONTRACT_ADDRESS[TARGET_NETWORK] }
-  );
+    enabled: !!NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
+  });
 
   return { accountNfts: data?.balances, page: data?.page, error, ...rest };
 };

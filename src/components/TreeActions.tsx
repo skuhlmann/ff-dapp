@@ -5,9 +5,10 @@ import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
 import { BalanceCheck } from "./BalanceCheck";
 import { PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
-import { PruneButton } from "./PruneButton";
+// import { PruneButton } from "./PruneButton";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
+import { PruneTreeButton } from "./PruneTreeButton";
 
 export const TreeActions = ({
   tokenId,
@@ -27,7 +28,7 @@ export const TreeActions = ({
           address={account}
           targetBalance={PRUNE_PRICE[TARGET_NETWORK]}
         >
-          <PruneButton tokenId={tokenId} />
+          <PruneTreeButton tokenId={tokenId} />
         </BalanceCheck>
       )}
       {prune && (
@@ -46,7 +47,7 @@ export const TreeActions = ({
             size="lg"
             height="60px"
             width="220px"
-            mt=".5rem"
+            my=".5rem"
             disabled={true}
             _hover={{
               bg: "transparent",

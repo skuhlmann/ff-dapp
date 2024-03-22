@@ -14,81 +14,70 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import {
+  useWriteContract,
+  useWaitForTransactionReceipt,
+  type BaseError,
+  useAccount,
+} from "wagmi";
+import { useQueryClient } from "@tanstack/react-query";
 
 import prunAbi from "../abis/Prune.json";
 import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
-  COMING_SOON,
   PRUNE_CONTRACT_ADDRESS,
   PRUNE_PRICE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
-import { useState } from "react";
-import { useQueryClient } from "react-query";
-import { getNetwork } from "wagmi/actions";
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
 import pruneIcon from "../assets/icon_prune.png";
 import { PRUNE_DESCRIPTION } from "./BoostContent";
 import { fromWei } from "../utils/formatting";
-import { PruneTx } from "./PruneTx";
+import { useEffect } from "react";
 
-export const PruneButton = ({ tokenId }: { tokenId: string }) => {
-  const queryClient = useQueryClient();
-  const [txComplete, setTxComplete] = useState(false);
-  const [pendingTx, setPendingTx] = useState<`0x${string}` | undefined>();
-  const { chain } = getNetwork();
+export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { chain } = useAccount();
+  const queryClient = useQueryClient();
 
-  const {
-    config,
-    error,
-    isError: prepError,
-  } = usePrepareContractWrite({
-    address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
-    abi: prunAbi,
-    functionName: "prune",
-    value: PRUNE_PRICE[TARGET_NETWORK],
-    args: [tokenId],
-  });
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
 
-  const {
-    write,
-    isError,
-    error: mintError,
-    isLoading: mintLoading,
-    isIdle,
-    data,
-  } = useContractWrite({
-    ...config,
-    onSettled(data) {
-      console.log("Settled", { data, error });
-      setPendingTx(data?.hash);
-      queryClient.invalidateQueries({
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });
+
+  // TODO: optimistic point update?
+  useEffect(() => {
+    const reset = async () => {
+      await queryClient.invalidateQueries({
         queryKey: [`treePoints-${tokenId}`],
       });
-    },
-    onSuccess(data) {
-      console.log("Success", data);
-      setPendingTx(undefined);
-    },
-    onError(error) {
-      console.log("Error", error);
-    },
-  });
+      console.log("INVALIDATed");
+    };
+    if (isConfirmed) {
+      console.log("INVALIDATING");
+      reset();
+    }
+  }, [isConfirmed, queryClient, tokenId]);
 
   const handleConfirm = () => {
     onOpen();
   };
 
-  if (isError) {
-    console.log("mint error", mintError);
-  }
+  const handlePrune = async () => {
+    writeContract({
+      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: prunAbi,
+      functionName: "prune",
+      value: PRUNE_PRICE[TARGET_NETWORK],
+      args: [tokenId],
+    });
+  };
 
-  const isDisabled =
-    COMING_SOON || mintLoading || chain?.unsupported || prepError;
+  const isDisabled = isPending || !chain;
   return (
     <>
       <Button
@@ -155,49 +144,54 @@ export const PruneButton = ({ tokenId }: { tokenId: string }) => {
                 {`${fromWei(PRUNE_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
               </Heading>
 
-              {data?.hash && (
-                <PruneTx txHash={data?.hash} setTxComplete={setTxComplete} />
+              {!hash && (
+                <Button
+                  variant="outline"
+                  fontFamily="heading"
+                  fontSize="xl"
+                  fontStyle="italic"
+                  fontWeight="700"
+                  border="1px"
+                  borderColor="brand.green"
+                  borderRadius="200px;"
+                  color="brand.orange"
+                  size="lg"
+                  height="60px"
+                  width="220px"
+                  isDisabled={isDisabled}
+                  _hover={{
+                    bg: "transparent",
+                    color: "brand.orange",
+                  }}
+                  onClick={handlePrune}
+                >
+                  PURCHASE
+                </Button>
               )}
-              {pendingTx && (
+
+              {hash && (
                 <Link
                   isExternal
-                  href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}/tx/${pendingTx}`}
+                  href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}/tx/${hash}`}
                 >
                   View tx
                 </Link>
               )}
 
-              {!isIdle && !isError && !txComplete ? (
-                <>
-                  <Spinner size="xl" color="brand.green" thickness="8px" />
-                </>
-              ) : (
-                <>
-                  {!data?.hash && (
-                    <Button
-                      variant="outline"
-                      fontFamily="heading"
-                      fontSize="xl"
-                      fontStyle="italic"
-                      fontWeight="700"
-                      border="1px"
-                      borderColor="brand.green"
-                      borderRadius="200px;"
-                      color="brand.orange"
-                      size="lg"
-                      height="60px"
-                      width="220px"
-                      isDisabled={isDisabled}
-                      _hover={{
-                        bg: "transparent",
-                        color: "brand.orange",
-                      }}
-                      onClick={() => write?.()}
-                    >
-                      PURCHASE
-                    </Button>
-                  )}
-                </>
+              {isConfirming && (
+                <Spinner size="xl" color="brand.green" thickness="8px" />
+              )}
+
+              {isConfirmed && (
+                <Heading size="md">
+                  Pruning is Done! Your points will show up soon .
+                </Heading>
+              )}
+
+              {error && (
+                <Text fontSize="sm">
+                  Error: {(error as BaseError).shortMessage || error.message}
+                </Text>
               )}
             </Flex>
           </ModalBody>

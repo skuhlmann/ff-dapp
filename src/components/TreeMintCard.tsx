@@ -5,10 +5,10 @@ import {
   TARGET_NETWORK,
 } from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
-import { BuyTreeButton } from "./BuyTreeButton";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
 import { BalanceCheck } from "./BalanceCheck";
+import { MintTreeButton } from "./MintTreeButton";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const holdingCount = (name: string, nfts?: any[]) => {
@@ -66,7 +66,11 @@ export const TreeMintCard = ({
             address={account}
             targetBalance={NFT_MINT_PRICE[TARGET_NETWORK]}
           >
-            <BuyTreeButton trunkId={tree.value} account={account} />
+            <MintTreeButton
+              trunkId={tree.value}
+              name={tree.name}
+              img={tree.img}
+            />
           </BalanceCheck>
         )}
         {!account && (

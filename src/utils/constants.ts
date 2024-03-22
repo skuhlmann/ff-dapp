@@ -76,8 +76,10 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
   },
 ];
 
-export const COMING_SOON = false;
-
 export const BOOST_POINTS = {
-  PRUNE: "75",
+  PRUNE: 75,
+};
+
+export const BOOST_BONUS = {
+  PRUNE: 1,
 };
