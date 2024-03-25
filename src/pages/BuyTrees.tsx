@@ -1,8 +1,9 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { NftTreeMeta, TREE_NFT_DATA } from "../utils/constants";
 import { TreeMintCard } from "../components/TreeMintCard";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { RemainingTreeSupply } from "../components/RemainingTreeSupply";
+import { BoostContent } from "../components/BoostContent";
 
 function BuyTrees() {
   const { ready, user } = usePrivy();
@@ -30,13 +31,41 @@ function BuyTrees() {
         })}
       </Flex>
 
-      <Box mb="15rem" textAlign="center">
-        <Text fontSize="sm">
+      <Box mb={20} px="10px" textAlign="center">
+        <Text fontSize="md">
           3% of tree sales will be added to the ‘Farmer’s Pot’. The better you
           farm, the more points you earn and a larger percentage of the pot you
           can win!
         </Text>
       </Box>
+
+      <Flex
+        w="full"
+        border="none"
+        direction="row"
+        alignItems="center"
+        justifyContent="start"
+        my={10}
+      >
+        <Divider
+          mt={4}
+          mr={4}
+          width="100vw"
+          borderTop="dotted 1px"
+          borderColor={"brand.white"}
+          borderBottom="none"
+          background="none"
+        />
+      </Flex>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        mb="15rem"
+        w="full"
+      >
+        <BoostContent />
+      </Flex>
     </>
   );
 }
