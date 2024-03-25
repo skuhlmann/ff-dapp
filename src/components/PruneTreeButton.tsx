@@ -28,6 +28,7 @@ import {
   BOOST_POINTS,
   PRUNE_CONTRACT_ADDRESS,
   PRUNE_PRICE,
+  PRUNE_PRICE_ERC20,
   TARGET_NETWORK,
 } from "../utils/constants";
 import peachAvatar from "../assets/peach-avatar-trans.png";
@@ -36,10 +37,18 @@ import pruneIcon from "../assets/icon_prune.png";
 import { PRUNE_DESCRIPTION } from "./BoostContent";
 import { fromWei } from "../utils/formatting";
 import { useEffect } from "react";
+import { PruneTreeERC20Button } from "./PruneTreeERC20Button";
+import { usePrivy } from "@privy-io/react-auth";
+import { useTreePoints } from "../hooks/useTreePoints";
 
 export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
+  const { user } = usePrivy();
+  const { refetch } = useTreePoints({
+    tokenId: tokenId,
+  });
+
   const queryClient = useQueryClient();
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
@@ -49,19 +58,18 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
       hash,
     });
 
-  // TODO: optimistic point update?
   useEffect(() => {
     const reset = async () => {
       await queryClient.invalidateQueries({
         queryKey: [`treePoints-${tokenId}`],
       });
-      console.log("INVALIDATed");
     };
     if (isConfirmed) {
-      console.log("INVALIDATING");
+      console.log("INVALIDATING/REFETCH");
       reset();
+      refetch();
     }
-  }, [isConfirmed, queryClient, tokenId]);
+  }, [isConfirmed, queryClient, tokenId, refetch]);
 
   const handleConfirm = () => {
     onOpen();
@@ -74,6 +82,15 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
       functionName: "prune",
       value: PRUNE_PRICE[TARGET_NETWORK],
       args: [tokenId],
+    });
+  };
+
+  const handlePruneERC20 = async () => {
+    writeContract({
+      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: prunAbi,
+      functionName: "pruneERC20",
+      args: [tokenId, PRUNE_PRICE_ERC20[TARGET_NETWORK]],
     });
   };
 
@@ -139,34 +156,53 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                 </Heading>
               </Flex>
 
-              <Heading size="md" color="brand.blue">
-                COST:{" "}
-                {`${fromWei(PRUNE_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
-              </Heading>
-
               {!hash && (
-                <Button
-                  variant="outline"
-                  fontFamily="heading"
-                  fontSize="xl"
-                  fontStyle="italic"
-                  fontWeight="700"
-                  border="1px"
-                  borderColor="brand.green"
-                  borderRadius="200px;"
-                  color="brand.orange"
-                  size="lg"
-                  height="60px"
-                  width="220px"
-                  isDisabled={isDisabled}
-                  _hover={{
-                    bg: "transparent",
-                    color: "brand.orange",
-                  }}
-                  onClick={handlePrune}
-                >
-                  PURCHASE
-                </Button>
+                <>
+                  <Heading size="md" color="brand.blue">
+                    COST:{" "}
+                    {`${fromWei(
+                      PRUNE_PRICE[TARGET_NETWORK].toString()
+                    )} BASE ETH`}
+                  </Heading>
+
+                  <Button
+                    variant="outline"
+                    fontFamily="heading"
+                    fontSize="xl"
+                    fontStyle="italic"
+                    fontWeight="700"
+                    border="1px"
+                    borderColor="brand.green"
+                    borderRadius="200px"
+                    color="brand.orange"
+                    size="lg"
+                    height="60px"
+                    width="260px"
+                    isDisabled={isDisabled}
+                    _hover={{
+                      bg: "transparent",
+                      color: "brand.orange",
+                    }}
+                    onClick={handlePrune}
+                  >
+                    PURCHASE WITH ETH
+                  </Button>
+
+                  <Text>OR</Text>
+
+                  <Heading size="md" color="brand.blue">
+                    COST:{" "}
+                    {`${fromWei(
+                      PRUNE_PRICE[TARGET_NETWORK].toString()
+                    )} $DEGEN`}
+                  </Heading>
+
+                  <PruneTreeERC20Button
+                    address={user?.wallet?.address}
+                    handlePruneERC20={handlePruneERC20}
+                    isDisabled={isDisabled}
+                  />
+                </>
               )}
 
               {hash && (

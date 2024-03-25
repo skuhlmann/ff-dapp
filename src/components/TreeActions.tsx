@@ -5,7 +5,6 @@ import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
 import { BalanceCheck } from "./BalanceCheck";
 import { PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
-// import { PruneButton } from "./PruneButton";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";

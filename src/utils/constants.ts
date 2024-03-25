@@ -45,7 +45,7 @@ export const PRUNE_ERC20: Record<string, string> = {
 };
 
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
-  "0xaa36a7": "sepolia.etherscan.io",
+  "0xaa36a7": "https://sepolia.etherscan.io",
   "0x2105": "https://basescan.org/",
 };
 
