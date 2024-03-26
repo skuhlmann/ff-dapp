@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   Heading,
@@ -34,12 +35,14 @@ import {
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
 import pruneIcon from "../assets/icon_prune.png";
-import { PRUNE_DESCRIPTION } from "./BoostContent";
 import { fromWei } from "../utils/formatting";
 import { useEffect } from "react";
 import { PruneTreeERC20Button } from "./PruneTreeERC20Button";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
+
+const PRUNE_SHORT_DESCRIPTION =
+  "Pruning is a critical practice for maintaining the health and productivity of your trees. You can only prune once before your trees go into spring blossom, do don’t delay! Every pruned tree will earn an additional peach box and 75 points towards the Farmer’s Pot.";
 
 export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -143,27 +146,45 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{PRUNE_DESCRIPTION}</Text>
+              <Text fontSize="sm">{PRUNE_SHORT_DESCRIPTION}</Text>
 
-              <Flex align="center" gap=".5rem">
-                <Heading size="md" color="brand.green">
-                  1 X
-                </Heading>
-                <Image src={peachAvatar} w="32px" />
+              <Flex
+                direction="column"
+                justify="center"
+                align="center"
+                mb=".5rem"
+              >
+                <Text fontSize="sm" fontWeight="700" color="brand.green">
+                  You Get
+                </Text>
+                <Flex align="center" gap=".5rem">
+                  <Heading size="md" color="brand.green">
+                    1 X
+                  </Heading>
+                  <Image src={peachAvatar} w="32px" />
 
-                <Heading size="md" color="brand.green">
-                  & {`${BOOST_POINTS.PRUNE} POINTS`}
-                </Heading>
+                  <Heading size="xs" color="brand.green">
+                    &
+                  </Heading>
+
+                  <Heading size="md" color="brand.green">
+                    {`${BOOST_POINTS.PRUNE} POINTS`}
+                  </Heading>
+                </Flex>
               </Flex>
 
               {!hash && (
                 <>
-                  <Heading size="md" color="brand.blue">
-                    COST:{" "}
-                    {`${fromWei(
-                      PRUNE_PRICE[TARGET_NETWORK].toString()
-                    )} BASE ETH`}
-                  </Heading>
+                  <Flex direction="column" justify="center" align="center">
+                    <Text fontSize="sm" fontWeight="700" color="brand.blue">
+                      Cost
+                    </Text>
+                    <Heading size="md" color="brand.blue">
+                      {`${fromWei(
+                        PRUNE_PRICE[TARGET_NETWORK].toString()
+                      )} BASE ETH`}
+                    </Heading>
+                  </Flex>
 
                   <Button
                     variant="outline"
@@ -188,14 +209,18 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     PURCHASE WITH ETH
                   </Button>
 
-                  <Text>OR</Text>
+                  <Text fontSize="sm">OR</Text>
 
-                  <Heading size="md" color="brand.blue">
-                    COST:{" "}
-                    {`${fromWei(
-                      PRUNE_PRICE[TARGET_NETWORK].toString()
-                    )} $DEGEN`}
-                  </Heading>
+                  <Flex direction="column" justify="center" align="center">
+                    <Text fontSize="sm" fontWeight="700" color="brand.blue">
+                      Cost
+                    </Text>
+                    <Heading size="md" color="brand.blue">
+                      {`${fromWei(
+                        PRUNE_PRICE[TARGET_NETWORK].toString()
+                      )} $DEGEN`}
+                    </Heading>
+                  </Flex>
 
                   <PruneTreeERC20Button
                     address={user?.wallet?.address}
