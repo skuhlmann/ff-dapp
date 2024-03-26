@@ -5,7 +5,12 @@ import pruneIcon from "../assets/icon_prune.png";
 import sprayIcon from "../assets/icon_spray.png";
 import fertIcon from "../assets/icon_fert.png";
 import { fromWei } from "../utils/formatting";
-import { BOOST_POINTS, PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
+import {
+  BOOST_POINTS,
+  PRUNE_PRICE,
+  PRUNE_PRICE_ERC20,
+  TARGET_NETWORK,
+} from "../utils/constants";
 
 type BoostData = {
   img: string;
@@ -26,7 +31,11 @@ const boosts: BoostData[] = [
     name: "Prune",
     description: PRUNE_DESCRIPTION,
     frequency: "Once",
-    cost: `${fromWei(PRUNE_PRICE[TARGET_NETWORK].toString())} BASE ETH`,
+    cost: `${fromWei(
+      PRUNE_PRICE[TARGET_NETWORK].toString()
+    )} BASE ETH or ${fromWei(
+      PRUNE_PRICE_ERC20[TARGET_NETWORK].toString()
+    )} $DEGEN`,
     isActive: true,
   },
   {
