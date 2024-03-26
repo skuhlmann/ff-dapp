@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react";
-import { useReadContract } from "wagmi";
+import { useReadContract, useAccount } from "wagmi";
 import {
   PRUNE_ERC20,
   TARGET_NETWORK,
@@ -31,6 +31,8 @@ export const PruneTreeERC20Button = ({
   isDisabled: boolean;
   handlePruneERC20: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
+  const { chain } = useAccount();
+
   const { data: balance } = useReadContract({
     address: PRUNE_ERC20[TARGET_NETWORK] as `0x${string}`,
     abi: erc20Abi,
@@ -69,7 +71,7 @@ export const PruneTreeERC20Button = ({
       size="lg"
       height="60px"
       width="260px"
-      isDisabled={isDisabled || !hasBalance || !hasAllowance}
+      isDisabled={isDisabled || !hasBalance || !hasAllowance || !chain}
       _hover={{
         bg: "transparent",
         color: "brand.orange",
