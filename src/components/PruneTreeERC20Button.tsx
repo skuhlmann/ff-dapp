@@ -49,11 +49,9 @@ export const PruneTreeERC20Button = ({
   const hasAllowance =
     PRUNE_PRICE_ERC20[TARGET_NETWORK] <= (allowance as bigint);
 
-  console.log("allowance", allowance);
-
   if (!address) return null;
 
-  if (!hasAllowance) {
+  if (hasBalance && !hasAllowance) {
     return <ApproveERC20 refetch={refetch} />;
   }
 

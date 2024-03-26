@@ -19,8 +19,6 @@ export const Connect = () => {
     return null;
   }
 
-  console.log("chain", chain);
-
   return (
     <>
       {ready && authenticated ? (
