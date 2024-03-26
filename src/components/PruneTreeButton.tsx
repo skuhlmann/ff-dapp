@@ -216,7 +216,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     </Text>
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
-                        PRUNE_PRICE[TARGET_NETWORK].toString()
+                        PRUNE_PRICE_ERC20[TARGET_NETWORK].toString()
                       )} $DEGEN`}
                     </Heading>
                   </Flex>
