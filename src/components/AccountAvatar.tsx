@@ -8,6 +8,7 @@ import { useBalance } from "wagmi";
 import { SiEthereum } from "react-icons/si";
 
 import { truncateAddress } from "../utils/formatting";
+import { formatUnits } from "viem";
 
 const AvatarWrapper = styled(Flex)`
   font-size: 2rem;
@@ -46,10 +47,16 @@ export const AccountAvatar = ({
           </>
         )}
       </AvatarWrapper>
-      <Flex align="center" fontSize="2xl" gap="1rem" mb="3rem">
-        <SiEthereum />
-        <Text>{Number(result.data?.formatted).toFixed(3)}</Text>
-      </Flex>
+      {result && result.data && (
+        <Flex align="center" fontSize="2xl" gap="1rem" mb="3rem">
+          <SiEthereum />
+          <Text>
+            {Number(
+              formatUnits(result.data!.value, result.data!.decimals)
+            ).toFixed(3)}
+          </Text>
+        </Flex>
+      )}
     </>
   );
 };

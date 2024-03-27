@@ -1,8 +1,22 @@
+import { base, sepolia } from "viem/chains";
 import treeOne from "../assets/Tree-1.png";
 import treeTwo from "../assets/Tree-2.png";
 import treeThree from "../assets/Tree-3.png";
 
 export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
+
+console.log("TARGET_NETWORK", TARGET_NETWORK);
+
+export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
+
+export const ALCHEMY_RPC =
+  TARGET_NETWORK === "0x2105"
+    ? `https://base-mainnet.g.alchemy.com/v2/${
+        import.meta.env.VITE_ALCHEMY_KEY
+      }`
+    : `https://eth-sepolia.g.alchemy.com/v2/${
+        import.meta.env.VITE_ALCHEMY_KEY
+      }`;
 
 export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
   "0xaa36a7": "0xB49a877D82c1f0133B0293dfd20eB54BEd07a290",
@@ -15,17 +29,27 @@ export const NFT_MINT_PRICE: Record<string, bigint> = {
 };
 
 export const PRUNE_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0xe635944C58F5a6c5b425e024e3716f76eeC83b0c",
-  "0x2105": "0x0",
+  "0xaa36a7": "0xE26f5ef42636155b8299A67063450792537d71EB",
+  "0x2105": "0xEEcAAe1d9061f0ae1813e41A47179e06844ac0Ec",
 };
 
 export const PRUNE_PRICE: Record<string, bigint> = {
   "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(1000000000000000),
+  "0x2105": BigInt(22000000000000000),
+};
+
+export const PRUNE_PRICE_ERC20: Record<string, bigint> = {
+  "0xaa36a7": BigInt(10000000000000000),
+  "0x2105": BigInt(5200000000000000000000),
+};
+
+export const PRUNE_ERC20: Record<string, string> = {
+  "0xaa36a7": "0x53c8156592A64E949A4736c6D3309002fa0b2Aba",
+  "0x2105": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
 };
 
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
-  "0xaa36a7": "sepolia.etherscan.io",
+  "0xaa36a7": "https://sepolia.etherscan.io/",
   "0x2105": "https://basescan.org/",
 };
 
@@ -56,4 +80,10 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
   },
 ];
 
-export const COMING_SOON = false;
+export const BOOST_POINTS = {
+  PRUNE: 75,
+};
+
+export const BOOST_BONUS = {
+  PRUNE: 1,
+};
