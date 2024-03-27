@@ -22,19 +22,19 @@ export const HomeSectionTwo = () => {
         justifyContent="end"
         flex="1"
         mb="2rem"
-        ml={{base:"0px",md:"50px"}}
+        ml={{ base: "0px", md: "50px" }}
       >
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">2.</Heading>
           <LabelBadge
-            bg="brand.darkOrange"
-            color="brand.orange"
+            bg="brand.green"
+            color="brand.black"
             size="md"
             style={{
               lineHeight: "1.75",
             }}
           >
-            Available Soon
+            • Available now •
           </LabelBadge>
         </Flex>
         <Text
