@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { TreeNft } from "../utils/types";
-import { truncateAddress } from "../utils/formatting";
+import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
 import {
   BLOCK_EXPLORER_URL,
   NFT_CONTRACT_ADDRESS,
@@ -39,7 +39,7 @@ export const TreeCard = ({
           <Flex direction="column" align="center">
             <Flex w="100%" justify="flex-start" mb="1rem">
               <Link
-                href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}nft/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}/${tree.tokenID}`}
+                href={blockExplorerNftLink(tree.tokenID)}
                 isExternal
                 fontSize="xs"
                 color="brand.orange"
