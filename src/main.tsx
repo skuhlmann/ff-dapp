@@ -21,7 +21,8 @@ const config = createConfig({
   chains: [CHAIN_OBJ],
   // @ts-expect-error ts wants single
   transports: {
-    [CHAIN_OBJ.id]: http(ALCHEMY_RPC),
+    // [CHAIN_OBJ.id]: http(ALCHEMY_RPC),
+    [CHAIN_OBJ.id]: http(),
   },
 });
 

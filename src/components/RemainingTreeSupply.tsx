@@ -19,8 +19,6 @@ export const RemainingTreeSupply = () => {
       </Box>
     );
 
-  console.log("totalSupply", totalSupply);
-
   const total = totalSupply as bigint;
   const count = fromBigNumber(BigInt(200) - total);
 

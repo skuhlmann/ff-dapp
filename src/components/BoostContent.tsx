@@ -23,6 +23,8 @@ type BoostData = {
 };
 
 export const PRUNE_DESCRIPTION = `To get started, you will need to prune your tree. Pruning is a critical practice for maintaining the health and productivity of your trees. It encourages new fruiting wood, which increases fruit production and allows for greater sunlight and air circulation , which is crucial for fruit growth and ripening. You can only prune once and before your trees go into spring blossom, so don't delay! Every pruned tree will earn an additional peach box and ${BOOST_POINTS.PRUNE} points towards the Farmer's Pot`;
+export const WATERING_DESCRIPTION =
+  "Well-watered peach trees are generally healthier and more vigorous. They are also more productive, producing higher-quality fruit over the long term.  It's important to water peach trees consistently, especially during periods of active growth, flowering, and fruiting, so don't forget to water your trees every day! You earn one point for every day you water. ";
 
 const boosts: BoostData[] = [
   {
@@ -42,8 +44,7 @@ const boosts: BoostData[] = [
     img: waterIcon,
     name: "Water",
     color: "brand.blue",
-    description:
-      "Well-watered peach trees are generally healthier and more vigorous. They are also more productive, producing higher-quality fruit over the long term.  It's important to water peach trees consistently, especially during periods of active growth, flowering, and fruiting, so don't forget to water your trees every day! You earn one point for every day you water. ",
+    description: WATERING_DESCRIPTION,
     frequency: "Daily",
     cost: "Free",
     isActive: false,

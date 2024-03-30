@@ -72,7 +72,7 @@ export const TreeCard = ({
               </Flex>
             </Flex>
           </Flex>
-          <Box w="40px">
+          <Box minWidth="40px" maxWidth="40px">
             <TreeStats tree={tree} />
           </Box>
         </Flex>

@@ -7,3 +7,14 @@ export type TreeNft = {
     description: string;
   };
 };
+
+export type WateringRes = {
+  count: number;
+  waterings: {
+    createdAt: number;
+    tokenId: string;
+    createdBy: string;
+    wateringDay: string;
+  };
+  today: boolean;
+};
