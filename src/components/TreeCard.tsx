@@ -1,11 +1,6 @@
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { TreeNft } from "../utils/types";
 import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
-import {
-  BLOCK_EXPLORER_URL,
-  NFT_CONTRACT_ADDRESS,
-  TARGET_NETWORK,
-} from "../utils/constants";
 import { TreeStats } from "./TreeStats";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
