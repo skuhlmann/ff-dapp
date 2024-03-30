@@ -91,7 +91,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={false}
+        disabled={true}
         _hover={{
           bg: "transparent",
           color: "brand.blue",
@@ -163,7 +163,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
                   size="lg"
                   height="60px"
                   width="260px"
-                  isDisabled={isDisabled}
+                  isDisabled={true}
                   _hover={{
                     bg: "transparent",
                     color: "brand.orange",

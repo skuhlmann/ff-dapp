@@ -12,7 +12,9 @@ import { Buffer } from "buffer/";
 window.Buffer = Buffer;
 
 import { Routes } from "./Routes.tsx";
-import { ALCHEMY_RPC, CHAIN_OBJ } from "./utils/constants.ts";
+// import { ALCHEMY_RPC, CHAIN_OBJ } from "./utils/constants.ts";
+import { CHAIN_OBJ } from "./utils/constants.ts";
+
 import theme from "./theme.ts";
 import { Fonts } from "./Fonts.tsx";
 import "./index.css";
