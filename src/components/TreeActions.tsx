@@ -1,7 +1,6 @@
 import { Image, Text, Flex, Button, Box, Spinner } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa6";
 
-import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
