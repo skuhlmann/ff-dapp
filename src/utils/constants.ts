@@ -61,7 +61,8 @@ export const SEQUENCE_ENDPOINT: Record<string, string> = {
 export const WATERING_ENDPOINT: Record<string, string> = {
   "0xaa36a7":
     "https://esxop67lpg.execute-api.us-east-1.amazonaws.com/dev/waterings",
-  "0x2105": "",
+  "0x2105":
+    "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/waterings",
 };
 
 export type NftTreeMeta = { name: string; img: string; value: number };

@@ -58,38 +58,10 @@ export const TreeActions = ({
         </>
       )}
 
-      {!watererdToday && <WaterTreeButton tokenId={tokenId} />}
-
-      {watererdToday && (
-        <Button
-          opacity="30%"
-          variant="outline"
-          fontFamily="heading"
-          fontSize="xl"
-          fontStyle="italic"
-          fontWeight="700"
-          border="1px"
-          borderColor="brand.blue"
-          borderRadius="200px;"
-          color="brand.blue"
-          size="lg"
-          height="60px"
-          width="220px"
-          my=".5rem"
-          disabled={true}
-          _hover={{
-            bg: "transparent",
-            color: "brand.blue",
-            cursor: "not-allowed",
-          }}
-        >
-          <Image src={waterIcon} w="44px" mr=".5rem" />
-          WATER
-          <Text ml=".25rem">
-            <PiCheckFatFill />
-          </Text>
-        </Button>
-      )}
+      <WaterTreeButton
+        tokenId={tokenId}
+        watererdToday={watererdToday || false}
+      />
 
       <Button
         opacity="30%"

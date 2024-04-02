@@ -29,7 +29,13 @@ import { WATERING_DESCRIPTION } from "./BoostContent";
 import { useState } from "react";
 import { post } from "../utils/fetch";
 
-export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
+export const WaterTreeButton = ({
+  tokenId,
+  watererdToday,
+}: {
+  tokenId: string;
+  watererdToday: boolean;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
   const { wallets } = useWallets();
@@ -74,7 +80,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
     }
   };
 
-  const isDisabled = !chain || isPending || isError;
+  const isDisabled = !chain || isPending || isError || watererdToday;
   return (
     <>
       <Button
@@ -91,7 +97,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={true}
+        disabled={isDisabled}
         _hover={{
           bg: "transparent",
           color: "brand.blue",
@@ -114,7 +120,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.green">Watering</ModalHeader>
+          <ModalHeader color="brand.blue">Daily Watering</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -163,7 +169,7 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
                   size="lg"
                   height="60px"
                   width="260px"
-                  isDisabled={true}
+                  isDisabled={isDisabled}
                   _hover={{
                     bg: "transparent",
                     color: "brand.orange",
@@ -174,8 +180,22 @@ export const WaterTreeButton = ({ tokenId }: { tokenId: string }) => {
                 </Button>
               </>
 
-              {isConfirmed && (
-                <Heading size="md">Watering is Done! You got a point!</Heading>
+              {isConfirmed && !watererdToday && (
+                <Heading size="md" textAlign="center">
+                  You watered today and got your point!
+                </Heading>
+              )}
+
+              {watererdToday && (
+                <>
+                  <Heading size="md" textAlign="center">
+                    You watered today and got your point!
+                  </Heading>
+
+                  <Text fontSize="md" color="brand.orange">
+                    Come back tomorrow to water again.
+                  </Text>
+                </>
               )}
 
               {isError && (
