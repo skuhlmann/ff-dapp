@@ -7,12 +7,22 @@ import {
   CHAIN_OBJ,
   PRUNE_CONTRACT_ADDRESS,
   TARGET_NETWORK,
+  WATERING_ENDPOINT,
 } from "../utils/constants";
 import prunAbi from "../abis/Prune.json";
+import { get } from "../utils/fetch";
+import { WateringRes } from "../utils/types";
 
-const addPoints = ({ prune }: { prune: boolean }): number => {
+const addPoints = ({
+  prune,
+  waterings,
+}: {
+  prune: boolean;
+  waterings: number;
+}): number => {
   let totalPoints = 0;
   if (prune) totalPoints += BOOST_POINTS.PRUNE;
+  totalPoints += waterings;
 
   return totalPoints;
 };
@@ -40,22 +50,29 @@ const fetchPointsForTree = async ({
     transport: http(),
   });
 
-  const data = await publicClient.readContract({
+  const pruneData = await publicClient.readContract({
     address: contractAddress as `0x${string}`,
     abi: prunAbi,
     functionName: "prunings",
     args: [tokenId],
   });
-  const prune = data == 1;
-  const totalPoints = addPoints({ prune });
+
+  const prune = pruneData == 1;
+
+  const waterings = (await get(
+    `${WATERING_ENDPOINT[TARGET_NETWORK]}?tokenId=${tokenId}`
+  )) as WateringRes;
+
+  const totalPoints = addPoints({ prune, waterings: waterings.count });
 
   const peachBoxes = addPeachBoxes({ prune });
 
   return {
+    waterings: waterings.count,
+    watererdToday: waterings.today,
     totalPoints,
     prune,
     spray: false,
-    waterings: "0",
     fertilizings: "0",
     peachBoxes,
   };

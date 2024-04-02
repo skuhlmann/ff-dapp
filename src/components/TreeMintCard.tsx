@@ -7,7 +7,7 @@ import {
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
-import { BalanceCheck } from "./BalanceCheck";
+// import { BalanceCheck } from "./BalanceCheck";
 import { MintTreeButton } from "./MintTreeButton";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -62,16 +62,16 @@ export const TreeMintCard = ({
           </Heading>
         </Box>
         {account && (
-          <BalanceCheck
-            address={account}
-            targetBalance={NFT_MINT_PRICE[TARGET_NETWORK]}
-          >
-            <MintTreeButton
-              trunkId={tree.value}
-              name={tree.name}
-              img={tree.img}
-            />
-          </BalanceCheck>
+          // <BalanceCheck
+          //   address={account}
+          //   targetBalance={NFT_MINT_PRICE[TARGET_NETWORK]}
+          // >
+          <MintTreeButton
+            trunkId={tree.value}
+            name={tree.name}
+            img={tree.img}
+          />
+          // </BalanceCheck>
         )}
         {!account && (
           <>

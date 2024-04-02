@@ -54,31 +54,40 @@ function Account() {
               />
             </Button>
             <Box w="272px" position="relative" mt="3rem">
-            <Button
-              onClick={logout}
-              variant="outline"
-              fontFamily="heading"
-              fontSize="xl"
-              fontStyle="italic"
-              fontWeight="700"
-              border="2px"
-              borderColor="brand.orange"
-              borderRadius="200px;"
-              color="brand.red"
-              size="lg"
-              height="72px"
-              width="full"
-              _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
-              _focus={{transform:"translate(0px, 0px)",bg:"brand.black"}}
-              position="absolute"
-              bg="brand.black"
-              zIndex="2"
-              transform="translate(0px, -12px)"
-            >
-              Logout
-            </Button>
-            <Box w="full" height="72px" position="absolute" border="2px" borderColor="brand.orange" borderRadius="200px;"></Box>
-
+              <Button
+                onClick={logout}
+                variant="outline"
+                fontFamily="heading"
+                fontSize="xl"
+                fontStyle="italic"
+                fontWeight="700"
+                border="2px"
+                borderColor="brand.orange"
+                borderRadius="200px;"
+                color="brand.red"
+                size="lg"
+                height="72px"
+                width="full"
+                _hover={{
+                  transform: "translate(0px, -10px)",
+                  color: "brand.white",
+                }}
+                _focus={{ transform: "translate(0px, 0px)", bg: "brand.black" }}
+                position="absolute"
+                bg="brand.black"
+                zIndex="2"
+                transform="translate(0px, -12px)"
+              >
+                Logout
+              </Button>
+              <Box
+                w="full"
+                height="72px"
+                position="absolute"
+                border="2px"
+                borderColor="brand.orange"
+                borderRadius="200px;"
+              ></Box>
             </Box>
           </Flex>
         ) : (
