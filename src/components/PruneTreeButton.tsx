@@ -19,6 +19,7 @@ import {
   useWaitForTransactionReceipt,
   type BaseError,
   useAccount,
+  useBalance,
 } from "wagmi";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -52,6 +53,10 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
   });
 
   const queryClient = useQueryClient();
+
+  const result = useBalance({
+    address: user?.wallet?.address as `0x${string}`,
+  });
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -96,7 +101,10 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
     });
   };
 
-  const isDisabled = isPending || !chain;
+  const hasBalance =
+    PRUNE_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
+
+  const isDisabled = isPending || !chain || !hasBalance;
   return (
     <>
       <Button
@@ -205,7 +213,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     }}
                     onClick={handlePrune}
                   >
-                    PURCHASE WITH ETH
+                    {hasBalance ? "PURCHASE WITH ETH" : "NOT ENOUGH ETH"}
                   </Button>
 
                   <Text fontSize="sm">OR</Text>
@@ -249,7 +257,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
               )}
 
               {error && (
-                <Text fontSize="sm">
+                <Text fontSize="sm" color="brand.red">
                   Error: {(error as BaseError).shortMessage || error.message}
                 </Text>
               )}

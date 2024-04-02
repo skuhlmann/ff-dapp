@@ -58,6 +58,13 @@ export const SEQUENCE_ENDPOINT: Record<string, string> = {
   "0x2105": "https://base-indexer.sequence.app",
 };
 
+export const WATERING_ENDPOINT: Record<string, string> = {
+  "0xaa36a7":
+    "https://esxop67lpg.execute-api.us-east-1.amazonaws.com/dev/waterings",
+  "0x2105":
+    "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/waterings",
+};
+
 export type NftTreeMeta = { name: string; img: string; value: number };
 
 export const CRITTER_COUNT_PLUS_ONE = 7;
@@ -82,8 +89,12 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
 
 export const BOOST_POINTS = {
   PRUNE: 75,
+  WATERING: 1,
 };
 
 export const BOOST_BONUS = {
   PRUNE: 1,
 };
+
+export const WATERING_MESSAGE =
+  "PEACH TYCOON: YOU BUY TREE. TREE GROWS PEACH. YOU EAT PEACH. YOU ALSO SIGN THIS MESSAGE TO WATER YOUR TREE.";

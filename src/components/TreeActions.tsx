@@ -1,35 +1,28 @@
-import { Image, Text, Flex, Button, Box } from "@chakra-ui/react";
+import { Image, Text, Flex, Button, Box, Spinner } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa6";
 
 import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
-import { BalanceCheck } from "./BalanceCheck";
-import { PRUNE_PRICE, TARGET_NETWORK } from "../utils/constants";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
+import { WaterTreeButton } from "./WaterTreeButton";
 
 export const TreeActions = ({
   tokenId,
-  account,
 }: {
   tokenId: string;
   account: string;
 }) => {
-  const { prune } = useTreePoints({
+  const { prune, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
+  if (!isFetched) return <Spinner color="brand.green" />;
+
   return (
     <Flex direction="column" align="center">
-      {!prune && (
-        <BalanceCheck
-          address={account}
-          targetBalance={PRUNE_PRICE[TARGET_NETWORK]}
-        >
-          <PruneTreeButton tokenId={tokenId} />
-        </BalanceCheck>
-      )}
+      {!prune && <PruneTreeButton tokenId={tokenId} />}
       {prune && (
         <>
           <Button
@@ -64,31 +57,11 @@ export const TreeActions = ({
           </Button>
         </>
       )}
-      <Button
-        opacity="30%"
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
-        fontWeight="700"
-        border="1px"
-        borderColor="brand.blue"
-        borderRadius="200px;"
-        color="brand.blue"
-        size="lg"
-        height="60px"
-        width="220px"
-        my=".5rem"
-        disabled={true}
-        _hover={{
-          bg: "transparent",
-          color: "brand.blue",
-          cursor: "not-allowed",
-        }}
-      >
-        <Image src={waterIcon} w="44px" mr=".5rem" />
-        WATER
-      </Button>
+
+      <WaterTreeButton
+        tokenId={tokenId}
+        watererdToday={watererdToday || false}
+      />
 
       <Button
         opacity="30%"
