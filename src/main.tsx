@@ -19,6 +19,8 @@ import theme from "./theme.ts";
 import { Fonts } from "./Fonts.tsx";
 import "./index.css";
 
+import peachLogo from "./assets/Peach_logo.png";
+
 const config = createConfig({
   chains: [CHAIN_OBJ],
   // @ts-expect-error ts wants single
@@ -49,7 +51,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             appearance: {
               theme: "dark",
               accentColor: "#E46C1E",
-              logo: "https://peachtycoon.com/assets/Peach_logo-pI9PBUaM.png",
+              logo: peachLogo,
             },
             embeddedWallets: {
               createOnLogin: "users-without-wallets", // or 'all-users'
