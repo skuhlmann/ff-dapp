@@ -194,7 +194,7 @@ function Home() {
           </Flex>
           <Divider
             zIndex={"1"}
-            mt={{ base: 16, md: "-30px", xl: "-60px" }}
+            mt={{ base: 10, md: "-30px", xl: "-60px" }}
             borderTop="dotted 1px"
             borderColor={"white"}
             borderBottom="none"

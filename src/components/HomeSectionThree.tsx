@@ -39,9 +39,10 @@ export const HomeSectionThree = () => {
           fontFamily="auster"
           maxWidth="597px"
           fontWeight="bold"
-          fontSize="80px"
-          lineHeight="96px"
+          fontSize={{ base: "56px", xl: "80px" }}
+          lineHeight={{ base: "60px", xl: "96px" }}
           mb={4}
+          textAlign="left"
         >
           Get peaches!
         </Text>
@@ -66,22 +67,22 @@ export const HomeSectionThree = () => {
           href="https://opensea.io/collection/peach-drop"
           variant="outline"
           fontFamily="heading"
-          fontSize="2xl"
+          fontSize="xl"
           fontStyle="italic"
           fontWeight="700"
           border="1px"
           borderColor="brand.white"
           borderRadius="200px;"
           color="brand.white"
-          size="lg"
-          height="72px"
-          width="398px"
+          size="sm"
+          height="64px"
+          width="250px"
           _hover={{ bg: "transparent", color: "brand.white" }}
         >
-          SEE 2023 PΞACH DROP
+          2023 PΞACH DROP
         </Button>
       </Box>
-      <Image width={{base:"full",md:"40vw"}} src={PeachCards} />
+      <Image width={{ base: "full", md: "40vw" }} src={PeachCards} />
     </Flex>
   );
 };
