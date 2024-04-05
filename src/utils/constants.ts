@@ -5,8 +5,6 @@ import treeThree from "../assets/Tree-3.png";
 
 export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
 
-console.log("TARGET_NETWORK", TARGET_NETWORK);
-
 export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
 
 export const ALCHEMY_RPC =
