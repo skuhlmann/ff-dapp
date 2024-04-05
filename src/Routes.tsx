@@ -5,6 +5,7 @@ import Account from "./pages/Account";
 import Farm from "./pages/Farm";
 import About from "./pages/About";
 import BuyTrees from "./pages/BuyTrees";
+import Leaderboard from "./pages/Leaderboard";
 
 export const Routes = () => {
   return (
@@ -13,6 +14,7 @@ export const Routes = () => {
         <Route index element={<Home />} />
         <Route path="buy-trees" element={<BuyTrees />} />
         <Route path="farm" element={<Farm />} />
+        <Route path="leaderboard" element={<Leaderboard />} />
         <Route path="account" element={<Account />} />
         <Route path="about" element={<About />} />
       </Route>

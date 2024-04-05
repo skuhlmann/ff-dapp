@@ -63,6 +63,9 @@ export const WATERING_ENDPOINT: Record<string, string> = {
     "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/waterings",
 };
 
+export const LEADER_ENDPOINT =
+  "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/leaders";
+
 export type NftTreeMeta = { name: string; img: string; value: number };
 
 export const CRITTER_COUNT_PLUS_ONE = 7;
