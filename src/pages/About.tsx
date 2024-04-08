@@ -7,7 +7,7 @@ import palisade from "../assets/palisades_orchard.jpeg";
 function About() {
   return (
     <>
-      <Box w="100%" textAlign="center" mb="3rem">
+      <Box w="100%" textAlign="center" my="3rem">
         <Heading size="4xl">ABOUT</Heading>
       </Box>
 

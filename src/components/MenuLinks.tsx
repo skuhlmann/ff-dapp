@@ -42,6 +42,7 @@ export const MenuLinks = ({
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/buy-trees">Buy Trees</MenuItem>
         <MenuItem to="/farm">My Farm</MenuItem>
+        <MenuItem to="/leaderboard">Leaderboard</MenuItem>
         <MenuItem to="/account">My Account</MenuItem>
         <MenuItem to="/about">About</MenuItem>
         {ready && authenticated && (

@@ -17,9 +17,10 @@ import { CHAIN_OBJ } from "./utils/constants.ts";
 
 import theme from "./theme.ts";
 import { Fonts } from "./Fonts.tsx";
-import "./index.css";
-
 import peachLogo from "./assets/Peach_logo.png";
+import { peachConsole } from "./utils/console.ts";
+import "./index.css";
+console.log(peachConsole);
 
 const config = createConfig({
   chains: [CHAIN_OBJ],

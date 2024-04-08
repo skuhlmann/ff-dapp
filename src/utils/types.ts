@@ -18,3 +18,10 @@ export type WateringRes = {
   };
   today: boolean;
 };
+
+export type EnsData = {
+  ensName: string | null;
+  ensText: string | undefined;
+};
+
+export type LeadersRes = Array<Array<string | number | EnsData>>;

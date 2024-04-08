@@ -44,10 +44,10 @@ export const HomeSectionFour = () => {
         />
       </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center">
-        <Image src={peachOne} w="420px" />
-        <Image src={peachSix} w="420px" />
-        <Image src={peachFive} w="420px" />
-        <Image src={peachFour} w="420px" />
+        <Image src={peachOne} w={{ base: "300px", md: "420px" }} />
+        <Image src={peachSix} w={{ base: "300px", md: "420px" }} />
+        <Image src={peachFive} w={{ base: "300px", md: "420px" }} />
+        <Image src={peachFour} w={{ base: "300px", md: "420px" }} />
       </Flex>
       <Flex
         direction="column"

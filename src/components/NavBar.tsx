@@ -34,7 +34,7 @@ export const NavBar = () => {
         w="100%"
         mb={8}
         py={8}
-        px={10}
+        px={{ base: 3, md: 10 }}
         color="brand.orange"
         position="fixed"
         background="brand.black"
@@ -65,7 +65,7 @@ export const NavBar = () => {
           </>
         </Link>
         <Flex align="center" gap="1rem">
-            <Connect />
+          <Connect />
           <Box cursor="pointer" onClick={toggle} fontSize="30px">
             {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
           </Box>
