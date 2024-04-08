@@ -8,9 +8,9 @@ function Leaderboard() {
   return (
     <>
       <Box w="100%" textAlign="center" my="3rem">
-        <Heading size="3xl">Leaderboard</Heading>
-        <Text fontSize="26px" mt="0.5rem">
-          <b>Top 10 </b>(Updated Daily)
+        <Heading size="3xl">Leaderboard - Top 10</Heading>
+        <Text fontSize="20px" mt="0.5rem">
+          <Text>Updated Daily</Text>
         </Text>
       </Box>
 

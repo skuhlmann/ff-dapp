@@ -41,7 +41,7 @@ export const Footer = () => {
               </Heading>
             </Link>
             <Link
-              href="https://opensea.io/collection/peach-tycoon-trees"
+              href="https://rarible.com/collection/base/0xa9d3c833df8415233e1626f29e33ccba37d2a187/items"
               isExternal
             >
               <Heading color="brand.black" size="md">

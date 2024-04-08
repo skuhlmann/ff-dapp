@@ -13,11 +13,15 @@ import { LeaderAvatar } from "./LeaderAvatar";
 import { EnsData, LeadersRes } from "../utils/types";
 
 export const LeaderTable = ({ leaders }: { leaders: LeadersRes }) => {
-  const refreshTime = new Date(new Date().setHours(0, 0, 0, 0)).toISOString();
+  const refreshDate = new Date(
+    new Date().setHours(0, 0, 0, 0)
+  ).toLocaleString();
   return (
     <TableContainer bg="brand.gray" borderRadius="9px" p="1rem" mb="3rem">
       <Table>
-        <TableCaption>Last updated {refreshTime}</TableCaption>
+        <TableCaption color="brand.white">
+          Last updated {refreshDate}
+        </TableCaption>
         <Thead>
           <Tr>
             <Th color="brand.orange">Farmer</Th>
