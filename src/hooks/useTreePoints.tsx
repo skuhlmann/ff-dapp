@@ -5,11 +5,13 @@ import {
   BOOST_BONUS,
   BOOST_POINTS,
   CHAIN_OBJ,
+  FERT_CONTRACT_ADDRESS,
   PRUNE_CONTRACT_ADDRESS,
   TARGET_NETWORK,
   WATERING_ENDPOINT,
 } from "../utils/constants";
 import prunAbi from "../abis/Prune.json";
+import fertAbi from "../abis/Fert.json";
 import { get } from "../utils/fetch";
 import { WateringRes } from "../utils/types";
 
@@ -36,12 +38,14 @@ const addPeachBoxes = ({ prune }: { prune: boolean }): number => {
 
 const fetchPointsForTree = async ({
   tokenId,
-  contractAddress,
+  pruneAddress,
+  fertAddress,
 }: {
   tokenId: string;
-  contractAddress?: string;
+  pruneAddress?: string;
+  fertAddress?: string;
 }) => {
-  if (!tokenId || !contractAddress) {
+  if (!tokenId || !pruneAddress || !fertAddress) {
     throw new Error("Missing Args");
   }
 
@@ -51,13 +55,22 @@ const fetchPointsForTree = async ({
   });
 
   const pruneData = await publicClient.readContract({
-    address: contractAddress as `0x${string}`,
+    address: pruneAddress as `0x${string}`,
     abi: prunAbi,
     functionName: "prunings",
     args: [tokenId],
   });
 
   const prune = pruneData == 1;
+
+  const fertData = await publicClient.readContract({
+    address: fertAddress as `0x${string}`,
+    abi: fertAbi,
+    functionName: "fertlizations",
+    args: [tokenId],
+  });
+
+  const fert = fertData == 1;
 
   const waterings = (await get(
     `${WATERING_ENDPOINT[TARGET_NETWORK]}?tokenId=${tokenId}`
@@ -72,8 +85,8 @@ const fetchPointsForTree = async ({
     watererdToday: waterings.today,
     totalPoints,
     prune,
-    spray: false,
-    fertilizings: "0",
+    fert,
+    sprays: "1",
     peachBoxes,
   };
 };
@@ -84,7 +97,8 @@ export const useTreePoints = ({ tokenId }: { tokenId: string }) => {
     queryFn: () =>
       fetchPointsForTree({
         tokenId,
-        contractAddress: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
+        pruneAddress: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
+        fertAddress: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
       }),
   });
 

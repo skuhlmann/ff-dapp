@@ -10,7 +10,7 @@ import sprayIcon from "../assets/icon_spray.png";
 import fertIcon from "../assets/icon_fert.png";
 
 export const TreeStats = ({ tree }: { tree: TreeNft }) => {
-  const { totalPoints, prune, spray, waterings, fertilizings } = useTreePoints({
+  const { totalPoints, prune, sprays, waterings, fert } = useTreePoints({
     tokenId: tree.tokenID,
   });
 
@@ -23,10 +23,18 @@ export const TreeStats = ({ tree }: { tree: TreeNft }) => {
         <Image src={waterIcon} />
         <Text fontSize="xs">{waterings}</Text>
       </Box>
-      <Box textAlign="center">
+      <Flex
+        direction="column"
+        alignItems="center"
+        textAlign="center"
+        gap=".15rem"
+        mb=".25rem"
+      >
         <Image src={fertIcon} />
-        <Text fontSize="xs">{fertilizings}</Text>
-      </Box>
+        <Text color={fert ? "brand.orange" : "black"}>
+          <PiCheckFatFill />
+        </Text>
+      </Flex>
       <Flex
         direction="column"
         alignItems="center"
@@ -39,17 +47,10 @@ export const TreeStats = ({ tree }: { tree: TreeNft }) => {
           <PiCheckFatFill />
         </Text>
       </Flex>
-      <Flex
-        direction="column"
-        alignItems="center"
-        textAlign="center"
-        gap=".15rem"
-      >
+      <Box textAlign="center">
         <Image src={sprayIcon} />
-        <Text color={spray ? "brand.green" : "black"}>
-          <PiCheckFatFill />
-        </Text>
-      </Flex>
+        <Text fontSize="xs">{sprays}/3</Text>
+      </Box>
     </Flex>
   );
 };
