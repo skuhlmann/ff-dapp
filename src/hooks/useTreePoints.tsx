@@ -7,31 +7,53 @@ import {
   CHAIN_OBJ,
   FERT_CONTRACT_ADDRESS,
   PRUNE_CONTRACT_ADDRESS,
+  SPRAYS_PER_TOKEN,
+  SPRAY_CONTRACT_ADDRESS,
   TARGET_NETWORK,
   WATERING_ENDPOINT,
 } from "../utils/constants";
 import prunAbi from "../abis/Prune.json";
 import fertAbi from "../abis/Fert.json";
+import sprayAbi from "../abis/Spray.json";
+
 import { get } from "../utils/fetch";
 import { WateringRes } from "../utils/types";
 
 const addPoints = ({
   prune,
+  fert,
   waterings,
+  sprays,
 }: {
   prune: boolean;
+  fert: boolean;
   waterings: number;
+  sprays: number;
 }): number => {
   let totalPoints = 0;
   if (prune) totalPoints += BOOST_POINTS.PRUNE;
+  if (fert) totalPoints += BOOST_POINTS.FERT;
+  const sprayPoints = sprays * BOOST_POINTS.SPRAY;
+  totalPoints += sprayPoints;
   totalPoints += waterings;
 
   return totalPoints;
 };
 
-const addPeachBoxes = ({ prune }: { prune: boolean }): number => {
+const addPeachBoxes = ({
+  prune,
+  fert,
+  sprayWins,
+}: {
+  prune: boolean;
+  fert: boolean;
+  sprayWins: number;
+}): number => {
   let peachBoxes = 2;
   if (prune) peachBoxes += BOOST_BONUS.PRUNE;
+  if (fert) peachBoxes += BOOST_BONUS.FERT;
+  const sprayBoxes = sprayWins * BOOST_POINTS.SPRAY;
+  peachBoxes += sprayBoxes;
 
   return peachBoxes;
 };
@@ -40,12 +62,14 @@ const fetchPointsForTree = async ({
   tokenId,
   pruneAddress,
   fertAddress,
+  sprayAddress,
 }: {
   tokenId: string;
   pruneAddress?: string;
   fertAddress?: string;
+  sprayAddress?: string;
 }) => {
-  if (!tokenId || !pruneAddress || !fertAddress) {
+  if (!tokenId || !pruneAddress || !fertAddress || !sprayAddress) {
     throw new Error("Missing Args");
   }
 
@@ -72,13 +96,34 @@ const fetchPointsForTree = async ({
 
   const fert = fertData == 1;
 
+  const sprays = (await publicClient.readContract({
+    address: sprayAddress as `0x${string}`,
+    abi: sprayAbi,
+    functionName: "sprayAttempts",
+    args: [tokenId],
+  })) as number;
+
+  const canSpray = sprays < SPRAYS_PER_TOKEN;
+
+  const sprayWins = (await publicClient.readContract({
+    address: sprayAddress as `0x${string}`,
+    abi: sprayAbi,
+    functionName: "sprayWins",
+    args: [tokenId],
+  })) as number;
+
   const waterings = (await get(
     `${WATERING_ENDPOINT[TARGET_NETWORK]}?tokenId=${tokenId}`
   )) as WateringRes;
 
-  const totalPoints = addPoints({ prune, waterings: waterings.count });
+  const totalPoints = addPoints({
+    prune,
+    fert,
+    waterings: waterings.count,
+    sprays,
+  });
 
-  const peachBoxes = addPeachBoxes({ prune });
+  const peachBoxes = addPeachBoxes({ prune, fert, sprayWins });
 
   return {
     waterings: waterings.count,
@@ -86,7 +131,9 @@ const fetchPointsForTree = async ({
     totalPoints,
     prune,
     fert,
-    sprays: "1",
+    sprays,
+    sprayWins,
+    canSpray,
     peachBoxes,
   };
 };
@@ -99,6 +146,7 @@ export const useTreePoints = ({ tokenId }: { tokenId: string }) => {
         tokenId,
         pruneAddress: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
         fertAddress: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
+        sprayAddress: SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK],
       }),
   });
 

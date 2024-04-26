@@ -8,6 +8,7 @@ import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
 import { WaterTreeButton } from "./WaterTreeButton";
 import { FertTreeButton } from "./FertTreeButton";
+import { SprayTreeButton } from "./SprayTreeButton";
 
 export const TreeActions = ({
   tokenId,
@@ -15,7 +16,7 @@ export const TreeActions = ({
   tokenId: string;
   account: string;
 }) => {
-  const { prune, fert, watererdToday, isFetched } = useTreePoints({
+  const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
@@ -59,6 +60,47 @@ export const TreeActions = ({
         </>
       )}
 
+      <SprayTreeButton tokenId={tokenId} canSpray={canSpray} />
+      {/* {!canSpray && (
+        <>
+          <Button
+            opacity="30%"
+            variant="outline"
+            fontFamily="heading"
+            fontSize="xl"
+            fontStyle="italic"
+            fontWeight="700"
+            border="1px"
+            borderColor="brand.green"
+            borderRadius="200px;"
+            color="brand.green"
+            size="lg"
+            height="60px"
+            width="220px"
+            my=".5rem"
+            disabled={true}
+            _hover={{
+              bg: "transparent",
+              color: "brand.green",
+              cursor: "not-allowed",
+            }}
+          >
+            <Image src={sprayIcon} w="44px" mr=".5rem" />
+            SPRAY
+            {!canSpray && (
+              <Text ml=".25rem">
+                <PiCheckFatFill />
+              </Text>
+            )}
+          </Button>
+        </>
+      )} */}
+
+      <WaterTreeButton
+        tokenId={tokenId}
+        watererdToday={watererdToday || false}
+      />
+
       {!prune && <PruneTreeButton tokenId={tokenId} />}
       {prune && (
         <>
@@ -95,39 +137,9 @@ export const TreeActions = ({
         </>
       )}
 
-      <WaterTreeButton
-        tokenId={tokenId}
-        watererdToday={watererdToday || false}
-      />
-
-      <Button
-        opacity="30%"
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
-        fontWeight="700"
-        border="1px"
-        borderColor="brand.green"
-        borderRadius="200px;"
-        color="brand.green"
-        size="lg"
-        height="60px"
-        width="220px"
-        my=".5rem"
-        disabled={true}
-        _hover={{
-          bg: "transparent",
-          color: "brand.green",
-          cursor: "not-allowed",
-        }}
-      >
-        <Image src={sprayIcon} w="44px" mr=".5rem" />
-        SPRAY
-      </Button>
-      <Text fontSize="xs" color="brand.orange" opacity="30%">
+      {/* <Text fontSize="xs" color="brand.orange" opacity="30%">
         (Coming soon!)
-      </Text>
+      </Text> */}
     </Flex>
   );
 };

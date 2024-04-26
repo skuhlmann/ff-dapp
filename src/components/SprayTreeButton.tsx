@@ -20,40 +20,43 @@ import {
   type BaseError,
   useAccount,
   useBalance,
-  useReadContract,
 } from "wagmi";
 import { useQueryClient } from "@tanstack/react-query";
 
-import fertAbi from "../abis/Fert.json";
-import erc20Abi from "../abis/ERC20.json";
+import sprayAbi from "../abis/Spray.json";
 
 import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
-  FERT_CONTRACT_ADDRESS,
-  FERT_DISCOUNT_ADDRESS,
-  FERT_DISCOUNT_ERC20_PRICE,
-  FERT_DISCOUNT_PRICE,
-  FERT_PRICE,
-  FERT_PRICE_ERC20,
+  SPRAY_CONTRACT_ADDRESS,
+  SPRAY_PRICE,
+  SPRAY_PRICE_ERC20,
   TARGET_NETWORK,
 } from "../utils/constants";
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
-import fertIcon from "../assets/icon_fert.png";
+import sprayIcon from "../assets/icon_spray.png";
 import { fromWei } from "../utils/formatting";
 import { useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
-import { FertTreeERC20Button } from "./FertTreeERC20Button";
+import { SprayTreeERC20Button } from "./SprayTreeERC20Button";
 
-const FERT_SHORT_DESCRIPTION = "Fertilizer is poop.";
+const SPRAY_SHORT_DESCRIPTION = "BUGS EVERYWHERE!";
 
-export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
+// TODO: fetch if a winner and display
+
+export const SprayTreeButton = ({
+  tokenId,
+  canSpray,
+}: {
+  tokenId: string;
+  canSpray?: boolean;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
   const { user } = usePrivy();
-  const { refetch } = useTreePoints({
+  const { refetch, sprays, sprayWins } = useTreePoints({
     tokenId: tokenId,
   });
 
@@ -62,13 +65,6 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
   const result = useBalance({
     address: user?.wallet?.address as `0x${string}`,
   });
-
-  const { data: discountBalance } = useReadContract({
-    address: FERT_DISCOUNT_ADDRESS[TARGET_NETWORK] as `0x${string}`,
-    abi: erc20Abi,
-    functionName: "balanceOf",
-    args: [user?.wallet?.address as `0x${string}`],
-  }) as { data: bigint };
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -94,33 +90,27 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
     onOpen();
   };
 
-  const hasDiscount = discountBalance > 0;
-  const ethBuyPrice = hasDiscount
-    ? FERT_DISCOUNT_PRICE[TARGET_NETWORK]
-    : FERT_PRICE[TARGET_NETWORK];
-  const erc20BuyPrice = hasDiscount
-    ? FERT_DISCOUNT_ERC20_PRICE[TARGET_NETWORK]
-    : FERT_PRICE_ERC20[TARGET_NETWORK];
-  const hasBalance = ethBuyPrice < BigInt(result?.data?.value || 0);
+  const hasBalance =
+    SPRAY_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
 
   const isDisabled = isPending || !chain || !hasBalance;
 
-  const handleFert = async () => {
+  const handleSpray = async () => {
     writeContract({
-      address: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: fertAbi,
-      functionName: "fertilize",
-      value: ethBuyPrice,
+      address: SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: sprayAbi,
+      functionName: "spray",
+      value: SPRAY_PRICE[TARGET_NETWORK],
       args: [tokenId],
     });
   };
 
-  const handleFertERC20 = async () => {
+  const handleSprayERC20 = async () => {
     writeContract({
-      address: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: fertAbi,
-      functionName: "fertilizeERC20",
-      args: [tokenId, erc20BuyPrice],
+      address: SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: sprayAbi,
+      functionName: "sprayERC20",
+      args: [tokenId, SPRAY_PRICE_ERC20[TARGET_NETWORK]],
     });
   };
 
@@ -133,9 +123,9 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
         fontStyle="italic"
         fontWeight="700"
         border="1px"
-        borderColor="brand.orange"
+        borderColor="brand.green"
         borderRadius="200px;"
-        color="brand.orange"
+        color="brand.green"
         size="lg"
         height="60px"
         width="220px"
@@ -143,12 +133,12 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
         disabled={false}
         _hover={{
           bg: "transparent",
-          color: "brand.orange",
+          color: "brand.green",
         }}
         onClick={handleConfirm}
       >
-        <Image src={fertIcon} w="44px" mr=".5rem" />
-        FERTILIZE
+        <Image src={sprayIcon} w="44px" mr=".5rem" />
+        SPRAY
       </Button>
 
       <Modal
@@ -163,7 +153,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.orange">Fertilization</ModalHeader>
+          <ModalHeader color="brand.green">Spraying</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -172,7 +162,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{FERT_SHORT_DESCRIPTION}</Text>
+              <Text fontSize="sm">{SPRAY_SHORT_DESCRIPTION}</Text>
 
               <Flex
                 direction="column"
@@ -185,59 +175,31 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                 </Text>
                 <Flex align="center" gap=".5rem">
                   <Heading size="md" color="brand.green">
-                    1 X
+                    {`${BOOST_POINTS.SPRAY} POINTS`}
                   </Heading>
-                  <Image src={peachAvatar} w="32px" />
 
                   <Heading size="xs" color="brand.green">
                     &
                   </Heading>
 
                   <Heading size="md" color="brand.green">
-                    {`${BOOST_POINTS.FERT} POINTS`}
+                    A Chance at 1 X
                   </Heading>
+                  <Image src={peachAvatar} w="32px" />
                 </Flex>
               </Flex>
 
-              {!hash && (
+              {!hash && canSpray && (
                 <>
                   <Flex direction="column" justify="center" align="center">
-                    {hasDiscount && (
-                      <Text
-                        fontSize="sm"
-                        color="brand.red"
-                        fontWeight="700"
-                        mb="1rem"
-                      >
-                        Your Get the Season 1 Peach Holder Discount!
-                      </Text>
-                    )}
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">
                       Cost
                     </Text>
-                    {hasDiscount && (
-                      <>
-                        <Heading size="md" color="brand.blue">
-                          <s>
-                            {`${fromWei(
-                              FERT_PRICE[TARGET_NETWORK].toString()
-                            )} BASE ETH`}
-                          </s>
-                        </Heading>
-                        <Heading size="md" color="brand.red">
-                          {`${fromWei(
-                            FERT_DISCOUNT_PRICE[TARGET_NETWORK].toString()
-                          )} BASE ETH`}
-                        </Heading>
-                      </>
-                    )}
-                    {!hasDiscount && (
-                      <Heading size="md" color="brand.blue">
-                        {`${fromWei(
-                          FERT_PRICE[TARGET_NETWORK].toString()
-                        )} BASE ETH`}
-                      </Heading>
-                    )}
+                    <Heading size="md" color="brand.blue">
+                      {`${fromWei(
+                        SPRAY_PRICE[TARGET_NETWORK].toString()
+                      )} BASE ETH`}
+                    </Heading>
                   </Flex>
 
                   <Button
@@ -258,7 +220,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                       bg: "transparent",
                       color: "brand.orange",
                     }}
-                    onClick={handleFert}
+                    onClick={handleSpray}
                   >
                     {hasBalance ? "PURCHASE WITH ETH" : "NOT ENOUGH ETH"}
                   </Button>
@@ -271,40 +233,22 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                     </Text>
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
-                        FERT_PRICE_ERC20[TARGET_NETWORK].toString()
+                        SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
                       )} `}
                     </Heading>
 
-                    {hasDiscount && (
-                      <>
-                        <Heading size="md" color="brand.blue">
-                          <s>
-                            {`${fromWei(
-                              FERT_PRICE_ERC20[TARGET_NETWORK].toString()
-                            )} $DEGEN`}
-                          </s>
-                        </Heading>
-                        <Heading size="md" color="brand.red">
-                          {`${fromWei(
-                            FERT_DISCOUNT_ERC20_PRICE[TARGET_NETWORK].toString()
-                          )} $DEGEN`}
-                        </Heading>
-                      </>
-                    )}
-                    {!hasDiscount && (
-                      <Heading size="md" color="brand.blue">
-                        {`${fromWei(
-                          FERT_PRICE_ERC20[TARGET_NETWORK].toString()
-                        )} $DEGEN`}
-                      </Heading>
-                    )}
+                    <Heading size="md" color="brand.blue">
+                      {`${fromWei(
+                        SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
+                      )} $DEGEN`}
+                    </Heading>
                   </Flex>
 
-                  <FertTreeERC20Button
+                  <SprayTreeERC20Button
                     address={user?.wallet?.address}
-                    handleFertERC20={handleFertERC20}
+                    handleSprayERC20={handleSprayERC20}
                     isDisabled={isDisabled}
-                    erc20BuyPrice={erc20BuyPrice}
+                    erc20BuyPrice={SPRAY_PRICE_ERC20[TARGET_NETWORK]}
                   />
                 </>
               )}
@@ -322,9 +266,37 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
 
+              {!isConfirming && (
+                <>
+                  {sprays === 2 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      {`You've sprayed 2 times and won ${Number(
+                        sprayWins
+                      )} peach box${Number(sprayWins) === 1 ? "" : "es"}`}
+                    </Heading>
+                  )}
+
+                  {sprays === 1 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      {`You've sprayed 1 time and won ${Number(
+                        sprayWins
+                      )} peach box${
+                        Number(sprayWins) === 1 ? "" : "es"
+                      }. You can spray once more.`}
+                    </Heading>
+                  )}
+
+                  {sprays === 0 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      You have 2 spray attempts left.
+                    </Heading>
+                  )}
+                </>
+              )}
+
               {isConfirmed && (
-                <Heading size="md">
-                  Fertlizing is Done! Your points will show up soon .
+                <Heading size="md" width="100%" textAlign="center">
+                  Your points will show up soon.
                 </Heading>
               )}
 

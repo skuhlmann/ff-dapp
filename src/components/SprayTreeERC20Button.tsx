@@ -3,8 +3,8 @@ import { useReadContract, useAccount } from "wagmi";
 import {
   ERC20_PAYMENT_TOKEN,
   TARGET_NETWORK,
-  FERT_CONTRACT_ADDRESS,
-  FERT_PRICE_ERC20,
+  SPRAY_PRICE_ERC20,
+  SPRAY_CONTRACT_ADDRESS,
 } from "../utils/constants";
 
 import erc20Abi from "../abis/ERC20.json";
@@ -22,16 +22,16 @@ const buttonText = (hasBalance: boolean, hasAllowance: boolean) => {
   return "PURCHASE WITH $DEGEN";
 };
 
-export const FertTreeERC20Button = ({
+export const SprayTreeERC20Button = ({
   address,
   isDisabled,
   erc20BuyPrice,
-  handleFertERC20,
+  handleSprayERC20,
 }: {
   address?: string;
   isDisabled: boolean;
   erc20BuyPrice: bigint;
-  handleFertERC20: React.MouseEventHandler<HTMLButtonElement>;
+  handleSprayERC20: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const { chain } = useAccount();
 
@@ -46,10 +46,10 @@ export const FertTreeERC20Button = ({
     address: ERC20_PAYMENT_TOKEN[TARGET_NETWORK] as `0x${string}`,
     abi: erc20Abi,
     functionName: "allowance",
-    args: [address, FERT_CONTRACT_ADDRESS[TARGET_NETWORK]],
+    args: [address, SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK]],
   });
 
-  const hasBalance = FERT_PRICE_ERC20[TARGET_NETWORK] < balance;
+  const hasBalance = SPRAY_PRICE_ERC20[TARGET_NETWORK] < balance;
   const hasAllowance = erc20BuyPrice <= (allowance as bigint);
 
   if (!address) return null;
@@ -58,7 +58,7 @@ export const FertTreeERC20Button = ({
     return (
       <ApproveERC20
         refetch={refetch}
-        spender={FERT_CONTRACT_ADDRESS[TARGET_NETWORK]}
+        spender={SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK]}
       />
     );
   }
@@ -82,7 +82,7 @@ export const FertTreeERC20Button = ({
         bg: "transparent",
         color: "brand.orange",
       }}
-      onClick={handleFertERC20}
+      onClick={handleSprayERC20}
     >
       {buttonText(hasBalance, hasAllowance)}
     </Button>

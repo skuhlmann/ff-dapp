@@ -91,6 +91,8 @@ export const SPRAY_PRICE_ERC20: Record<string, bigint> = {
   "0x2105": BigInt(0),
 };
 
+export const SPRAYS_PER_TOKEN = 2;
+
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
   "0xaa36a7": "https://sepolia.etherscan.io/",
   "0x2105": "https://basescan.org/",
@@ -136,10 +138,14 @@ export const TREE_NFT_DATA: NftTreeMeta[] = [
 export const BOOST_POINTS = {
   PRUNE: 75,
   WATERING: 1,
+  FERT: 100,
+  SPRAY: 33,
 };
 
 export const BOOST_BONUS = {
   PRUNE: 1,
+  FERT: 1,
+  SPRAY: 1,
 };
 
 export const WATERING_MESSAGE =
