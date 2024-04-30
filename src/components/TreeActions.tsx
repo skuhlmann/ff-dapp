@@ -2,7 +2,6 @@ import { Image, Text, Flex, Button, Spinner } from "@chakra-ui/react";
 
 import pruneIcon from "../assets/icon_prune.png";
 import fertIcon from "../assets/icon_fert.png";
-import sprayIcon from "../assets/icon_spray.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
@@ -24,6 +23,11 @@ export const TreeActions = ({
 
   return (
     <Flex direction="column" align="center">
+      <WaterTreeButton
+        tokenId={tokenId}
+        watererdToday={watererdToday || false}
+      />
+
       {!fert && <FertTreeButton tokenId={tokenId} />}
       {fert && (
         <>
@@ -95,11 +99,6 @@ export const TreeActions = ({
           </Button>
         </>
       )} */}
-
-      <WaterTreeButton
-        tokenId={tokenId}
-        watererdToday={watererdToday || false}
-      />
 
       {!prune && <PruneTreeButton tokenId={tokenId} />}
       {prune && (

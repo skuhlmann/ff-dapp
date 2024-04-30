@@ -134,12 +134,18 @@ export const SprayTreeButton = ({
         _hover={{
           bg: "transparent",
           color: "brand.green",
+          cursor: "not-allowed",
         }}
-        onClick={handleConfirm}
+        // onClick={handleConfirm}
+        opacity="30%"
       >
         <Image src={sprayIcon} w="44px" mr=".5rem" />
         SPRAY
       </Button>
+
+      <Text fontSize="xs" color="brand.orange" opacity="30%">
+        (Coming soon!)
+      </Text>
 
       <Modal
         isOpen={isOpen}

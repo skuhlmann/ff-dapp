@@ -28,6 +28,7 @@ import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
   PRUNE_CONTRACT_ADDRESS,
+  PRUNE_ENDED,
   PRUNE_PRICE,
   PRUNE_PRICE_ERC20,
   TARGET_NETWORK,
@@ -121,12 +122,13 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={false}
+        disabled={true}
         _hover={{
           bg: "transparent",
           color: "brand.green",
         }}
-        onClick={handleConfirm}
+        // onClick={handleConfirm}
+        opacity="30%"
       >
         <Image src={pruneIcon} w="44px" mr=".5rem" />
         PRUNE

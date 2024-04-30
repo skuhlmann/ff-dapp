@@ -5,22 +5,35 @@ import { LabelBadge, PeachCard } from "./SharedLayout";
 
 export const HomeSectionOne = () => {
   return (
-    <Flex mt={{ base: "0", md: "160px"}} direction={{ base: "column", md: "row" }} justifyContent="start" alignItems="start" px="10vw">
-     <Box flex="1" mb="2rem" minW={{ base: "none", md: "250px"}}>
+    <Flex
+      mt={{ base: "0", md: "160px" }}
+      direction={{ base: "column", md: "row" }}
+      justifyContent="start"
+      alignItems="start"
+      px="10vw"
+    >
+      <Box flex="1" mb="2rem" minW={{ base: "none", md: "250px" }}>
         <Flex gap="1rem" align="center">
           <Heading color="brand.orange">1.</Heading>
           <LabelBadge
-            bg="brand.green"
+            bg="brand.red"
             color="brand.black"
             size="md"
             style={{
               lineHeight: "1.75",
             }}
           >
-            • Available now •
+            • Tree Sales Closed •
           </LabelBadge>
         </Flex>
-        <Text fontFamily="auster" maxWidth="597px" fontWeight="bold" fontSize={{base:"56px", xl:"80px"}} lineHeight={{base:"60px", xl:"96px"}} mb={4}>
+        <Text
+          fontFamily="auster"
+          maxWidth="597px"
+          fontWeight="bold"
+          fontSize={{ base: "56px", xl: "80px" }}
+          lineHeight={{ base: "60px", xl: "96px" }}
+          mb={4}
+        >
           Get Trees!
         </Text>
         <Text maxW="460px" mb="2rem">
@@ -40,11 +53,13 @@ export const HomeSectionOne = () => {
           to learn more.
         </Text>
       </Box>
-      <Flex
-        direction="column"
-        alignItems={{ base: "center", md: "flex-end" }}
-      >
-        <PeachCard w={{ base: "293px", md: "426px" }} h="504px" mb="1rem" ml={{ base: "0px", md: "50px" }}>
+      <Flex direction="column" alignItems={{ base: "center", md: "flex-end" }}>
+        <PeachCard
+          w={{ base: "293px", md: "426px" }}
+          h="504px"
+          mb="1rem"
+          ml={{ base: "0px", md: "50px" }}
+        >
           <Flex direction="column" align="center">
             <Flex
               direction="column"
@@ -84,8 +99,11 @@ export const HomeSectionOne = () => {
                 size="lg"
                 height="72px"
                 w={{ base: "223px", md: "320px" }}
-                _hover={{transform:"translate(0px, -10px)",color: "brand.white"}}
-                _focus={{transform:"translate(0px, 0px)",bg:"brand.black"}}
+                _hover={{
+                  transform: "translate(0px, -10px)",
+                  color: "brand.white",
+                }}
+                _focus={{ transform: "translate(0px, 0px)", bg: "brand.black" }}
                 position="absolute"
                 bg="#1f1f1f"
                 zIndex="2"
@@ -93,7 +111,14 @@ export const HomeSectionOne = () => {
               >
                 BUY TREE
               </Button>
-              <Box w="full" height="72px" position="absolute" border="2px" borderColor="brand.green" borderRadius="200px;"></Box>
+              <Box
+                w="full"
+                height="72px"
+                position="absolute"
+                border="2px"
+                borderColor="brand.green"
+                borderRadius="200px;"
+              ></Box>
             </Box>
           </Flex>
         </PeachCard>
