@@ -20,32 +20,36 @@ import {
   type BaseError,
   useAccount,
   useBalance,
+  useReadContract,
 } from "wagmi";
 import { useQueryClient } from "@tanstack/react-query";
 
-import prunAbi from "../abis/Prune.json";
+import fertAbi from "../abis/Fert.json";
+import erc20Abi from "../abis/ERC20.json";
+
 import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
-  PRUNE_CONTRACT_ADDRESS,
-  PRUNE_ENDED,
-  PRUNE_PRICE,
-  PRUNE_PRICE_ERC20,
+  FERT_CONTRACT_ADDRESS,
+  FERT_DISCOUNT_ADDRESS,
+  FERT_DISCOUNT_ERC20_PRICE,
+  FERT_DISCOUNT_PRICE,
+  FERT_PRICE,
+  FERT_PRICE_ERC20,
   TARGET_NETWORK,
 } from "../utils/constants";
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
-import pruneIcon from "../assets/icon_prune.png";
+import fertIcon from "../assets/icon_fert.png";
 import { fromWei } from "../utils/formatting";
 import { useEffect } from "react";
-import { PruneTreeERC20Button } from "./PruneTreeERC20Button";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
+import { FertTreeERC20Button } from "./FertTreeERC20Button";
 
-const PRUNE_SHORT_DESCRIPTION =
-  "Pruning is a critical practice for maintaining the health and productivity of your trees. You can only prune once before your trees go into spring blossom, so don’t delay! Every pruned tree will earn an additional peach box and 75 points towards the Farmer’s Pot.";
+const FERT_SHORT_DESCRIPTION = "Fertilizer is poop.";
 
-export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
+export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
   const { user } = usePrivy();
@@ -58,6 +62,13 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
   const result = useBalance({
     address: user?.wallet?.address as `0x${string}`,
   });
+
+  const { data: discountBalance } = useReadContract({
+    address: FERT_DISCOUNT_ADDRESS[TARGET_NETWORK] as `0x${string}`,
+    abi: erc20Abi,
+    functionName: "balanceOf",
+    args: [user?.wallet?.address as `0x${string}`],
+  }) as { data: bigint };
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -83,29 +94,36 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
     onOpen();
   };
 
-  const handlePrune = async () => {
+  const hasDiscount = discountBalance > 0;
+  const ethBuyPrice = hasDiscount
+    ? FERT_DISCOUNT_PRICE[TARGET_NETWORK]
+    : FERT_PRICE[TARGET_NETWORK];
+  const erc20BuyPrice = hasDiscount
+    ? FERT_DISCOUNT_ERC20_PRICE[TARGET_NETWORK]
+    : FERT_PRICE_ERC20[TARGET_NETWORK];
+  const hasBalance = ethBuyPrice < BigInt(result?.data?.value || 0);
+
+  const isDisabled = isPending || !chain || !hasBalance;
+
+  const handleFert = async () => {
     writeContract({
-      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: prunAbi,
-      functionName: "prune",
-      value: PRUNE_PRICE[TARGET_NETWORK],
+      address: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: fertAbi,
+      functionName: "fertilize",
+      value: ethBuyPrice,
       args: [tokenId],
     });
   };
 
-  const handlePruneERC20 = async () => {
+  const handleFertERC20 = async () => {
     writeContract({
-      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: prunAbi,
-      functionName: "pruneERC20",
-      args: [tokenId, PRUNE_PRICE_ERC20[TARGET_NETWORK]],
+      address: FERT_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: fertAbi,
+      functionName: "fertilizeERC20",
+      args: [tokenId, erc20BuyPrice],
     });
   };
 
-  const hasBalance =
-    PRUNE_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
-
-  const isDisabled = isPending || !chain || !hasBalance;
   return (
     <>
       <Button
@@ -115,24 +133,29 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
         fontStyle="italic"
         fontWeight="700"
         border="1px"
-        borderColor="brand.green"
+        borderColor="brand.orange"
         borderRadius="200px;"
-        color="brand.green"
+        color="brand.orange"
         size="lg"
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={true}
+        disabled={false}
         _hover={{
           bg: "transparent",
-          color: "brand.green",
+          color: "brand.orange",
+          cursor: "not-allowed",
         }}
         // onClick={handleConfirm}
         opacity="30%"
       >
-        <Image src={pruneIcon} w="44px" mr=".5rem" />
-        PRUNE
+        <Image src={fertIcon} w="44px" mr=".5rem" />
+        FERTILIZE
       </Button>
+
+      <Text fontSize="xs" color="brand.orange" opacity="30%">
+        (Coming soon!)
+      </Text>
 
       <Modal
         isOpen={isOpen}
@@ -146,7 +169,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.green">Pruning</ModalHeader>
+          <ModalHeader color="brand.orange">Fertilization</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -155,7 +178,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{PRUNE_SHORT_DESCRIPTION}</Text>
+              <Text fontSize="sm">{FERT_SHORT_DESCRIPTION}</Text>
 
               <Flex
                 direction="column"
@@ -177,7 +200,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                   </Heading>
 
                   <Heading size="md" color="brand.green">
-                    {`${BOOST_POINTS.PRUNE} POINTS`}
+                    {`${BOOST_POINTS.FERT} POINTS`}
                   </Heading>
                 </Flex>
               </Flex>
@@ -185,14 +208,42 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
               {!hash && (
                 <>
                   <Flex direction="column" justify="center" align="center">
+                    {hasDiscount && (
+                      <Text
+                        fontSize="sm"
+                        color="brand.red"
+                        fontWeight="700"
+                        mb="1rem"
+                      >
+                        Your Get the Season 1 Peach Holder Discount!
+                      </Text>
+                    )}
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">
                       Cost
                     </Text>
-                    <Heading size="md" color="brand.blue">
-                      {`${fromWei(
-                        PRUNE_PRICE[TARGET_NETWORK].toString()
-                      )} BASE ETH`}
-                    </Heading>
+                    {hasDiscount && (
+                      <>
+                        <Heading size="md" color="brand.blue">
+                          <s>
+                            {`${fromWei(
+                              FERT_PRICE[TARGET_NETWORK].toString()
+                            )} BASE ETH`}
+                          </s>
+                        </Heading>
+                        <Heading size="md" color="brand.red">
+                          {`${fromWei(
+                            FERT_DISCOUNT_PRICE[TARGET_NETWORK].toString()
+                          )} BASE ETH`}
+                        </Heading>
+                      </>
+                    )}
+                    {!hasDiscount && (
+                      <Heading size="md" color="brand.blue">
+                        {`${fromWei(
+                          FERT_PRICE[TARGET_NETWORK].toString()
+                        )} BASE ETH`}
+                      </Heading>
+                    )}
                   </Flex>
 
                   <Button
@@ -213,7 +264,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                       bg: "transparent",
                       color: "brand.orange",
                     }}
-                    onClick={handlePrune}
+                    onClick={handleFert}
                   >
                     {hasBalance ? "PURCHASE WITH ETH" : "NOT ENOUGH ETH"}
                   </Button>
@@ -226,15 +277,40 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     </Text>
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
-                        PRUNE_PRICE_ERC20[TARGET_NETWORK].toString()
-                      )} $DEGEN`}
+                        FERT_PRICE_ERC20[TARGET_NETWORK].toString()
+                      )} `}
                     </Heading>
+
+                    {hasDiscount && (
+                      <>
+                        <Heading size="md" color="brand.blue">
+                          <s>
+                            {`${fromWei(
+                              FERT_PRICE_ERC20[TARGET_NETWORK].toString()
+                            )} $DEGEN`}
+                          </s>
+                        </Heading>
+                        <Heading size="md" color="brand.red">
+                          {`${fromWei(
+                            FERT_DISCOUNT_ERC20_PRICE[TARGET_NETWORK].toString()
+                          )} $DEGEN`}
+                        </Heading>
+                      </>
+                    )}
+                    {!hasDiscount && (
+                      <Heading size="md" color="brand.blue">
+                        {`${fromWei(
+                          FERT_PRICE_ERC20[TARGET_NETWORK].toString()
+                        )} $DEGEN`}
+                      </Heading>
+                    )}
                   </Flex>
 
-                  <PruneTreeERC20Button
+                  <FertTreeERC20Button
                     address={user?.wallet?.address}
-                    handlePruneERC20={handlePruneERC20}
+                    handleFertERC20={handleFertERC20}
                     isDisabled={isDisabled}
+                    erc20BuyPrice={erc20BuyPrice}
                   />
                 </>
               )}
@@ -254,7 +330,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
 
               {isConfirmed && (
                 <Heading size="md">
-                  Pruning is Done! Your points will show up soon .
+                  Fertlizing is Done! Your points will show up soon .
                 </Heading>
               )}
 

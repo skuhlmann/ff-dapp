@@ -1,8 +1,8 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { NftTreeMeta, TREE_NFT_DATA } from "../utils/constants";
 import { TreeMintCard } from "../components/TreeMintCard";
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
-import { RemainingTreeSupply } from "../components/RemainingTreeSupply";
+import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+// import { RemainingTreeSupply } from "../components/RemainingTreeSupply";
 import { BoostContent } from "../components/BoostContent";
 
 function BuyTrees() {
@@ -11,7 +11,12 @@ function BuyTrees() {
   return (
     <>
       {!ready && null}
-      <RemainingTreeSupply />
+      {/* <RemainingTreeSupply /> */}
+
+      <Box mb="2rem" textAlign="center">
+        <Heading size="xl">Tree Sales Have Ended</Heading>
+        <Text>The Peach Marketplace will be open soon!</Text>
+      </Box>
 
       <Flex
         gap="1rem"

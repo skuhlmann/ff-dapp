@@ -79,6 +79,8 @@ export const BoostContent = () => {
       px="10px"
       w={{ base: "100%", md: "85%", lg: "65%" }}
     >
+      <Heading size="lg">Care for your Trees</Heading>
+
       <Text fontSize="md">
         So you bought a tree and now you think you're a farmer? Not so fast! It
         takes hard work to grow the tastiest peaches in the world and become the

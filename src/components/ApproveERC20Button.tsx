@@ -4,17 +4,19 @@ import {
   useWaitForTransactionReceipt,
   type BaseError,
 } from "wagmi";
-import {
-  PRUNE_ERC20,
-  TARGET_NETWORK,
-  PRUNE_CONTRACT_ADDRESS,
-} from "../utils/constants";
+import { ERC20_PAYMENT_TOKEN, TARGET_NETWORK } from "../utils/constants";
 
 import erc20Abi from "../abis/ERC20.json";
 import { useEffect } from "react";
 import { maxUint104 } from "viem";
 
-export const ApproveERC20 = ({ refetch }: { refetch: () => void }) => {
+export const ApproveERC20 = ({
+  refetch,
+  spender,
+}: {
+  refetch: () => void;
+  spender: string;
+}) => {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
@@ -24,10 +26,10 @@ export const ApproveERC20 = ({ refetch }: { refetch: () => void }) => {
 
   const handleApprove = async () => {
     writeContract({
-      address: PRUNE_ERC20[TARGET_NETWORK] as `0x${string}`,
+      address: ERC20_PAYMENT_TOKEN[TARGET_NETWORK] as `0x${string}`,
       abi: erc20Abi,
       functionName: "approve",
-      args: [PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK], maxUint104],
+      args: [spender, maxUint104],
     });
   };
 

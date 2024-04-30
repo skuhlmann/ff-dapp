@@ -23,33 +23,40 @@ import {
 } from "wagmi";
 import { useQueryClient } from "@tanstack/react-query";
 
-import prunAbi from "../abis/Prune.json";
+import sprayAbi from "../abis/Spray.json";
+
 import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
-  PRUNE_CONTRACT_ADDRESS,
-  PRUNE_ENDED,
-  PRUNE_PRICE,
-  PRUNE_PRICE_ERC20,
+  SPRAY_CONTRACT_ADDRESS,
+  SPRAY_PRICE,
+  SPRAY_PRICE_ERC20,
   TARGET_NETWORK,
 } from "../utils/constants";
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
-import pruneIcon from "../assets/icon_prune.png";
+import sprayIcon from "../assets/icon_spray.png";
 import { fromWei } from "../utils/formatting";
 import { useEffect } from "react";
-import { PruneTreeERC20Button } from "./PruneTreeERC20Button";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
+import { SprayTreeERC20Button } from "./SprayTreeERC20Button";
 
-const PRUNE_SHORT_DESCRIPTION =
-  "Pruning is a critical practice for maintaining the health and productivity of your trees. You can only prune once before your trees go into spring blossom, so don’t delay! Every pruned tree will earn an additional peach box and 75 points towards the Farmer’s Pot.";
+const SPRAY_SHORT_DESCRIPTION = "BUGS EVERYWHERE!";
 
-export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
+// TODO: fetch if a winner and display
+
+export const SprayTreeButton = ({
+  tokenId,
+  canSpray,
+}: {
+  tokenId: string;
+  canSpray?: boolean;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
   const { user } = usePrivy();
-  const { refetch } = useTreePoints({
+  const { refetch, sprays, sprayWins } = useTreePoints({
     tokenId: tokenId,
   });
 
@@ -83,29 +90,30 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
     onOpen();
   };
 
-  const handlePrune = async () => {
+  const hasBalance =
+    SPRAY_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
+
+  const isDisabled = isPending || !chain || !hasBalance;
+
+  const handleSpray = async () => {
     writeContract({
-      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: prunAbi,
-      functionName: "prune",
-      value: PRUNE_PRICE[TARGET_NETWORK],
+      address: SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: sprayAbi,
+      functionName: "spray",
+      value: SPRAY_PRICE[TARGET_NETWORK],
       args: [tokenId],
     });
   };
 
-  const handlePruneERC20 = async () => {
+  const handleSprayERC20 = async () => {
     writeContract({
-      address: PRUNE_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: prunAbi,
-      functionName: "pruneERC20",
-      args: [tokenId, PRUNE_PRICE_ERC20[TARGET_NETWORK]],
+      address: SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: sprayAbi,
+      functionName: "sprayERC20",
+      args: [tokenId, SPRAY_PRICE_ERC20[TARGET_NETWORK]],
     });
   };
 
-  const hasBalance =
-    PRUNE_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
-
-  const isDisabled = isPending || !chain || !hasBalance;
   return (
     <>
       <Button
@@ -122,17 +130,22 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={true}
+        disabled={false}
         _hover={{
           bg: "transparent",
           color: "brand.green",
+          cursor: "not-allowed",
         }}
         // onClick={handleConfirm}
         opacity="30%"
       >
-        <Image src={pruneIcon} w="44px" mr=".5rem" />
-        PRUNE
+        <Image src={sprayIcon} w="44px" mr=".5rem" />
+        SPRAY
       </Button>
+
+      <Text fontSize="xs" color="brand.orange" opacity="30%">
+        (Coming soon!)
+      </Text>
 
       <Modal
         isOpen={isOpen}
@@ -146,7 +159,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.green">Pruning</ModalHeader>
+          <ModalHeader color="brand.green">Spraying</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -155,7 +168,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{PRUNE_SHORT_DESCRIPTION}</Text>
+              <Text fontSize="sm">{SPRAY_SHORT_DESCRIPTION}</Text>
 
               <Flex
                 direction="column"
@@ -168,21 +181,21 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                 </Text>
                 <Flex align="center" gap=".5rem">
                   <Heading size="md" color="brand.green">
-                    1 X
+                    {`${BOOST_POINTS.SPRAY} POINTS`}
                   </Heading>
-                  <Image src={peachAvatar} w="32px" />
 
                   <Heading size="xs" color="brand.green">
                     &
                   </Heading>
 
                   <Heading size="md" color="brand.green">
-                    {`${BOOST_POINTS.PRUNE} POINTS`}
+                    A Chance at 1 X
                   </Heading>
+                  <Image src={peachAvatar} w="32px" />
                 </Flex>
               </Flex>
 
-              {!hash && (
+              {!hash && canSpray && (
                 <>
                   <Flex direction="column" justify="center" align="center">
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">
@@ -190,7 +203,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     </Text>
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
-                        PRUNE_PRICE[TARGET_NETWORK].toString()
+                        SPRAY_PRICE[TARGET_NETWORK].toString()
                       )} BASE ETH`}
                     </Heading>
                   </Flex>
@@ -213,7 +226,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                       bg: "transparent",
                       color: "brand.orange",
                     }}
-                    onClick={handlePrune}
+                    onClick={handleSpray}
                   >
                     {hasBalance ? "PURCHASE WITH ETH" : "NOT ENOUGH ETH"}
                   </Button>
@@ -226,15 +239,22 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                     </Text>
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
-                        PRUNE_PRICE_ERC20[TARGET_NETWORK].toString()
+                        SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
+                      )} `}
+                    </Heading>
+
+                    <Heading size="md" color="brand.blue">
+                      {`${fromWei(
+                        SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
                       )} $DEGEN`}
                     </Heading>
                   </Flex>
 
-                  <PruneTreeERC20Button
+                  <SprayTreeERC20Button
                     address={user?.wallet?.address}
-                    handlePruneERC20={handlePruneERC20}
+                    handleSprayERC20={handleSprayERC20}
                     isDisabled={isDisabled}
+                    erc20BuyPrice={SPRAY_PRICE_ERC20[TARGET_NETWORK]}
                   />
                 </>
               )}
@@ -252,9 +272,37 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
 
+              {!isConfirming && (
+                <>
+                  {sprays === 2 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      {`You've sprayed 2 times and won ${Number(
+                        sprayWins
+                      )} peach box${Number(sprayWins) === 1 ? "" : "es"}`}
+                    </Heading>
+                  )}
+
+                  {sprays === 1 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      {`You've sprayed 1 time and won ${Number(
+                        sprayWins
+                      )} peach box${
+                        Number(sprayWins) === 1 ? "" : "es"
+                      }. You can spray once more.`}
+                    </Heading>
+                  )}
+
+                  {sprays === 0 && (
+                    <Heading size="lg" width="100%" textAlign="center">
+                      You have 2 spray attempts left.
+                    </Heading>
+                  )}
+                </>
+              )}
+
               {isConfirmed && (
-                <Heading size="md">
-                  Pruning is Done! Your points will show up soon .
+                <Heading size="md" width="100%" textAlign="center">
+                  Your points will show up soon.
                 </Heading>
               )}
 

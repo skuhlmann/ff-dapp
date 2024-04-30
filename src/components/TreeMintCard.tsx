@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import {
   NFT_MINT_PRICE,
   NftTreeMeta,
@@ -66,12 +66,35 @@ export const TreeMintCard = ({
           //   address={account}
           //   targetBalance={NFT_MINT_PRICE[TARGET_NETWORK]}
           // >
-          <MintTreeButton
-            trunkId={tree.value}
-            name={tree.name}
-            img={tree.img}
-          />
+          // <MintTreeButton
+          //   trunkId={tree.value}
+          //   name={tree.name}
+          //   img={tree.img}
+          // />
           // </BalanceCheck>
+
+          <Button
+            variant="outline"
+            fontFamily="heading"
+            fontSize="xl"
+            fontStyle="italic"
+            fontWeight="700"
+            border="1px"
+            borderColor="brand.green"
+            borderRadius="200px;"
+            color="brand.orange"
+            size="lg"
+            height="60px"
+            width="220px"
+            my="1rem"
+            isDisabled={true}
+            _hover={{
+              bg: "transparent",
+              color: "brand.orange",
+            }}
+          >
+            MINT
+          </Button>
         )}
         {!account && (
           <>
