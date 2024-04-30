@@ -28,7 +28,6 @@ import {
   BLOCK_EXPLORER_URL,
   BOOST_POINTS,
   PRUNE_CONTRACT_ADDRESS,
-  PRUNE_ENDED,
   PRUNE_PRICE,
   PRUNE_PRICE_ERC20,
   TARGET_NETWORK,
@@ -46,7 +45,9 @@ const PRUNE_SHORT_DESCRIPTION =
   "Pruning is a critical practice for maintaining the health and productivity of your trees. You can only prune once before your trees go into spring blossom, so don’t delay! Every pruned tree will earn an additional peach box and 75 points towards the Farmer’s Pot.";
 
 export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
+
   const { chain } = useAccount();
   const { user } = usePrivy();
   const { refetch } = useTreePoints({
@@ -79,9 +80,9 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
 
-  const handleConfirm = () => {
-    onOpen();
-  };
+  // const handleConfirm = () => {
+  //   onOpen();
+  // };
 
   const handlePrune = async () => {
     writeContract({

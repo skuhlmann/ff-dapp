@@ -53,7 +53,9 @@ export const SprayTreeButton = ({
   tokenId: string;
   canSpray?: boolean;
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
+
   const { chain } = useAccount();
   const { user } = usePrivy();
   const { refetch, sprays, sprayWins } = useTreePoints({
@@ -86,9 +88,9 @@ export const SprayTreeButton = ({
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
 
-  const handleConfirm = () => {
-    onOpen();
-  };
+  // const handleConfirm = () => {
+  //   onOpen();
+  // };
 
   const hasBalance =
     SPRAY_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
