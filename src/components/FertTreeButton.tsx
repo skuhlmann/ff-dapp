@@ -50,7 +50,9 @@ import { FertTreeERC20Button } from "./FertTreeERC20Button";
 const FERT_SHORT_DESCRIPTION = "Fertilizer is poop.";
 
 export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
+
   const { chain } = useAccount();
   const { user } = usePrivy();
   const { refetch } = useTreePoints({
@@ -90,9 +92,9 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
 
-  const handleConfirm = () => {
-    onOpen();
-  };
+  // const handleConfirm = () => {
+  //   onOpen();
+  // };
 
   const hasDiscount = discountBalance > 0;
   const ethBuyPrice = hasDiscount
