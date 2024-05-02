@@ -15,9 +15,16 @@ export const TreeActions = ({
   tokenId: string;
   account: string;
 }) => {
-  const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
+  // const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
+  //   tokenId: tokenId,
+  // });
+
+  const { prune, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
+
+  const fert = false;
+  const canSpray = false;
 
   if (!isFetched) return <Spinner color="brand.green" />;
 

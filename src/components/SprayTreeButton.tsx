@@ -58,9 +58,13 @@ export const SprayTreeButton = ({
 
   const { chain } = useAccount();
   const { user } = usePrivy();
-  const { refetch, sprays, sprayWins } = useTreePoints({
+  const { refetch } = useTreePoints({
     tokenId: tokenId,
   });
+
+  // const { refetch, sprays, sprayWins } = useTreePoints({
+  //   tokenId: tokenId,
+  // });
 
   const queryClient = useQueryClient();
 
@@ -273,7 +277,7 @@ export const SprayTreeButton = ({
               {isConfirming && (
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
-
+              {/* 
               {!isConfirming && (
                 <>
                   {sprays === 2 && (
@@ -300,7 +304,7 @@ export const SprayTreeButton = ({
                     </Heading>
                   )}
                 </>
-              )}
+              )} */}
 
               {isConfirmed && (
                 <Heading size="md" width="100%" textAlign="center">
