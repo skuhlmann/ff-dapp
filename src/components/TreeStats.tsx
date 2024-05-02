@@ -8,13 +8,18 @@ import waterIcon from "../assets/icon_water.png";
 import pruneIcon from "../assets/icon_prune.png";
 import sprayIcon from "../assets/icon_spray.png";
 import fertIcon from "../assets/icon_fert.png";
-import { SPRAYS_PER_TOKEN } from "../utils/constants";
+// import { SPRAYS_PER_TOKEN } from "../utils/constants";
 
 export const TreeStats = ({ tree }: { tree: TreeNft }) => {
-  const { totalPoints, prune, sprays, waterings, fert, isFetched } =
-    useTreePoints({
-      tokenId: tree.tokenID,
-    });
+  const { totalPoints, prune, waterings } = useTreePoints({
+    tokenId: tree.tokenID,
+  });
+
+  // const { totalPoints, prune, sprays, waterings, fert, isFetched } =
+  // useTreePoints({
+  //   tokenId: tree.tokenID,
+  // });
+  const fert = false;
 
   return (
     <Flex direction="column" align="center" gap=".75rem">
