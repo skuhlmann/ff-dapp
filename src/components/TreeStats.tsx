@@ -51,11 +51,11 @@ export const TreeStats = ({ tree }: { tree: TreeNft }) => {
       </Flex>
       <Box textAlign="center">
         <Image src={sprayIcon} />
-        {isFetched && (
+        {/* {isFetched && (
           <Text fontSize="xs">
             {sprays}/{SPRAYS_PER_TOKEN}
           </Text>
-        )}
+        )} */}
       </Box>
     </Flex>
   );
