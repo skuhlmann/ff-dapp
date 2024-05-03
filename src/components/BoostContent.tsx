@@ -7,6 +7,8 @@ import fertIcon from "../assets/icon_fert.png";
 import { fromWei } from "../utils/formatting";
 import {
   BOOST_POINTS,
+  FERT_PRICE,
+  FERT_PRICE_ERC20,
   PRUNE_PRICE,
   PRUNE_PRICE_ERC20,
   TARGET_NETWORK,
@@ -25,6 +27,8 @@ type BoostData = {
 export const PRUNE_DESCRIPTION = `To get started, you will need to prune your tree. Pruning is a critical practice for maintaining the health and productivity of your trees. It encourages new fruiting wood, which increases fruit production and allows for greater sunlight and air circulation , which is crucial for fruit growth and ripening. You can only prune once and before your trees go into spring blossom, so don't delay! Every pruned tree will earn an additional peach box and ${BOOST_POINTS.PRUNE} points towards the Farmer's Pot`;
 export const WATERING_DESCRIPTION =
   "Well-watered peach trees are generally healthier and more vigorous. They are also more productive, producing higher-quality fruit over the long term.  It's important to water peach trees consistently, especially during periods of active growth, flowering, and fruiting, so don't forget to water your trees every day! You earn one point for every day you water. ";
+export const FERT_DESCRIPTION =
+  "Peach trees require essential nutrients to grow and thrive. Well-fertilized peach trees are generally healthier, more vigorous, and better able to resist pests, diseases, and environmental stresses. Healthy trees are more resilient and productive, producing higher-quality fruit over the long term. Properly balanced fertilization can stimulate vigorous growth, leading to increased fruit production.";
 
 const boosts: BoostData[] = [
   {
@@ -38,7 +42,7 @@ const boosts: BoostData[] = [
     )} BASE ETH or ${fromWei(
       PRUNE_PRICE_ERC20[TARGET_NETWORK].toString()
     )} $DEGEN`,
-    isActive: true,
+    isActive: false,
   },
   {
     img: waterIcon,
@@ -47,24 +51,29 @@ const boosts: BoostData[] = [
     description: WATERING_DESCRIPTION,
     frequency: "Daily",
     cost: "Free",
-    isActive: false,
+    isActive: true,
   },
   {
     img: fertIcon,
     name: "Fertilize",
     color: "brand.orange",
-    description: "",
-    frequency: "-",
-    cost: "-",
-    isActive: false,
+    description: FERT_DESCRIPTION,
+    frequency: "Once",
+    cost: `${fromWei(
+      FERT_PRICE[TARGET_NETWORK].toString()
+    )} BASE ETH or ${fromWei(
+      FERT_PRICE_ERC20[TARGET_NETWORK].toString()
+    )} $DEGEN. (25% Discount to season 1 Peach Holders!)`,
+    isActive: true,
   },
   {
     img: sprayIcon,
     name: "Bug Spray",
     color: "brand.green",
-    description: "",
-    frequency: "-",
-    cost: "-",
+    description:
+      "Pests such as insects, mites, and diseases can significantly reduce fruit yield and quality in peach trees. They may feed on fruit, foliage, or other parts of the tree, causing damage that affects the tree's ability to produce healthy, marketable fruit.  Effective pest control is essential for maximizing fruit yield and quality and protecting tree health.",
+    frequency: "2 Chances",
+    cost: "Coming Soon",
     isActive: false,
   },
 ];
@@ -99,7 +108,7 @@ export const BoostContent = () => {
               <Box w={{ base: "10%", md: "10%" }}>
                 <Image src={boost.img} />
               </Box>
-              <Box w={{ base: "90%", md: "70%" }} px="10px">
+              <Box w={{ base: "90%", md: "60%" }} px="10px">
                 <Heading size="md" color={boost.color} mb="5px">
                   {boost.name}
                 </Heading>
@@ -118,7 +127,7 @@ export const BoostContent = () => {
                 </Text>
                 <Text fontSize="sm">{boost.frequency}</Text>
               </Box>
-              <Box w={{ base: "30%", md: "10%" }} mt="10px">
+              <Box w={{ base: "30%", md: "20%" }} mt="10px">
                 <Text fontSize="sm" fontWeight="700">
                   Cost
                 </Text>

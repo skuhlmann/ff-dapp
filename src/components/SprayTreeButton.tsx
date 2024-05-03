@@ -149,7 +149,7 @@ export const SprayTreeButton = ({
         SPRAY
       </Button>
 
-      <Text fontSize="xs" color="brand.orange" opacity="30%">
+      <Text fontSize="xs" color="brand.green" opacity="30%" mt="-0.5rem">
         (Coming soon!)
       </Text>
 

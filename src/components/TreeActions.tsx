@@ -19,11 +19,10 @@ export const TreeActions = ({
   //   tokenId: tokenId,
   // });
 
-  const { prune, watererdToday, isFetched } = useTreePoints({
+  const { prune, watererdToday, fert, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
-  const fert = false;
   const canSpray = false;
 
   if (!isFetched) return <Spinner color="brand.green" />;
@@ -143,9 +142,9 @@ export const TreeActions = ({
         </>
       )}
 
-      {/* <Text fontSize="xs" color="brand.orange" opacity="30%">
-        (Coming soon!)
-      </Text> */}
+      <Text fontSize="xs" color="brand.green" opacity="30%" mt="-0.5rem">
+        (Ended)
+      </Text>
     </Flex>
   );
 };

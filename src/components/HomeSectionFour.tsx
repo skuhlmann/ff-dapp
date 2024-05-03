@@ -58,7 +58,7 @@ export const HomeSectionFour = () => {
       >
         <Text fontSize="sm" w={{ base: "100%", md: "70%" }}>
           A special thanks to all the peach enjoyers that supported us last year
-          for our genesis season. We shipped out 100+ fresh peach Flexes
+          for our genesis season. We shipped out 100+ fresh peach boxes
           domestically and 20+ freeze-dried bags to our international friends.
         </Text>
         <Text fontSize="sm" fontWeight="700">
