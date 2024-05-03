@@ -48,8 +48,6 @@ import { useTreePoints } from "../hooks/useTreePoints";
 import { FertTreeERC20Button } from "./FertTreeERC20Button";
 import { FERT_DESCRIPTION } from "./BoostContent";
 
-const FERT_SHORT_DESCRIPTION = "Fertilizer is poop.";
-
 export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 

@@ -21,7 +21,7 @@ import { WateringRes } from "../utils/types";
 
 const addPoints = ({
   prune,
-  // fert,
+  fert,
   waterings,
 }: // sprays,
 {
