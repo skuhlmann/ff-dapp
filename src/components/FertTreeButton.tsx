@@ -46,12 +46,12 @@ import { useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { FertTreeERC20Button } from "./FertTreeERC20Button";
+import { FERT_DESCRIPTION } from "./BoostContent";
 
 const FERT_SHORT_DESCRIPTION = "Fertilizer is poop.";
 
 export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { chain } = useAccount();
   const { user } = usePrivy();
@@ -92,9 +92,9 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
 
-  // const handleConfirm = () => {
-  //   onOpen();
-  // };
+  const handleConfirm = () => {
+    onOpen();
+  };
 
   const hasDiscount = discountBalance > 0;
   const ethBuyPrice = hasDiscount
@@ -146,19 +146,12 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
         _hover={{
           bg: "transparent",
           color: "brand.orange",
-          cursor: "not-allowed",
         }}
-        // onClick={handleConfirm}
-        opacity="30%"
+        onClick={handleConfirm}
       >
         <Image src={fertIcon} w="44px" mr=".5rem" />
         FERTILIZE
       </Button>
-
-      <Text fontSize="xs" color="brand.orange" opacity="30%">
-        (Coming soon!)
-      </Text>
-
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -171,7 +164,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.orange">Fertilization</ModalHeader>
+          <ModalHeader color="brand.orange">Fertilize</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -180,7 +173,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{FERT_SHORT_DESCRIPTION}</Text>
+              <Text fontSize="sm">{FERT_DESCRIPTION}</Text>
 
               <Flex
                 direction="column"
@@ -217,7 +210,7 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                         fontWeight="700"
                         mb="1rem"
                       >
-                        Your Get the Season 1 Peach Holder Discount!
+                        You Got the Season 1 Peach Holder Discount!
                       </Text>
                     )}
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">

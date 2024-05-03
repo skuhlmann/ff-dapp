@@ -48,32 +48,32 @@ export const PRUNE_PRICE_ERC20: Record<string, bigint> = {
 
 export const FERT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
   "0xaa36a7": "0xEb8ED63d034b3235372028755CbeCb0CC978AdE1",
-  "0x2105": "0x0",
+  "0x2105": "0xf0c988dfedb50b544cfcd7e5d4eacae5fb5dd358",
 };
 
 export const FERT_PRICE: Record<string, bigint> = {
   "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(35000000000000000),
 };
 
 export const FERT_DISCOUNT_ADDRESS: Record<string, `0x${string}`> = {
   "0xaa36a7": "0x8FAE2f5B1eD1a73ee7c96703AeaCc735Fbe82Ed0",
-  "0x2105": "0x0",
+  "0x2105": "0xe68E3B3Ee0ce43d55fedCB625D48af4601693a04",
 };
 
 export const FERT_PRICE_ERC20: Record<string, bigint> = {
   "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(5000000000000000000000),
 };
 
 export const FERT_DISCOUNT_PRICE: Record<string, bigint> = {
   "0xaa36a7": BigInt(900000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(26250000000000000),
 };
 
 export const FERT_DISCOUNT_ERC20_PRICE: Record<string, bigint> = {
   "0xaa36a7": BigInt(900000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(3750000000000000000000),
 };
 
 export const SPRAY_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
@@ -151,5 +151,4 @@ export const BOOST_BONUS = {
 export const WATERING_MESSAGE =
   "PEACH TYCOON: YOU BUY TREE. TREE GROWS PEACH. YOU EAT PEACH. YOU ALSO SIGN THIS MESSAGE TO WATER YOUR TREE.";
 
-export const SPRAY_FERT_DISABLED = true;
 export const PRUNE_ENDED = true;

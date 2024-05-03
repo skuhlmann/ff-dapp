@@ -127,6 +127,7 @@ export const PruneTreeButton = ({ tokenId }: { tokenId: string }) => {
         _hover={{
           bg: "transparent",
           color: "brand.green",
+          cursor: "not-allowed",
         }}
         // onClick={handleConfirm}
         opacity="30%"
