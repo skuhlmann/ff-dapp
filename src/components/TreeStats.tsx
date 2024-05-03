@@ -11,7 +11,7 @@ import fertIcon from "../assets/icon_fert.png";
 // import { SPRAYS_PER_TOKEN } from "../utils/constants";
 
 export const TreeStats = ({ tree }: { tree: TreeNft }) => {
-  const { totalPoints, prune, waterings } = useTreePoints({
+  const { totalPoints, prune, waterings, fert } = useTreePoints({
     tokenId: tree.tokenID,
   });
 
@@ -19,7 +19,6 @@ export const TreeStats = ({ tree }: { tree: TreeNft }) => {
   // useTreePoints({
   //   tokenId: tree.tokenID,
   // });
-  const fert = false;
 
   return (
     <Flex direction="column" align="center" gap=".75rem">
