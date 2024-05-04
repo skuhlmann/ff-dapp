@@ -1,12 +1,12 @@
 import { Image, Text, Flex, Button, Spinner } from "@chakra-ui/react";
 
 import pruneIcon from "../assets/icon_prune.png";
-import fertIcon from "../assets/icon_fert.png";
+// import fertIcon from "../assets/icon_fert.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
 import { WaterTreeButton } from "./WaterTreeButton";
-import { FertTreeButton } from "./FertTreeButton";
+// import { FertTreeButton } from "./FertTreeButton";
 import { SprayTreeButton } from "./SprayTreeButton";
 
 export const TreeActions = ({
@@ -19,7 +19,7 @@ export const TreeActions = ({
   //   tokenId: tokenId,
   // });
 
-  const { prune, watererdToday, fert, isFetched } = useTreePoints({
+  const { prune, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
@@ -34,7 +34,7 @@ export const TreeActions = ({
         watererdToday={watererdToday || false}
       />
 
-      {!fert && <FertTreeButton tokenId={tokenId} />}
+      {/* {!fert && <FertTreeButton tokenId={tokenId} />}
       {fert && (
         <>
           <Button
@@ -68,7 +68,7 @@ export const TreeActions = ({
             )}
           </Button>
         </>
-      )}
+      )} */}
 
       <SprayTreeButton tokenId={tokenId} canSpray={canSpray} />
       {/* {!canSpray && (
