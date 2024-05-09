@@ -47,7 +47,7 @@ export const PRUNE_PRICE_ERC20: Record<string, bigint> = {
 };
 
 export const FERT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0xEb8ED63d034b3235372028755CbeCb0CC978AdE1",
+  "0xaa36a7": "0xAd8cA82737779b12858b303563B4Ab61099e14b8",
   "0x2105": "0x70B0A88cB071B8258aeD255370e1e2F8F1725A93",
 };
 

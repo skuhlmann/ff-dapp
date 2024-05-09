@@ -2,6 +2,7 @@ import { Image, Text, Flex, Button, Spinner } from "@chakra-ui/react";
 
 import pruneIcon from "../assets/icon_prune.png";
 import fertIcon from "../assets/icon_fert.png";
+import sprayIcon from "../assets/icon_spray.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
@@ -15,15 +16,15 @@ export const TreeActions = ({
   tokenId: string;
   account: string;
 }) => {
-  // const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
-  //   tokenId: tokenId,
-  // });
-
-  const { prune, watererdToday, fert, isFetched } = useTreePoints({
+  const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
-  const canSpray = false;
+  // const { prune, watererdToday, fert, isFetched } = useTreePoints({
+  //   tokenId: tokenId,
+  // });
+
+  // const canSpray = false;
 
   if (!isFetched) return <Spinner color="brand.green" />;
 
@@ -143,7 +144,7 @@ export const TreeActions = ({
       )}
 
       <Text fontSize="xs" color="brand.green" opacity="30%" mt="-0.5rem">
-        (Ended)
+        (Pruning Season Over)
       </Text>
     </Flex>
   );
