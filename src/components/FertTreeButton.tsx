@@ -268,12 +268,6 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">
                       Cost
                     </Text>
-                    <Heading size="md" color="brand.blue">
-                      {`${fromWei(
-                        FERT_PRICE_ERC20[TARGET_NETWORK].toString()
-                      )} `}
-                    </Heading>
-
                     {hasDiscount && (
                       <>
                         <Heading size="md" color="brand.blue">
