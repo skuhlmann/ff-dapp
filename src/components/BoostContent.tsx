@@ -80,7 +80,7 @@ const boosts: BoostData[] = [
       SPRAY_PRICE[TARGET_NETWORK].toString()
     )} BASE ETH or ${fromWei(
       SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
-    )} $DEGEN`,
+    )} $DEGEN per chance roll.`,
     isActive: false,
   },
 ];
