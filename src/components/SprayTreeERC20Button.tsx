@@ -59,6 +59,7 @@ export const SprayTreeERC20Button = ({
       <ApproveERC20
         refetch={refetch}
         spender={SPRAY_CONTRACT_ADDRESS[TARGET_NETWORK]}
+        amount={SPRAY_PRICE_ERC20[TARGET_NETWORK]}
       />
     );
   }

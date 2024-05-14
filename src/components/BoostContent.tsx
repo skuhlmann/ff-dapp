@@ -11,6 +11,8 @@ import {
   FERT_PRICE_ERC20,
   PRUNE_PRICE,
   PRUNE_PRICE_ERC20,
+  SPRAY_PRICE,
+  SPRAY_PRICE_ERC20,
   TARGET_NETWORK,
 } from "../utils/constants";
 
@@ -29,6 +31,8 @@ export const WATERING_DESCRIPTION =
   "Well-watered peach trees are generally healthier and more vigorous. They are also more productive, producing higher-quality fruit over the long term.  It's important to water peach trees consistently, especially during periods of active growth, flowering, and fruiting, so don't forget to water your trees every day! You earn one point for every day you water. ";
 export const FERT_DESCRIPTION =
   "Peach trees require essential nutrients to grow and thrive. Well-fertilized peach trees are generally healthier, more vigorous, and better able to resist pests, diseases, and environmental stresses. Healthy trees are more resilient and productive, producing higher-quality fruit over the long term. Properly balanced fertilization can stimulate vigorous growth, leading to increased fruit production.";
+export const SPRAY_DESCRIPTION =
+  "Pests such as insects, mites, and diseases can significantly reduce fruit yield and quality in peach trees. They may feed on fruit, foliage, or other parts of the tree, causing damage that affects the tree's ability to produce healthy, marketable fruit.  Effective pest control is essential for maximizing fruit yield and quality and protecting tree health.";
 
 const boosts: BoostData[] = [
   {
@@ -70,10 +74,13 @@ const boosts: BoostData[] = [
     img: sprayIcon,
     name: "Bug Spray",
     color: "brand.green",
-    description:
-      "Pests such as insects, mites, and diseases can significantly reduce fruit yield and quality in peach trees. They may feed on fruit, foliage, or other parts of the tree, causing damage that affects the tree's ability to produce healthy, marketable fruit.  Effective pest control is essential for maximizing fruit yield and quality and protecting tree health.",
+    description: SPRAY_DESCRIPTION,
     frequency: "2 Chances",
-    cost: "Coming Soon",
+    cost: `${fromWei(
+      SPRAY_PRICE[TARGET_NETWORK].toString()
+    )} BASE ETH or ${fromWei(
+      SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
+    )} $DEGEN per chance roll.`,
     isActive: false,
   },
 ];

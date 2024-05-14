@@ -47,7 +47,7 @@ export const PRUNE_PRICE_ERC20: Record<string, bigint> = {
 };
 
 export const FERT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0xEb8ED63d034b3235372028755CbeCb0CC978AdE1",
+  "0xaa36a7": "0xAd8cA82737779b12858b303563B4Ab61099e14b8",
   "0x2105": "0x70B0A88cB071B8258aeD255370e1e2F8F1725A93",
 };
 
@@ -78,17 +78,17 @@ export const FERT_DISCOUNT_ERC20_PRICE: Record<string, bigint> = {
 
 export const SPRAY_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
   "0xaa36a7": "0xe709a9C0412393C3C3a6906b052A57cf86b1Cc81",
-  "0x2105": "0x0",
+  "0x2105": "0x0E8bB0BA9413b39701Bf6F84A068511FdAd3d84D",
 };
 
 export const SPRAY_PRICE: Record<string, bigint> = {
   "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(11000000000000000),
 };
 
 export const SPRAY_PRICE_ERC20: Record<string, bigint> = {
   "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(0),
+  "0x2105": BigInt(2040000000000000000000),
 };
 
 export const SPRAYS_PER_TOKEN = 2;

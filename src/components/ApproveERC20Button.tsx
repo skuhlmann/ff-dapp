@@ -8,14 +8,16 @@ import { ERC20_PAYMENT_TOKEN, TARGET_NETWORK } from "../utils/constants";
 
 import erc20Abi from "../abis/ERC20.json";
 import { useEffect } from "react";
-import { maxUint104 } from "viem";
+// import { maxUint104 } from "viem";
 
 export const ApproveERC20 = ({
   refetch,
   spender,
+  amount,
 }: {
   refetch: () => void;
   spender: string;
+  amount: bigint;
 }) => {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -29,7 +31,7 @@ export const ApproveERC20 = ({
       address: ERC20_PAYMENT_TOKEN[TARGET_NETWORK] as `0x${string}`,
       abi: erc20Abi,
       functionName: "approve",
-      args: [spender, maxUint104],
+      args: [spender, amount],
     });
   };
 

@@ -70,7 +70,13 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
     args: [user?.wallet?.address as `0x${string}`],
   }) as { data: bigint };
 
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+  const {
+    data: hash,
+    error,
+    isPending,
+    writeContract,
+    reset: resetWriteState,
+  } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -89,6 +95,13 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
       refetch();
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      resetWriteState();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const handleConfirm = () => {
     onOpen();

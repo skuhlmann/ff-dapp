@@ -41,10 +41,8 @@ import { useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { SprayTreeERC20Button } from "./SprayTreeERC20Button";
-
-const SPRAY_SHORT_DESCRIPTION = "BUGS EVERYWHERE!";
-
-// TODO: fetch if a winner and display
+import { SPRAY_DESCRIPTION } from "./BoostContent";
+import { PiCheckFatFill } from "react-icons/pi";
 
 export const SprayTreeButton = ({
   tokenId,
@@ -53,18 +51,14 @@ export const SprayTreeButton = ({
   tokenId: string;
   canSpray?: boolean;
 }) => {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { chain } = useAccount();
   const { user } = usePrivy();
-  const { refetch } = useTreePoints({
+
+  const { refetch, sprays, sprayWins } = useTreePoints({
     tokenId: tokenId,
   });
-
-  // const { refetch, sprays, sprayWins } = useTreePoints({
-  //   tokenId: tokenId,
-  // });
 
   const queryClient = useQueryClient();
 
@@ -72,7 +66,13 @@ export const SprayTreeButton = ({
     address: user?.wallet?.address as `0x${string}`,
   });
 
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+  const {
+    data: hash,
+    error,
+    isPending,
+    writeContract,
+    reset: resetWriteState,
+  } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -92,9 +92,16 @@ export const SprayTreeButton = ({
     }
   }, [isConfirmed, queryClient, tokenId, refetch]);
 
-  // const handleConfirm = () => {
-  //   onOpen();
-  // };
+  useEffect(() => {
+    if (!isOpen) {
+      resetWriteState();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
+  const handleConfirm = () => {
+    onOpen();
+  };
 
   const hasBalance =
     SPRAY_PRICE[TARGET_NETWORK] < BigInt(result?.data?.value || 0);
@@ -140,18 +147,17 @@ export const SprayTreeButton = ({
         _hover={{
           bg: "transparent",
           color: "brand.green",
-          cursor: "not-allowed",
         }}
-        // onClick={handleConfirm}
-        opacity="30%"
+        onClick={handleConfirm}
       >
         <Image src={sprayIcon} w="44px" mr=".5rem" />
         SPRAY
+        {!canSpray && (
+          <Text ml=".25rem">
+            <PiCheckFatFill />
+          </Text>
+        )}
       </Button>
-
-      <Text fontSize="xs" color="brand.green" opacity="30%" mt="-0.5rem">
-        (Coming soon!)
-      </Text>
 
       <Modal
         isOpen={isOpen}
@@ -174,7 +180,7 @@ export const SprayTreeButton = ({
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm">{SPRAY_SHORT_DESCRIPTION}</Text>
+              <Text fontSize="sm">{SPRAY_DESCRIPTION}</Text>
 
               <Flex
                 direction="column"
@@ -243,11 +249,6 @@ export const SprayTreeButton = ({
                     <Text fontSize="sm" fontWeight="700" color="brand.blue">
                       Cost
                     </Text>
-                    <Heading size="md" color="brand.blue">
-                      {`${fromWei(
-                        SPRAY_PRICE_ERC20[TARGET_NETWORK].toString()
-                      )} `}
-                    </Heading>
 
                     <Heading size="md" color="brand.blue">
                       {`${fromWei(
@@ -277,7 +278,7 @@ export const SprayTreeButton = ({
               {isConfirming && (
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
-              {/* 
+
               {!isConfirming && (
                 <>
                   {sprays === 2 && (
@@ -285,6 +286,7 @@ export const SprayTreeButton = ({
                       {`You've sprayed 2 times and won ${Number(
                         sprayWins
                       )} peach box${Number(sprayWins) === 1 ? "" : "es"}`}
+                      . You are out of sprays.
                     </Heading>
                   )}
 
@@ -304,7 +306,7 @@ export const SprayTreeButton = ({
                     </Heading>
                   )}
                 </>
-              )} */}
+              )}
 
               {isConfirmed && (
                 <Heading size="md" width="100%" textAlign="center">
