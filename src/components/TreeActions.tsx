@@ -2,7 +2,6 @@ import { Image, Text, Flex, Button, Spinner } from "@chakra-ui/react";
 
 import pruneIcon from "../assets/icon_prune.png";
 import fertIcon from "../assets/icon_fert.png";
-import sprayIcon from "../assets/icon_spray.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
@@ -19,12 +18,6 @@ export const TreeActions = ({
   const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
-
-  // const { prune, watererdToday, fert, isFetched } = useTreePoints({
-  //   tokenId: tokenId,
-  // });
-
-  // const canSpray = false;
 
   if (!isFetched) return <Spinner color="brand.green" />;
 
@@ -72,40 +65,6 @@ export const TreeActions = ({
       )}
 
       <SprayTreeButton tokenId={tokenId} canSpray={canSpray} />
-      {/* {!canSpray && (
-        <>
-          <Button
-            opacity="30%"
-            variant="outline"
-            fontFamily="heading"
-            fontSize="xl"
-            fontStyle="italic"
-            fontWeight="700"
-            border="1px"
-            borderColor="brand.green"
-            borderRadius="200px;"
-            color="brand.green"
-            size="lg"
-            height="60px"
-            width="220px"
-            my=".5rem"
-            disabled={true}
-            _hover={{
-              bg: "transparent",
-              color: "brand.green",
-              cursor: "not-allowed",
-            }}
-          >
-            <Image src={sprayIcon} w="44px" mr=".5rem" />
-            SPRAY
-            {!canSpray && (
-              <Text ml=".25rem">
-                <PiCheckFatFill />
-              </Text>
-            )}
-          </Button>
-        </>
-      )} */}
 
       {!prune && <PruneTreeButton tokenId={tokenId} />}
       {prune && (
