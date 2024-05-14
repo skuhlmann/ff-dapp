@@ -33,6 +33,31 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "win",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "attempt",
+        "type": "uint256"
+      }
+    ],
+    "name": "Sprayed",
+    "type": "event"
+  },
+  {
     "inputs": [],
     "name": "attemptsPerToken",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
@@ -131,6 +156,34 @@
       { "internalType": "uint256", "name": "_newBoostEnd", "type": "uint256" }
     ],
     "name": "setBoostEnd",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_newBoostPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_newBoostPriceERC20",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_newFarmerCoopCut",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_newFarmerCoopCutERC20",
+        "type": "uint256"
+      }
+    ],
+    "name": "setPrices",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
