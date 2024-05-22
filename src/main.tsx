@@ -7,9 +7,8 @@ import { PrivyProvider } from "@privy-io/react-auth";
 import { WagmiProvider, createConfig } from "@privy-io/wagmi";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { Buffer } from "buffer/";
-// @ts-expect-error buffer
-window.Buffer = Buffer;
+// import { Buffer } from "buffer";
+// window.Buffer = Buffer;
 
 import { Routes } from "./Routes.tsx";
 // import { ALCHEMY_RPC, CHAIN_OBJ } from "./utils/constants.ts";

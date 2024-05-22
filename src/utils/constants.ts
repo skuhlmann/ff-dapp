@@ -7,6 +7,9 @@ export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
 
 export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
 
+export const RARIBLE_PREFIX = TARGET_NETWORK === "0x2105" ? "BASE" : "ETHEREUM";
+export const RARIBLE_STAGE = TARGET_NETWORK === "0x2105" ? "prod" : "testnet";
+
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"
     ? `https://base-mainnet.g.alchemy.com/v2/${
