@@ -9,8 +9,6 @@ export const PeachList = ({ account }: { account: string }) => {
     accountAddress: account,
   });
 
-  console.log("accountNfts", accountNfts);
-
   return (
     <Box mb="5rem">
       {isLoading && <Spinner />}

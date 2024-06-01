@@ -15,6 +15,8 @@ export type PeachNft = {
     image?: string;
     name: string;
     description?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    attributes?: { [key: string]: any }[];
   };
 };
 

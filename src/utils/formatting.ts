@@ -5,6 +5,7 @@ import {
   NFT_MINT_PRICE,
   TARGET_NETWORK,
 } from "./constants";
+import { PeachAttribute } from "./types";
 
 export type Noun = {
   singular: string;
@@ -47,4 +48,17 @@ export const blockExplorerNftLink = (tokenID: string) => {
   }
 
   return `${BLOCK_EXPLORER_URL[TARGET_NETWORK]}nft/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}/${tokenID}`;
+};
+
+export const fromBigNumber = (bigNumber: bigint): string => {
+  return bigNumber.toString();
+};
+
+export const getPeachStatus = (status: number): string => {
+  const stats: { [key: number]: string } = {
+    0: "Unopened",
+    1: "Unredeemed",
+    2: "Redeemed",
+  };
+  return stats[status];
 };

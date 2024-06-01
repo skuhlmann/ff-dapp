@@ -3,7 +3,7 @@ import { Box, Heading } from "@chakra-ui/react";
 
 import { NFT_CONTRACT_ADDRESS, TARGET_NETWORK } from "../utils/constants";
 import erc721Abi from "../abis/ERC721.json";
-import { fromBigNumber } from "../utils/formaters";
+import { fromBigNumber } from "../utils/formatting";
 
 export const RemainingTreeSupply = () => {
   const { data: totalSupply } = useReadContract({
