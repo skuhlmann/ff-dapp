@@ -1,16 +1,14 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
-import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
+import {
+  blockExplorerNftLink,
+  dhImagePath,
+  truncateAddress,
+} from "../utils/formatting";
 
-import { TreeActions } from "./TreeActions";
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { PeachActions } from "./PeachActions";
-
-const dhImagePath = (path?: string) => {
-  if (!path) return;
-  return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
-};
 
 export const PeachNftCard = ({
   peach,
@@ -19,7 +17,7 @@ export const PeachNftCard = ({
   peach: PeachNft;
   account: string;
 }) => {
-  const { peachStatus, tokenState } = usePeachStatus({
+  const { peachStatus, tokenState, img } = usePeachStatus({
     tokenId: peach.tokenID,
   });
 
@@ -45,7 +43,7 @@ export const PeachNftCard = ({
               {truncateAddress(peach.contractAddress)}
             </Link>
           </Flex>
-          <Image mb=".5rem" src={dhImagePath(peach.tokenMetadata?.image)} />
+          <Image mb=".5rem" src={img} />
           <Text fontSize="xs">{peach.tokenMetadata?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {peachStatus}
@@ -85,6 +83,7 @@ export const PeachNftCard = ({
           {tokenState !== undefined && (
             <PeachActions
               tokenId={peach.tokenID}
+              tokenImage={img}
               account={account}
               tokenState={tokenState}
             />

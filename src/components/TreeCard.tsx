@@ -1,16 +1,15 @@
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { TreeNft } from "../utils/types";
-import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
+import {
+  blockExplorerNftLink,
+  dhImagePath,
+  truncateAddress,
+} from "../utils/formatting";
 import { TreeStats } from "./TreeStats";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
 import { TreeActions } from "./TreeActions";
 import { useTreePoints } from "../hooks/useTreePoints";
-
-const dhImagePath = (path?: string) => {
-  if (!path) return;
-  return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
-};
 
 export const TreeCard = ({
   tree,

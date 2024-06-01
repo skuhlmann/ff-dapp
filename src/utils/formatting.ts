@@ -62,3 +62,12 @@ export const getPeachStatus = (status: number): string => {
   };
   return stats[status];
 };
+
+export const dhImagePath = (path?: string) => {
+  if (!path) return;
+  return `https://daohaus.mypinata.cloud/ipfs/${path.split("/ipfs/")[1]}`;
+};
+
+export const dhImagePathFromIpfs = (ipfsHash: string) => {
+  return `https://daohaus.mypinata.cloud/ipfs/${ipfsHash}`;
+};

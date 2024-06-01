@@ -3,12 +3,13 @@ import { createPublicClient, http } from "viem";
 
 import {
   CHAIN_OBJ,
+  PEACH_IMG_IPFS_HASH,
   PEACH_NFT_CONTRACT_ADDRESS,
   TARGET_NETWORK,
 } from "../utils/constants";
 import peachAbi from "../abis/PeachERC712.json";
 
-import { getPeachStatus } from "../utils/formatting";
+import { dhImagePathFromIpfs, getPeachStatus } from "../utils/formatting";
 
 const fetchPeachStatus = async ({
   tokenId,
@@ -33,11 +34,14 @@ const fetchPeachStatus = async ({
     args: [tokenId],
   })) as number;
 
-  console.log("tokenState", tokenState);
+  const imgIpfs = PEACH_IMG_IPFS_HASH[tokenState];
 
   return {
     tokenState,
     peachStatus: getPeachStatus(tokenState),
+    img: `${dhImagePathFromIpfs(imgIpfs)}${
+      Number(tokenState) > 0 ? `/${tokenId}.png` : ""
+    }`,
   };
 };
 

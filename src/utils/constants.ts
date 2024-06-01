@@ -101,6 +101,12 @@ export const PEACH_NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
   "0x2105": "0x0",
 };
 
+export const PEACH_IMG_IPFS_HASH: Record<number, string> = {
+  0: "QmWgYLkMeMhFdqMzZ6xZBHdP81dC6z36QpnYqYMbYGWVss",
+  1: "QmRxmnT5USZ32tvRMqwYfQAkfQVX6k751WdBkehzc1sKQN",
+  2: "QmZSNfqJ65Q4zxt7293u3JpFrdh984b2prYWBa4wZtwgp4",
+};
+
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
   "0xaa36a7": "https://sepolia.etherscan.io/",
   "0x2105": "https://basescan.org/",
