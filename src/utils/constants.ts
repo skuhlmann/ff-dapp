@@ -96,6 +96,11 @@ export const SPRAY_PRICE_ERC20: Record<string, bigint> = {
 
 export const SPRAYS_PER_TOKEN = 2;
 
+export const PEACH_NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
+  "0xaa36a7": "0xC0552Fd7131D8cC74b77dDaF8E43C006A31adCdA",
+  "0x2105": "0x0",
+};
+
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
   "0xaa36a7": "https://sepolia.etherscan.io/",
   "0x2105": "https://basescan.org/",

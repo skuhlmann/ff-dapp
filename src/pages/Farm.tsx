@@ -5,12 +5,56 @@ import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";
 import { Link } from "react-router-dom";
 import { BoostContent } from "../components/BoostContent";
+import { PeachList } from "../components/PeachList";
 
 function Farm() {
   const { ready, authenticated, user } = usePrivy();
 
   return (
     <>
+      <Flex
+        w="full"
+        border="none"
+        direction="row"
+        alignItems="center"
+        justifyContent="start"
+        mt={10}
+        mb={20}
+      >
+        <Divider
+          mt={4}
+          mr={4}
+          width="10vw"
+          borderTop="dotted 1px"
+          borderColor={"brand.white"}
+          borderBottom="none"
+          background="none"
+        />
+        <Text
+          fontFamily="auster"
+          color="brand.white"
+          fontSize="20px"
+          fontWeight="bold"
+        >
+          My peaches
+        </Text>
+        <Divider
+          mt={4}
+          ml={4}
+          flex="1"
+          borderTop="dotted 1px"
+          borderColor={"brand.white"}
+          borderBottom="none"
+          background="none"
+        />
+      </Flex>
+      <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
+        {ready && !authenticated && <LogIn />}
+
+        {ready && authenticated && user?.wallet?.address && (
+          <PeachList account={user.wallet.address} />
+        )}
+      </Flex>
       <Flex
         w="full"
         border="none"
@@ -48,10 +92,6 @@ function Farm() {
         />
       </Flex>
       <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
-        {!ready && null}
-
-        {ready && !authenticated && <LogIn />}
-
         {ready && authenticated && user?.wallet?.address && (
           <TreeList account={user.wallet.address} />
         )}
