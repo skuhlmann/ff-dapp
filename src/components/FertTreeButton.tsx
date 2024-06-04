@@ -49,7 +49,8 @@ import { FertTreeERC20Button } from "./FertTreeERC20Button";
 import { FERT_DESCRIPTION } from "./BoostContent";
 
 export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
 
   const { chain } = useAccount();
   const { user } = usePrivy();
@@ -103,9 +104,9 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  const handleConfirm = () => {
-    onOpen();
-  };
+  // const handleConfirm = () => {
+  //   onOpen();
+  // };
 
   const hasDiscount = discountBalance > 0;
   const ethBuyPrice = hasDiscount
@@ -153,12 +154,13 @@ export const FertTreeButton = ({ tokenId }: { tokenId: string }) => {
         height="60px"
         width="220px"
         my=".5rem"
-        disabled={false}
+        disabled={true}
+        opacity="30%"
         _hover={{
           bg: "transparent",
           color: "brand.orange",
         }}
-        onClick={handleConfirm}
+        // onClick={handleConfirm}
       >
         <Image src={fertIcon} w="44px" mr=".5rem" />
         FERTILIZE

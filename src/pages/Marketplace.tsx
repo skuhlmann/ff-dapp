@@ -32,6 +32,7 @@ function Marketplace() {
         amount: 1,
         currency: toCurrencyId("ETHEREUM:native"),
         price: "0.01",
+        // payouts
       });
 
       console.log(`Successfully listed. Order ID: ${orderId}`);
