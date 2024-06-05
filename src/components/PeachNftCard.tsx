@@ -17,7 +17,7 @@ export const PeachNftCard = ({
   peach: PeachNft;
   account: string;
 }) => {
-  const { peachStatus, tokenState, img } = usePeachStatus({
+  const { peachStatus, tokenState, img, orders } = usePeachStatus({
     tokenId: peach.tokenID,
   });
 

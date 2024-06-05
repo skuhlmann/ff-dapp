@@ -63,9 +63,9 @@ export const Footer = () => {
               Home
             </Heading>
           </RouterLink>
-          <RouterLink to="/buy-trees">
+          <RouterLink to="/market">
             <Heading color="brand.black" size="md">
-              Buy Trees
+              Buy Peaches
             </Heading>
           </RouterLink>
           <RouterLink to="/farm">

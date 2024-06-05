@@ -126,7 +126,7 @@ function Farm() {
       <Flex w="100%" pt={8} pb={20} px={20} justify="flex-end">
         <Button
           as={Link}
-          to="/buy-trees"
+          to="/market"
           variant="outline"
           fontFamily="heading"
           fontSize="xl"
@@ -142,7 +142,7 @@ function Farm() {
           my="1rem"
           _hover={{ bg: "transparent", color: "brand.white" }}
         >
-          BUY TREES
+          BUY PEACHES
         </Button>
       </Flex>
     </>

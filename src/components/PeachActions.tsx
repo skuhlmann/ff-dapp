@@ -1,5 +1,8 @@
 import { Flex, Button, Text } from "@chakra-ui/react";
 import { UnboxButton } from "./UnboxButton";
+import { usePeachStatus } from "../hooks/usePeachStatus";
+import { ListPeachButton } from "./ListPeachButtton";
+import { UnListPeachButton } from "./UnListPeachButtton";
 
 export const PeachActions = ({
   tokenId,
@@ -12,69 +15,18 @@ export const PeachActions = ({
   account: string;
   tokenState: number;
 }) => {
-  console.log(tokenId, account);
-  // marketplace data
-  // if (!isFetched) return <Spinner color="brand.green" />;
+  const { orders } = usePeachStatus({
+    tokenId,
+  });
 
-  const isListed = true;
-  const isRedeemed = tokenState === 2;
+  const isListed = orders && orders.length > 0;
 
   return (
     <Flex direction="column" align="center">
-      {!isListed && (
-        <Button
-          variant="outline"
-          fontFamily="heading"
-          fontSize="xl"
-          fontStyle="italic"
-          fontWeight="700"
-          border="1px"
-          borderColor="brand.green"
-          borderRadius="200px;"
-          color="brand.green"
-          size="lg"
-          height="60px"
-          width="220px"
-          my=".5rem"
-          disabled={isRedeemed}
-          opacity={isRedeemed ? "30%" : "100%"}
-          _hover={{
-            bg: "transparent",
-            color: "brand.green",
-            cursor: isRedeemed && "not-allowed",
-          }}
-        >
-          LIST FOR SALE
-        </Button>
-      )}
+      {!isListed && <ListPeachButton tokenId={tokenId} />}
 
       {isListed && (
-        <>
-          <Button
-            variant="outline"
-            fontFamily="heading"
-            fontSize="xl"
-            fontStyle="italic"
-            fontWeight="700"
-            border="1px"
-            borderColor="brand.green"
-            borderRadius="200px;"
-            color="brand.green"
-            size="lg"
-            height="60px"
-            width="220px"
-            my=".5rem"
-            disabled={isRedeemed}
-            opacity={isRedeemed ? "30%" : "100%"}
-            _hover={{
-              bg: "transparent",
-              color: "brand.green",
-              cursor: isRedeemed && "not-allowed",
-            }}
-          >
-            UNLIST
-          </Button>
-        </>
+        <UnListPeachButton tokenId={tokenId} orderId={orders[0].id} />
       )}
 
       {tokenState === 0 && (
