@@ -31,29 +31,6 @@ export const PeachActions = ({
 
       {tokenState === 0 && (
         <>
-          {/* <Button
-            variant="outline"
-            fontFamily="heading"
-            fontSize="xl"
-            fontStyle="italic"
-            fontWeight="700"
-            border="1px"
-            borderColor="brand.orange"
-            borderRadius="200px;"
-            color="brand.orange"
-            size="lg"
-            height="60px"
-            width="220px"
-            my=".5rem"
-            disabled={true}
-            _hover={{
-              bg: "transparent",
-              color: "brand.orange",
-              // cursor: "not-allowed",
-            }}
-          >
-            UNBOX
-          </Button> */}
           <UnboxButton
             tokenId={tokenId}
             tokenImage={tokenImage}

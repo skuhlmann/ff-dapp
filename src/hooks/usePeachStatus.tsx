@@ -53,9 +53,6 @@ const fetchPeachStatus = async ({
     status: ["ACTIVE"],
   });
 
-  // todo: filter by active
-  console.log("orders", orders);
-
   return {
     tokenState,
     peachStatus: getPeachStatus(tokenState),

@@ -14,6 +14,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Select,
   Spinner,
   Text,
   useDisclosure,
@@ -21,6 +22,7 @@ import {
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
+  ERC20_PAYMENT_TOKEN,
   PEACH_NFT_CONTRACT_ADDRESS,
   RARIBLE_PREFIX,
   RARIBLE_STAGE,
@@ -41,6 +43,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
 
   const [price, setPrice] = useState(0);
+  const [currency, setCurrency] = useState("ETH");
 
   const queryClient = useQueryClient();
 
@@ -58,6 +61,9 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
 
   // @ts-expect-error react types
   const handleChange = (event) => setPrice(event.target.value);
+
+  // @ts-expect-error react types
+  const handleCurrencyChange = (event) => setCurrency(event.target.value);
 
   const handleConfirm = () => {
     onOpen();
@@ -84,10 +90,16 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
 
       const contractAddress = PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
 
+      const currencyId = `${RARIBLE_PREFIX}:${
+        currency === "$DEGEN" ? ERC20_PAYMENT_TOKEN[TARGET_NETWORK] : "native"
+      }`;
+
+      console.log("currencyId", currencyId);
+
       const orderId = await sdk.order.sell({
         itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`),
         amount: 1,
-        currency: toCurrencyId("ETHEREUM:native"),
+        currency: toCurrencyId(currencyId),
         price: price,
         // payouts
       });
@@ -113,16 +125,16 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         fontStyle="italic"
         fontWeight="700"
         border="1px"
-        borderColor="brand.orange"
+        borderColor="brand.green"
         borderRadius="200px;"
-        color="brand.orange"
+        color="brand.green"
         size="lg"
         height="60px"
         width="220px"
         my=".5rem"
         _hover={{
           bg: "transparent",
-          color: "brand.orange",
+          color: "brand.green",
         }}
         onClick={handleConfirm}
       >
@@ -170,8 +182,17 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
                     value={price}
                     onChange={handleChange}
                   />
-                  <InputRightAddon background="brand.black">
-                    ETH
+                  <InputRightAddon background="brand.green">
+                    <Select
+                      variant="unstyled"
+                      value={currency}
+                      background="brand.green"
+                      color="black"
+                      onChange={handleCurrencyChange}
+                    >
+                      <option value="ETH">ETH</option>
+                      <option value="$DEGEN">$DEGEN</option>
+                    </Select>
                   </InputRightAddon>
                 </InputGroup>
               </Flex>
@@ -186,7 +207,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
                   border="1px"
                   borderColor="brand.green"
                   borderRadius="200px"
-                  color="brand.orange"
+                  color="brand.green"
                   size="lg"
                   height="60px"
                   width="260px"

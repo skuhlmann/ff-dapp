@@ -1,11 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
-import {
-  blockExplorerNftLink,
-  dhImagePath,
-  truncateAddress,
-} from "../utils/formatting";
+import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { PeachActions } from "./PeachActions";
@@ -21,8 +17,9 @@ export const PeachNftCard = ({
     tokenId: peach.tokenID,
   });
 
-  const isListed = true;
-  const listPrice = "10000 $DEGEN";
+  console.log("orders", orders);
+
+  const isListed = orders && orders.length > 0;
 
   return (
     <Flex direction="column" align="center" gap="1rem">
@@ -60,7 +57,7 @@ export const PeachNftCard = ({
                   textDecoration: "underline",
                 }}
               >
-                Listed for {listPrice}
+                {`Listed for ${orders[0].take.value} ${orders[0].take.type["@type"]}`}
               </Text>
             </RouterLink>
           )}
@@ -75,7 +72,7 @@ export const PeachNftCard = ({
                   textDecoration: "underline",
                 }}
               >
-                View Listings on Marketplace
+                View Other Listings in the Farmer's Market
               </Text>
             </RouterLink>
           )}
