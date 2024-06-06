@@ -1,102 +1,123 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Divider, Flex, Heading, Select, Text } from "@chakra-ui/react";
 import { usePeachCollection } from "../hooks/usePeachCollection";
-import { useWallets } from "@privy-io/react-auth";
-import { createRaribleSdk } from "@rarible/sdk";
-import {
-  NFT_CONTRACT_ADDRESS,
-  RARIBLE_PREFIX,
-  RARIBLE_STAGE,
-  TARGET_NETWORK,
-} from "../utils/constants";
-import { toCurrencyId, toItemId, toOrderId } from "@rarible/types";
+import type { Item } from "@rarible/api-client";
+import { ListingList } from "../components/ListingList";
 
 function Marketplace() {
-  const { collection } = usePeachCollection();
+  const { items } = usePeachCollection();
 
-  const { wallets } = useWallets();
+  const [sort, setSort] = useState("new");
+  const [itemList, setItemList] = useState<Item[] | undefined>();
 
-  const handleList = async () => {
-    try {
-      const wallet = wallets[0];
-      const provider = await wallet.getEthersProvider();
-      const signer = provider.getSigner();
-
-      const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+  useEffect(() => {
+    if (items) {
+      const filtered = items.items.filter((item: Item) => {
+        return !!item.bestSellOrder;
       });
 
-      const contractAddress = NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
-
-      const orderId = await sdk.order.sell({
-        itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:8`),
-        amount: 1,
-        currency: toCurrencyId("ETHEREUM:native"),
-        price: "0.01",
-        // payouts
-      });
-
-      console.log(`Successfully listed. Order ID: ${orderId}`);
-    } catch (err) {
-      console.log("err", err);
+      if (sort === "low") {
+        setItemList(
+          filtered.sort((a, b) => {
+            return (
+              Number(a.bestSellOrder?.makePriceUsd || 0) -
+              Number(b.bestSellOrder?.makePriceUsd || 0)
+            );
+          })
+        );
+      } else if (sort === "high") {
+        setItemList(
+          filtered.sort((a, b) => {
+            return (
+              Number(b.bestSellOrder?.makePriceUsd || 0) -
+              Number(a.bestSellOrder?.makePriceUsd || 0)
+            );
+          })
+        );
+      } else {
+        setItemList(filtered);
+      }
     }
-  };
+  }, [sort, items]);
 
-  const handleUpdate = async () => {
-    try {
-      const wallet = wallets[0];
-      const provider = await wallet.getEthersProvider();
-      const signer = provider.getSigner();
-
-      const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
-      });
-
-      const update = await sdk.order.sellUpdate({
-        orderId: toOrderId(
-          `ETHEREUM:0x25794ea731a7e8d17bbdc870e20efe59eb448363a2bf7d4b7617745fcebed89e`
-        ),
-        price: "0.001",
-      });
-
-      console.log("update", update);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
-
-  const handleCancel = async () => {
-    try {
-      const wallet = wallets[0];
-      const provider = await wallet.getEthersProvider();
-      const signer = provider.getSigner();
-
-      const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
-      });
-
-      const cancel = await sdk.order.cancel({
-        orderId: toOrderId(
-          `ETHEREUM:0x25794ea731a7e8d17bbdc870e20efe59eb448363a2bf7d4b7617745fcebed89e`
-        ),
-      });
-
-      //returns a hash - could wagmi await this
-      console.log("cancel", cancel);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  // @ts-expect-error react types
+  const handleSortChange = (event) => setSort(event.target.value);
 
   return (
     <>
       <Box w="100%" textAlign="center" my="3rem">
-        <Heading size="3xl">Marketplace</Heading>
-
-        <Button onClick={handleList}>List NFT</Button>
-        <Button onClick={handleUpdate}>Update</Button>
-
-        <Button onClick={handleCancel}>Cancel</Button>
+        <Heading size="3xl">Farmer's Market</Heading>
       </Box>
+      <Flex
+        w="full"
+        border="none"
+        direction="row"
+        alignItems="center"
+        justifyContent="start"
+        mt={10}
+      >
+        <Divider
+          mt={4}
+          mr={4}
+          width="10vw"
+          borderTop="dotted 1px"
+          borderColor={"brand.white"}
+          borderBottom="none"
+          background="none"
+        />
+        <Text
+          fontFamily="auster"
+          color="brand.white"
+          fontSize="20px"
+          fontWeight="bold"
+        >
+          Peach Boxes for Sale
+        </Text>
+        <Divider
+          mt={4}
+          ml={4}
+          flex="1"
+          borderTop="dotted 1px"
+          borderColor={"brand.white"}
+          borderBottom="none"
+          background="none"
+        />
+      </Flex>
+      <Flex mt={5} ml={3} mb={8}>
+        <Box width="10vw" />
+        <Box width="17vw">
+          <Select
+            color="brand.orange"
+            borderBottomStyle="none"
+            variant="unstyled"
+            value={sort}
+            onChange={handleSortChange}
+          >
+            <option value="new">Newest</option>
+            <option value="low">Price (Low to High)</option>
+            <option value="high">Price (High to Low)</option>
+          </Select>
+        </Box>
+        {/* <Box ml={4} mr={4} width={{ base: "80%", lg: "20vw" }}>
+          <InputGroup>
+            <InputLeftElement pointerEvents="none">
+              <MdOutlineSearch color="gray.300" />
+            </InputLeftElement>
+            <Input />
+          </InputGroup>
+        </Box> */}
+      </Flex>
+
+      <Flex
+        w="100%"
+        gap="1rem"
+        direction="column"
+        align="center"
+        justify="center"
+        mb="3rem"
+      >
+        {itemList && <ListingList listings={itemList} />}
+      </Flex>
     </>
   );
 }

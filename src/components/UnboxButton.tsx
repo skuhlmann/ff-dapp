@@ -97,7 +97,7 @@ export const UnboxButton = ({
         size="lg"
         height="60px"
         width="220px"
-        my="1rem"
+        my=".5rem"
         isDisabled={isDisabled}
         _hover={{
           bg: "transparent",
