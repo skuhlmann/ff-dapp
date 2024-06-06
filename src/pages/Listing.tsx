@@ -34,7 +34,7 @@ function Listing() {
           fontSize="20px"
           fontWeight="bold"
         >
-          Peach Box for Sale
+          Peach Sale
         </Text>
         <Divider
           mt={4}

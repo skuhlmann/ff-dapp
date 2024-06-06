@@ -1,11 +1,13 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
+
 import type { Item } from "@rarible/api-client";
 
 import { truncateAddress } from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
-import { PeachActions } from "./PeachActions";
+// import { PeachActions } from "./PeachActions";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
 
@@ -16,7 +18,7 @@ export const ListingCard = ({
   peach: Item;
   tokenId: string;
 }) => {
-  const { peachStatus, tokenState, img, orders } = usePeachStatus({
+  const { peachStatus, img, orders } = usePeachStatus({
     tokenId,
   });
 
@@ -61,12 +63,20 @@ export const ListingCard = ({
               </Heading>
 
               {peachStatus !== "redeemed" && (
-                <Flex align="end" gap=".5rem">
-                  <Heading size="sm" color="brand.orange">
-                    Redeemable for 1 X
-                  </Heading>
-                  <Image src={peachAvatar} w="32px" />
-                </Flex>
+                <>
+                  <Flex align="end" gap=".5rem">
+                    <Heading size="sm" color="brand.orange">
+                      Redeemable for 1 box of
+                    </Heading>
+                    <Image src={peachAvatar} w="32px" />
+                  </Flex>
+                  <Text fontSize="xs" lineHeight="1" mt="0.5rem" width="220px">
+                    <i>
+                      * Fresh peach shipping limited to continental US. Freeze
+                      dried peaches or equivalent outside of US{" "}
+                    </i>
+                  </Text>
+                </>
               )}
             </>
           )}

@@ -71,7 +71,7 @@ function Marketplace() {
           fontSize="20px"
           fontWeight="bold"
         >
-          Peach Boxes for Sale
+          Peach Sale
         </Text>
         <Divider
           mt={4}
