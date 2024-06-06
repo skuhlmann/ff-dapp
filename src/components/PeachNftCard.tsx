@@ -1,7 +1,10 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
-import { blockExplorerNftLink, truncateAddress } from "../utils/formatting";
+import {
+  blockExplorerPeachNftLink,
+  truncateAddress,
+} from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { PeachActions } from "./PeachActions";
@@ -17,8 +20,6 @@ export const PeachNftCard = ({
     tokenId: peach.tokenID,
   });
 
-  console.log("orders", orders);
-
   const isListed = orders && orders.length > 0;
 
   return (
@@ -32,12 +33,12 @@ export const PeachNftCard = ({
         <Flex direction="column" align="center">
           <Flex w="100%" justify="flex-start" mb="1rem">
             <Link
-              href={blockExplorerNftLink(peach.tokenID)}
+              href={blockExplorerPeachNftLink(peach.tokenID)}
               isExternal
               fontSize="xs"
               color="brand.orange"
             >
-              {truncateAddress(peach.contractAddress)}
+              {`${truncateAddress(peach.contractAddress)}/${peach.tokenID}`}
             </Link>
           </Flex>
           <Image mb=".5rem" src={img} />

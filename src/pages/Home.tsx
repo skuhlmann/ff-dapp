@@ -149,7 +149,7 @@ function Home() {
               <Box w="full" position="relative" mt="12px">
                 <Button
                   as={Link}
-                  to="/buy-trees"
+                  to="/market"
                   variant="outline"
                   fontFamily="Helsinki"
                   fontSize="2xl"
@@ -173,7 +173,7 @@ function Home() {
                   zIndex="2"
                   transform="translate(0px, -12px)"
                 >
-                  GET STARTED
+                  GET PEACHES
                 </Button>
                 <Box
                   w="full"

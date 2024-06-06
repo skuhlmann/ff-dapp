@@ -38,7 +38,7 @@ export const TreeCard = ({
                 fontSize="xs"
                 color="brand.orange"
               >
-                {truncateAddress(tree.contractAddress)}
+                {`${truncateAddress(tree.contractAddress)}/${tree.tokenID}`}
               </Link>
             </Flex>
             <Image mb=".5rem" src={dhImagePath(tree.tokenMetadata?.image)} />

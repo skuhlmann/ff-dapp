@@ -48,7 +48,14 @@ function Farm() {
           background="none"
         />
       </Flex>
-      <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
+      <Flex
+        w="100%"
+        gap="1rem"
+        direction="column"
+        align="center"
+        mb="3rem"
+        justify="center"
+      >
         {ready && !authenticated && <LogIn />}
 
         {ready && authenticated && user?.wallet?.address && (
@@ -91,7 +98,14 @@ function Farm() {
           background="none"
         />
       </Flex>
-      <Flex w="100%" gap="1rem" direction="column" align="center" mb="3rem">
+      <Flex
+        w="100%"
+        gap="1rem"
+        direction="column"
+        align="center"
+        justify="center"
+        mb="3rem"
+      >
         {ready && authenticated && user?.wallet?.address && (
           <TreeList account={user.wallet.address} />
         )}

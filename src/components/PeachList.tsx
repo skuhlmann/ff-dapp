@@ -19,6 +19,7 @@ export const PeachList = ({ account }: { account: string }) => {
           wrap="wrap"
           direction={{ base: "column", md: "row" }}
           align="center"
+          justify="center"
         >
           {accountNfts.balances.map((token: PeachNft) => {
             return (
