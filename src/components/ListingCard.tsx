@@ -10,6 +10,7 @@ import { usePeachStatus } from "../hooks/usePeachStatus";
 // import { PeachActions } from "./PeachActions";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
+import { BuyPeachButton } from "./BuyPeachButtton";
 
 export const ListingCard = ({
   peach,
@@ -76,6 +77,14 @@ export const ListingCard = ({
                       dried peaches or equivalent outside of US{" "}
                     </i>
                   </Text>
+
+                  <Box my="1rem">
+                    <BuyPeachButton
+                      tokenId={tokenId}
+                      orderId={orders[0].id}
+                      price={`${orders[0].take.value} ${orders[0].take.type["@type"]}`}
+                    />
+                  </Box>
                 </>
               )}
             </>

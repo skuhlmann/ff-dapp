@@ -91,7 +91,9 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
       const contractAddress = PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
 
       const currencyId = `${RARIBLE_PREFIX}:${
-        currency === "$DEGEN" ? ERC20_PAYMENT_TOKEN[TARGET_NETWORK] : "native"
+        currency === "$DEGEN"
+          ? ERC20_PAYMENT_TOKEN[TARGET_NETWORK]
+          : "0x0000000000000000000000000000000000000000"
       }`;
 
       console.log("currencyId", currencyId);
@@ -106,12 +108,13 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
 
       console.log(`Successfully listed. Order ID: ${orderId}`);
 
-      setIsListing(true);
+      setIsListing(false);
       if (orderId) {
         setIsConfirmed(true);
       }
     } catch (err) {
       console.log("err", err);
+      setIsListing(false);
       setIsError(true);
     }
   };
@@ -162,7 +165,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
               gap="1rem"
             >
               <Text fontSize="sm">
-                Put this peach box up for sale in the farmer's market.
+                Put this peach NFT up for sale in the farmer's market.
               </Text>
               <Image src={peachAvatar} w="32px" />
 
@@ -223,13 +226,13 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
                 </Button>
               )}
 
-              {isListing && (
+              {isListing && !isConfirmed && (
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
 
               {isConfirmed && (
                 <>
-                  <Heading size="md">Your Peach Box has been Listed</Heading>
+                  <Heading size="md">Your Peach NFT has been Listed</Heading>
                   <Link
                     color="brand.orange"
                     style={{ textDecoration: "underline" }}
@@ -242,7 +245,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
 
               {isError && (
                 <Text fontSize="sm" color="brand.red">
-                  Error Listing Peach Box
+                  Error Listing Peach NFT
                 </Text>
               )}
             </Flex>

@@ -25,12 +25,14 @@ import { createRaribleSdk } from "@rarible/sdk";
 import { toOrderId } from "@rarible/types";
 import { useWaitForTransactionReceipt } from "wagmi";
 
-export const UnListPeachButton = ({
+export const BuyPeachButton = ({
   tokenId,
   orderId,
+  price,
 }: {
   tokenId: string;
   orderId: string;
+  price: string;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { wallets } = useWallets();
@@ -63,7 +65,7 @@ export const UnListPeachButton = ({
     onOpen();
   };
 
-  const handleUnList = async () => {
+  const handleBuy = async () => {
     console.log("orderId", orderId);
     try {
       setIsListing(true);
@@ -75,13 +77,14 @@ export const UnListPeachButton = ({
         apiKey: import.meta.env.VITE_RARIBLE_KEY,
       });
 
-      const cancelled = await sdk.order.cancel({
+      const tx = await sdk.order.buy({
         orderId: toOrderId(orderId),
+        amount: 1,
       });
 
-      console.log("cancelled", cancelled);
+      console.log("tx", tx);
 
-      setHash(cancelled.transaction.tx.hash);
+      setHash(tx.transaction.tx.hash);
       setIsListing(false);
     } catch (err) {
       console.log("err", err);
@@ -101,20 +104,20 @@ export const UnListPeachButton = ({
         fontStyle="italic"
         fontWeight="700"
         border="1px"
-        borderColor="brand.orange"
+        borderColor="brand.blue"
         borderRadius="200px;"
-        color="brand.orange"
+        color="brand.blue"
         size="lg"
         height="60px"
         width="220px"
         my=".5rem"
         _hover={{
           bg: "transparent",
-          color: "brand.orange",
+          color: "brand.blue",
         }}
         onClick={handleConfirm}
       >
-        UNLIST
+        BUY
       </Button>
       <Modal
         isOpen={isOpen}
@@ -137,9 +140,8 @@ export const UnListPeachButton = ({
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="sm" textAlign="center">
-                Remove this Peach NFT from the Farmer's Market. You can put it
-                back on sale anytime.
+              <Text fontSize="lg" fontWeight={700} textAlign="center">
+                Buy this Peach NFT for {price}
               </Text>
               <Image src={peachAvatar} w="32px" />
 
@@ -151,9 +153,9 @@ export const UnListPeachButton = ({
                   fontStyle="italic"
                   fontWeight="700"
                   border="1px"
-                  borderColor="brand.orange"
+                  borderColor="brand.blue"
                   borderRadius="200px;"
-                  color="brand.orange"
+                  color="brand.blue"
                   size="lg"
                   height="60px"
                   width="220px"
@@ -162,34 +164,35 @@ export const UnListPeachButton = ({
                   opacity={isDisabled ? "30%" : "100%"}
                   _hover={{
                     bg: "transparent",
-                    color: "brand.orange",
+                    color: "brand.blue",
                   }}
-                  onClick={handleUnList}
+                  onClick={handleBuy}
                 >
-                  UNLIST
+                  BUY
                 </Button>
               )}
 
-              {isProcessing && (
-                <Spinner size="xl" color="brand.green" thickness="8px" />
-              )}
+              {isListing ||
+                (isProcessing && (
+                  <Spinner size="xl" color="brand.green" thickness="8px" />
+                ))}
 
               {isConfirmed && (
                 <>
-                  <Heading size="md">Your Peach NFT has been Unlisted</Heading>
+                  <Heading size="md">You got the Peach!</Heading>
                   <Link
                     color="brand.orange"
                     style={{ textDecoration: "underline" }}
-                    to="/market"
+                    to="/farm"
                   >
-                    Farmer's Market
+                    Your Farm
                   </Link>
                 </>
               )}
 
               {isError && (
                 <Text fontSize="sm" color="brand.red">
-                  Error Listing Peach NFT
+                  Error Buying Peach
                 </Text>
               )}
             </Flex>
