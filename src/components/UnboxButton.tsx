@@ -20,16 +20,20 @@ import {
   type BaseError,
   useAccount,
 } from "wagmi";
+import { createRaribleSdk } from "@rarible/sdk";
 
 import peachNftAbi from "../abis/PeachERC712.json";
 import {
   BLOCK_EXPLORER_URL,
   PEACH_NFT_CONTRACT_ADDRESS,
+  RARIBLE_PREFIX,
+  RARIBLE_STAGE,
   TARGET_NETWORK,
 } from "../utils/constants";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { dhImagePath } from "../utils/formatting";
+import { toItemId } from "@rarible/types";
 
 // refetch and invalidate
 
@@ -62,6 +66,18 @@ export const UnboxButton = ({
       await queryClient.invalidateQueries({
         queryKey: [`accountPeaches-${account}`],
       });
+
+      const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
+        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+      });
+
+      const refreshRes = await sdk.apis.item.resetItemMeta({
+        itemId: toItemId(
+          `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`
+        ),
+      });
+
+      console.log("refreshRes", refreshRes);
     };
     if (isConfirmed) {
       console.log("INVALIDATING/REFETCH");

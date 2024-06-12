@@ -1,6 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
 
 import type { Item } from "@rarible/api-client";
 
@@ -62,6 +61,11 @@ export const ListingCard = ({
               >
                 {`${orders[0].take.value} ${orders[0].take.type["@type"]}`}
               </Heading>
+              {orders[0].makePriceUsd && (
+                <Text color="brand.green" mt="-1rem" fontSize="xs">{`${Number(
+                  orders[0].makePriceUsd
+                ).toFixed(2)} USD`}</Text>
+              )}
 
               {peachStatus !== "redeemed" && (
                 <>

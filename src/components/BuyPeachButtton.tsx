@@ -94,6 +94,7 @@ export const BuyPeachButton = ({
   };
 
   const isDisabled = isProcessing || isConfirmed;
+  const isLoading = isProcessing || isListing;
 
   return (
     <>
@@ -172,10 +173,9 @@ export const BuyPeachButton = ({
                 </Button>
               )}
 
-              {isListing ||
-                (isProcessing && (
-                  <Spinner size="xl" color="brand.green" thickness="8px" />
-                ))}
+              {isLoading && (
+                <Spinner size="xl" color="brand.green" thickness="8px" />
+              )}
 
               {isConfirmed && (
                 <>

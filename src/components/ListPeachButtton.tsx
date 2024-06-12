@@ -103,7 +103,6 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         amount: 1,
         currency: toCurrencyId(currencyId),
         price: price,
-        // payouts
       });
 
       console.log(`Successfully listed. Order ID: ${orderId}`);

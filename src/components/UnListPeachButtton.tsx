@@ -91,6 +91,7 @@ export const UnListPeachButton = ({
   };
 
   const isDisabled = isProcessing || isConfirmed;
+  const isLoading = isProcessing || isListing;
 
   return (
     <>
@@ -170,7 +171,7 @@ export const UnListPeachButton = ({
                 </Button>
               )}
 
-              {isProcessing && (
+              {isLoading && (
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
 

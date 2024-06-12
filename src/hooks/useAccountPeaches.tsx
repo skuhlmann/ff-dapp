@@ -5,7 +5,6 @@ import {
   SEQUENCE_ENDPOINT,
   TARGET_NETWORK,
 } from "../utils/constants";
-import { PeachNft } from "../utils/types";
 
 const fetchNftsForAccount = async ({
   accountAddress,

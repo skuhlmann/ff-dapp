@@ -43,8 +43,6 @@ const fetchPeachStatus = async ({
     apiKey: import.meta.env.VITE_RARIBLE_KEY,
   });
 
-  console.log("tokenState", tokenState);
-
   // ETHEREUM:${token}:${tokenId}
   // BASE:${token}:${tokenId}
   const orders = await sdk.apis.order.getSellOrdersByItem({
