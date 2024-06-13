@@ -6,7 +6,6 @@ import {
   PEACH_NFT_CONTRACT_ADDRESS,
   TARGET_NETWORK,
 } from "./constants";
-import { PeachAttribute } from "./types";
 
 export type Noun = {
   singular: string;
