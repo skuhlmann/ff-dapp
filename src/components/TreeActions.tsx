@@ -138,7 +138,7 @@ export const TreeActions = ({
       <Text
         fontSize="xs"
         color="brand.green"
-        opacity="30%"
+        opacity="100%"
         mt="-0.5rem"
         textAlign="center"
       >
