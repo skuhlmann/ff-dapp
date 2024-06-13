@@ -66,36 +66,38 @@ export const TreeActions = ({
 
       {/* <SprayTreeButton tokenId={tokenId} canSpray={canSpray} /> */}
 
-      <Button
-        opacity="30%"
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
-        fontWeight="700"
-        border="1px"
-        borderColor="brand.green"
-        borderRadius="200px;"
-        color="brand.green"
-        size="lg"
-        height="60px"
-        width="220px"
-        my=".5rem"
-        disabled={true}
-        _hover={{
-          bg: "transparent",
-          color: "brand.green",
-          cursor: "not-allowed",
-        }}
-      >
-        <Image src={sprayIcon} w="44px" mr=".5rem" />
-        SPRAY
-        {!canSpray && (
-          <Text ml=".25rem">
-            <PiCheckFatFill />
-          </Text>
-        )}
-      </Button>
+      <>
+        <Button
+          opacity="30%"
+          variant="outline"
+          fontFamily="heading"
+          fontSize="xl"
+          fontStyle="italic"
+          fontWeight="700"
+          border="1px"
+          borderColor="brand.green"
+          borderRadius="200px;"
+          color="brand.green"
+          size="lg"
+          height="60px"
+          width="220px"
+          my=".5rem"
+          disabled={true}
+          _hover={{
+            bg: "transparent",
+            color: "brand.green",
+            cursor: "not-allowed",
+          }}
+        >
+          <Image src={sprayIcon} w="44px" mr=".5rem" />
+          SPRAY
+          {!canSpray && (
+            <Text ml=".25rem">
+              <PiCheckFatFill />
+            </Text>
+          )}
+        </Button>
+      </>
 
       {!prune && <PruneTreeButton tokenId={tokenId} />}
       {prune && (

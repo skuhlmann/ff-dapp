@@ -27,14 +27,14 @@ export const HomeSectionTwo = () => {
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">2.</Heading>
           <LabelBadge
-            bg="brand.green"
+            bg="brand.red"
             color="brand.black"
             size="md"
             style={{
               lineHeight: "1.75",
             }}
           >
-            • Available now •
+            • Boost Sales Closed •
           </LabelBadge>
         </Flex>
         <Text

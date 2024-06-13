@@ -10,7 +10,7 @@ function Leaderboard() {
       <Box w="100%" textAlign="center" my="3rem">
         <Heading size="3xl">Leaderboard - Top 10</Heading>
         <Text fontSize="20px" mt="0.5rem">
-          <Text>Updated Daily</Text>
+          Updated Daily
         </Text>
       </Box>
 

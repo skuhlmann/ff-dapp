@@ -7,8 +7,8 @@ import { PrivyProvider } from "@privy-io/react-auth";
 import { WagmiProvider, createConfig } from "@privy-io/wagmi";
 import { ChakraProvider } from "@chakra-ui/react";
 
-// import { Buffer } from "buffer/";
-// window.Buffer = Buffer;
+
+// import { Buffer } from "buffer";
 
 import { Routes } from "./Routes.tsx";
 // import { ALCHEMY_RPC, CHAIN_OBJ } from "./utils/constants.ts";
@@ -55,6 +55,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             },
             embeddedWallets: {
               createOnLogin: "users-without-wallets", // or 'all-users'
+            },
+            externalWallets: {
+              coinbaseWallet: {
+                // Valid connection options include 'eoaOnly' (default), 'smartWalletOnly', or 'all'
+                connectionOptions: "eoaOnly",
+              },
             },
           }}
         >

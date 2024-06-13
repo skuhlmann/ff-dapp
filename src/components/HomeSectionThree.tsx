@@ -1,12 +1,5 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Link,
-  Button,
-  Image,
-} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { Box, Flex, Heading, Text, Button, Image } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
@@ -25,14 +18,14 @@ export const HomeSectionThree = () => {
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">3.</Heading>
           <LabelBadge
-            bg="brand.darkOrange"
-            color="brand.orange"
+            bg="brand.green"
+            color="brand.black"
             size="md"
             style={{
               lineHeight: "1.75",
             }}
           >
-            Available soon
+            • Available Now •
           </LabelBadge>
         </Flex>
         <Text
@@ -63,8 +56,7 @@ export const HomeSectionThree = () => {
         </Text>
         <Button
           as={Link}
-          isExternal={true}
-          href="https://opensea.io/collection/peach-drop"
+          to="/market"
           variant="outline"
           fontFamily="heading"
           fontSize="xl"
@@ -79,7 +71,7 @@ export const HomeSectionThree = () => {
           width="250px"
           _hover={{ bg: "transparent", color: "brand.white" }}
         >
-          2023 PΞACH DROP
+          BUY PEACHES
         </Button>
       </Box>
       <Image width={{ base: "full", md: "40vw" }} src={PeachCards} />

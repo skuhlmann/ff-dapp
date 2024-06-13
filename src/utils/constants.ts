@@ -6,6 +6,8 @@ import treeThree from "../assets/Tree-3.png";
 export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
 
 export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
+export const RARIBLE_PREFIX = TARGET_NETWORK === "0x2105" ? "BASE" : "ETHEREUM";
+export const RARIBLE_STAGE = TARGET_NETWORK === "0x2105" ? "prod" : "testnet";
 
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"
@@ -92,6 +94,17 @@ export const SPRAY_PRICE_ERC20: Record<string, bigint> = {
 };
 
 export const SPRAYS_PER_TOKEN = 2;
+
+export const PEACH_NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
+  "0xaa36a7": "0xC0552Fd7131D8cC74b77dDaF8E43C006A31adCdA",
+  "0x2105": "0x5eAE1344f40f25b827782AfF0B3651b2DCD2259E",
+};
+
+export const PEACH_IMG_IPFS_HASH: Record<number, string> = {
+  0: "QmWgYLkMeMhFdqMzZ6xZBHdP81dC6z36QpnYqYMbYGWVss",
+  1: "QmRxmnT5USZ32tvRMqwYfQAkfQVX6k751WdBkehzc1sKQN",
+  2: "QmZSNfqJ65Q4zxt7293u3JpFrdh984b2prYWBa4wZtwgp4",
+};
 
 export const BLOCK_EXPLORER_URL: Record<string, string> = {
   "0xaa36a7": "https://sepolia.etherscan.io/",
