@@ -56,6 +56,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             embeddedWallets: {
               createOnLogin: "users-without-wallets", // or 'all-users'
             },
+            externalWallets: {
+              coinbaseWallet: {
+                // Valid connection options include 'eoaOnly' (default), 'smartWalletOnly', or 'all'
+                connectionOptions: "eoaOnly",
+              },
+            },
           }}
         >
           <WagmiProvider config={config}>

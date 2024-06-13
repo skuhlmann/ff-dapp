@@ -45,7 +45,7 @@ export const Footer = () => {
               isExternal
             >
               <Heading color="brand.black" size="md">
-                Rarible
+                Rarible Trees
               </Heading>
             </Link>
             {/* <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text> */}
