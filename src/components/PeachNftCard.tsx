@@ -73,7 +73,7 @@ export const PeachNftCard = ({
                   textDecoration: "underline",
                 }}
               >
-                View Other Listings in the Farmer's Market
+                View Other Listings in the Peach Market
               </Text>
             </RouterLink>
           )}

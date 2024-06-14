@@ -15,7 +15,6 @@ function BuyTrees() {
 
       <Box mb="2rem" textAlign="center">
         <Heading size="xl">Tree Sales Have Ended</Heading>
-        <Text>The Peach Marketplace will be open soon!</Text>
       </Box>
 
       <Flex
