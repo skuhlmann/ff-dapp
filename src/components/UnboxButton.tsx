@@ -33,7 +33,7 @@ import {
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { dhImagePath } from "../utils/formatting";
-import { toItemId } from "@rarible/types";
+// import { toItemId } from "@rarible/types";
 
 // refetch and invalidate
 
@@ -72,9 +72,10 @@ export const UnboxButton = ({
       });
 
       const refreshRes = await sdk.apis.item.resetItemMeta({
-        itemId: toItemId(
-          `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`
-        ),
+        // itemId: toItemId(
+        //   `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`
+        // ),
+        itemId: `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`,
       });
 
       console.log("refreshRes", refreshRes);
