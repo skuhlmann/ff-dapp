@@ -149,8 +149,8 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         // opacity="30%"
       >
         LIST FOR SALE
-      {/* </Button>
-      <Text
+      </Button>
+      {/* <Text
         fontSize="xs"
         color="brand.green"
         opacity="100%"
