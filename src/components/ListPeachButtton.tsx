@@ -35,7 +35,9 @@ import { createRaribleSdk } from "@rarible/sdk";
 import { toCurrencyId, toItemId } from "@rarible/types";
 
 export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
+
   const { wallets } = useWallets();
 
   const [isListing, setIsListing] = useState(false);
@@ -66,7 +68,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
   const handleCurrencyChange = (event) => setCurrency(event.target.value);
 
   const handleConfirm = () => {
-    onOpen();
+    // onOpen();
   };
 
   const isDisabled =
@@ -139,9 +141,20 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
           color: "brand.green",
         }}
         onClick={handleConfirm}
+        disabled={true}
+        opacity="30%"
       >
         LIST FOR SALE
       </Button>
+      <Text
+        fontSize="xs"
+        color="brand.green"
+        opacity="100%"
+        mt="-0.5rem"
+        textAlign="center"
+      >
+        (Coming soon)
+      </Text>
       <Modal
         isOpen={isOpen}
         onClose={onClose}
