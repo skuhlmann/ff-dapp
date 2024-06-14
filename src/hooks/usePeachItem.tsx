@@ -7,7 +7,7 @@ import {
   RARIBLE_STAGE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import { toItemId } from "@rarible/types";
+// import { toItemId } from "@rarible/types";
 
 const fetchItem = async ({ tokenId }: { tokenId: string }) => {
   const contractAddress = PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
@@ -16,9 +16,10 @@ const fetchItem = async ({ tokenId }: { tokenId: string }) => {
     apiKey: import.meta.env.VITE_RARIBLE_KEY,
   });
 
-  console.log("feetch", tokenId);
+  console.log("fetch", tokenId);
   const item = (await sdk.apis.item.getItemById({
-    itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`),
+    // itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`),
+    itemId: `${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`,
   })) as Item;
 
   return { item };

@@ -32,11 +32,11 @@ import peachAvatar from "../assets/peach-avatar-trans.png";
 
 import { useWallets } from "@privy-io/react-auth";
 import { createRaribleSdk } from "@rarible/sdk";
-import { toCurrencyId, toItemId } from "@rarible/types";
+// import { toCurrencyId, toItemId } from "@rarible/types";
 
 export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onClose } = useDisclosure();
 
   const { wallets } = useWallets();
 
@@ -68,7 +68,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
   const handleCurrencyChange = (event) => setCurrency(event.target.value);
 
   const handleConfirm = () => {
-    // onOpen();
+    onOpen();
   };
 
   const isDisabled =
@@ -101,9 +101,13 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
       console.log("currencyId", currencyId);
 
       const orderId = await sdk.order.sell({
-        itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`),
+        // itemId: toItemId(`${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`),
+        // @ts-expect-error react types
+        itemId: `${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`,
         amount: 1,
-        currency: toCurrencyId(currencyId),
+        // currency: toCurrencyId(currencyId),
+        // @ts-expect-error react types
+        currency: currencyId,
         price: price,
       });
 
@@ -141,8 +145,8 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
           color: "brand.green",
         }}
         onClick={handleConfirm}
-        disabled={true}
-        opacity="30%"
+        // disabled={true}
+        // opacity="30%"
       >
         LIST FOR SALE
       </Button>
