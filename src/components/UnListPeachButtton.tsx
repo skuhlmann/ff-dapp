@@ -154,8 +154,8 @@ export const UnListPeachButton = ({
               gap="1rem"
             >
               <Text fontSize="sm" textAlign="center">
-                Remove this Peach NFT from the Farmer's Market. You can put it
-                back on sale anytime.
+                Remove this Peach NFT from the Peach Market. You can put it back
+                on sale anytime.
               </Text>
               <Image src={peachAvatar} w="32px" />
 
@@ -198,7 +198,7 @@ export const UnListPeachButton = ({
                     style={{ textDecoration: "underline" }}
                     to="/market"
                   >
-                    Farmer's Market
+                    Peach Market
                   </Link>
                 </>
               )}

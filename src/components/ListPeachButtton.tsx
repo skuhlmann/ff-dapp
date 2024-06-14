@@ -181,7 +181,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
               gap="1rem"
             >
               <Text fontSize="sm">
-                Put this peach NFT up for sale in the farmer's market.
+                Put this peach NFT up for sale in the Peach Market.
               </Text>
               <Image src={peachAvatar} w="32px" />
 
@@ -254,7 +254,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
                     style={{ textDecoration: "underline" }}
                     to="/market"
                   >
-                    Farmer's Market
+                    Peach Market
                   </Link>
                 </>
               )}

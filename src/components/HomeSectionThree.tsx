@@ -41,8 +41,8 @@ export const HomeSectionThree = () => {
         </Text>
         <Text maxW="460px" mb="2rem">
           Upon harvest, you will be able to redeem your peach boxes to enjoy
-          yourself, send to a friend or sell them at the Farmers Marketplace at
-          a price you set. Peach lovers will be invited to purchase peach boxes
+          yourself, send to a friend or sell them at the Paeach Market at a
+          price you set. Peach lovers will be invited to purchase peach boxes
           from the marketplace. Every peach box includes a unique, generative
           PΞACH NFT.
           <br />

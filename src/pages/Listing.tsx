@@ -9,7 +9,7 @@ function Listing() {
   return (
     <>
       <Box w="100%" textAlign="center" my="3rem">
-        <Heading size="3xl">Farmer's Market</Heading>
+        <Heading size="3xl">Peach Market</Heading>
       </Box>
       <Flex
         w="full"
