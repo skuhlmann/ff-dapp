@@ -32,7 +32,9 @@ export const UnListPeachButton = ({
   tokenId: string;
   orderId: string;
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
+
   const { wallets } = useWallets();
 
   const [isListing, setIsListing] = useState(false);
@@ -60,7 +62,7 @@ export const UnListPeachButton = ({
   }, [isConfirmed, queryClient, tokenId]);
 
   const handleConfirm = () => {
-    onOpen();
+    // onOpen();
   };
 
   const handleUnList = async () => {
@@ -114,9 +116,20 @@ export const UnListPeachButton = ({
           color: "brand.orange",
         }}
         onClick={handleConfirm}
+        disabled={true}
+        opacity="30%"
       >
         UNLIST
       </Button>
+      <Text
+        fontSize="xs"
+        color="brand.orange"
+        opacity="100%"
+        mt="-0.5rem"
+        textAlign="center"
+      >
+        (Coming soon)
+      </Text>
       <Modal
         isOpen={isOpen}
         onClose={onClose}
