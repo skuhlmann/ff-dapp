@@ -149,7 +149,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         // opacity="30%"
       >
         LIST FOR SALE
-      </Button>
+      {/* </Button>
       <Text
         fontSize="xs"
         color="brand.green"
@@ -158,7 +158,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         textAlign="center"
       >
         (Coming soon)
-      </Text>
+      </Text> */}
       <Modal
         isOpen={isOpen}
         onClose={onClose}
