@@ -22,7 +22,7 @@ import peachAvatar from "../assets/peach-avatar-trans.png";
 
 import { useWallets } from "@privy-io/react-auth";
 import { createRaribleSdk } from "@rarible/sdk";
-import { toOrderId } from "@rarible/types";
+// import { toOrderId } from "@rarible/types";
 import { useWaitForTransactionReceipt } from "wagmi";
 
 export const UnListPeachButton = ({
@@ -78,7 +78,9 @@ export const UnListPeachButton = ({
       });
 
       const cancelled = await sdk.order.cancel({
-        orderId: toOrderId(orderId),
+        // orderId: toOrderId(orderId),
+        // @ts-expect-error react types
+        orderId: orderId,
       });
 
       console.log("cancelled", cancelled);
