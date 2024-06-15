@@ -81,3 +81,9 @@ export const dhImagePath = (path?: string) => {
 export const dhImagePathFromIpfs = (ipfsHash: string) => {
   return `https://daohaus.mypinata.cloud/ipfs/${ipfsHash}`;
 };
+
+export const getPriceText = (tokenType: string): string => {
+  if (tokenType === "ERC20") return "$DEGEN";
+
+  return tokenType;
+};

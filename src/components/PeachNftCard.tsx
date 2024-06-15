@@ -3,6 +3,7 @@ import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
 import {
   blockExplorerPeachNftLink,
+  getPriceText,
   truncateAddress,
 } from "../utils/formatting";
 
@@ -58,7 +59,9 @@ export const PeachNftCard = ({
                   textDecoration: "underline",
                 }}
               >
-                {`Listed for ${orders[0].take.value} ${orders[0].take.type["@type"]}`}
+                {`Listed for ${orders[0].take.value} ${getPriceText(
+                  orders[0].take.type["@type"]
+                )}`}
               </Text>
             </RouterLink>
           )}
