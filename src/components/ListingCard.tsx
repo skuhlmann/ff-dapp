@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 import type { Item } from "@rarible/api-client";
 
-import { truncateAddress } from "../utils/formatting";
+import { getPriceText, truncateAddress } from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 // import { PeachActions } from "./PeachActions";
@@ -86,7 +86,9 @@ export const ListingCard = ({
                     <BuyPeachButton
                       tokenId={tokenId}
                       orderId={orders[0].id}
-                      price={`${orders[0].take.value} ${orders[0].take.type["@type"]}`}
+                      price={`${orders[0].take.value} ${getPriceText(
+                        orders[0].take.type["@type"]
+                      )}`}
                     />
                   </Box>
                 </>
