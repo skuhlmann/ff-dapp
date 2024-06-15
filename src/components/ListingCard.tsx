@@ -59,7 +59,9 @@ export const ListingCard = ({
                 color="brand.green"
                 mb="1rem"
               >
-                {`${orders[0].take.value} ${orders[0].take.type["@type"]}`}
+                {`${orders[0].take.value} ${getPriceText(
+                  orders[0].take.type["@type"]
+                )}`}
               </Heading>
               {orders[0].makePriceUsd && (
                 <Text color="brand.green" mt="-1rem" fontSize="xs">{`${Number(
