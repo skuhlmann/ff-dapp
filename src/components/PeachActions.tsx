@@ -25,7 +25,7 @@ export const PeachActions = ({
 
   return (
     <Flex direction="column" align="center">
-      {!isListed && <ListPeachButton tokenId={tokenId} />}
+      {!isListed && tokenState != 2 && <ListPeachButton tokenId={tokenId} />}
 
       {isListed && (
         <UnListPeachButton tokenId={tokenId} orderId={orders[0].id} />
