@@ -7,9 +7,10 @@ import sprayIcon from "../assets/icon_spray.png";
 import { useTreePoints } from "../hooks/useTreePoints";
 import { PiCheckFatFill } from "react-icons/pi";
 import { PruneTreeButton } from "./PruneTreeButton";
-import { WaterTreeButton } from "./WaterTreeButton";
+import { DisabledWaterTreeButton } from "./DisabledWateringButton";
 // import { FertTreeButton } from "./FertTreeButton";
 // import { SprayTreeButton } from "./SprayTreeButton";
+// import { WaterTreeButton } from "./WaterTreeButton";
 
 export const TreeActions = ({
   tokenId,
@@ -17,7 +18,7 @@ export const TreeActions = ({
   tokenId: string;
   account: string;
 }) => {
-  const { prune, fert, canSpray, watererdToday, isFetched } = useTreePoints({
+  const { prune, fert, canSpray, isFetched } = useTreePoints({
     tokenId: tokenId,
   });
 
@@ -25,10 +26,23 @@ export const TreeActions = ({
 
   return (
     <Flex direction="column" align="center">
-      <WaterTreeButton
+      <Text
+        fontSize="xs"
+        color="brand.green"
+        opacity="100%"
+        mt="-0.5rem"
+        textAlign="center"
+      >
+        It's harvest time! Boost season has ended.
+      </Text>
+
+      {/* <WaterTreeButton
         tokenId={tokenId}
         watererdToday={watererdToday || false}
-      />
+        // watererdToday={true}
+      /> */}
+
+      <DisabledWaterTreeButton />
 
       {/* {!fert && <FertTreeButton tokenId={tokenId} />} */}
       <>
@@ -134,16 +148,6 @@ export const TreeActions = ({
           </Button>
         </>
       )}
-
-      <Text
-        fontSize="xs"
-        color="brand.green"
-        opacity="100%"
-        mt="-0.5rem"
-        textAlign="center"
-      >
-        (Fertilizing, spraying and pruning season has ended)
-      </Text>
     </Flex>
   );
 };
