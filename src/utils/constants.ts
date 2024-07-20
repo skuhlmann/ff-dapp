@@ -127,10 +127,10 @@ export const LEADER_ENDPOINT =
   "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/leaders";
 
 export const CHECKOUT_URL =
-  "https://esxop67lpg.execute-api.us-east-1.amazonaws.com/dev/checkout";
+  "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/peach-checkout";
 
-export const REFRESH_URL_BASE =
-  "https://esxop67lpg.execute-api.us-east-1.amazonaws.com/dev/refresh";
+// export const REFRESH_URL_BASE =
+//   "https://esxop67lpg.execute-api.us-east-1.amazonaws.com/dev/refresh";
 
 export type NftTreeMeta = { name: string; img: string; value: number };
 

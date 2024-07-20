@@ -3,6 +3,8 @@ import { UnboxButton } from "./UnboxButton";
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { ListPeachButton } from "./ListPeachButtton";
 import { UnListPeachButton } from "./UnListPeachButtton";
+import { RedeemPeachButton } from "./RedeemPeachButton";
+import { OrderPeachButton } from "./OrderPeachButton";
 
 export const PeachActions = ({
   tokenId,
@@ -44,33 +46,17 @@ export const PeachActions = ({
 
       {tokenState === 1 && (
         <>
-          <Button
-            variant="outline"
-            fontFamily="heading"
-            fontSize="xl"
-            fontStyle="italic"
-            fontWeight="700"
-            border="1px"
-            borderColor="brand.blue"
-            borderRadius="200px;"
-            color="brand.blue"
-            size="lg"
-            height="60px"
-            width="220px"
-            my=".5rem"
-            disabled={true}
-            opacity="30%"
-            _hover={{
-              bg: "transparent",
-              color: "brand.blue",
-              cursor: "not-allowed",
-            }}
-          >
-            REDEEM
-          </Button>
-          <Text fontSize="xs" color="brand.blue" opacity="40%" mt="-0.5rem">
-            (Redemption Coming Soon)
-          </Text>
+          <RedeemPeachButton
+            tokenId={tokenId}
+            tokenImage={tokenImage}
+            account={account}
+          />
+        </>
+      )}
+
+      {tokenState === 2 && (
+        <>
+          <OrderPeachButton tokenId={tokenId} account={account} />
         </>
       )}
     </Flex>

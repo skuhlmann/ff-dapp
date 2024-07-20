@@ -37,7 +37,7 @@ export const Footer = () => {
               </Link>
             </Flex>
             <Link
-              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
+              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
               isExternal
             >
               <Heading color="brand.black" size="md">
@@ -46,7 +46,7 @@ export const Footer = () => {
               </Heading>
             </Link>
             <Link
-              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
+              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
               isExternal
             >
               <Heading color="brand.black" size="md">

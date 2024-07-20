@@ -6,6 +6,7 @@ import {
   PEACH_NFT_CONTRACT_ADDRESS,
   TARGET_NETWORK,
 } from "./constants";
+import { format } from "date-fns";
 
 export type Noun = {
   singular: string;
@@ -86,4 +87,14 @@ export const getPriceText = (tokenType: string): string => {
   if (tokenType === "ERC20") return "$DEGEN";
 
   return tokenType;
+};
+
+export const formatDateFromShopify = (
+  dataString: string | undefined
+): string | undefined => {
+  if (!dataString) {
+    return;
+  }
+
+  return format(new Date(dataString), "M/dd/yy");
 };

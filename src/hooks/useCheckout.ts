@@ -1,6 +1,7 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { CHECKOUT_URL } from "../utils/constants";
 import { post } from "../utils/fetch";
+import { PeachOrderData } from "../utils/types";
 
 export const useCheckout = ({
   tokenId,
@@ -9,9 +10,9 @@ export const useCheckout = ({
   tokenId: number | undefined;
   account: string | undefined;
 }) => {
-  const { data, ...rest } = useQuery(
-    [`$get-checkout-${tokenId}`, { tokenId }],
-    async () => {
+  const { data, error, ...rest } = useQuery({
+    queryKey: [`$get-checkout-${tokenId}`, { tokenId }],
+    queryFn: async () => {
       const cachedCheckoutString = localStorage.getItem(
         `peachCheckout${tokenId}`
       );
@@ -32,8 +33,6 @@ export const useCheckout = ({
         checkoutId,
       });
 
-      console.log("checkoutRes", checkoutRes);
-
       localStorage.setItem(
         `peachCheckout${tokenId}`,
         JSON.stringify(checkoutRes)
@@ -41,11 +40,12 @@ export const useCheckout = ({
 
       return checkoutRes;
     },
-    { enabled: !!tokenId && !!account }
-  );
+    enabled: !!tokenId && !!account,
+  });
 
   return {
-    ...data,
+    order: data as PeachOrderData,
+    error,
     ...rest,
   };
 };

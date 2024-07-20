@@ -37,3 +37,10 @@ export type EnsData = {
 };
 
 export type LeadersRes = Array<Array<string | number | EnsData>>;
+
+export type PeachOrderData = {
+  webUrl: string;
+  checkoutId: string;
+  orderId: string;
+  createdAt: string;
+};
