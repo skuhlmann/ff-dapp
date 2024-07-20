@@ -1,4 +1,4 @@
-import { Flex, Button, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { UnboxButton } from "./UnboxButton";
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { ListPeachButton } from "./ListPeachButtton";
