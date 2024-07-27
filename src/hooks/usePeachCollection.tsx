@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createRaribleSdk } from "@rarible/sdk";
-import type { Items } from "@rarible/api-client";
+import type { Items, Item } from "@rarible/api-client";
 import {
   PEACH_NFT_CONTRACT_ADDRESS,
   RARIBLE_PREFIX,
@@ -18,9 +18,14 @@ const fetchPeachCollection = async () => {
   // ETHEREUM:${token}:${tokenId}
   const items = (await sdk.apis.item.getItemsByCollection({
     collection: `${RARIBLE_PREFIX}:${contractAddress}`,
+    size: 400,
   })) as Items;
 
-  return { items };
+  const filtered = items.items.filter((item: Item) => {
+    return !!item.bestSellOrder;
+  });
+
+  return { items: filtered };
 };
 
 export const usePeachCollection = () => {

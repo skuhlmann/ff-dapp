@@ -41,13 +41,9 @@ function Marketplace() {
 
   useEffect(() => {
     if (items) {
-      const filtered = items.items.filter((item: Item) => {
-        return !!item.bestSellOrder;
-      });
-
       if (sort === "low") {
         setItemList(
-          filtered.sort((a, b) => {
+          items.sort((a, b) => {
             return (
               Number(a.bestSellOrder?.makePriceUsd || 0) -
               Number(b.bestSellOrder?.makePriceUsd || 0)
@@ -56,7 +52,7 @@ function Marketplace() {
         );
       } else if (sort === "high") {
         setItemList(
-          filtered.sort((a, b) => {
+          items.sort((a, b) => {
             return (
               Number(b.bestSellOrder?.makePriceUsd || 0) -
               Number(a.bestSellOrder?.makePriceUsd || 0)
@@ -64,7 +60,7 @@ function Marketplace() {
           })
         );
       } else {
-        setItemList(filtered);
+        setItemList(items);
       }
     }
   }, [sort, items]);
