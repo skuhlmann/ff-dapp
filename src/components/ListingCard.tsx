@@ -1,5 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { SiFarcaster } from "react-icons/si";
+import { MdContentCopy } from "react-icons/md";
 
 import type { Item } from "@rarible/api-client";
 
@@ -10,6 +12,7 @@ import { usePeachStatus } from "../hooks/usePeachStatus";
 
 import peachAvatar from "../assets/peach-avatar-trans.png";
 import { BuyPeachButton } from "./BuyPeachButtton";
+import { CastLink } from "./CastLink";
 
 export const ListingCard = ({
   peach,
@@ -93,6 +96,8 @@ export const ListingCard = ({
                       )}`}
                     />
                   </Box>
+
+                  <CastLink tokenId={tokenId} />
                 </>
               )}
             </>

@@ -9,6 +9,7 @@ import {
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { PeachActions } from "./PeachActions";
+import { CastLink } from "./CastLink";
 
 export const PeachNftCard = ({
   peach,
@@ -49,21 +50,25 @@ export const PeachNftCard = ({
           </Text>
 
           {isListed && (
-            <RouterLink to="/market">
-              <Text
-                fontSize="xs"
-                textAlign="center"
-                color="brand.orange"
-                mb="1rem"
-                _hover={{
-                  textDecoration: "underline",
-                }}
-              >
-                {`Listed for ${orders[0].take.value} ${getPriceText(
-                  orders[0].take.type["@type"]
-                )}`}
-              </Text>
-            </RouterLink>
+            <>
+              <RouterLink to="/market">
+                <Text
+                  fontSize="xs"
+                  textAlign="center"
+                  color="brand.orange"
+                  _hover={{
+                    textDecoration: "underline",
+                  }}
+                >
+                  {`Listed for ${orders[0].take.value} ${getPriceText(
+                    orders[0].take.type["@type"]
+                  )}`}
+                </Text>
+              </RouterLink>
+              <Box mb="1rem">
+                <CastLink tokenId={peach.tokenID} />
+              </Box>
+            </>
           )}
 
           {!isListed && (

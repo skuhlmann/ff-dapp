@@ -22,7 +22,7 @@ const fetchPeachCollection = async () => {
   })) as Items;
 
   const filtered = items.items.filter((item: Item) => {
-    return !!item.bestSellOrder;
+    return !!item.bestSellOrder && item.bestSellOrder.status === "ACTIVE";
   });
 
   return { items: filtered };
