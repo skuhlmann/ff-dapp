@@ -83,6 +83,10 @@ export const dhImagePathFromIpfs = (ipfsHash: string) => {
   return `https://daohaus.mypinata.cloud/ipfs/${ipfsHash}`;
 };
 
+export const frameUrl = (tokenId: string) => {
+  return `https://frame.peachtycoon.com/api/market/${tokenId}`;
+};
+
 export const getPriceText = (tokenType: string): string => {
   if (tokenType === "ERC20") return "$DEGEN";
 
