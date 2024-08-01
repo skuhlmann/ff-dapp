@@ -1,7 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { SiFarcaster } from "react-icons/si";
-import { MdContentCopy } from "react-icons/md";
 
 import type { Item } from "@rarible/api-client";
 
