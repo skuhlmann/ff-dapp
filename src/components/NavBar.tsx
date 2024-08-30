@@ -33,7 +33,7 @@ export const NavBar = () => {
         wrap="wrap"
         w="100%"
         mb={8}
-        mt={{ base: "5rem", sm: "3rem" }}
+        mt={{ base: "7rem", sm: "5rem", md: "3rem" }}
         py={8}
         px={{ base: 3, md: 10 }}
         color="brand.orange"

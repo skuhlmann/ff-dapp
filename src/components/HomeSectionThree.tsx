@@ -26,14 +26,14 @@ export const HomeSectionThree = () => {
         <Flex gap="1rem" align="center" mb="1rem">
           <Heading color="brand.orange">3.</Heading>
           <LabelBadge
-            bg="brand.green"
+            bg="brand.red"
             color="brand.black"
             size="md"
             style={{
               lineHeight: "1.75",
             }}
           >
-            • Available Now •
+            • PEACH SEASON CLOSED •
           </LabelBadge>
         </Flex>
         <Text

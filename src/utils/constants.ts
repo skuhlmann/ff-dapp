@@ -171,3 +171,6 @@ export const WATERING_MESSAGE =
   "PEACH TYCOON: YOU BUY TREE. TREE GROWS PEACH. YOU EAT PEACH. YOU ALSO SIGN THIS MESSAGE TO WATER YOUR TREE.";
 
 export const PRUNE_ENDED = true;
+
+export const SEASON_OVER_TEXT =
+  " The 2024 Peach Season has come to an end. See you next Spring!";

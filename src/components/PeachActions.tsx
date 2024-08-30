@@ -25,7 +25,7 @@ export const PeachActions = ({
 
   return (
     <Flex direction="column" align="center">
-      {!isListed && tokenState != 2 && <ListPeachButton tokenId={tokenId} />}
+      {/* {!isListed && tokenState != 2 && <ListPeachButton tokenId={tokenId} />} */}
 
       {isListed && (
         <UnListPeachButton tokenId={tokenId} orderId={orders[0].id} />
@@ -44,7 +44,7 @@ export const PeachActions = ({
         </>
       )}
 
-      {tokenState === 1 && (
+      {/* {tokenState === 1 && (
         <>
           <RedeemPeachButton
             tokenId={tokenId}
@@ -52,13 +52,13 @@ export const PeachActions = ({
             account={account}
           />
         </>
-      )}
+      )} */}
 
-      {tokenState === 2 && (
+      {/* {tokenState === 2 && (
         <>
           <OrderPeachButton tokenId={tokenId} account={account} />
         </>
-      )}
+      )} */}
     </Flex>
   );
 };

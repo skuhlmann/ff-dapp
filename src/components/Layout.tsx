@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Footer } from "./Footer";
+import { SEASON_OVER_TEXT } from "../utils/constants";
 
 export const Layout = () => {
   return (
@@ -17,9 +18,8 @@ export const Layout = () => {
         zIndex={10}
         px={8}
       >
-        <Text fontSize="md" py="1rem" fontWeight="700">
-          The 2024 Peach Season is coming to an end. Get your orders in now, the
-          redemption window will close at 9am MDT/3pm UTC on August 31st.
+        <Text fontSize={{ base: "sm", sm: "md" }} py="1rem" fontWeight="700">
+          {SEASON_OVER_TEXT}
         </Text>
       </Flex>
       <NavBar />
