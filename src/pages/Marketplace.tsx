@@ -19,6 +19,7 @@ import PeachRedeemed from "../assets/10-bite-trans.png";
 
 import Arrow1 from "../assets/Arrow1.png";
 import { brandColors } from "../theme";
+import { SEASON_OVER_TEXT } from "../utils/constants";
 
 const BoxCard = styled(Box)`
   width: 300px;
@@ -180,7 +181,7 @@ function Marketplace() {
           background="none"
         />
       </Flex>
-      <Flex mt={5} ml={3} mb={8}>
+      {/* <Flex mt={5} ml={3} mb={8}>
         <Box width="10vw" />
         <Box width="17vw">
           <Select
@@ -195,14 +196,7 @@ function Marketplace() {
             <option value="high">Price (High to Low)</option>
           </Select>
         </Box>
-        {/* <Box ml={4} mr={4} width={{ base: "80%", lg: "20vw" }}>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <MdOutlineSearch color="gray.300" />
-            </InputLeftElement>
-            <Input />
-          </InputGroup>
-        </Box> */}
+    
       </Flex>
 
       <Flex
@@ -214,6 +208,20 @@ function Marketplace() {
         mb="3rem"
       >
         {itemList && <ListingList listings={itemList} />}
+      </Flex> */}
+      <Flex
+        as="nav"
+        align="center"
+        justify="center"
+        w="100%"
+        textAlign="center"
+        // backgroundColor="brand.green"
+        px={8}
+        my={8}
+      >
+        <Text fontSize="2xl" py="1rem" fontWeight="700">
+          {SEASON_OVER_TEXT}
+        </Text>
       </Flex>
     </>
   );

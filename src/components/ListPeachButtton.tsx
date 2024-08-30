@@ -126,7 +126,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
 
   return (
     <>
-      <Button
+      {/* <Button
         variant="outline"
         fontFamily="heading"
         fontSize="xl"
@@ -149,7 +149,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
         // opacity="30%"
       >
         LIST FOR SALE
-      </Button>
+      </Button> */}
       {/* <Text
         fontSize="xs"
         color="brand.green"
