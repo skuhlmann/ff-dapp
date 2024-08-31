@@ -1,10 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { UnboxButton } from "./UnboxButton";
 import { usePeachStatus } from "../hooks/usePeachStatus";
-import { ListPeachButton } from "./ListPeachButtton";
+// import { ListPeachButton } from "./ListPeachButtton";
 import { UnListPeachButton } from "./UnListPeachButtton";
-import { RedeemPeachButton } from "./RedeemPeachButton";
-import { OrderPeachButton } from "./OrderPeachButton";
+// import { RedeemPeachButton } from "./RedeemPeachButton";
+// import { OrderPeachButton } from "./OrderPeachButton";
 
 export const PeachActions = ({
   tokenId,

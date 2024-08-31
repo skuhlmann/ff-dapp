@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import {
   Box,
   Divider,
   Flex,
   Heading,
-  Select,
+  // Select,
   Text,
   Image,
 } from "@chakra-ui/react";
 import styled from "styled-components";
-import { usePeachCollection } from "../hooks/usePeachCollection";
-import type { Item } from "@rarible/api-client";
-import { ListingList } from "../components/ListingList";
+// import { usePeachCollection } from "../hooks/usePeachCollection";
+// import type { Item } from "@rarible/api-client";
+// import { ListingList } from "../components/ListingList";
 
 import PeachCrate from "../assets/Crate.png";
 import PeachUnredeemed from "../assets/10-peach-trans.png";
@@ -35,39 +35,38 @@ const BoxCard = styled(Box)`
 `;
 
 function Marketplace() {
-  const { items } = usePeachCollection();
+  // const { items } = usePeachCollection();
 
-  const [sort, setSort] = useState("new");
-  const [itemList, setItemList] = useState<Item[] | undefined>();
+  // const [sort, setSort] = useState("new");
+  // const [itemList, setItemList] = useState<Item[] | undefined>();
 
-  useEffect(() => {
-    if (items) {
-      if (sort === "low") {
-        setItemList(
-          items.sort((a, b) => {
-            return (
-              Number(a.bestSellOrder?.makePriceUsd || 0) -
-              Number(b.bestSellOrder?.makePriceUsd || 0)
-            );
-          })
-        );
-      } else if (sort === "high") {
-        setItemList(
-          items.sort((a, b) => {
-            return (
-              Number(b.bestSellOrder?.makePriceUsd || 0) -
-              Number(a.bestSellOrder?.makePriceUsd || 0)
-            );
-          })
-        );
-      } else {
-        setItemList(items);
-      }
-    }
-  }, [sort, items]);
+  // useEffect(() => {
+  //   if (items) {
+  //     if (sort === "low") {
+  //       setItemList(
+  //         items.sort((a, b) => {
+  //           return (
+  //             Number(a.bestSellOrder?.makePriceUsd || 0) -
+  //             Number(b.bestSellOrder?.makePriceUsd || 0)
+  //           );
+  //         })
+  //       );
+  //     } else if (sort === "high") {
+  //       setItemList(
+  //         items.sort((a, b) => {
+  //           return (
+  //             Number(b.bestSellOrder?.makePriceUsd || 0) -
+  //             Number(a.bestSellOrder?.makePriceUsd || 0)
+  //           );
+  //         })
+  //       );
+  //     } else {
+  //       setItemList(items);
+  //     }
+  //   }
+  // }, [sort, items]);
 
-  // @ts-expect-error react types
-  const handleSortChange = (event) => setSort(event.target.value);
+  // const handleSortChange = (event) => setSort(event.target.value);
 
   return (
     <>
