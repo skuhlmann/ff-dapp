@@ -1,15 +1,15 @@
-import { Link as RouterLink } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
 import {
   blockExplorerPeachNftLink,
-  getPriceText,
+  // getPriceText,
   truncateAddress,
 } from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 import { PeachActions } from "./PeachActions";
-import { CastLink } from "./CastLink";
+// import { CastLink } from "./CastLink";
 
 export const PeachNftCard = ({
   peach,
@@ -18,11 +18,12 @@ export const PeachNftCard = ({
   peach: PeachNft;
   account: string;
 }) => {
-  const { peachStatus, tokenState, img, orders } = usePeachStatus({
+  // const { peachStatus, tokenState, img, orders } = usePeachStatus({
+  const { peachStatus, tokenState, img } = usePeachStatus({
     tokenId: peach.tokenID,
   });
 
-  const isListed = orders && orders.length > 0;
+  // const isListed = orders && orders.length > 0;
 
   return (
     <Flex direction="column" align="center" gap="1rem">
@@ -48,7 +49,7 @@ export const PeachNftCard = ({
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {peachStatus}
           </Text>
-
+          {/* 
           {isListed && (
             <>
               <RouterLink to="/market">
@@ -84,7 +85,7 @@ export const PeachNftCard = ({
                 View Other Listings in the Peach Market
               </Text>
             </RouterLink>
-          )}
+          )} */}
 
           {tokenState !== undefined && (
             <PeachActions
