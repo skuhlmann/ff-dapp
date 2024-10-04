@@ -1,14 +1,17 @@
 import { usePrivy } from "@privy-io/react-auth";
-import { Button, Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
 
 import { LogIn } from "../components/LogIn";
 import { TreeList } from "../components/TreeList";
 import { Link } from "react-router-dom";
 import { BoostContent } from "../components/BoostContent";
 import { PeachList } from "../components/PeachList";
+import { RewardsButton } from "../components/RewardsButton";
 
 function Farm() {
   const { ready, authenticated, user } = usePrivy();
+
+  const loggedIn = ready && authenticated && user?.wallet?.address;
 
   return (
     <>
@@ -19,7 +22,7 @@ function Farm() {
         alignItems="center"
         justifyContent="start"
         mt={10}
-        mb={20}
+        mb={loggedIn ? 5 : 20}
       >
         <Divider
           mt={4}
@@ -48,6 +51,11 @@ function Farm() {
           background="none"
         />
       </Flex>
+      {loggedIn && (
+        <Box w="full" textAlign="center" px="3rem" mb="2rem">
+          <RewardsButton />
+        </Box>
+      )}
       <Flex
         w="100%"
         gap="1rem"
@@ -58,7 +66,7 @@ function Farm() {
       >
         {ready && !authenticated && <LogIn />}
 
-        {ready && authenticated && user?.wallet?.address && (
+        {loggedIn && user?.wallet?.address && (
           <PeachList account={user.wallet.address} />
         )}
       </Flex>
