@@ -1,16 +1,16 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import type { Item } from "@rarible/api-client";
 
-import { getPriceText, truncateAddress } from "../utils/formatting";
+import { truncateAddress } from "../utils/formatting";
 
 import { usePeachStatus } from "../hooks/usePeachStatus";
 // import { PeachActions } from "./PeachActions";
 
-import peachAvatar from "../assets/peach-avatar-trans.png";
-import { BuyPeachButton } from "./BuyPeachButtton";
-import { CastLink } from "./CastLink";
+// import peachAvatar from "../assets/peach-avatar-trans.png";
+// import { BuyPeachButton } from "./BuyPeachButtton";
+// import { CastLink } from "./CastLink";
 
 export const ListingCard = ({
   peach,
@@ -19,11 +19,12 @@ export const ListingCard = ({
   peach: Item;
   tokenId: string;
 }) => {
-  const { peachStatus, img, orders } = usePeachStatus({
+  // const { peachStatus, img, orders } = usePeachStatus({
+  const { peachStatus, img } = usePeachStatus({
     tokenId,
   });
 
-  const isListed = orders && orders.length > 0;
+  // const isListed = orders && orders.length > 0;
 
   return (
     <Flex direction="column" align="center" gap="1rem">
@@ -51,7 +52,7 @@ export const ListingCard = ({
             {peachStatus}
           </Text>
 
-          {isListed && (
+          {/* {isListed && (
             <>
               <Text fontSize="xs">Price</Text>
               <Heading
@@ -99,7 +100,7 @@ export const ListingCard = ({
                 </>
               )}
             </>
-          )}
+          )} */}
 
           {/* {tokenState !== undefined && (
             <PeachActions
