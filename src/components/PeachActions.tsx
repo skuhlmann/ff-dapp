@@ -1,8 +1,8 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { UnboxButton } from "./UnboxButton";
-import { usePeachStatus } from "../hooks/usePeachStatus";
+// import { usePeachStatus } from "../hooks/usePeachStatus";
 // import { ListPeachButton } from "./ListPeachButtton";
-import { UnListPeachButton } from "./UnListPeachButtton";
+// import { UnListPeachButton } from "./UnListPeachButtton";
 // import { RedeemPeachButton } from "./RedeemPeachButton";
 // import { OrderPeachButton } from "./OrderPeachButton";
 
@@ -17,19 +17,19 @@ export const PeachActions = ({
   account: string;
   tokenState: number;
 }) => {
-  const { orders } = usePeachStatus({
-    tokenId,
-  });
+  // const { orders } = usePeachStatus({
+  //   tokenId,
+  // });
 
-  const isListed = orders && orders.length > 0;
+  // const isListed = orders && orders.length > 0;
 
   return (
     <Flex direction="column" align="center">
       {/* {!isListed && tokenState != 2 && <ListPeachButton tokenId={tokenId} />} */}
 
-      {isListed && (
+      {/* {isListed && (
         <UnListPeachButton tokenId={tokenId} orderId={orders[0].id} />
-      )}
+      )} */}
 
       {tokenState === 0 && (
         <>
