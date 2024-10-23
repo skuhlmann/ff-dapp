@@ -12,6 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
+import { Link as RouterLink } from "react-router-dom";
 
 export const RewardsButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,10 +66,22 @@ export const RewardsButton = () => {
               gap="1rem"
             >
               <Text fontSize="lg">
-                A portion (1%) of all transactions made in the game during the
+                A portion (3%) of all transactions made in the game during the
                 2024 peach season were added to the Farmer’s Pot. You were able
                 to earn points by watering, fertilizing, spraying for bugs and
                 pruning.
+              </Text>
+              <Text fontSize="lg" fontWeight="700">
+                The top ten points earners were given a boost and will have the
+                most rewards to claim.{" "}
+                <RouterLink to="leaderboard">
+                  <Text
+                    color="brand.orange"
+                    _hover={{ textDecoration: "underline" }}
+                  >
+                    Leaderboard
+                  </Text>
+                </RouterLink>
               </Text>
               <Text fontSize="lg">
                 The rewards will be distributed via a{" "}
@@ -82,11 +95,11 @@ export const RewardsButton = () => {
                 .
               </Text>
               <Text fontSize="lg">
-                If you earned points, you now have loot tokens in the Farmer's
-                Pot DAO. You can view your loot token balance in the DAO profile
-                and then click 'Ragequit' from the profile menu to exchange the
-                loot tokens for your share of the Base ETH, $DEGEN (and various
-                s**t coins airdropped to the DAO, if you want them).
+                You can view your loot token balance in the DAO profile and then
+                click 'Rage Quit' from the profile menu and follow the
+                instructions to exchange the loot tokens for your share of the
+                Base ETH, $DEGEN (and various s**t coins airdropped to the DAO,
+                if you want them).
               </Text>
               <Button
                 as={Link}
