@@ -74,7 +74,7 @@ export const RewardsButton = () => {
               <Text fontSize="lg" fontWeight="700">
                 The top ten points earners were given a boost and will have the
                 most rewards to claim.{" "}
-                <RouterLink to="leaderboard">
+                <RouterLink to="/leaderboard">
                   <Text
                     color="brand.orange"
                     _hover={{ textDecoration: "underline" }}
