@@ -1,16 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: "Rockwell";
+  src: local("Rockwell"), url("./assets/fonts/Rockwell.ttc");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
-  font-family: 'Helsinki';
-  src: url('./assets/helsinki-webfont.woff') format('woff'),
-       url('./assets/helsinki-webfont.woff2') format('woff2');
+  font-family: "AntiqueStories";
+  src: local("ANTIQUESTORIES"), url("./assets/fonts/ANTIQUESTORIES.otf");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
   margin: 0;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Rockwell", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

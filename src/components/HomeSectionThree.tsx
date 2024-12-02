@@ -24,7 +24,6 @@ export const HomeSectionThree = () => {
     >
       <Box flex="1" mb="2rem">
         <Flex gap="1rem" align="center" mb="1rem">
-          <Heading color="brand.orange">3.</Heading>
           <LabelBadge
             bg="brand.red"
             color="brand.black"
@@ -33,7 +32,7 @@ export const HomeSectionThree = () => {
               lineHeight: "1.75",
             }}
           >
-            • PEACH SEASON CLOSED •
+            • THE WINE CELLAR •
           </LabelBadge>
         </Flex>
         <Text

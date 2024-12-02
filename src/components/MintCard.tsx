@@ -7,6 +7,8 @@ import {
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
+import GrapeAvatar from "../assets/grape_logo.png";
+
 // import { MintTreeButton } from "./MintTreeButton";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,32 +33,29 @@ const AccountNftCount = ({
   );
 };
 
-export const TreeMintCard = ({
-  tree,
-  account,
-}: {
-  tree: NftTreeMeta;
-  account?: string;
-}) => {
+export const MintCard = ({ account }: { account?: string }) => {
   return (
     <Flex direction="column" align="center" gap="1rem">
       <Flex
         direction="column"
         align="center"
         w={{ base: "320px" }}
-        bg="brand.gray"
+        bg="brand.lightPurple"
         borderRadius="20px"
         p="29px 36px"
       >
-        <Image src={tree.img} />
+        <Image src={GrapeAvatar} />
         <Box
           w="100%"
           textAlign="center"
           borderBottom="1px dotted black"
           paddingBottom="2rem"
         >
-          <p>{tree.name}</p>
-          <Heading size="md" color="brand.blue">
+          <p>
+            1 Skull Grape NFT redeemable for 1 Bottle of Forgotten Fruit Genesis
+            Red
+          </p>
+          <Heading size="lg" color="brand.blue" mt="1rem">
             {`${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
           </Heading>
         </Box>
@@ -68,26 +67,24 @@ export const TreeMintCard = ({
           // />
 
           <Button
-            variant="outline"
-            fontFamily="heading"
-            fontSize="xl"
-            fontStyle="italic"
             fontWeight="700"
-            border="1px"
-            borderColor="brand.green"
-            borderRadius="200px;"
-            color="brand.orange"
-            size="lg"
-            height="60px"
-            width="220px"
             my="1rem"
-            isDisabled={true}
+            variant="solid"
+            fontSize="3xl"
+            borderRadius=".125rem"
             _hover={{
-              bg: "transparent",
-              color: "brand.orange",
+              transform: "translate(0px, 2px)",
             }}
+            color="brand.red"
+            bg="brand.black"
+            size="lg"
+            height="72px"
+            w="full"
+            px="3rem"
+            pt=".75rem"
+            isDisabled={true}
           >
-            MINT
+            BUY
           </Button>
         )}
         {!account && (
@@ -97,7 +94,7 @@ export const TreeMintCard = ({
           </>
         )}
       </Flex>
-      {account && <AccountNftCount account={account} name={tree.name} />}
+      {account && <AccountNftCount account={account} name={"Bottles"} />}
     </Flex>
   );
 };

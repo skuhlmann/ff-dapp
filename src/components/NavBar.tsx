@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
 
 import { MenuLinks } from "./MenuLinks";
-
 import { Connect } from "./Connect";
-
-import MobileLogo from "../assets/Mobile-Logo.png";
-import PeachAvatar from "../assets/Peach_logo.png";
-import PeachWordmark from "../assets/Peach_wordmark.png";
-import TycoonWordmark from "../assets/Tycoon_wordmark.png";
+import GrapeAvatar from "../assets/grape_logo.png";
 
 export const NavBar = () => {
   const location = useLocation();
@@ -27,16 +22,16 @@ export const NavBar = () => {
   return (
     <>
       <Flex
-        as="nav"
         align="center"
         justify="space-between"
-        wrap="wrap"
+        direction={{ base: "column", sm: "row" }}
+        gap={{ base: "1rem", sm: "0" }}
         w="100%"
         mb={8}
-        mt={{ base: "4rem", sm: "2rem", md: "3rem" }}
+        mt={{ base: "0rem" }}
         py={8}
         px={{ base: 3, md: 10 }}
-        color="brand.orange"
+        color="brand.tan"
         position="fixed"
         zIndex={9}
         background="brand.black"
@@ -45,27 +40,26 @@ export const NavBar = () => {
           <>
             <Flex
               direction="row"
-              alignItems="center"
+              alignItems="end"
               justifyContent="start"
               display={{ base: "none", md: "flex" }}
             >
-              <Image width="56px" src={PeachAvatar} />
-              <Image width="97px" m="10px 10px 0 20px" src={PeachWordmark} />
-              <Image width="210px" mt="10px" src={TycoonWordmark} />
+              <Image width="56px" src={GrapeAvatar} />
+              <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
             <Flex
               direction="row"
               alignItems="center"
-              gap="0.5rem;"
+              gap="0.5rem"
               display={{ base: "flex", md: "none" }}
               w="100%"
             >
-              <Image src={PeachAvatar} w="36px" />
-              <Image src={MobileLogo} />
+              <Image src={GrapeAvatar} w="36px" />
+              <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
           </>
         </Link>
-        <Flex align="center" gap="1rem">
+        <Flex alignItems="center" justifyContent="center" gap="1rem">
           <Connect />
           <Box cursor="pointer" onClick={toggle} fontSize="30px">
             {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}

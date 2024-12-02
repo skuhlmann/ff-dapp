@@ -1,10 +1,10 @@
-import { Box, Button, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useAccount, useSwitchChain } from "wagmi";
 import { Link } from "react-router-dom";
 import { truncateAddress } from "../utils/formatting";
-import User from "../assets/user.png";
 import { CHAIN_OBJ } from "../utils/constants";
+import GrapeAvatar from "../assets/grape_logo.png";
 
 export const Connect = () => {
   const { ready, authenticated, login, user } = usePrivy();
@@ -25,91 +25,66 @@ export const Connect = () => {
         <>
           {!chain && (
             <Button
-              size="sm"
-              variant="outline"
-              fontFamily="Helsinki"
-              border="2px"
-              borderColor="brand.orange"
-              borderRadius="200px"
-              color="brand.red"
+              variant="solid"
+              fontFamily="Rockwell"
+              borderRadius=".125rem"
+              color="brand.blue"
               _hover={{
-                color: "brand.white",
+                transform: "translate(0px, 2px)",
               }}
-              bg="brand.black"
-              px="20px"
+              bg="brand.purple"
+              size="md"
+              px="2rem"
+              pt=".5rem"
               onClick={handleSwitch}
             >
-              Switch TO {CHAIN_OBJ.name}
+              Switch To {CHAIN_OBJ.name}
             </Button>
           )}
-          <Box w="156px" mt="12px" h="48px" position="relative">
-            <Button
-              as={Link}
-              to="/account"
-              size="md"
-              variant="outline"
-              fontFamily="Helsinki"
-              border="2px"
-              borderColor="brand.orange"
-              borderRadius="200px;"
-              color="brand.red"
-              _hover={{
-                transform: "translate(0px, -7px)",
-                color: "brand.white",
-              }}
-              position="absolute"
-              bg="brand.black"
-              zIndex="2"
-              transform="translate(0px, -8px)"
-              px="20px"
-            >
-              <Image width="18px" src={User} />
+          <Button
+            as={Link}
+            to="/account"
+            variant="solid"
+            fontFamily="Rockwell"
+            borderRadius=".125rem"
+            color="brand.blue"
+            _hover={{
+              transform: "translate(0px, 2px)",
+            }}
+            bg="brand.purple"
+            size={{ base: "sm", sm: "md" }}
+          >
+            <Flex align="end">
+              <Image width="24px" src={GrapeAvatar} />
               {user?.wallet?.address && (
-                <Text ml=".24rem" fontSize="14px">
+                <Text
+                  ml=".24rem"
+                  fontSize="14px"
+                  display={{ base: "none", sm: "block" }}
+                >
                   {truncateAddress(user?.wallet.address)}
                 </Text>
               )}
-            </Button>
-            <Box
-              w="full"
-              height="40px"
-              position="absolute"
-              border="2px"
-              borderColor="brand.orange"
-              borderRadius="200px;"
-            ></Box>
-          </Box>
+            </Flex>
+          </Button>
         </>
       ) : (
-        <Box w="156px" mt="12px" h="48px" position="relative">
-          <Button
-            onClick={login}
-            size="md"
-            variant="outline"
-            fontFamily="Helsinki"
-            border="2px"
-            borderColor="brand.orange"
-            borderRadius="200px;"
-            color="brand.red"
-            _hover={{ transform: "translate(0px, -7px)", color: "brand.white" }}
-            position="absolute"
-            bg="brand.black"
-            zIndex="2"
-            transform="translate(0px, -8px)"
-            px="20px"
-            w="156px"
-          >
-            Log In
-          </Button>
-          <Box
-            w="full"
-            height="40px"
-            position="absolute"
-            border="2px"
-            borderColor="brand.orange"
-            borderRadius="200px;"
-          ></Box>
-        </Box>
+        <Button
+          onClick={login}
+          variant="solid"
+          fontFamily="Rockwell"
+          borderRadius=".125rem"
+          color="brand.blue"
+          _hover={{
+            transform: "translate(0px, 2px)",
+          }}
+          bg="brand.purple"
+          size="md"
+          px="2rem"
+          pt=".5rem"
+        >
+          Log In
+        </Button>
       )}
     </>
   );

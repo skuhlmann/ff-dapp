@@ -1,7 +1,5 @@
 import { Divider, Flex, Image, Text } from "@chakra-ui/react";
 
-import peachOne from "../assets/peach-box-11.png";
-import peachFour from "../assets/freeze-dried.jpg";
 import peachFive from "../assets/box-1.jpg";
 import peachSix from "../assets/box-2.jpg";
 
@@ -20,34 +18,32 @@ export const HomeSectionFour = () => {
           mt={8}
           mr={8}
           flex="1"
-          borderTop="dotted 1px"
+          borderTop="solid 2px"
           borderColor={"brand.orange"}
           borderBottom="none"
           background="none"
         />
         <Text
-          fontFamily="auster"
+          fontFamily="AntiqueStories"
           color="brand.orange"
           fontSize="50px"
           fontWeight="bold"
         >
-          Proof-of-peach 2023
+          Proof-of-pour
         </Text>
         <Divider
           mt={8}
           ml={8}
           flex="1"
-          borderTop="dotted 1px"
+          borderTop="solid 2px"
           borderColor={"brand.orange"}
           borderBottom="none"
           background="none"
         />
       </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center">
-        <Image src={peachOne} w={{ base: "300px", md: "420px" }} />
         <Image src={peachSix} w={{ base: "300px", md: "420px" }} />
         <Image src={peachFive} w={{ base: "300px", md: "420px" }} />
-        <Image src={peachFour} w={{ base: "300px", md: "420px" }} />
       </Flex>
       <Flex
         direction="column"
@@ -57,12 +53,8 @@ export const HomeSectionFour = () => {
         gap="1rem"
       >
         <Text fontSize="sm" w={{ base: "100%", md: "70%" }}>
-          A special thanks to all the peach enjoyers that supported us last year
-          for our genesis season. We shipped out 100+ fresh peach boxes
-          domestically and 20+ freeze-dried bags to our international friends.
-        </Text>
-        <Text fontSize="sm" fontWeight="700">
-          Get ready for season 2!
+          Do we want to have something about peaches here? Discounts for peach
+          holders?
         </Text>
       </Flex>
     </Flex>

@@ -4,6 +4,8 @@ import { AccountAvatar } from "../components/AccountAvatar";
 import { LogIn } from "../components/LogIn";
 import { LuClipboardCopy } from "react-icons/lu";
 import { truncateAddress } from "../utils/formatting";
+import { SectionHeader } from "../components/SectionHeader";
+import { FundWallet } from "../components/FundWallet";
 
 function Account() {
   const toast = useToast();
@@ -26,9 +28,8 @@ function Account() {
 
   return (
     <>
-      <Box w="100%" textAlign="center" mb="3rem">
-        <Heading size="4xl">ACCOUNT</Heading>
-      </Box>
+      <SectionHeader title="Account" />
+
       <Flex w="100%" justify="center">
         {authenticated && user && user.wallet ? (
           <Flex
@@ -42,56 +43,48 @@ function Account() {
               email={user?.email?.address}
               handleCopy={handleCopy}
             />
+            <FundWallet />
 
-            <Text mb="1rem">
-              To fund your wallet send Base Eth to this address:{" "}
+            <Text fontSize="xs" mt="1.5rem" mb="0rem">
+              To manually fund your wallet send Base Eth to this address:{" "}
               {user?.wallet.address}
             </Text>
-            <Button _hover={{ cursor: "pointer" }} onClick={handleCopy}>
+
+            <Button
+              size="xs"
+              variant="secondary"
+              _hover={{ cursor: "pointer" }}
+              onClick={handleCopy}
+            >
               Copy to your clipboard
               <LuClipboardCopy
-                style={{ fontSize: "18px", marginLeft: ".5rem" }}
+                style={{ fontSize: "12px", marginLeft: ".5rem" }}
               />
             </Button>
-            <Box w="272px" position="relative" mt="3rem">
-              <Button
-                onClick={logout}
-                variant="outline"
-                fontFamily="heading"
-                fontSize="xl"
-                fontStyle="italic"
-                fontWeight="700"
-                border="2px"
-                borderColor="brand.orange"
-                borderRadius="200px;"
-                color="brand.red"
-                size="lg"
-                height="72px"
-                width="full"
-                _hover={{
-                  transform: "translate(0px, -10px)",
-                  color: "brand.white",
-                }}
-                _focus={{ transform: "translate(0px, 0px)", bg: "brand.black" }}
-                position="absolute"
-                bg="brand.black"
-                zIndex="2"
-                transform="translate(0px, -12px)"
-              >
-                Logout
-              </Button>
-              <Box
-                w="full"
-                height="72px"
-                position="absolute"
-                border="2px"
-                borderColor="brand.orange"
-                borderRadius="200px;"
-              ></Box>
-            </Box>
+
+            <Button
+              onClick={logout}
+              variant="solid"
+              fontFamily="Rockwell"
+              borderRadius=".125rem"
+              color="brand.blue"
+              _hover={{
+                transform: "translate(0px, 2px)",
+              }}
+              bg="brand.purple"
+              size="lg"
+              px="2rem"
+              pt=".5rem"
+              mt="3rem"
+            >
+              Logout
+            </Button>
           </Flex>
         ) : (
-          <LogIn />
+          <Box mb="15rem">
+            '
+            <LogIn />
+          </Box>
         )}
       </Flex>
     </>

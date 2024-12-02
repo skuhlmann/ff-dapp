@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAccountPeaches } from "../hooks/useAccountPeaches";
 import { PeachNftCard } from "./PeachNftCard";
 
-export const PeachList = ({ account }: { account: string }) => {
+export const BottleList = ({ account }: { account: string }) => {
   const { accountNfts, isLoading } = useAccountPeaches({
     accountAddress: account,
   });
@@ -37,27 +37,25 @@ export const PeachList = ({ account }: { account: string }) => {
         (!accountNfts?.balances.length && (
           <Flex gap="1rem" direction="column" align="center" justify="center">
             <Heading color="brand.orange" mb="2rem">
-              You don’t own any peaches yet!
+              You don’t own any bottles yet!
             </Heading>
             <Button
               as={Link}
-              to="/market"
-              variant="outline"
-              fontFamily="heading"
-              fontSize="xl"
-              fontStyle="italic"
-              fontWeight="700"
-              border="1px"
-              borderColor="brand.green"
-              borderRadius="200px;"
-              color="brand.orange"
+              to="/buy-wine"
+              variant="solid"
+              fontSize="3xl"
+              borderRadius=".125rem"
+              color="brand.red"
+              _hover={{
+                transform: "translate(0px, 2px)",
+              }}
+              bg="brand.purple"
               size="lg"
-              height="60px"
-              width="220px"
-              my="1rem"
-              _hover={{ bg: "transparent", color: "brand.white" }}
+              height="72px"
+              px="3rem"
+              pt=".75rem"
             >
-              BUY PEACHES
+              BUY WINE
             </Button>
           </Flex>
         ))}

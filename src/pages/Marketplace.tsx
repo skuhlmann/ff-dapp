@@ -20,6 +20,7 @@ import PeachRedeemed from "../assets/10-bite-trans.png";
 import Arrow1 from "../assets/Arrow1.png";
 import { brandColors } from "../theme";
 import { SEASON_OVER_TEXT } from "../utils/constants";
+import { SectionHeader } from "../components/SectionHeader";
 
 const BoxCard = styled(Box)`
   width: 300px;
@@ -71,7 +72,8 @@ function Marketplace() {
   return (
     <>
       <Box w="100%" textAlign="center" my="3rem">
-        <Heading size="3xl">Peach Market</Heading>
+        <SectionHeader title="Wine Market" />
+
         <Text
           fontSize="md"
           mt="2rem"

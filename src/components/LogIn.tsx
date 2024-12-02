@@ -13,18 +13,17 @@ export const LogIn = () => {
       {ready && !authenticated && (
         <Button
           onClick={login}
-          variant="outline"
-          fontFamily="heading"
-          fontSize="2xl"
-          fontStyle="italic"
-          fontWeight="700"
-          border="1px"
-          borderColor="brand.orange"
-          borderRadius="200px;"
-          color="brand.red"
+          variant="solid"
+          fontFamily="Rockwell"
+          borderRadius=".125rem"
+          color="brand.blue"
+          _hover={{
+            transform: "translate(0px, 2px)",
+          }}
+          bg="brand.purple"
           size="lg"
-          my="3rem"
-          _hover={{ bg: "transparent", color: "brand.white" }}
+          px="2rem"
+          pt=".5rem"
         >
           Log in
         </Button>
