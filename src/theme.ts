@@ -1,4 +1,4 @@
-import { border, extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 export const brandColors = {
   // darkOrange: `rgba(228, 108, 30, 0.3)`,

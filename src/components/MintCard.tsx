@@ -1,9 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import {
-  NFT_MINT_PRICE,
-  NftTreeMeta,
-  TARGET_NETWORK,
-} from "../utils/constants";
+import { NFT_MINT_PRICE, TARGET_NETWORK } from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
