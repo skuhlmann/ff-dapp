@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, useToast, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, useToast, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
 import { AccountAvatar } from "../components/AccountAvatar";
 import { LogIn } from "../components/LogIn";
