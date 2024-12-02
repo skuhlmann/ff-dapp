@@ -27,7 +27,7 @@ export const RemainingSupply = () => {
 
   return (
     <Box mb="2rem" textAlign="center">
-      <Heading size="lg" color="brand.lightPurple">
+      <Heading size="lg" color="brand.orange">
         Only {count} Bottles Left!
       </Heading>
     </Box>
