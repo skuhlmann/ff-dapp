@@ -12,6 +12,7 @@ export const HomeSectionTwo = () => {
       justifyContent="start"
       alignItems="start"
       px="10vw"
+      color="brand.blue"
     >
       <Flex
         direction="column"
@@ -23,9 +24,10 @@ export const HomeSectionTwo = () => {
       >
         <Flex gap="1rem" align="center" mb="1rem">
           <LabelBadge
-            bg="brand.red"
-            color="brand.black"
-            size="md"
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            height="50px"
             style={{
               lineHeight: "1.75",
             }}

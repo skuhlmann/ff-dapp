@@ -10,7 +10,7 @@ function About() {
     <>
       <SectionHeader title="About" />
 
-      <Box px={{ base: "1rem", sm: "2rem" }}>
+      <Box px={{ base: "1rem", sm: "2rem" }} color="brand.blue">
         <Flex wrap="wrap" justify="space-between" align="center">
           <Box w={{ base: "100%", md: "50%" }} mb="2rem">
             <Heading size="2xl" mb="2rem" color="brand.orange">
@@ -62,7 +62,7 @@ function About() {
             </Flex>
           </Flex>
           <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-            <Heading size="2xl" mb="2rem" color="brand.green">
+            <Heading size="2xl" mb="2rem" color="brand.tan">
               Meet the Wine Makers
             </Heading>
             <Text mb="2rem" fontSize="14px">

@@ -23,7 +23,7 @@ const AccountNftCount = ({
   const { accountNfts } = useAccountNfts({ accountAddress: account });
 
   return (
-    <Text color="brand.white" fontSize="xs">
+    <Text color="brand.blue" fontSize="xs">
       You own {`${holdingCount(name, accountNfts?.balances)} ${name}`}
     </Text>
   );
@@ -71,8 +71,8 @@ export const MintCard = ({ account }: { account?: string }) => {
             _hover={{
               transform: "translate(0px, 2px)",
             }}
-            color="brand.red"
-            bg="brand.black"
+            color="brand.orange"
+            bg="brand.purple"
             size="lg"
             height="72px"
             w="full"

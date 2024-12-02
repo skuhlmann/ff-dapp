@@ -52,7 +52,7 @@ function Home() {
               mx={{ base: "0", md: 20 }}
             >
               <Text
-                color="brand.orange"
+                color="brand.blue"
                 mb={{ base: 8, md: 8, xl: 12 }}
                 w={{ base: "300px" }}
               >
@@ -66,7 +66,7 @@ function Home() {
                   variant="solid"
                   fontSize="3xl"
                   borderRadius=".125rem"
-                  color="brand.red"
+                  color="brand.orange"
                   _hover={{
                     transform: "translate(0px, 2px)",
                   }}

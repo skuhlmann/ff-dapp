@@ -52,7 +52,7 @@ export const HomeSectionFour = () => {
         my={20}
         gap="1rem"
       >
-        <Text fontSize="sm" w={{ base: "100%", md: "70%" }}>
+        <Text fontSize="sm" w={{ base: "100%", md: "70%" }} color="brand.blue">
           Do we want to have something about peaches here? Discounts for peach
           holders?
         </Text>

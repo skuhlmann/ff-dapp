@@ -13,15 +13,17 @@ export const HomeSectionOne = () => {
       justifyContent="start"
       alignItems="start"
       px="10vw"
+      color="brand.blue"
     >
       <Box flex="1" mb="2rem" minW={{ base: "none", md: "250px" }}>
         <Flex gap="1rem" align="center" mb="1.5rem">
           <LabelBadge
-            bg="brand.red"
-            color="brand.black"
-            size="md"
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            height="50px"
             style={{
-              lineHeight: "1.75",
+              lineHeight: "1.85",
             }}
           >
             • THE WINE •

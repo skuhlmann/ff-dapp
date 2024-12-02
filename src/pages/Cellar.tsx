@@ -37,11 +37,11 @@ function Cellar() {
           variant="solid"
           fontSize="3xl"
           borderRadius=".125rem"
-          color="brand.red"
+          color="brand.orange"
+          bg="brand.purple"
           _hover={{
             transform: "translate(0px, 2px)",
           }}
-          bg="brand.purple"
           size="lg"
           height="72px"
           px="3rem"
