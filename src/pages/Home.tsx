@@ -67,10 +67,10 @@ function Home() {
                   fontSize="3xl"
                   borderRadius=".125rem"
                   color="brand.orange"
+                  bg="brand.purple"
                   _hover={{
                     transform: "translate(0px, 2px)",
                   }}
-                  bg="brand.purple"
                   size="lg"
                   height="72px"
                   w="full"
