@@ -1,6 +1,5 @@
-import { Flex, Spinner, Box, Button, Heading } from "@chakra-ui/react";
+import { Flex, Spinner, Box, Heading } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
-import { Link } from "react-router-dom";
 import { useAccountPeaches } from "../hooks/useAccountPeaches";
 import { PeachNftCard } from "./PeachNftCard";
 
