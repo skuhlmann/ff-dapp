@@ -7,6 +7,7 @@ import About from "./pages/About";
 import BuyWine from "./pages/BuyWine";
 import Leaderboard from "./pages/Leaderboard";
 import Marketplace from "./pages/Marketplace";
+import ShippingLocations from "./pages/ShippingLocations";
 // import Listing from "./pages/Listing";
 
 export const Routes = () => {
@@ -21,6 +22,7 @@ export const Routes = () => {
         {/* <Route path="market/:tokenId" element={<Listing />} /> */}
         <Route path="account" element={<Account />} />
         <Route path="about" element={<About />} />
+        <Route path="shipping" element={<ShippingLocations />} />
       </Route>
     </Router>
   );

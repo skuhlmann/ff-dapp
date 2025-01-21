@@ -1,7 +1,4 @@
 import { base, sepolia } from "viem/chains";
-import treeOne from "../assets/Tree-1.png";
-import treeTwo from "../assets/Tree-2.png";
-import treeThree from "../assets/Tree-3.png";
 
 export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
 
@@ -135,24 +132,6 @@ export const CHECKOUT_URL =
 export type NftTreeMeta = { name: string; img: string; value: number };
 
 export const CRITTER_COUNT_PLUS_ONE = 7;
-
-export const TREE_NFT_DATA: NftTreeMeta[] = [
-  {
-    name: "The Proud Peacher",
-    img: treeOne,
-    value: 0,
-  },
-  {
-    name: "Peachicus Magnificus",
-    img: treeTwo,
-    value: 1,
-  },
-  {
-    name: "Big ol` Peachy",
-    img: treeThree,
-    value: 2,
-  },
-];
 
 export const BOOST_POINTS = {
   PRUNE: 75,
