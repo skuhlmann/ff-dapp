@@ -13,10 +13,6 @@ import styled from "styled-components";
 // import type { Item } from "@rarible/api-client";
 // import { ListingList } from "../components/ListingList";
 
-import PeachCrate from "../assets/Crate.png";
-import PeachUnredeemed from "../assets/10-peach-trans.png";
-import PeachRedeemed from "../assets/10-bite-trans.png";
-
 import Arrow1 from "../assets/Arrow1.png";
 import { brandColors } from "../theme";
 import { SEASON_OVER_TEXT } from "../utils/constants";
@@ -98,7 +94,7 @@ function Marketplace() {
         gap="1rem"
       >
         <BoxCard>
-          <Image src={PeachCrate} />
+          {/* <Image src={PeachCrate} /> */}
           <Heading size="lg" color="brand.green" my=".5rem">
             Open
           </Heading>
@@ -110,7 +106,7 @@ function Marketplace() {
         <Image display={{ base: "none", md: "block" }} mx="8" src={Arrow1} />
 
         <BoxCard>
-          <Image src={PeachUnredeemed} />
+          {/* <Image src={PeachUnredeemed} /> */}
           <Heading size="lg" color="brand.green" my=".5rem">
             Reveal
           </Heading>
@@ -123,7 +119,7 @@ function Marketplace() {
         <Image display={{ base: "none", md: "block" }} mx="8" src={Arrow1} />
 
         <BoxCard>
-          <Image src={PeachRedeemed} />
+          {/* <Image src={PeachRedeemed} /> */}
           <Heading size="lg" color="brand.green" my=".5rem">
             Redeem
           </Heading>

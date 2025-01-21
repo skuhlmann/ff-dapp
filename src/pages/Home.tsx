@@ -9,7 +9,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import HomeLogoStamp from "../assets/ff_logo_stamp_orange.png";
 import SkullGrapeBundle from "../assets/ff_skull_grapes.png";
 
 import { HomeSectionOne } from "../components/HomeSectionOne";

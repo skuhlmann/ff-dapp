@@ -1,5 +1,4 @@
-import { Flex, Text, Image, Link } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Flex, Text, Image } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
