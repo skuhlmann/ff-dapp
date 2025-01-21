@@ -49,7 +49,7 @@ export const Footer = () => {
               isExternal
             >
               <Heading color="brand.black" size="md">
-                Rarible Grapes on Rarible
+                Grapes on Rarible
               </Heading>
             </Link>
             {/* <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text> */}
@@ -85,6 +85,11 @@ export const Footer = () => {
           <RouterLink to="/account">
             <Heading color="brand.black" size="md">
               My Account
+            </Heading>
+          </RouterLink>
+          <RouterLink to="/shipping">
+            <Heading color="brand.black" size="md">
+              Shipping
             </Heading>
           </RouterLink>
         </Flex>

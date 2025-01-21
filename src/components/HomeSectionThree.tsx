@@ -1,82 +1,48 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Flex, Text, Button, Image, Link } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
-import PeachCards from "../assets/peach-cards.png";
+import WineStamp from "../assets/ff_logo_stamp_orange.png";
 
 export const HomeSectionThree = () => {
   return (
     <Flex
-      mt={{ base: "0", md: "140px" }}
+      mt={{ base: "0", md: "100px" }}
       direction={{ base: "column", md: "row" }}
       justifyContent="start"
-      alignItems="start"
+      alignItems="center"
       px="10vw"
+      color="brand.blue"
     >
-      <Box flex="1" mb="2rem">
-        <Flex gap="1rem" align="center" mb="1rem">
+      <Box flex="1" mb="2rem" minW={{ base: "none", md: "250px" }}>
+        <Flex gap="1rem" align="center" mb="1.5rem">
           <LabelBadge
-            bg="brand.red"
-            color="brand.black"
-            size="md"
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            height="50px"
             style={{
-              lineHeight: "1.75",
+              lineHeight: "1.85",
             }}
           >
-            • THE WINE CELLAR •
+            • ENJOY YOUR WINE •
           </LabelBadge>
         </Flex>
-        <Text
-          fontFamily="auster"
-          maxWidth="597px"
-          fontWeight="bold"
-          fontSize={{ base: "56px", xl: "80px" }}
-          lineHeight={{ base: "60px", xl: "96px" }}
-          mb={4}
-          textAlign="left"
-        >
-          Get peaches!
+        <Text maxW="500px" mb="2rem">
+          Redeem your NFT and enjoy the wine for yourself, send to a friend or
+          choose to sell on the marketplace at a price you set.
         </Text>
-        <Text maxW="460px" mb="2rem">
-          Upon harvest, you will be able to redeem your peach boxes to enjoy
-          yourself, send to a friend or sell them at the{" "}
-          <Link as={RouterLink} color="brand.orange" to="/market">
-            Peach Market
-          </Link>{" "}
-          at a price you set. Peach lovers will be invited to purchase peach
-          boxes from the marketplace. Every peach box includes a unique,
-          generative PΞACH NFT.
-          <br />
-          <br />
-          Upon redemption, your PΞACH will evolve to reveal a juicy bite and
-          your unique PΞACH pit design. All buyers within the continental US
-          will receive a box of fresh, juicy peaches. International orders will
-          receive freeze-dried peaches (suitable for overseas shipping)
-          equivalent to a peach box, but don’t worry, they are just as
-          delicious!
+        <Text maxW="375px" fontSize="sm">
+          We are only able to ship wine to addresses in certain locations in
+          United States.
+          <Link as={RouterLink} to="/shipping" color="brand.orange" mx=".5rem">
+            Valid shipping locations
+          </Link>
         </Text>
-        <Button
-          as={RouterLink}
-          to="/market"
-          variant="outline"
-          fontFamily="heading"
-          fontSize="xl"
-          fontStyle="italic"
-          fontWeight="700"
-          border="1px"
-          borderColor="brand.white"
-          borderRadius="200px;"
-          color="brand.white"
-          size="sm"
-          height="64px"
-          width="250px"
-          _hover={{ bg: "transparent", color: "brand.white" }}
-        >
-          BUY PEACHES
-        </Button>
       </Box>
-      <Image width={{ base: "full", md: "40vw" }} src={PeachCards} />
+
+      <Image src={WineStamp} w={{ base: "290px", xl: "360px" }} />
     </Flex>
   );
 };

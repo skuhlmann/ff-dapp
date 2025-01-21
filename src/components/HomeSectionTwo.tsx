@@ -1,8 +1,9 @@
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 import { LabelBadge } from "./SharedLayout";
 
-import GrapeAvatar from "../assets/grape_logo.png";
+import GrapeNft from "../assets/ff_nft_example_1.jpg";
 
 export const HomeSectionTwo = () => {
   return (
@@ -10,14 +11,13 @@ export const HomeSectionTwo = () => {
       mt={{ base: "0", md: "140px" }}
       direction={{ base: "column", md: "row-reverse" }}
       justifyContent="start"
-      alignItems="start"
+      alignItems="center"
       px="10vw"
       color="brand.blue"
     >
       <Flex
         direction="column"
         alignItems={{ base: "start", md: "end" }}
-        justifyContent="end"
         flex="1"
         mb="2rem"
         ml={{ base: "0px", md: "50px" }}
@@ -32,24 +32,19 @@ export const HomeSectionTwo = () => {
               lineHeight: "1.75",
             }}
           >
-            • HOW IT WORKS •
+            • MINT SOME FRUIT •
           </LabelBadge>
         </Flex>
 
         <Text maxW="500px" textAlign={{ base: "left", md: "right" }} mb="2rem">
-          1. Premium selection notable craft wines, collection small lots are
-          elegant and distinctive.
+          Forgotten Fruit are generative NFTs redeemable for a bottle of
+          artisanal wine.
         </Text>
         <Text maxW="500px" textAlign={{ base: "left", md: "right" }} mb="2rem">
-          2. Premium selection notable craft wines, collection small lots are
-          elegant and distinctive.
-        </Text>
-        <Text maxW="500px" textAlign={{ base: "left", md: "right" }} mb="2rem">
-          3. Premium selection notable craft wines, collection small lots are
-          elegant and distinctive.
+          Mint some Fruit to reveal your unique grape bundle design.
         </Text>
       </Flex>
-      <Image src={GrapeAvatar} w={{ base: "400px", xl: "537px" }} />
+      <Image src={GrapeNft} w={{ base: "400px", xl: "537px" }} />
     </Flex>
   );
 };

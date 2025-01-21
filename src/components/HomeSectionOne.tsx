@@ -3,15 +3,15 @@ import { Box, Flex, Text, Link, Image } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
-import HomeLogoStamp from "../assets/ff_logo_stamp_orange.png";
+import BottleMock from "../assets/ff_bottle_temp.png";
 
 export const HomeSectionOne = () => {
   return (
     <Flex
-      mt={{ base: "0", md: "160px" }}
+      mt={{ base: "0", md: "100px" }}
       direction={{ base: "column", md: "row" }}
       justifyContent="start"
-      alignItems="start"
+      alignItems="center"
       px="10vw"
       color="brand.blue"
     >
@@ -29,15 +29,17 @@ export const HomeSectionOne = () => {
             • THE WINE •
           </LabelBadge>
         </Flex>
-        <Text maxW="460px" mb="2rem">
-          Premium selection notable craft wines, collection small lots are
-          elegant and distinctive.
+        <Text maxW="375px" mb="2rem">
+          This wine is like the love child of a fruit basket and your grandma’s
+          purse.
         </Text>
-        <Text maxW="460px" mb="2rem" fontWeight="700">
-          Premium selection notable craft wines, collection small lots are
-          elegant and distinctive.
+        <Text maxW="375px" mb="2rem" fontWeight="700">
+          This medium-to-full-bodied masterpiece is the wine equivalent of a
+          mullet: business on the nose, party in the glass. Pair it with
+          anything from a charcuterie board to leftover pizza, because honestly,
+          this wine is here for a good time, not a long time.
         </Text>
-        <Text maxW="460px">
+        <Text maxW="375px">
           Check out the
           <Link as={RouterLink} to="/about" color="brand.orange" mx=".5rem">
             about page
@@ -45,9 +47,8 @@ export const HomeSectionOne = () => {
           to learn more.
         </Text>
       </Box>
-      <Flex direction="column" alignItems={{ base: "center", md: "flex-end" }}>
-        <Image src={HomeLogoStamp} w={{ base: "245px", xl: "337px" }} />
-      </Flex>
+
+      <Image src={BottleMock} w={{ base: "290px", xl: "360px" }} />
     </Flex>
   );
 };

@@ -10,10 +10,12 @@ import {
 } from "@chakra-ui/react";
 
 import HomeLogoStamp from "../assets/ff_logo_stamp_orange.png";
+import SkullGrapeBundle from "../assets/ff_skull_grapes.png";
 
 import { HomeSectionOne } from "../components/HomeSectionOne";
 import { HomeSectionTwo } from "../components/HomeSectionTwo";
 import { HomeSectionFour } from "../components/HomeSectionFour";
+import { HomeSectionThree } from "../components/HomeSectionThree";
 
 function Home() {
   return (
@@ -43,7 +45,7 @@ function Home() {
             mt={{ base: 4, md: 8 }}
             gap={{ base: 4, md: 0 }}
           >
-            <Image src={HomeLogoStamp} w={{ base: "245px", xl: "337px" }} />
+            <Image src={SkullGrapeBundle} w={{ base: "300px", xl: "500px" }} />
             <Flex
               direction="column"
               alignItems="center"
@@ -56,8 +58,8 @@ function Home() {
                 mb={{ base: 8, md: 8, xl: 12 }}
                 w={{ base: "300px" }}
               >
-                Premium selection notable craft wines, collection small lots are
-                elegant and distinctive.
+                Introducing the Genesis Red Blend. Get your DigiDrinkable NFT,
+                sell it on the marketplace or redeem for a bottle!
               </Text>
               <Box w="full" position="relative" mt="12px">
                 <Button
@@ -97,6 +99,9 @@ function Home() {
       </Box>
       <Box mb="5rem">
         <HomeSectionTwo />
+      </Box>
+      <Box mb="5rem">
+        <HomeSectionThree />
       </Box>
       <Box mb="5rem">
         <HomeSectionFour />
