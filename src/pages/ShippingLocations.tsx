@@ -16,6 +16,7 @@ function ShippingLocations() {
             We are only able to ship wine to addresses in certain locations in
             United States.
           </Text>
+          <div className="vs-available"></div>
         </Box>
       </Box>
     </>

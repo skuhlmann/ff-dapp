@@ -36,6 +36,18 @@
        */
       var global = global || window;
     </script>
+    <script type="text/javascript">
+      window.document.addEventListener(
+        "vinoshipper:loaded",
+        () => {
+          window.Vinoshipper.init(3680, {
+            cartButton: false,
+          });
+        },
+        false
+      );
+    </script>
+    <script src="https://vinoshipper.com/injector/index.js"></script>
   </head>
   <body>
     <div id="root"></div>

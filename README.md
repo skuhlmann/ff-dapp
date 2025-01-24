@@ -1,6 +1,6 @@
-# Peach Tycoon Dapp
+# Forgotten Fruit
 
-🍑🍑🍑🍑🍑🍑🍑🍑🍑🍑🍑
+🍇🍇🍇🍇🍇🍇🍇🍇🍇🍇
 
 ```bash
   pnpm install
