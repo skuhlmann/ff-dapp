@@ -1,7 +1,10 @@
-import { Divider, Flex, Image, Text } from "@chakra-ui/react";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 
-import peachFive from "../assets/box-1.jpg";
-import peachSix from "../assets/box-2.jpg";
+// import peach from "../assets/10-peach-trans.png";
+// import peachBite from "../assets/10-bite-trans.png";
+
+// import peachFive from "../assets/box-1.jpg";
+// import peachSix from "../assets/box-2.jpg";
 
 export const HomeSectionFour = () => {
   return (
@@ -29,7 +32,7 @@ export const HomeSectionFour = () => {
           fontSize="50px"
           fontWeight="bold"
         >
-          Proof-of-pour
+          Proof-of-fruit
         </Text>
         <Divider
           mt={8}
@@ -41,9 +44,18 @@ export const HomeSectionFour = () => {
           background="none"
         />
       </Flex>
+      <Flex direction="column" align="center" textAlign="center" gap="1rem">
+        <Text fontSize="lg" w={{ base: "100%", md: "70%" }} color="brand.blue">
+          Another DigiEdible from your frens at Peach Tycoon.
+        </Text>
+      </Flex>
+      <Flex wrap="wrap" gap="1rem" align="center" justify="center" mb="1rem">
+        {/* <Image src={peach} w={{ base: "200px", md: "300px" }} />
+        <Image src={peachBite} w={{ base: "200px", md: "300px" }} /> */}
+      </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center">
-        <Image src={peachSix} w={{ base: "300px", md: "420px" }} />
-        <Image src={peachFive} w={{ base: "300px", md: "420px" }} />
+        {/* <Image src={peachSix} w={{ base: "200px", md: "300px" }} />
+        <Image src={peachFive} w={{ base: "200px", md: "300px" }} /> */}
       </Flex>
       <Flex
         direction="column"
@@ -52,9 +64,8 @@ export const HomeSectionFour = () => {
         my={20}
         gap="1rem"
       >
-        <Text fontSize="sm" w={{ base: "100%", md: "70%" }}>
-          Do we want to have something about peaches here? Discounts for peach
-          holders?
+        <Text fontSize="sm" w={{ base: "100%", md: "70%" }} color="brand.blue">
+          Discount for tree holders?
         </Text>
       </Flex>
     </Flex>

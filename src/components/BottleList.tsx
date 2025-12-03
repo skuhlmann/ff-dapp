@@ -1,6 +1,5 @@
-import { Flex, Spinner, Box, Button, Heading } from "@chakra-ui/react";
+import { Flex, Spinner, Box, Heading } from "@chakra-ui/react";
 import { PeachNft } from "../utils/types";
-import { Link } from "react-router-dom";
 import { useAccountPeaches } from "../hooks/useAccountPeaches";
 import { PeachNftCard } from "./PeachNftCard";
 
@@ -36,27 +35,9 @@ export const BottleList = ({ account }: { account: string }) => {
       {!accountNfts?.balances ||
         (!accountNfts?.balances.length && (
           <Flex gap="1rem" direction="column" align="center" justify="center">
-            <Heading color="brand.orange" mb="2rem">
+            <Heading color="brand.tan" mb="2rem">
               You don’t own any bottles yet!
             </Heading>
-            <Button
-              as={Link}
-              to="/buy-wine"
-              variant="solid"
-              fontSize="3xl"
-              borderRadius=".125rem"
-              color="brand.red"
-              _hover={{
-                transform: "translate(0px, 2px)",
-              }}
-              bg="brand.purple"
-              size="lg"
-              height="72px"
-              px="3rem"
-              pt=".75rem"
-            >
-              BUY WINE
-            </Button>
           </Flex>
         ))}
     </Box>

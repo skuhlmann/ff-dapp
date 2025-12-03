@@ -1,9 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import {
-  NFT_MINT_PRICE,
-  NftTreeMeta,
-  TARGET_NETWORK,
-} from "../utils/constants";
+import { NFT_MINT_PRICE, TARGET_NETWORK } from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
@@ -27,7 +23,7 @@ const AccountNftCount = ({
   const { accountNfts } = useAccountNfts({ accountAddress: account });
 
   return (
-    <Text color="brand.white" fontSize="xs">
+    <Text color="brand.blue" fontSize="xs">
       You own {`${holdingCount(name, accountNfts?.balances)} ${name}`}
     </Text>
   );
@@ -49,14 +45,13 @@ export const MintCard = ({ account }: { account?: string }) => {
           w="100%"
           textAlign="center"
           borderBottom="1px dotted black"
-          paddingBottom="2rem"
+          paddingBottom="1rem"
         >
           <p>
-            1 Skull Grape NFT redeemable for 1 Bottle of Forgotten Fruit Genesis
-            Red
+            1 Ticket (NFT) redeemable for 1 Bottle of Forgotten Fruit Alpha Red
           </p>
           <Heading size="lg" color="brand.blue" mt="1rem">
-            {`${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
+            {`$${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())}`}
           </Heading>
         </Box>
         {account && (
@@ -75,8 +70,8 @@ export const MintCard = ({ account }: { account?: string }) => {
             _hover={{
               transform: "translate(0px, 2px)",
             }}
-            color="brand.red"
-            bg="brand.black"
+            color="brand.orange"
+            bg="brand.purple"
             size="lg"
             height="72px"
             w="full"
@@ -88,10 +83,10 @@ export const MintCard = ({ account }: { account?: string }) => {
           </Button>
         )}
         {!account && (
-          <>
-            <Text>Login to Mint</Text>
+          <Box my="1rem" textAlign="center">
+            <Text mb="1rem">Login to Purchase</Text>
             <LogIn />
-          </>
+          </Box>
         )}
       </Flex>
       {account && <AccountNftCount account={account} name={"Bottles"} />}
