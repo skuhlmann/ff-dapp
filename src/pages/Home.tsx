@@ -102,6 +102,27 @@ function Home() {
       <Box mb="5rem">
         <HomeSectionThree />
       </Box>
+      <Flex mb="5rem" w="full" alignItems="center" justify="center">
+        <Button
+          as={Link}
+          to="/buy-wine"
+          variant="solid"
+          fontSize="3xl"
+          borderRadius=".125rem"
+          color="brand.orange"
+          bg="brand.purple"
+          _hover={{
+            transform: "translate(0px, 2px)",
+          }}
+          size="lg"
+          height="72px"
+          w="300px"
+          px="3rem"
+          pt=".75rem"
+        >
+          BUY A BOTTLE
+        </Button>
+      </Flex>
     </>
   );
 }

@@ -24,7 +24,7 @@ export const HomeSectionThree = () => {
             minH={{ base: "50px", md: "65px" }}
             lineHeight={{ base: "1.75", md: "1.85" }}
           >
-            • ENJOY YOUR WINE •
+            • 4. ENJOY YOUR WINE •
           </LabelBadge>
         </Flex>
         <Text maxW="500px" mb="2rem">
