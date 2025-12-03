@@ -1,5 +1,5 @@
 import { usePrivy } from "@privy-io/react-auth";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 import { LogIn } from "../components/LogIn";
 import { Link } from "react-router-dom";
@@ -14,6 +14,29 @@ function Cellar() {
   return (
     <>
       <SectionHeader title="My Cellar" />
+
+      <Flex
+        direction="column"
+        gap="1rem"
+        px={{ base: "5vw", md: "15vw" }}
+        color="brand.blue"
+        mb="2rem"
+      >
+        <Text fontSize="sm">
+          Meet your skele-grapes, digital misfits as bold as the wine they
+          represents.
+        </Text>
+
+        <Text fontSize="sm">
+          Every grape is one-of-a-kind with unique features, accessories and
+          buddies. Each is redeemable for a real bottle, ageable in your cellar,
+          resellable on our marketplace.
+        </Text>
+
+        <Text fontSize="sm">
+          Because even grapes deserve a second chance at greatness.
+        </Text>
+      </Flex>
 
       <Flex
         w="100%"
@@ -47,7 +70,7 @@ function Cellar() {
           px="3rem"
           pt=".75rem"
         >
-          BUY WINE
+          BUY BOTTLES
         </Button>
       </Flex>
     </>

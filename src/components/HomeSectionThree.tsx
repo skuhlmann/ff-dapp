@@ -8,7 +8,7 @@ import WineStamp from "../assets/ff_logo_stamp_orange.png";
 export const HomeSectionThree = () => {
   return (
     <Flex
-      mt={{ base: "0", md: "100px" }}
+      mt={{ base: "0", md: "3rem" }}
       direction={{ base: "column", md: "row" }}
       justifyContent="start"
       alignItems="center"
@@ -20,18 +20,15 @@ export const HomeSectionThree = () => {
           <LabelBadge
             bg="brand.lightPurple"
             color="brand.blue"
-            size="lg"
-            height="50px"
-            style={{
-              lineHeight: "1.85",
-            }}
+            size="xl"
+            minH={{ base: "50px", md: "65px" }}
+            lineHeight={{ base: "1.75", md: "1.85" }}
           >
             • ENJOY YOUR WINE •
           </LabelBadge>
         </Flex>
         <Text maxW="500px" mb="2rem">
-          Redeem your NFT and enjoy the wine for yourself, send to a friend or
-          choose to sell on the marketplace at a price you set.
+          Redeem your ticket for real wine delivered to your door
         </Text>
         <Text maxW="375px" fontSize="sm">
           We are only able to ship wine to addresses in certain locations in

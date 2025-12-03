@@ -21,8 +21,8 @@ export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
 };
 
 export const NFT_MINT_PRICE: Record<string, bigint> = {
-  "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(88800000000000000),
+  "0xaa36a7": BigInt(75000000000000000000),
+  "0x2105": BigInt(75000000000000000000),
 };
 
 export const ERC20_PAYMENT_TOKEN: Record<string, string> = {

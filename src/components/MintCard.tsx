@@ -45,14 +45,13 @@ export const MintCard = ({ account }: { account?: string }) => {
           w="100%"
           textAlign="center"
           borderBottom="1px dotted black"
-          paddingBottom="2rem"
+          paddingBottom="1rem"
         >
           <p>
-            1 Skull Grape NFT redeemable for 1 Bottle of Forgotten Fruit Genesis
-            Red
+            1 Ticket (NFT) redeemable for 1 Bottle of Forgotten Fruit Alpha Red
           </p>
           <Heading size="lg" color="brand.blue" mt="1rem">
-            {`${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} BASE ETH`}
+            {`$${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())}`}
           </Heading>
         </Box>
         {account && (
@@ -84,10 +83,10 @@ export const MintCard = ({ account }: { account?: string }) => {
           </Button>
         )}
         {!account && (
-          <>
-            <Text>Login to Mint</Text>
+          <Box my="1rem" textAlign="center">
+            <Text mb="1rem">Login to Purchase</Text>
             <LogIn />
-          </>
+          </Box>
         )}
       </Flex>
       {account && <AccountNftCount account={account} name={"Bottles"} />}

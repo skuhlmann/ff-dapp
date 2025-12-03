@@ -6,21 +6,20 @@ import { SiFarcaster } from "react-icons/si";
 
 import GrapeAvatar from "../assets/ff_logo_outline_black.png";
 
-import {
-  BLOCK_EXPLORER_URL,
-  PEACH_NFT_CONTRACT_ADDRESS,
-  TARGET_NETWORK,
-} from "../utils/constants";
-
 export const Footer = () => {
   return (
-    <Box minH="200px" bg="brand.blue" color="brand.black" p="60px">
+    <Box
+      minH="200px"
+      bg="brand.blue"
+      color="brand.black"
+      p={{ base: "20px", md: "60px" }}
+    >
       <Flex
         direction={{ base: "column", md: "row" }}
         wrap="wrap"
         justify={{ base: "center", md: "flex-start" }}
         align="center"
-        gap={{ base: "0.5rem", md: "2rem" }}
+        gap={{ base: "0srem", md: "2rem" }}
       >
         <Flex align="center" justify="center" gap="3rem" wrap="wrap">
           <Image src={GrapeAvatar} w={{ base: "150px", md: "250px" }} />
@@ -32,7 +31,7 @@ export const Footer = () => {
             </RouterLink>
             <RouterLink to="/buy-wine">
               <Heading color="brand.black" size="md">
-                Buy Wine
+                Buy Bottles
               </Heading>
             </RouterLink>
             <RouterLink to="/market">
@@ -50,9 +49,14 @@ export const Footer = () => {
                 My Account
               </Heading>
             </RouterLink>
-            <RouterLink to="/shipping">
+            <RouterLink to="/about">
               <Heading color="brand.black" size="md">
-                Shipping
+                About
+              </Heading>
+            </RouterLink>
+            <RouterLink to="/faq">
+              <Heading color="brand.black" size="md">
+                FAQ & Shipping Info
               </Heading>
             </RouterLink>
           </Flex>
@@ -68,7 +72,12 @@ export const Footer = () => {
                 <BsTelegram />
               </Link>
             </Flex>
-            <Link
+            <Link href="https://sauvagespectrum.com/" isExternal>
+              <Heading color="brand.black" size="md">
+                Sauvage Spectrum Wines
+              </Heading>
+            </Link>
+            {/* <Link
               href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
               isExternal
             >
@@ -83,7 +92,7 @@ export const Footer = () => {
               <Heading color="brand.black" size="md">
                 Grapes on Rarible
               </Heading>
-            </Link>
+            </Link> */}
             {/* <Text fontSize="xs">Copyright 2024 PΞACH TYCOON</Text> */}
             <Text fontSize="sm">
               Made with ❤️ by{" "}

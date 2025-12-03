@@ -1,10 +1,10 @@
 import { Divider, Flex, Image, Text } from "@chakra-ui/react";
 
-import peach from "../assets/10-peach-trans.png";
-import peachBite from "../assets/10-bite-trans.png";
+// import peach from "../assets/10-peach-trans.png";
+// import peachBite from "../assets/10-bite-trans.png";
 
-import peachFive from "../assets/box-1.jpg";
-import peachSix from "../assets/box-2.jpg";
+// import peachFive from "../assets/box-1.jpg";
+// import peachSix from "../assets/box-2.jpg";
 
 export const HomeSectionFour = () => {
   return (
@@ -50,12 +50,12 @@ export const HomeSectionFour = () => {
         </Text>
       </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center" mb="1rem">
-        <Image src={peach} w={{ base: "200px", md: "300px" }} />
-        <Image src={peachBite} w={{ base: "200px", md: "300px" }} />
+        {/* <Image src={peach} w={{ base: "200px", md: "300px" }} />
+        <Image src={peachBite} w={{ base: "200px", md: "300px" }} /> */}
       </Flex>
       <Flex wrap="wrap" gap="1rem" align="center" justify="center">
-        <Image src={peachSix} w={{ base: "200px", md: "300px" }} />
-        <Image src={peachFive} w={{ base: "200px", md: "300px" }} />
+        {/* <Image src={peachSix} w={{ base: "200px", md: "300px" }} />
+        <Image src={peachFive} w={{ base: "200px", md: "300px" }} /> */}
       </Flex>
       <Flex
         direction="column"

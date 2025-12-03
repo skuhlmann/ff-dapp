@@ -8,7 +8,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <PrivyProvider
       appId={import.meta.env.VITE_PRIVY_APP_ID}
       config={{
-        loginMethods: ["email", "wallet", "farcaster"],
+        loginMethods: ["email", "wallet"],
         // appearance: {
         //   theme: "light",
         //   accentColor: "#676FFF",

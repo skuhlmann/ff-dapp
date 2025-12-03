@@ -9,7 +9,7 @@ export const SectionHeader = ({ title }: { title: string }) => {
       alignItems="center"
       justifyContent="start"
       mt={10}
-      mb={20}
+      mb={10}
     >
       <Divider
         mt={4}

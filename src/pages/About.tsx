@@ -1,4 +1,13 @@
-import { Box, Flex, Heading, Image, Text, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  Link,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/react";
 
 import farmSunset from "../assets/farm_sunset.jpg";
 import waxbones from "../assets/waxbones.jpg";
@@ -17,27 +26,34 @@ function About() {
               Meet The Grand Valley AVA
             </Heading>
             <Text mb="2rem" fontSize="14px">
-              A bottle of Cabernet Sauvignon capsule with corkscrews and
-              characteristics. Glass of Chardonnay stem on vineyards from the
-              valley quality. Sip quality estate fruit made with grapes grown
-              unique vine. Farmed locations planted sustainability winemakers
-              grow harvest before aged to ensure each varietal. Premium
-              selection notable craft wines, collection small lots are elegant
-              and distinctive.
+              When people list legendary wine regions, you usually hear Napa
+              Valley, Willamette Valley, Bordeaux, Tuscany, Sonoma… But there’s
+              a new name worth learning — and it’s right here in Colorado.
             </Text>
             <Text mb="2rem" fontSize="14px">
-              Taste labels and notes with flavors of brand. Tasting room visit
-              package design cold-climate whole cluster fermentation in the
-              mountain range. Winemaking facility crush activity Pinot Noir food
-              and wine pairing then producers accolade score. Vintners prefer
-              cool climate popular vinous offerings can ripen world-famous
-              traditional method for tastings.
+              Welcome to the **Grand Valley American Viticultural Area**, home
+              to over 80% of Colorado’s grape production and one of the
+              fastest-rising wine regions in the country. Set in the high desert
+              of Grand Junction and Palisade, the region’s magic comes from a
+              surprising combination of elements:
             </Text>
-            <Text mb="2rem" fontSize="14px">
-              Appellation of origin brand name and the wine type with a vineyard
-              designation are mandatory. Aromas of pear green region and flavors
-              of toasted oak ripen a hint of dark berries.
-            </Text>
+
+            <UnorderedList fontSize="14px">
+              <ListItem>
+                High elevation (4,500 – 4,900 ft) that concentrates flavors and
+                keeps acidity lively
+              </ListItem>
+              <ListItem>
+                Hot, sunny days that ripen grapes with intensity
+              </ListItem>
+              <ListItem>
+                Cool nights that lock in structure and aromatics
+              </ListItem>
+              <ListItem>
+                Nutrient-rich soils shaped by ancient riverbeds
+              </ListItem>
+              <ListItem>Reliable water access from the Colorado River</ListItem>
+            </UnorderedList>
           </Box>
           <Flex
             w={{ base: "100%", md: "45%" }}
@@ -52,40 +68,35 @@ function About() {
         </Flex>
 
         <Flex wrap="wrap" justify="space-between" align="center">
-          <Flex
-            w={{ base: "100%", md: "45%" }}
-            direction="column"
-            alignItems={{ base: "center", md: "flex-end" }}
-          >
-            <Flex direction="column" align="center">
-              <Image src={farmSunset} />
-            </Flex>
-          </Flex>
           <Box w={{ base: "100%", md: "50%" }} mb="2rem">
             <Heading size="2xl" mb="2rem" color="brand.tan">
               Meet the Wine Makers
             </Heading>
             <Text mb="2rem" fontSize="14px">
-              A bottle of Cabernet Sauvignon capsule with corkscrews and
-              characteristics. Glass of Chardonnay stem on vineyards from the
-              valley quality. Sip quality estate fruit made with grapes grown
-              unique vine. Farmed locations planted sustainability winemakers
-              grow harvest before aged to ensure each varietal. Premium
-              selection notable craft wines, collection small lots are elegant
-              and distinctive.
+              Great wine starts with great people, and **Sauvage Spectrum** is
+              the real deal.
             </Text>
             <Text mb="2rem" fontSize="14px">
-              Taste labels and notes with flavors of brand. Tasting room visit
-              package design cold-climate whole cluster fermentation in the
-              mountain range. Winemaking facility crush activity Pinot Noir food
-              and wine pairing then producers accolade score. Vintners prefer
-              cool climate popular vinous offerings can ripen world-famous
-              traditional method for tastings.
+              Based in Palisade, they blend traditional winemaking knowledge
+              with experimental curiosity — an approach that fits Forgotten
+              Fruit like a glove. Sauvage Spectrum is known for:
             </Text>
+            <UnorderedList fontSize="14px">
+              <ListItem>Big, expressive blends</ListItem>
+              <ListItem>
+                Estate-grown grapes from Colorado’s best parcels
+              </ListItem>
+              <ListItem>A commitment to high-elevation viticulture</ListItem>
+              <ListItem>
+                A passion for showcasing what Grand Valley fruit can truly do
+              </ListItem>
+            </UnorderedList>
+
             <Text mb="2rem" fontSize="14px">
-              Appellation of origin brand name and the wine type with a vineyard
-              designation are mandatory. Aromas of pear green region and flavors
-              of toasted oak ripen a hint of dark berries.
+              They’re not afraid to break the mold, bend some rules, or get a
+              little weird in the pursuit of great wine. Which is perfect,
+              because we had a bunch of misfit grapes with something to prove —
+              and they knew exactly how to help them shine.
             </Text>
           </Box>
         </Flex>

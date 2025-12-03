@@ -13,17 +13,16 @@ import SkullGrapeBundle from "../assets/ff_skull_grapes.png";
 
 import { HomeSectionOne } from "../components/HomeSectionOne";
 import { HomeSectionTwo } from "../components/HomeSectionTwo";
-import { HomeSectionFour } from "../components/HomeSectionFour";
 import { HomeSectionThree } from "../components/HomeSectionThree";
 
 function Home() {
   return (
     <>
-      <Box mb="5rem">
+      <Box mb="3rem">
         <Flex direction="row" justify="center">
           <Box w="auto">
             <Heading
-              fontSize={{ base: "64px", md: "90px", lg: "150px" }}
+              fontSize={{ base: "64px", md: "90px", lg: "120px" }}
               lineHeight={{
                 base: "64px",
                 md: "90px",
@@ -57,8 +56,9 @@ function Home() {
                 mb={{ base: 8, md: 8, xl: 12 }}
                 w={{ base: "300px" }}
               >
-                Introducing the Genesis Red Blend. Get your DigiDrinkable NFT,
-                sell it on the marketplace or redeem for a bottle!
+                Boutique wines from misfit grapes, each bottle comes with its
+                very own skele-grape digital collectible. Age it. Sip it. Trade
+                it. Repeat.
               </Text>
               <Box w="full" position="relative" mt="12px">
                 <Button
@@ -78,7 +78,7 @@ function Home() {
                   px="3rem"
                   pt=".75rem"
                 >
-                  GET WINE
+                  BUY A BOTTLE
                 </Button>
               </Box>
             </Flex>
@@ -101,9 +101,6 @@ function Home() {
       </Box>
       <Box mb="5rem">
         <HomeSectionThree />
-      </Box>
-      <Box mb="5rem">
-        <HomeSectionFour />
       </Box>
     </>
   );

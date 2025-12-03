@@ -29,7 +29,7 @@ export const MenuLinks = ({
       pb="3rem"
       position="fixed"
       zIndex="12"
-      mt="120px"
+      mt="150px"
       w="full"
       background={"brand.black"}
     >
@@ -42,11 +42,12 @@ export const MenuLinks = ({
         textTransform="uppercase"
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/buy-wine">Buy Wine</MenuItem>
-        {/* <MenuItem to="/market">Wine Market</MenuItem> */}
+        <MenuItem to="/buy-wine">Buy Bottles</MenuItem>
+        <MenuItem to="/market">Wine Market</MenuItem>
         <MenuItem to="/cellar">My Cellar</MenuItem>
         <MenuItem to="/account">My Account</MenuItem>
         <MenuItem to="/about">About</MenuItem>
+        <MenuItem to="/FAQ">FAQ</MenuItem>
         {ready && authenticated && (
           <Heading
             onClick={handleLogout}
