@@ -1,4 +1,4 @@
-import { Divider, Flex, Image, Text } from "@chakra-ui/react";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 
 // import peach from "../assets/10-peach-trans.png";
 // import peachBite from "../assets/10-bite-trans.png";

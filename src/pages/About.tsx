@@ -9,7 +9,6 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
-import farmSunset from "../assets/farm_sunset.jpg";
 import waxbones from "../assets/waxbones.jpg";
 import palisade from "../assets/palisades_orchard.jpeg";
 import { SectionHeader } from "../components/SectionHeader";
