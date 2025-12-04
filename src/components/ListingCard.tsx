@@ -5,8 +5,8 @@ import type { Item } from "@rarible/api-client";
 
 import { truncateAddress } from "../utils/formatting";
 
-import { usePeachStatus } from "../hooks/usePeachStatus";
-// import { PeachActions } from "./PeachActions";
+import { useTokenStatus } from "../hooks/useTokenStatus";
+// import { TokenActions } from "./TokenActions";
 
 // import peachAvatar from "../assets/peach-avatar-trans.png";
 // import { BuyPeachButton } from "./BuyPeachButtton";
@@ -19,8 +19,8 @@ export const ListingCard = ({
   peach: Item;
   tokenId: string;
 }) => {
-  // const { peachStatus, img, orders } = usePeachStatus({
-  const { peachStatus, img } = usePeachStatus({
+  // const { peachStatus, img, orders } = useTokenStatus({
+  const { peachStatus, img } = useTokenStatus({
     tokenId,
   });
 
@@ -103,7 +103,7 @@ export const ListingCard = ({
           )} */}
 
           {/* {tokenState !== undefined && (
-            <PeachActions
+            <TokenActions
               tokenId={peach.tokenID}
               tokenImage={img}
               account={account}

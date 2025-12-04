@@ -3,25 +3,25 @@ import { createPublicClient, http } from "viem";
 
 import {
   CHAIN_OBJ,
-  PEACH_IMG_IPFS_HASH,
-  PEACH_NFT_CONTRACT_ADDRESS,
+  TOKEN_IMG_IPFS_HASH,
+  NFT_CONTRACT_ADDRESS,
   // RARIBLE_PREFIX,
   // RARIBLE_STAGE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import peachAbi from "../abis/PeachERC712.json";
+import nftAbi from "../abis/GrapeERC721.json";
 
-import { dhImagePathFromIpfs, getPeachStatus } from "../utils/formatting";
+import { dhImagePathFromIpfs, getTokenStatus } from "../utils/formatting";
 // import { createRaribleSdk } from "@rarible/sdk";
 
-const fetchPeachStatus = async ({
+const fetchTokenStatus = async ({
   tokenId,
-  peachAddress,
+  contractAddress,
 }: {
   tokenId: string;
-  peachAddress: string;
+  contractAddress: string;
 }) => {
-  if (!tokenId || !peachAddress) {
+  if (!tokenId || !contractAddress) {
     throw new Error("Missing Args");
   }
 
@@ -31,13 +31,13 @@ const fetchPeachStatus = async ({
   });
 
   const tokenState = (await publicClient.readContract({
-    address: peachAddress as `0x${string}`,
-    abi: peachAbi,
+    address: contractAddress as `0x${string}`,
+    abi: nftAbi,
     functionName: "tokenState",
     args: [tokenId],
   })) as number;
 
-  const imgIpfs = PEACH_IMG_IPFS_HASH[tokenState];
+  const imgIpfs = TOKEN_IMG_IPFS_HASH[tokenState];
 
   // const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
   //   apiKey: import.meta.env.VITE_RARIBLE_KEY,
@@ -46,28 +46,26 @@ const fetchPeachStatus = async ({
   // // ETHEREUM:${token}:${tokenId}
   // // BASE:${token}:${tokenId}
   // const orders = await sdk.apis.order.getSellOrdersByItem({
-  //   itemId: `${RARIBLE_PREFIX}:${peachAddress}:${tokenId}`,
+  //   itemId: `${RARIBLE_PREFIX}:${contractAddress}:${tokenId}`,
   //   // @ts-expect-error rarible sdk trippin
   //   status: ["ACTIVE"],
   // });
 
   return {
     tokenState,
-    peachStatus: getPeachStatus(tokenState),
-    img: `${dhImagePathFromIpfs(imgIpfs)}${
-      Number(tokenState) > 0 ? `/${tokenId}.png` : ""
-    }`,
+    tokenStatus: getTokenStatus(tokenState),
+    img: `${dhImagePathFromIpfs(imgIpfs)}/${tokenId}.png`,
     // orders: orders?.orders || [],
   };
 };
 
-export const usePeachStatus = ({ tokenId }: { tokenId: string }) => {
+export const useTokenStatus = ({ tokenId }: { tokenId: string }) => {
   const { data, error, ...rest } = useQuery({
-    queryKey: [`peachStatus-${tokenId}`],
+    queryKey: [`tokenStatus-${tokenId}`],
     queryFn: () =>
-      fetchPeachStatus({
+      fetchTokenStatus({
         tokenId,
-        peachAddress: PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
+        contractAddress: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
       }),
   });
 

@@ -152,7 +152,7 @@ function Marketplace() {
         <Text fontSize="2xl" py="1rem" fontWeight="700">
           {/* {SEASON_OVER_TEXT}
            */}
-          Marketplace is coming soon!
+          Marketplace is opening soon!
         </Text>
       </Flex>
     </>

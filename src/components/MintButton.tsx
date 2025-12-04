@@ -2,7 +2,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Button,
   Flex,
-  Image,
   Link,
   Modal,
   ModalBody,
@@ -20,80 +19,34 @@ import {
   type BaseError,
   useAccount,
 } from "wagmi";
-import { createRaribleSdk } from "@rarible/sdk";
 
-import peachNftAbi from "../abis/PeachERC712.json";
+import erc721Abi from "../abis/GrapeERC721.json";
 import {
   BLOCK_EXPLORER_URL,
-  PEACH_NFT_CONTRACT_ADDRESS,
-  RARIBLE_PREFIX,
-  RARIBLE_STAGE,
+  NFT_CONTRACT_ADDRESS,
+  NFT_MINT_PRICE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { dhImagePath } from "../utils/formatting";
-// import { toItemId } from "@rarible/types";
 
-// refetch and invalidate
-
-export const UnboxButton = ({
-  tokenId,
-  tokenImage,
-  account,
-}: {
-  tokenId: string;
-  account: string;
-  tokenImage?: string;
-}) => {
+export const MintButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain } = useAccount();
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
-
-  const queryClient = useQueryClient();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
       hash,
     });
 
-  useEffect(() => {
-    const reset = async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [`peachStatus-${tokenId}`],
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [`accountPeaches-${account}`],
-      });
-
-      const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
-      });
-
-      const refreshRes = await sdk.apis.item.resetItemMeta({
-        // itemId: toItemId(
-        //   `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`
-        // ),
-        itemId: `${RARIBLE_PREFIX}:${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}:${tokenId}`,
-      });
-
-      console.log("refreshRes", refreshRes);
-    };
-    if (isConfirmed) {
-      console.log("INVALIDATING/REFETCH");
-      reset();
-      // refetch();
-    }
-  }, [isConfirmed, queryClient, tokenId, account]);
-
-  const handleUnbox = async () => {
+  const handleMint = async () => {
     onOpen();
     writeContract({
-      address: PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
-      abi: peachNftAbi,
-      functionName: "unbox",
-      args: [tokenId],
+      address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
+      abi: erc721Abi,
+      functionName: "mint",
+      value: NFT_MINT_PRICE[TARGET_NETWORK],
+      args: [],
     });
   };
 
@@ -102,27 +55,25 @@ export const UnboxButton = ({
   return (
     <>
       <Button
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
         fontWeight="700"
-        border="1px"
-        borderColor="brand.orange"
-        borderRadius="200px;"
-        color="brand.orange"
-        size="lg"
-        height="60px"
-        width="220px"
-        my=".5rem"
-        isDisabled={isDisabled}
+        my="1rem"
+        variant="solid"
+        fontSize="3xl"
+        borderRadius=".125rem"
         _hover={{
-          bg: "transparent",
-          color: "brand.orange",
+          transform: "translate(0px, 2px)",
         }}
-        onClick={handleUnbox}
+        color="brand.orange"
+        bg="brand.purple"
+        size="lg"
+        height="72px"
+        w="full"
+        px="3rem"
+        pt=".75rem"
+        isDisabled={isDisabled}
+        onClick={handleMint}
       >
-        UNBOX
+        Purchase
       </Button>
 
       <Modal
@@ -137,7 +88,7 @@ export const UnboxButton = ({
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.green">Minting</ModalHeader>
+          <ModalHeader color="brand.green">Purchasing</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -146,9 +97,8 @@ export const UnboxButton = ({
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="lg">Unbox</Text>
-              {/* <Image src={tokenImage} h="320px" /> */}
-              {tokenImage && <Image mb=".5rem" src={dhImagePath(tokenImage)} />}
+              {/* <Text fontSize="lg">{name}</Text> */}
+              {/* <Image src={img} h="320px" /> */}
 
               {hash && (
                 <Link
@@ -176,7 +126,7 @@ export const UnboxButton = ({
                     size="lg"
                     height="72px"
                   >
-                    Checkout Your Unboxed Peach
+                    Checkout Your New Tree
                   </Button>
                 </RouterLink>
               )}

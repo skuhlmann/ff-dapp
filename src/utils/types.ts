@@ -8,7 +8,7 @@ export type TreeNft = {
   };
 };
 
-export type PeachNft = {
+export type NftItem = {
   tokenID: string;
   contractAddress: string;
   tokenMetadata?: {

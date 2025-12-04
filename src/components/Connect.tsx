@@ -83,7 +83,7 @@ export const Connect = () => {
           px="2rem"
           pt=".5rem"
         >
-          Log In
+          Buy Now
         </Button>
       )}
     </>

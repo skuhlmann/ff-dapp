@@ -1,11 +1,14 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { NFT_MINT_PRICE, TARGET_NETWORK } from "../utils/constants";
 import { useAccountNfts } from "../hooks/useAccountNfts";
 import { fromWei } from "../utils/formatting";
 import { LogIn } from "./LogIn";
 import GrapeAvatar from "../assets/grape_logo.png";
+import { MintButton } from "./MintButton";
 
-// import { MintTreeButton } from "./MintTreeButton";
+// logged in and has funds - go to mint
+// logged in and no funds - funding prompt
+// not logged in - signup flow
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const holdingCount = (name: string, nfts?: any[]) => {
@@ -48,43 +51,17 @@ export const MintCard = ({ account }: { account?: string }) => {
           paddingBottom="1rem"
         >
           <p>
-            1 Ticket (NFT) redeemable for 1 Bottle of Forgotten Fruit Alpha Red
+            Pruchase a ticket (NFT) redeemable for 1 Bottle of Forgotten Fruit
+            Alpha Red
           </p>
           <Heading size="lg" color="brand.blue" mt="1rem">
             {`$${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())}`}
           </Heading>
         </Box>
-        {account && (
-          // <MintTreeButton
-          //   trunkId={tree.value}
-          //   name={tree.name}
-          //   img={tree.img}
-          // />
-
-          <Button
-            fontWeight="700"
-            my="1rem"
-            variant="solid"
-            fontSize="3xl"
-            borderRadius=".125rem"
-            _hover={{
-              transform: "translate(0px, 2px)",
-            }}
-            color="brand.orange"
-            bg="brand.purple"
-            size="lg"
-            height="72px"
-            w="full"
-            px="3rem"
-            pt=".75rem"
-            isDisabled={true}
-          >
-            BUY
-          </Button>
-        )}
+        {account && <MintButton />}
         {!account && (
           <Box my="1rem" textAlign="center">
-            <Text mb="1rem">Login to Purchase</Text>
+            <Text mb="1rem">Signup or Login to Purchase</Text>
             <LogIn />
           </Box>
         )}

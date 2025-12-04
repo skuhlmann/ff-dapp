@@ -25,7 +25,7 @@ export const LogIn = () => {
           px="2rem"
           pt=".5rem"
         >
-          Log in
+          Buy Now
         </Button>
       )}
     </>

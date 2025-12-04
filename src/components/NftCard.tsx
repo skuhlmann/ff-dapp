@@ -1,27 +1,29 @@
 // import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
-import { PeachNft } from "../utils/types";
+import { NftItem } from "../utils/types";
 import {
-  blockExplorerPeachNftLink,
+  blockExplorerNftLink,
   // getPriceText,
   truncateAddress,
 } from "../utils/formatting";
 
-import { usePeachStatus } from "../hooks/usePeachStatus";
-import { PeachActions } from "./PeachActions";
+import { useTokenStatus } from "../hooks/useTokenStatus";
+import { TokenActions } from "./TokenActions";
 // import { CastLink } from "./CastLink";
 
-export const PeachNftCard = ({
-  peach,
+export const NftCard = ({
+  token,
   account,
 }: {
-  peach: PeachNft;
+  token: NftItem;
   account: string;
 }) => {
-  // const { peachStatus, tokenState, img, orders } = usePeachStatus({
-  const { peachStatus, tokenState, img } = usePeachStatus({
-    tokenId: peach.tokenID,
+  // const { tokenStatus, tokenState, img, orders } = useTokenStatus({
+  const { tokenStatus, tokenState, img } = useTokenStatus({
+    tokenId: token.tokenID,
   });
+
+  console.log("img", img);
 
   // const isListed = orders && orders.length > 0;
 
@@ -29,25 +31,26 @@ export const PeachNftCard = ({
     <Flex direction="column" align="center" gap="1rem">
       <Box
         w={{ base: "320px" }}
-        bg="brand.gray"
+        bg="brand.lightPurple"
         borderRadius="20px"
         p="26px 29px 26px 29px"
       >
         <Flex direction="column" align="center">
           <Flex w="100%" justify="flex-start" mb="1rem">
             <Link
-              href={blockExplorerPeachNftLink(peach.tokenID)}
+              href={blockExplorerNftLink(token.tokenID)}
               isExternal
               fontSize="xs"
               color="brand.orange"
+              fontWeight="700"
             >
-              {`${truncateAddress(peach.contractAddress)}/${peach.tokenID}`}
+              {`${truncateAddress(token.contractAddress)}/${token.tokenID}`}
             </Link>
           </Flex>
           <Image mb=".5rem" src={img} />
-          <Text fontSize="xs">{peach.tokenMetadata?.name}</Text>
+          <Text fontSize="xs">{token.tokenMetadata?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
-            {peachStatus}
+            {tokenStatus}
           </Text>
           {/* 
           {isListed && (
@@ -67,7 +70,7 @@ export const PeachNftCard = ({
                 </Text>
               </RouterLink>
               <Box mb="1rem">
-                <CastLink tokenId={peach.tokenID} />
+                <CastLink tokenId={token.tokenID} />
               </Box>
             </>
           )}
@@ -88,8 +91,8 @@ export const PeachNftCard = ({
           )} */}
 
           {tokenState !== undefined && (
-            <PeachActions
-              tokenId={peach.tokenID}
+            <TokenActions
+              tokenId={token.tokenID}
               tokenImage={img}
               account={account}
               tokenState={tokenState}

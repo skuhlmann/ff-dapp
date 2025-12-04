@@ -1,6 +1,12 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 
-export const SectionHeader = ({ title }: { title: string }) => {
+export const SectionHeader = ({
+  title,
+  showPresale,
+}: {
+  title: string;
+  showPresale?: boolean;
+}) => {
   return (
     <Flex
       w="full"
@@ -23,6 +29,11 @@ export const SectionHeader = ({ title }: { title: string }) => {
       <Text color="brand.blue" fontSize="2rem" fontWeight="bold">
         {title}
       </Text>
+      {showPresale && (
+        <Text color="brand.orange" fontSize="2rem" fontWeight="bold" ml="1rem">
+          Presales are open!
+        </Text>
+      )}
       <Divider
         mt={4}
         ml={4}

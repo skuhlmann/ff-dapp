@@ -17,6 +17,7 @@ function Cellar() {
 
       <Flex
         direction="column"
+        textAlign="center"
         gap="1rem"
         px={{ base: "5vw", md: "15vw" }}
         color="brand.blue"
@@ -31,10 +32,6 @@ function Cellar() {
           Every grape is one-of-a-kind with unique features, accessories and
           buddies. Each is redeemable for a real bottle, ageable in your cellar,
           resellable on our marketplace.
-        </Text>
-
-        <Text fontSize="sm">
-          Because even grapes deserve a second chance at greatness.
         </Text>
       </Flex>
 
@@ -70,7 +67,7 @@ function Cellar() {
           px="3rem"
           pt=".75rem"
         >
-          BUY BOTTLES
+          BUY A BOTTLE
         </Button>
       </Flex>
     </>

@@ -14,6 +14,7 @@ import SkullGrapeBundle from "../assets/ff_skull_grapes.png";
 import { HomeSectionOne } from "../components/HomeSectionOne";
 import { HomeSectionTwo } from "../components/HomeSectionTwo";
 import { HomeSectionThree } from "../components/HomeSectionThree";
+import { SALE_STATE } from "../utils/constants";
 
 function Home() {
   return (
@@ -60,7 +61,21 @@ function Home() {
                 very own skele-grape digital collectible. Age it. Sip it. Trade
                 it. Repeat.
               </Text>
+
               <Box w="full" position="relative" mt="12px">
+                {SALE_STATE === "presale" && (
+                  <Text
+                    color="brand.orange"
+                    fontSize="2xl"
+                    fontWeight="700"
+                    textAlign="center"
+                    mb="2rem"
+                    lineHeight="1.5"
+                    w={{ base: "300px" }}
+                  >
+                    PRESALES ARE OPEN!
+                  </Text>
+                )}
                 <Button
                   as={Link}
                   to="/buy-wine"
@@ -102,7 +117,28 @@ function Home() {
       <Box mb="5rem">
         <HomeSectionThree />
       </Box>
-      <Flex mb="5rem" w="full" alignItems="center" justify="center">
+
+      <Flex
+        direction="column"
+        mb="5rem"
+        w="full"
+        alignItems="center"
+        justify="center"
+      >
+        {SALE_STATE === "presale" && (
+          <Text
+            color="brand.orange"
+            fontSize="2xl"
+            fontWeight="700"
+            textAlign="center"
+            mb="2rem"
+            lineHeight="1.5"
+            w={{ base: "300px" }}
+          >
+            PRESALES ARE OPEN!
+          </Text>
+        )}
+
         <Button
           as={Link}
           to="/buy-wine"
