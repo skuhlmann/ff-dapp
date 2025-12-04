@@ -45,7 +45,7 @@ export const MenuLinks = ({
         <MenuItem to="/buy-wine">Buy Bottles</MenuItem>
         <MenuItem to="/cellar">My Cellar</MenuItem>
         <MenuItem to="/market">Wine Market</MenuItem>
-        <MenuItem to="/account">My Account</MenuItem>
+        {/* <MenuItem to="/account">My Account</MenuItem> */}
         <MenuItem to="/about">About</MenuItem>
         <MenuItem to="/FAQ">FAQ</MenuItem>
         {ready && authenticated && (
