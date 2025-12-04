@@ -87,7 +87,7 @@ export const MintButton = () => {
           bg="gunmetal"
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
-        <ModalContent bg="#0f1418">
+        <ModalContent bg="brand.purple">
           <ModalHeader color="brand.green">Purchasing</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
@@ -114,7 +114,7 @@ export const MintButton = () => {
               )}
 
               {isConfirmed && (
-                <RouterLink to="/farm">
+                <RouterLink to="/cellar">
                   <Button
                     variant="outline"
                     fontFamily="Helsinki"
@@ -126,7 +126,7 @@ export const MintButton = () => {
                     size="lg"
                     height="72px"
                   >
-                    Checkout Your New Tree
+                    Checkout Your skele-grape in the cellar
                   </Button>
                 </RouterLink>
               )}

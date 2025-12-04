@@ -18,18 +18,18 @@ export const ALCHEMY_RPC =
       }`;
 
 export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0x69f4200fFF92dE9abCaF346dd6a833A32b2090D1",
+  "0xaa36a7": "0x9FFD3A5335a4fef09B5aAF9f541a885f63bB3337",
   "0x2105": "0xA9d3c833df8415233e1626F29E33ccBA37d2A187",
 };
 
 export const NFT_MINT_PRICE: Record<string, bigint> = {
-  "0xaa36a7": BigInt(10000000000000000),
-  "0x2105": BigInt(75000000000000000000),
+  "0xaa36a7": BigInt(1000000000000000),
+  "0x2105": BigInt(1000000000000000),
 };
 
 export const NFT_MINT_PRICE_ERC20: Record<string, bigint> = {
-  "0xaa36a7": BigInt(300000000),
-  "0x2105": BigInt(75000000000000000000),
+  "0xaa36a7": BigInt(1000000000000000),
+  "0x2105": BigInt(1000000000000000),
 };
 
 export const ERC20_PAYMENT_TOKEN: Record<string, string> = {
