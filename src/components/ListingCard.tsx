@@ -20,7 +20,7 @@ export const ListingCard = ({
   tokenId: string;
 }) => {
   // const { peachStatus, img, orders } = useTokenStatus({
-  const { peachStatus, img } = useTokenStatus({
+  const { tokenStatus, img } = useTokenStatus({
     tokenId,
   });
 
@@ -49,7 +49,7 @@ export const ListingCard = ({
           <Image mb=".5rem" src={img} />
           <Text fontSize="xs">{peach.meta?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
-            {peachStatus}
+            {tokenStatus}
           </Text>
 
           {/* {isListed && (

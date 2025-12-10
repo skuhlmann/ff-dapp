@@ -149,10 +149,10 @@ function Marketplace() {
         px={8}
         my={8}
       >
-        <Text fontSize="2xl" py="1rem" fontWeight="700">
+        <Text fontSize="2xl" py="1rem" fontWeight="700" color="brand.orange">
           {/* {SEASON_OVER_TEXT}
            */}
-          Marketplace is opening soon!
+          Marketplace will open after presale.
         </Text>
       </Flex>
     </>

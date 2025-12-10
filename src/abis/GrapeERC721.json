@@ -179,6 +179,16 @@
   },
   {
     "inputs": [
+      { "internalType": "address", "name": "_address", "type": "address" },
+      { "internalType": "bool", "name": "_erc20Price", "type": "bool" }
+    ],
+    "name": "getMintPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "address", "name": "owner", "type": "address" },
       { "internalType": "address", "name": "operator", "type": "address" }
     ],
@@ -354,8 +364,10 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "setMintEnd",
+    "inputs": [
+      { "internalType": "uint256", "name": "_newPerc", "type": "uint256" }
+    ],
+    "name": "setMintDiscountPerc",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -410,6 +422,13 @@
     "name": "symbol",
     "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bool", "name": "_open", "type": "bool" }],
+    "name": "toggleMint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

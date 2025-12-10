@@ -1,13 +1,13 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useAccount, useSwitchChain } from "wagmi";
 import { Link } from "react-router-dom";
-import { truncateAddress } from "../utils/formatting";
+// import { truncateAddress } from "../utils/formatting";
 import { CHAIN_OBJ } from "../utils/constants";
 import GrapeAvatar from "../assets/grape_logo.png";
 
 export const Connect = () => {
-  const { ready, authenticated, login, user } = usePrivy();
+  const { ready, authenticated, login } = usePrivy();
   const { chain } = useAccount();
   const { switchChain } = useSwitchChain();
 
@@ -43,10 +43,10 @@ export const Connect = () => {
           )}
           <Button
             as={Link}
-            to="/account"
+            to="/cellar"
             variant="solid"
             fontFamily="Rockwell"
-            borderRadius=".125rem"
+            borderRadius="20px"
             color="brand.blue"
             _hover={{
               transform: "translate(0px, 2px)",
@@ -54,18 +54,7 @@ export const Connect = () => {
             bg="brand.purple"
             size={{ base: "sm", sm: "md" }}
           >
-            <Flex align="end">
-              <Image width="24px" src={GrapeAvatar} />
-              {user?.wallet?.address && (
-                <Text
-                  ml=".24rem"
-                  fontSize="14px"
-                  display={{ base: "none", sm: "block" }}
-                >
-                  {truncateAddress(user?.wallet.address)}
-                </Text>
-              )}
-            </Flex>
+            <Image width="24px" src={GrapeAvatar} />
           </Button>
         </>
       ) : (

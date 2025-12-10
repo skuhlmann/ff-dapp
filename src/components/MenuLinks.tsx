@@ -29,9 +29,9 @@ export const MenuLinks = ({
       pb="3rem"
       position="fixed"
       zIndex="12"
-      mt="150px"
+      mt={{ base: "104px" }}
       w="full"
-      background={"brand.black"}
+      background={"brand.purple"}
     >
       <Stack
         spacing={8}

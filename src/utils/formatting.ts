@@ -2,7 +2,6 @@ import { formatEther } from "viem";
 import {
   BLOCK_EXPLORER_URL,
   NFT_CONTRACT_ADDRESS,
-  NFT_MINT_PRICE,
   TARGET_NETWORK,
 } from "./constants";
 import { format } from "date-fns";
@@ -35,9 +34,6 @@ export const isJSON = (obj: unknown) => {
   } catch (e) {
     return false;
   }
-};
-export const getDisplayPrice = () => {
-  return `${fromWei(NFT_MINT_PRICE[TARGET_NETWORK].toString())} ETH`;
 };
 
 export const blockExplorerNftLink = (tokenID: string) => {
