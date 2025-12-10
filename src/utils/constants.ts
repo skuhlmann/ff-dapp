@@ -6,7 +6,10 @@ export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
 export const RARIBLE_PREFIX = TARGET_NETWORK === "0x2105" ? "BASE" : "ETHEREUM";
 export const RARIBLE_STAGE = TARGET_NETWORK === "0x2105" ? "prod" : "testnet";
 
-export const SALE_STATE = "presale";
+// export const SALE_STATE = "upcoming";
+// export const SALE_STATE = "ongoing";
+export const SALE_STATE: "presale" | "upcoming" | "ongoing" | "closed" =
+  "upcoming";
 
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"
@@ -18,18 +21,8 @@ export const ALCHEMY_RPC =
       }`;
 
 export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0x9FFD3A5335a4fef09B5aAF9f541a885f63bB3337",
+  "0xaa36a7": "0x3c505E0dD90053c3472c053BE021B11Efc40afF1",
   "0x2105": "0xA9d3c833df8415233e1626F29E33ccBA37d2A187",
-};
-
-export const NFT_MINT_PRICE: Record<string, bigint> = {
-  "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(1000000000000000),
-};
-
-export const NFT_MINT_PRICE_ERC20: Record<string, bigint> = {
-  "0xaa36a7": BigInt(1000000000000000),
-  "0x2105": BigInt(1000000000000000),
 };
 
 export const ERC20_PAYMENT_TOKEN: Record<string, string> = {

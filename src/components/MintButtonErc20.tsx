@@ -18,25 +18,29 @@ import {
   useWaitForTransactionReceipt,
   type BaseError,
   useAccount,
+  useReadContract,
 } from "wagmi";
 
 import erc721Abi from "../abis/GrapeERC721.json";
+import erc20Abi from "../abis/ERC20.json";
 import {
   BLOCK_EXPLORER_URL,
   NFT_CONTRACT_ADDRESS,
   TARGET_NETWORK,
+  ERC20_PAYMENT_TOKEN,
 } from "../utils/constants";
+import { ApproveERC20 } from "./ApproveERC20Button";
 import { useNftPrice } from "../hooks/useNftPrice";
 
-export const MintButton = () => {
+export const MintButtonErc20 = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chain, address } = useAccount();
 
-  const { userMintPrice, baselineMintPrice } = useNftPrice({
+  const { userErc20MintPrice, baselineErc20MintPrice } = useNftPrice({
     userAddress: address,
   });
 
-  const mintPrice = userMintPrice ?? baselineMintPrice;
+  const mintPrice = userErc20MintPrice ?? baselineErc20MintPrice;
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -45,43 +49,63 @@ export const MintButton = () => {
       hash,
     });
 
+  const { data: allowance, refetch: refetchAllowance } = useReadContract({
+    address: ERC20_PAYMENT_TOKEN[TARGET_NETWORK] as `0x${string}`,
+    abi: erc20Abi,
+    functionName: "allowance",
+    args: [address as `0x${string}`, NFT_CONTRACT_ADDRESS[TARGET_NETWORK]],
+    query: {
+      enabled: !!address,
+    },
+  });
+
   const handleMint = async () => {
     if (!mintPrice) return;
     onOpen();
     writeContract({
       address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
       abi: erc721Abi,
-      functionName: "mint",
-      value: mintPrice,
-      args: [],
+      functionName: "mintERC20",
+      args: [mintPrice],
     });
   };
 
-  const isDisabled = isPending || !chain;
+  const hasAllowance =
+    allowance && mintPrice && (allowance as bigint) >= mintPrice;
+
+  const isDisabled = isPending || !chain || !hasAllowance;
 
   return (
     <>
-      <Button
-        fontWeight="700"
-        my="1rem"
-        variant="solid"
-        fontSize="3xl"
-        borderRadius=".125rem"
-        _hover={{
-          transform: "translate(0px, 2px)",
-        }}
-        color="brand.orange"
-        bg="brand.purple"
-        size="lg"
-        height="72px"
-        w="full"
-        px="3rem"
-        pt=".75rem"
-        isDisabled={isDisabled}
-        onClick={handleMint}
-      >
-        Purchase
-      </Button>
+      {!hasAllowance && address && mintPrice ? (
+        <ApproveERC20
+          refetch={refetchAllowance}
+          spender={NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}
+          amount={mintPrice}
+        />
+      ) : (
+        <Button
+          fontWeight="700"
+          my="1rem"
+          variant="solid"
+          fontSize="3xl"
+          borderRadius=".125rem"
+          _hover={{
+            transform: "translate(0px, 2px)",
+          }}
+          color="brand.orange"
+          bg="brand.purple"
+          size="lg"
+          height="72px"
+          w="full"
+          px="3rem"
+          pt=".75rem"
+          isDisabled={isDisabled}
+          onClick={handleMint}
+        >
+          Purchase
+        </Button>
+      )}
 
       <Modal
         isOpen={isOpen}

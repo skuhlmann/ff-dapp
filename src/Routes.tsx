@@ -6,7 +6,6 @@ import Cellar from "./pages/Cellar";
 import About from "./pages/About";
 import BuyWine from "./pages/BuyWine";
 import Marketplace from "./pages/Marketplace";
-import ShippingLocations from "./pages/ShippingLocations";
 import Faq from "./pages/Faq";
 import Listing from "./pages/Listing";
 
@@ -21,7 +20,6 @@ export const Routes = () => {
         <Route path="market/:tokenId" element={<Listing />} />
         <Route path="account" element={<Account />} />
         <Route path="about" element={<About />} />
-        <Route path="shipping" element={<ShippingLocations />} />
         <Route path="faq" element={<Faq />} />
       </Route>
     </Router>

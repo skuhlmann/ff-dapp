@@ -17,10 +17,10 @@ function Faq() {
       <SectionHeader title="FAQ" />
       <Box px={{ base: "1rem", sm: "2rem" }} color="brand.blue">
         <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-          <Heading size="2xl" mb="2rem" color="brand.orange">
+          <Heading size="2xl" mb="1rem" color="brand.orange">
             Valid Shipping Locations
           </Heading>
-          <Text mb="2rem" fontSize="14px">
+          <Text mb="1rem" fontSize="14px">
             We are only able to ship wine to addresses in certain locations in
             United States.
           </Text>

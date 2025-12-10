@@ -76,6 +76,19 @@ function Home() {
                     PRESALES ARE OPEN!
                   </Text>
                 )}
+                {SALE_STATE === "upcoming" && (
+                  <Text
+                    color="brand.orange"
+                    fontSize="2xl"
+                    fontWeight="700"
+                    textAlign="center"
+                    mb="2rem"
+                    lineHeight="1.5"
+                    w={{ base: "300px" }}
+                  >
+                    PRESALE IS OPENING SOON!
+                  </Text>
+                )}
                 <Button
                   as={Link}
                   to="/buy-wine"
@@ -139,25 +152,41 @@ function Home() {
           </Text>
         )}
 
-        <Button
-          as={Link}
-          to="/buy-wine"
-          variant="solid"
-          fontSize="3xl"
-          borderRadius=".125rem"
-          color="brand.orange"
-          bg="brand.purple"
-          _hover={{
-            transform: "translate(0px, 2px)",
-          }}
-          size="lg"
-          height="72px"
-          w="300px"
-          px="3rem"
-          pt=".75rem"
-        >
-          BUY A BOTTLE
-        </Button>
+        {SALE_STATE === "upcoming" && (
+          <Text
+            color="brand.orange"
+            fontSize="2xl"
+            fontWeight="700"
+            textAlign="center"
+            mb="2rem"
+            lineHeight="1.5"
+            w={{ base: "300px" }}
+          >
+            PRESALE IS OPENING SOON!
+          </Text>
+        )}
+
+        {SALE_STATE !== "upcoming" && (
+          <Button
+            as={Link}
+            to="/buy-wine"
+            variant="solid"
+            fontSize="3xl"
+            borderRadius=".125rem"
+            color="brand.orange"
+            bg="brand.purple"
+            _hover={{
+              transform: "translate(0px, 2px)",
+            }}
+            size="lg"
+            height="72px"
+            w="300px"
+            px="3rem"
+            pt=".75rem"
+          >
+            BUY A BOTTLE
+          </Button>
+        )}
       </Flex>
     </>
   );

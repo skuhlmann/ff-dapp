@@ -5,7 +5,7 @@ import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
 
 import { MenuLinks } from "./MenuLinks";
-import { Connect } from "./Connect";
+// import { Connect } from "./Connect";
 import GrapeAvatar from "../assets/grape_logo.png";
 
 export const NavBar = () => {
@@ -24,17 +24,21 @@ export const NavBar = () => {
       <Flex
         align="center"
         justify="space-between"
-        direction={{ base: "column", sm: "row" }}
-        gap={{ base: "1rem", sm: "0" }}
+        // direction={{ base: "column", sm: "row" }}
+        direction="row"
+        // gap={{ base: "1rem", sm: "0" }}
+        borderBottom="1px solid"
+        borderColor="brand.orange"
+        gap={{ base: "0", sm: "0" }}
         w="100%"
         mb={8}
         mt={{ base: "0rem" }}
         py={8}
-        px={{ base: 3, md: 10 }}
+        px={{ base: 1, md: 10 }}
         color="brand.tan"
         position="fixed"
         zIndex={9}
-        background="brand.black"
+        background="brand.purple"
       >
         <Link to="/">
           <>
@@ -59,8 +63,8 @@ export const NavBar = () => {
             </Flex>
           </>
         </Link>
-        <Flex alignItems="center" justifyContent="center" gap="1rem">
-          <Connect />
+        <Flex alignItems="center" justifyContent="center" gap=".5rem">
+          {/* <Connect /> */}
           <Box cursor="pointer" onClick={toggle} fontSize="30px">
             {isOpen ? <RiCloseFill /> : <RiMenu5Fill />}
           </Box>
