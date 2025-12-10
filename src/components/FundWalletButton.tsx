@@ -1,14 +1,10 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useFundWallet } from "@privy-io/react-auth";
 import { usePrivy } from "@privy-io/react-auth";
 import { CHAIN_OBJ } from "../utils/constants";
 import { formatEther } from "viem";
 
-export const FundWalletButton = ({
-  amount,
-}: {
-  amount: bigint;
-}) => {
+export const FundWalletButton = ({ amount }: { amount: bigint }) => {
   const { user } = usePrivy();
   const { fundWallet } = useFundWallet();
 
@@ -17,7 +13,7 @@ export const FundWalletButton = ({
       // Add a little extra for gas (10% extra)
       const amountWithGas = (amount * BigInt(110)) / BigInt(100);
       const amountString = formatEther(amountWithGas);
-      
+
       await fundWallet(user.wallet.address, {
         chain: CHAIN_OBJ,
         amount: amountString,
@@ -48,4 +44,3 @@ export const FundWalletButton = ({
     </Button>
   );
 };
-
