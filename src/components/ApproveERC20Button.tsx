@@ -53,26 +53,25 @@ export const ApproveERC20 = ({
 
       {!hash && (
         <Button
-          variant="outline"
-          fontFamily="heading"
-          fontSize="xl"
-          fontStyle="italic"
           fontWeight="700"
-          border="1px"
-          borderColor="brand.green"
-          borderRadius="200px"
-          color="brand.orange"
-          size="lg"
-          height="60px"
-          width="260px"
-          isDisabled={isPending || isConfirming}
+          my="1rem"
+          variant="solid"
+          borderRadius=".125rem"
           _hover={{
-            bg: "transparent",
-            color: "brand.orange",
+            transform: "translate(0px, 2px)",
           }}
+          color="brand.orange"
+          bg="brand.purple"
+          size="lg"
+          fontSize={{ base: "sm", sm: "2xl", md: "3xl" }}
+          height="72px"
+          w="full"
+          px="3rem"
+          pt=".75rem"
+          isDisabled={isPending || isConfirming}
           onClick={handleApprove}
         >
-          APPROVE $DEGEN
+          Purchase (Step 1)
         </Button>
       )}
     </>

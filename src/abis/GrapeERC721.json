@@ -56,6 +56,25 @@
       {
         "indexed": false,
         "internalType": "uint256",
+        "name": "_fromTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_toTokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "BatchMetadataUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
         "name": "_tokenId",
         "type": "uint256"
       }
@@ -127,9 +146,25 @@
     "type": "function"
   },
   {
+    "inputs": [
+      { "internalType": "uint256[]", "name": "_tokenIds", "type": "uint256[]" }
+    ],
+    "name": "batchRedeem",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "contractURI",
     "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "erc20MintPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -139,6 +174,16 @@
     ],
     "name": "getApproved",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_address", "type": "address" },
+      { "internalType": "bool", "name": "_erc20Price", "type": "bool" }
+    ],
+    "name": "getMintPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -154,8 +199,31 @@
   },
   {
     "inputs": [],
-    "name": "mintOpen",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "name": "maxSupply",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "mint",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "mintERC20",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "mintPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -188,6 +256,15 @@
     ],
     "name": "ownerOf",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paymentERC20",
+    "outputs": [
+      { "internalType": "contract IERC20", "name": "", "type": "address" }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -261,8 +338,7 @@
         "internalType": "string",
         "name": "_newBaseURIRedeemed",
         "type": "string"
-      },
-      { "internalType": "string", "name": "_newBaseURIBoxed", "type": "string" }
+      }
     ],
     "name": "setBaseURIS",
     "outputs": [],
@@ -279,8 +355,29 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "setMintEnd",
+    "inputs": [
+      { "internalType": "uint256", "name": "_newSupply", "type": "uint256" }
+    ],
+    "name": "setMaxSupply",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_newPerc", "type": "uint256" }
+    ],
+    "name": "setMintDiscountPerc",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_newPrice", "type": "uint256" },
+      { "internalType": "uint256", "name": "_newErc20Price", "type": "uint256" }
+    ],
+    "name": "setPrice",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -328,6 +425,13 @@
     "type": "function"
   },
   {
+    "inputs": [{ "internalType": "bool", "name": "_open", "type": "bool" }],
+    "name": "toggleMint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "tokenState",
     "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
@@ -366,15 +470,6 @@
       { "internalType": "address", "name": "newOwner", "type": "address" }
     ],
     "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "_tokenId", "type": "uint256" }
-    ],
-    "name": "unbox",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

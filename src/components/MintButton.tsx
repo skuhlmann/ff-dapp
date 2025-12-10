@@ -2,7 +2,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Button,
   Flex,
-  Image,
   Link,
   Modal,
   ModalBody,
@@ -21,30 +20,23 @@ import {
   useAccount,
 } from "wagmi";
 
-import erc721Abi from "../abis/ERC721.json";
+import erc721Abi from "../abis/GrapeERC721.json";
 import {
   BLOCK_EXPLORER_URL,
   NFT_CONTRACT_ADDRESS,
-  NFT_MINT_PRICE,
-  CRITTER_COUNT_PLUS_ONE,
   TARGET_NETWORK,
 } from "../utils/constants";
+import { useNftPrice } from "../hooks/useNftPrice";
 
-const getCritterId = () => {
-  return Math.floor(Math.random() * CRITTER_COUNT_PLUS_ONE);
-};
-
-export const MintTreeButton = ({
-  trunkId,
-  name,
-  img,
-}: {
-  trunkId: number;
-  name: string;
-  img: string;
-}) => {
+export const MintButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { chain } = useAccount();
+  const { chain, address } = useAccount();
+
+  const { userMintPrice, baselineMintPrice } = useNftPrice({
+    userAddress: address,
+  });
+
+  const mintPrice = userMintPrice ?? baselineMintPrice;
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -54,13 +46,14 @@ export const MintTreeButton = ({
     });
 
   const handleMint = async () => {
+    if (!mintPrice) return;
     onOpen();
     writeContract({
       address: NFT_CONTRACT_ADDRESS[TARGET_NETWORK],
       abi: erc721Abi,
       functionName: "mint",
-      value: NFT_MINT_PRICE[TARGET_NETWORK],
-      args: [trunkId, getCritterId()],
+      value: mintPrice,
+      args: [],
     });
   };
 
@@ -69,27 +62,25 @@ export const MintTreeButton = ({
   return (
     <>
       <Button
-        variant="outline"
-        fontFamily="heading"
-        fontSize="xl"
-        fontStyle="italic"
         fontWeight="700"
-        border="1px"
-        borderColor="brand.green"
-        borderRadius="200px;"
-        color="brand.orange"
-        size="lg"
-        height="60px"
-        width="220px"
         my="1rem"
-        isDisabled={isDisabled}
+        variant="solid"
+        fontSize="3xl"
+        borderRadius=".125rem"
         _hover={{
-          bg: "transparent",
-          color: "brand.orange",
+          transform: "translate(0px, 2px)",
         }}
+        color="brand.orange"
+        bg="brand.purple"
+        size="lg"
+        height="72px"
+        w="full"
+        px="3rem"
+        pt=".75rem"
+        isDisabled={isDisabled}
         onClick={handleMint}
       >
-        MINT
+        Purchase
       </Button>
 
       <Modal
@@ -103,8 +94,8 @@ export const MintTreeButton = ({
           bg="gunmetal"
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
-        <ModalContent bg="#0f1418">
-          <ModalHeader color="brand.green">Minting</ModalHeader>
+        <ModalContent bg="brand.purple">
+          <ModalHeader color="brand.green">Purchasing</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb="2rem">
             <Flex
@@ -113,38 +104,40 @@ export const MintTreeButton = ({
               alignItems="center"
               gap="1rem"
             >
-              <Text fontSize="lg">{name}</Text>
-              <Image src={img} h="320px" />
-
-              {hash && (
-                <Link
-                  isExternal
-                  href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}/tx/${hash}`}
-                >
-                  View tx
-                </Link>
+              {isConfirmed && (
+                <RouterLink to="/cellar">
+                  <Button
+                    fontWeight="700"
+                    my="1rem"
+                    variant="solid"
+                    borderRadius=".125rem"
+                    _hover={{
+                      transform: "translate(0px, 2px)",
+                    }}
+                    color="brand.orange"
+                    bg="brand.purple"
+                    size="sm"
+                    height="72px"
+                    px="3rem"
+                    pt=".75rem"
+                  >
+                    Your bottle and skele-grape are in your cellar
+                  </Button>
+                </RouterLink>
               )}
 
               {isConfirming && (
                 <Spinner size="xl" color="brand.green" thickness="8px" />
               )}
 
-              {isConfirmed && (
-                <RouterLink to="/farm">
-                  <Button
-                    variant="outline"
-                    fontFamily="Helsinki"
-                    fontSize="2xl"
-                    border="1px"
-                    borderColor="brand.green"
-                    borderRadius="200px;"
-                    color="brand.orange"
-                    size="lg"
-                    height="72px"
-                  >
-                    Checkout Your New Tree
-                  </Button>
-                </RouterLink>
+              {hash && (
+                <Link
+                  isExternal
+                  href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}/tx/${hash}`}
+                  fontSize="xs"
+                >
+                  View tx
+                </Link>
               )}
 
               {error && (

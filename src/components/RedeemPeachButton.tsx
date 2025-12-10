@@ -30,7 +30,7 @@ import {
   RARIBLE_STAGE,
   TARGET_NETWORK,
 } from "../utils/constants";
-import peachNftAbi from "../abis/PeachERC712.json";
+import peachNftAbi from "../abis/GrapeERC721.json";
 
 import { dhImagePath } from "../utils/formatting";
 import { createRaribleSdk } from "@rarible/sdk";

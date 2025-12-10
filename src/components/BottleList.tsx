@@ -1,10 +1,10 @@
 import { Flex, Spinner, Box, Heading } from "@chakra-ui/react";
-import { PeachNft } from "../utils/types";
-import { useAccountPeaches } from "../hooks/useAccountPeaches";
-import { PeachNftCard } from "./PeachNftCard";
+import { NftItem } from "../utils/types";
+import { NftCard } from "./NftCard";
+import { useAccountNfts } from "../hooks/useAccountNfts";
 
 export const BottleList = ({ account }: { account: string }) => {
-  const { accountNfts, isLoading } = useAccountPeaches({
+  const { accountNfts, isLoading } = useAccountNfts({
     accountAddress: account,
   });
 
@@ -20,13 +20,9 @@ export const BottleList = ({ account }: { account: string }) => {
           align="center"
           justify="center"
         >
-          {accountNfts.balances.map((token: PeachNft) => {
+          {accountNfts.balances.map((token: NftItem) => {
             return (
-              <PeachNftCard
-                peach={token}
-                key={token.tokenID}
-                account={account}
-              />
+              <NftCard token={token} key={token.tokenID} account={account} />
             );
           })}
         </Flex>

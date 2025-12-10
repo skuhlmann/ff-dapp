@@ -1,12 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { UnboxButton } from "./UnboxButton";
-// import { usePeachStatus } from "../hooks/usePeachStatus";
+// import { useTokenStatus } from "../hooks/useTokenStatus";
 // import { ListPeachButton } from "./ListPeachButtton";
 // import { UnListPeachButton } from "./UnListPeachButtton";
 // import { RedeemPeachButton } from "./RedeemPeachButton";
 // import { OrderPeachButton } from "./OrderPeachButton";
 
-export const PeachActions = ({
+export const TokenActions = ({
   tokenId,
   tokenImage,
   account,
@@ -17,7 +16,8 @@ export const PeachActions = ({
   account: string;
   tokenState: number;
 }) => {
-  // const { orders } = usePeachStatus({
+  console.log(tokenId, tokenImage, account);
+  // const { orders } = useTokenStatus({
   //   tokenId,
   // });
 
@@ -33,13 +33,20 @@ export const PeachActions = ({
 
       {tokenState === 0 && (
         <>
-          <UnboxButton
+          {/* <RedeemPeachButton
             tokenId={tokenId}
             tokenImage={tokenImage}
             account={account}
-          />
-          <Text fontSize="xs" color="brand.orange" opacity="100%" mt="-0.5rem">
-            Reveal your PΞACH
+          /> */}
+          <Text
+            fontSize="xs"
+            color="brand.orange"
+            opacity="100%"
+            mt="-0.5rem"
+            fontWeight="700"
+            textAlign="center"
+          >
+            Redemption and resell will open after the presale closes.
           </Text>
         </>
       )}

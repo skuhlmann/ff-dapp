@@ -34,21 +34,21 @@ export const Footer = () => {
                 Buy Bottles
               </Heading>
             </RouterLink>
-            <RouterLink to="/market">
-              <Heading color="brand.black" size="md">
-                Wine Market
-              </Heading>
-            </RouterLink>
             <RouterLink to="/cellar">
               <Heading color="brand.black" size="md">
                 My Cellar
               </Heading>
             </RouterLink>
-            <RouterLink to="/account">
+            <RouterLink to="/market">
+              <Heading color="brand.black" size="md">
+                Wine Market
+              </Heading>
+            </RouterLink>
+            {/* <RouterLink to="/account">
               <Heading color="brand.black" size="md">
                 My Account
               </Heading>
-            </RouterLink>
+            </RouterLink> */}
             <RouterLink to="/about">
               <Heading color="brand.black" size="md">
                 About

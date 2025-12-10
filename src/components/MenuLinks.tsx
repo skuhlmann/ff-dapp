@@ -29,9 +29,9 @@ export const MenuLinks = ({
       pb="3rem"
       position="fixed"
       zIndex="12"
-      mt="150px"
+      mt={{ base: "104px" }}
       w="full"
-      background={"brand.black"}
+      background={"brand.purple"}
     >
       <Stack
         spacing={8}
@@ -43,9 +43,9 @@ export const MenuLinks = ({
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/buy-wine">Buy Bottles</MenuItem>
-        <MenuItem to="/market">Wine Market</MenuItem>
         <MenuItem to="/cellar">My Cellar</MenuItem>
-        <MenuItem to="/account">My Account</MenuItem>
+        <MenuItem to="/market">Wine Market</MenuItem>
+        {/* <MenuItem to="/account">My Account</MenuItem> */}
         <MenuItem to="/about">About</MenuItem>
         <MenuItem to="/FAQ">FAQ</MenuItem>
         {ready && authenticated && (
