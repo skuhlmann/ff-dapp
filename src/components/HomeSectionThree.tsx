@@ -33,7 +33,7 @@ export const HomeSectionThree = () => {
         <Text maxW="375px" fontSize="sm">
           We are only able to ship wine to addresses in certain locations in
           United States.
-          <Link as={RouterLink} to="/shipping" color="brand.orange" mx=".5rem">
+          <Link as={RouterLink} to="/faq" color="brand.orange" mx=".5rem">
             Valid shipping locations
           </Link>
         </Text>
