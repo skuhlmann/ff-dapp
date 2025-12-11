@@ -24,7 +24,9 @@ function Faq() {
             We are only able to ship wine to addresses in certain locations in
             United States.
           </Text>
-          <div className="vs-available"></div>
+          <Box height="600px">
+            <div className="vs-available"></div>
+          </Box>
         </Box>
       </Box>
 

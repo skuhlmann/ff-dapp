@@ -35,12 +35,18 @@ export const HomeSectionOne = () => {
             special… until they did. It’s delicious.
           </Text>
           <Text maxW="475px" mb="2rem">
+            A mysterious blend of Merlot, Mourvedre, Malbec, Zweigelt and
+            rebellious spirit.
+          </Text>
+          <Text maxW="475px" mb="2rem">
             On the nose, you’ll catch blueberry and currant. On the palate,
             expect rich dried fruit, fig, spices, and just a whisper of
-            cherry-laced nostalgia. It’s dark.
+            cherry-laced nostalgia.
           </Text>
-          <Text maxW="475px" mb="2rem" fontWeight="700">
-            It’s a mullet in wine form: business upfront, party in the glass.
+          <Text maxW="475px" mb="2rem">
+            This dry red is bold and complex. It’s the wine equivalent of a
+            mullet: business on the nose, party in the glass. Here's to taking
+            life’s rejects and turning them into something worth toasting.
           </Text>
         </Box>
 
@@ -81,6 +87,16 @@ export const HomeSectionOne = () => {
             star — where high-desert heat, cool nights, fertile soils, and a
             legendary canyon breeze create the perfect home for grapes with
             something to prove.
+          </Text>
+
+          <Text
+            maxW="475px"
+            textAlign={{ base: "left", md: "right" }}
+            mb="2rem"
+          >
+            We source grapes directly from the growers, rescue the grapes
+            destined for the ground and turn them into bold, complex wines —
+            wines that are dry, chewy, and impossible to ignore.
           </Text>
           <Text
             maxW="475px"
