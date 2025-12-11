@@ -10,8 +10,33 @@ import {
 } from "@chakra-ui/react";
 
 import { SectionHeader } from "../components/SectionHeader";
+import { useEffect } from "react";
 
 function Faq() {
+  useEffect(() => {
+    // Re-initialize VinoShipper when component mounts
+    if (window.Vinoshipper) {
+      window.Vinoshipper.init(3680, {
+        cartButton: false,
+      });
+    } else {
+      // If Vinoshipper hasn't loaded yet, wait for it
+      const handler = () => {
+        window.Vinoshipper?.init(3680, {
+          cartButton: false,
+        });
+      };
+      window.document.addEventListener("vinoshipper:loaded", handler, {
+        once: true,
+      });
+
+      // Cleanup
+      return () => {
+        window.document.removeEventListener("vinoshipper:loaded", handler);
+      };
+    }
+  }, []);
+
   return (
     <>
       <SectionHeader title="FAQ" />
@@ -24,9 +49,7 @@ function Faq() {
             We are only able to ship wine to addresses in certain locations in
             United States.
           </Text>
-          <Box height="600px">
-            <div className="vs-available"></div>
-          </Box>
+          <div className="vs-available"></div>
         </Box>
       </Box>
 
