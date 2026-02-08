@@ -21,7 +21,7 @@ export const ALCHEMY_RPC =
       }`;
 
 export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0x3c505E0dD90053c3472c053BE021B11Efc40afF1",
+  "0xaa36a7": "0x929453Cde694f21d192d921FEcEE2555a2464984",
   "0x2105": "0xA9d3c833df8415233e1626F29E33ccBA37d2A187",
 };
 
