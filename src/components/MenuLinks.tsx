@@ -47,7 +47,7 @@ export const MenuLinks = ({
         <MenuItem to="/market">Wine Market</MenuItem>
         {/* <MenuItem to="/account">My Account</MenuItem> */}
         <MenuItem to="/about">About</MenuItem>
-        <MenuItem to="/FAQ">FAQ</MenuItem>
+        <MenuItem to="/faq">FAQ</MenuItem>
         {ready && authenticated && (
           <Heading
             onClick={handleLogout}

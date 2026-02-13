@@ -4,13 +4,26 @@ import { Button, Flex, Text } from "@chakra-ui/react";
 
 import Link from "next/link";
 import { BottleList } from "../components/BottleList";
+import { EmailSignupBanner } from "../components/EmailSignupBanner";
 import { SectionHeader } from "../components/SectionHeader";
+import { useEmailSignup } from "../hooks/useEmailSignup";
 import { SALE_STATE } from "../utils/constants";
 
 function Cellar() {
   const { ready, authenticated, user } = usePrivy();
 
   const loggedIn = ready && authenticated && user?.wallet?.address;
+
+  const {
+    showBanner,
+    isSubmitting,
+    submitError,
+    isSubmitted,
+    submitEmail,
+  } = useEmailSignup({
+    walletAddress: loggedIn ? user?.wallet?.address : undefined,
+    privyHasEmail: !!user?.email?.address,
+  });
 
   return (
     <>
@@ -56,6 +69,14 @@ function Cellar() {
           >
             PRESALE IS OPENING SOON!
           </Text>
+        )}
+        {loggedIn && (showBanner || isSubmitted) && (
+          <EmailSignupBanner
+            isSubmitting={isSubmitting}
+            submitError={submitError}
+            isSubmitted={isSubmitted}
+            onSubmit={submitEmail}
+          />
         )}
         {loggedIn && user?.wallet?.address && (
           <BottleList account={user.wallet.address} />

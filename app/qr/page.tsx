@@ -12,10 +12,11 @@ export default function QrPage() {
     <Flex
       direction="column"
       align="center"
-      justify="center"
+      justify="start"
       minH="100vh"
       bg="brand.black"
       px={4}
+      pt={20}
     >
       <Heading
         fontSize={{ base: "36px", md: "56px" }}
