@@ -45,7 +45,11 @@ function Home() {
             mt={{ base: 4, md: 8 }}
             gap={{ base: 4, md: 0 }}
           >
-            <Image src={SkullGrapeBundle.src} w={{ base: "300px", xl: "500px" }} />
+            <Image
+              src={SkullGrapeBundle.src}
+              w={{ base: "300px", xl: "500px" }}
+              alt="skull grapes"
+            />
             <Flex
               direction="column"
               alignItems="center"

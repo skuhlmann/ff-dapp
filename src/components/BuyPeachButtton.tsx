@@ -147,7 +147,7 @@ export const BuyPeachButton = ({
               <Text fontSize="lg" fontWeight={700} textAlign="center">
                 Buy this Peach NFT for {price}
               </Text>
-              <Image src={peachAvatar.src} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach avatar" />
 
               {!isProcessing && !isConfirmed && !isListing && (
                 <Button

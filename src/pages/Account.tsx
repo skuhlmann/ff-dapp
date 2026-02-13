@@ -83,7 +83,6 @@ function Account() {
           </Flex>
         ) : (
           <Box mb="15rem">
-            '
             <LogIn />
           </Box>
         )}

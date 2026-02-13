@@ -24,7 +24,11 @@ export const Footer = () => {
         gap={{ base: "0srem", md: "2rem" }}
       >
         <Flex align="center" justify="center" gap="3rem" wrap="wrap">
-          <Image src={GrapeAvatar.src} w={{ base: "150px", md: "250px" }} />
+          <Image
+            src={GrapeAvatar.src}
+            w={{ base: "150px", md: "250px" }}
+            alt="grape"
+          />
           <Flex direction="column" gap=".5rem">
             <NextLink href="/">
               <Heading color="brand.black" size="md">

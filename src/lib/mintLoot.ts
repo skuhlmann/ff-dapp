@@ -6,9 +6,12 @@
 
 import { createPublicClient, createWalletClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { base, sepolia } from "viem/chains";
 import DAOAbi from "@/abis/DAO.json";
-import { CHAIN_OBJ, ALCHEMY_RPC, DISCOUNT_DAO_ADDRESS } from "@/utils/constants";
+import {
+  CHAIN_OBJ,
+  ALCHEMY_RPC,
+  DISCOUNT_DAO_ADDRESS,
+} from "@/utils/constants";
 
 // 1 loot token in wei (18 decimals)
 const LOOT_AMOUNT = 1_000_000_000_000_000_000n;
@@ -19,13 +22,14 @@ const LOOT_AMOUNT = 1_000_000_000_000_000_000n;
  */
 export async function mintLootToAddress(
   recipientAddress: `0x${string}`,
-  chainid: string
+  chainid: string,
 ): Promise<`0x${string}`> {
   const privateKey = process.env.DAO_SHAMAN_PK;
   if (!privateKey) throw new Error("DAO_SHAMAN_PK is not set");
 
   const daoAddress = DISCOUNT_DAO_ADDRESS[chainid] as `0x${string}`;
-  if (!daoAddress) throw new Error(`No DAO address configured for chain ${chainid}`);
+  if (!daoAddress)
+    throw new Error(`No DAO address configured for chain ${chainid}`);
 
   const account = privateKeyToAccount(privateKey as `0x${string}`);
 

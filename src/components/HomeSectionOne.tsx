@@ -45,12 +45,17 @@ export const HomeSectionOne = () => {
           </Text>
           <Text maxW="475px" mb="2rem">
             This dry red is bold and complex. It’s the wine equivalent of a
-            mullet: business on the nose, party in the glass. Here's to taking
-            life’s rejects and turning them into something worth toasting.
+            mullet: business on the nose, party in the glass. Here&apos;s to
+            taking life’s rejects and turning them into something worth
+            toasting.
           </Text>
         </Box>
 
-        <Image src={BottleMock.src} w={{ base: "290px", xl: "360px" }} />
+        <Image
+          src={BottleMock.src}
+          w={{ base: "290px", xl: "360px" }}
+          alt="bottle"
+        />
       </Flex>
       <Flex
         mt={{ base: "3rem", md: "5rem" }}
@@ -116,7 +121,11 @@ export const HomeSectionOne = () => {
             and a knack for coaxing big personality out of Colorado-grown fruit.
           </Text>
         </Flex>
-        <Image src={Sauvage.src} w={{ base: "400px", xl: "500px" }} />
+        <Image
+          src={Sauvage.src}
+          w={{ base: "400px", xl: "500px" }}
+          alt="sauvage"
+        />
       </Flex>
     </>
   );

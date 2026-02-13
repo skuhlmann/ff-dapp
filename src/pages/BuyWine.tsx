@@ -53,8 +53,8 @@ function BuyWine() {
         >
           <Flex direction="column" gap="1rem" color="brand.blue">
             <Text fontSize="sm" lineHeight="1.6">
-              Ever wonder what happens to the grapes that don't make the cut?
-              Meet Alpha Red, the rowdy rebel of the vineyard.
+              Ever wonder what happens to the grapes that don&apos;t make the
+              cut? Meet Alpha Red, the rowdy rebel of the vineyard.
             </Text>
 
             <Text fontSize="sm" lineHeight="1.6">

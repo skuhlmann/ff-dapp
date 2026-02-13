@@ -42,13 +42,13 @@ export const ListingCard = ({
               <NextLink href={`/market/${tokenId}`} color="brand.orange">
                 <Text fontSize="xs" color="brand.orange">
                   {`${truncateAddress(
-                    peach.contract?.split(":")[1]
+                    peach.contract?.split(":")[1],
                   )}/${tokenId}`}
                 </Text>
               </NextLink>
             )}
           </Flex>
-          <Image mb=".5rem" src={img} />
+          <Image mb=".5rem" src={img} alt="peach listing" />
           <Text fontSize="xs">{peach.meta?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {tokenStatus}

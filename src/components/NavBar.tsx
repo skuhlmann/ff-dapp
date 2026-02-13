@@ -50,7 +50,7 @@ export const NavBar = () => {
               justifyContent="start"
               display={{ base: "none", md: "flex" }}
             >
-              <Image width="56px" src={GrapeAvatar.src} />
+              <Image width="56px" src={GrapeAvatar.src} alt="grape" />
               <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
             <Flex
@@ -60,7 +60,7 @@ export const NavBar = () => {
               display={{ base: "flex", md: "none" }}
               w="100%"
             >
-              <Image src={GrapeAvatar.src} w="36px" />
+              <Image src={GrapeAvatar.src} w="36px" alt="grape logo" />
               <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
           </>

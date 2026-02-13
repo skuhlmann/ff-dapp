@@ -55,7 +55,7 @@ export const Connect = () => {
             bg="brand.purple"
             size={{ base: "sm", sm: "md" }}
           >
-            <Image width="24px" src={GrapeAvatar.src} />
+            <Image width="24px" src={GrapeAvatar.src} alt="grape avatar" />
           </Button>
         </>
       ) : (

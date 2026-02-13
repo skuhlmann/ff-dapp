@@ -135,9 +135,9 @@ export const OrderPeachButton = ({
               gap="1rem"
             >
               <Text fontSize="sm">
-                Use the 'Order Peaches' button to visit our shop where you can
-                enter your physical address to have your peaches* shipped to
-                you.
+                Use the &apos;Order Peaches&apos; button to visit our shop where
+                you can enter your physical address to have your peaches*
+                shipped to you.
               </Text>
               <Text style={{ fontSize: "10px" }}>
                 *Due to their perishable nature, we will only be able to ship
@@ -151,7 +151,12 @@ export const OrderPeachButton = ({
                 align="center"
                 mb=".5rem"
               >
-                <Image mb=".5rem" height="200px" src={peachBoxImg.src} />
+                <Image
+                  mb=".5rem"
+                  height="200px"
+                  src={peachBoxImg.src}
+                  alt="peach box"
+                />
               </Flex>
 
               {order.webUrl && !order.orderId && (

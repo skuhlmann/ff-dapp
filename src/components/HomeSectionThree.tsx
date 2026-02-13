@@ -40,7 +40,11 @@ export const HomeSectionThree = () => {
         </Text>
       </Box>
 
-      <Image src={WineStamp.src} w={{ base: "290px", xl: "360px" }} />
+      <Image
+        src={WineStamp.src}
+        w={{ base: "290px", xl: "360px" }}
+        alt="wine stamp"
+      />
     </Flex>
   );
 };

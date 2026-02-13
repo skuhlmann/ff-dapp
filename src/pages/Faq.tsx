@@ -95,14 +95,14 @@ function Faq() {
               <h2>
                 <AccordionButton>
                   <Box as="span" flex="1" textAlign="left" fontSize="lg">
-                    What's a skele-grape?
+                    What&apos;s a skele-grape?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                It's your wine's digital twin. One-of-a-kind, collectible, and
-                full of personality.
+                It&apos;s your wine&apos;s digital twin. One-of-a-kind,
+                collectible, and full of personality.
               </AccordionPanel>
             </AccordionItem>
 
