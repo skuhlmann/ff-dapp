@@ -1,6 +1,7 @@
+"use client";
 import { Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const MenuItem = ({
   children,
@@ -10,7 +11,7 @@ export const MenuItem = ({
   to: string;
 }) => {
   return (
-    <Link to={to}>
+    <Link href={to}>
       <Heading color="brand.orange" display="block">
         {children}
       </Heading>

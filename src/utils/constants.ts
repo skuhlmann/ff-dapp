@@ -1,6 +1,6 @@
 import { base, sepolia } from "viem/chains";
 
-export const TARGET_NETWORK = import.meta.env.VITE_TARGET_NETWORK as string;
+export const TARGET_NETWORK = process.env.NEXT_PUBLIC_TARGET_NETWORK as string;
 
 export const CHAIN_OBJ = TARGET_NETWORK === "0x2105" ? base : sepolia;
 export const RARIBLE_PREFIX = TARGET_NETWORK === "0x2105" ? "BASE" : "ETHEREUM";
@@ -14,17 +14,21 @@ export const SALE_STATE: "presale" | "upcoming" | "ongoing" | "closed" =
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"
     ? `https://base-mainnet.g.alchemy.com/v2/${
-        import.meta.env.VITE_ALCHEMY_KEY
+        process.env.NEXT_PUBLIC_ALCHEMY_KEY
       }`
     : `https://eth-sepolia.g.alchemy.com/v2/${
-        import.meta.env.VITE_ALCHEMY_KEY
+        process.env.NEXT_PUBLIC_ALCHEMY_KEY
       }`;
 
-export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
-  "0xaa36a7": "0x3c505E0dD90053c3472c053BE021B11Efc40afF1",
-  "0x2105": "0xA9d3c833df8415233e1626F29E33ccBA37d2A187",
-};
+export const ALCHEMY_RPC_MAINNET = `https://eth-mainnet.g.alchemy.com/v2/${
+  process.env.NEXT_PUBLIC_ALCHEMY_KEY
+}`;
 
+export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
+  "0xaa36a7": "0x929453Cde694f21d192d921FEcEE2555a2464984",
+  "0x2105": "0x1b8d8139772599a636410245bd4E1e6ab304558e",
+};
+// https://basescan.org/address/0x1b8d8139772599a636410245bd4E1e6ab304558e#code
 export const ERC20_PAYMENT_TOKEN: Record<string, string> = {
   "0xaa36a7": "0x53c8156592A64E949A4736c6D3309002fa0b2Aba",
   "0x2105": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
@@ -50,8 +54,21 @@ export const SEQUENCE_ENDPOINT: Record<string, string> = {
   "0x2105": "https://base-indexer.sequence.app",
 };
 
-export const CHECKOUT_URL =
-  "https://bhe263f8bh.execute-api.us-east-1.amazonaws.com/prod/peach-checkout";
+export const CHECKOUT_URL = "/api/checkout";
 
 export const SEASON_OVER_TEXT =
   " The 2024 Peach Season has come to an end. See you next Spring!";
+
+export const DISCOUNT_DAO_ADDRESS: Record<string, string> = {
+  "0xaa36a7": "0x4101c4fddb53370ad7fe2d589655b74a242f10ac",
+  "0x2105": "0x4101c4fddb53370ad7fe2d589655b74a242f10ac",
+};
+
+// Airtable record ID (recXXX format) for the linked Campaign row
+export const CAMPAIGN_AIRTABLE_RECORD_ID = "rec0cqHBDOV8RRuqO";
+
+// ISO date string for when the current discount campaign expires
+export const CAMPAIGN_EXPIRY_DATE = "2026-04-01T00:00:00.000Z";
+
+// Full URL the QR code resolves to — configurable per environment
+export const QR_CLAIM_URL = `${process.env.NEXT_PUBLIC_URL}/claim?campaign=${CAMPAIGN_AIRTABLE_RECORD_ID}`;

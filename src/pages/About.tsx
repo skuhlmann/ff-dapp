@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Flex,
@@ -61,7 +62,7 @@ function About() {
             mb="1rem"
           >
             <Flex direction="column" align="center">
-              <Image src={palisade} />
+              <Image src={palisade.src} />
             </Flex>
           </Flex>
         </Flex>
@@ -142,7 +143,7 @@ function About() {
             mb="1rem"
           >
             <Flex direction="column" align="center">
-              <Image src={waxbones} />
+              <Image src={waxbones.src} />
             </Flex>
           </Flex>
         </Flex>

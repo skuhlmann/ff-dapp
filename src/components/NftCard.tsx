@@ -1,4 +1,6 @@
-// import { Link as RouterLink } from "react-router-dom";
+"use client";
+
+// import NextLink from "next/link";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { NftItem } from "../utils/types";
 import {

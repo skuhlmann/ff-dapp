@@ -1,7 +1,8 @@
+"use client";
 import { Button, Image } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useAccount, useSwitchChain } from "wagmi";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 // import { truncateAddress } from "../utils/formatting";
 import { CHAIN_OBJ } from "../utils/constants";
 import GrapeAvatar from "../assets/grape_logo.png";
@@ -43,7 +44,7 @@ export const Connect = () => {
           )}
           <Button
             as={Link}
-            to="/cellar"
+            href="/cellar"
             variant="solid"
             fontFamily="Rockwell"
             borderRadius="20px"
@@ -54,7 +55,7 @@ export const Connect = () => {
             bg="brand.purple"
             size={{ base: "sm", sm: "md" }}
           >
-            <Image width="24px" src={GrapeAvatar} />
+            <Image width="24px" src={GrapeAvatar.src} />
           </Button>
         </>
       ) : (
