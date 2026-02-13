@@ -49,7 +49,7 @@ export const NftCard = ({
               {`${truncateAddress(token.contractAddress)}/${token.tokenID}`}
             </Link>
           </Flex>
-          <Image mb=".5rem" src={img} />
+          <Image mb=".5rem" src={img} alt="nft" />
           <Text fontSize="xs">{token.tokenMetadata?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {tokenStatus}

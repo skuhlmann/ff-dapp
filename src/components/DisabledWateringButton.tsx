@@ -27,7 +27,7 @@ export const DisabledWaterTreeButton = () => {
         }}
         opacity="30%"
       >
-        <Image src={waterIcon.src} w="44px" mr=".5rem" />
+        <Image src={waterIcon.src} w="44px" mr=".5rem" alt="water" />
         WATER
       </Button>
     </>

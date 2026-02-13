@@ -184,7 +184,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
               <Text fontSize="sm">
                 Put this peach NFT up for sale in the Peach Market.
               </Text>
-              <Image src={peachAvatar.src} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach" />
 
               <Flex
                 direction="column"

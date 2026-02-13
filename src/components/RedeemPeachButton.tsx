@@ -139,13 +139,13 @@ export const RedeemPeachButton = ({
               gap="1rem"
             >
               <Text fontSize="sm">
-                First use the 'Take a Bite' button below to make the transaction
-                revealing your PΞACH pit design.
+                First use the &apos;Take a Bite&apos; button below to make the
+                transaction revealing your PΞACH pit design.
               </Text>
               <Text fontSize="sm">
-                Then use the 'Order Peaches' button to visit our shop where you
-                can enter your physical address to have your peaches* shipped to
-                you.
+                Then use the &apos;Order Peaches&apos; button to visit our shop
+                where you can enter your physical address to have your peaches*
+                shipped to you.
               </Text>
               <Text style={{ fontSize: "10px" }}>
                 *Due to their perishable nature, we will only be able to ship
@@ -164,6 +164,7 @@ export const RedeemPeachButton = ({
                     mb=".5rem"
                     height="200px"
                     src={dhImagePath(tokenImage)}
+                    alt="nft image"
                   />
                 )}
               </Flex>

@@ -158,7 +158,7 @@ export const UnListPeachButton = ({
                 Remove this Peach NFT from the Peach Market. You can put it back
                 on sale anytime.
               </Text>
-              <Image src={peachAvatar.src} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach avatar" />
 
               {!isProcessing && !isConfirmed && !isListing && (
                 <Button

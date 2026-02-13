@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index 1234567..abcdefg 100644
+--- a/package.json
++++ b/package.json
+@@ -5,8 +5,8 @@
+   "license": "ISC",
+   "exports": {
+     "./package.json": "./package.json",
+-    "./build/": "./build/",
+-    "./esm/": "./esm/",
++    "./build/*": "./build/*",
++    "./esm/*": "./esm/*",
+     ".": {
+       "types": {
+         "require": "./build/index.d.ts",

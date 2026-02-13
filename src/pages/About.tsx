@@ -62,7 +62,7 @@ function About() {
             mb="1rem"
           >
             <Flex direction="column" align="center">
-              <Image src={palisade.src} />
+              <Image src={palisade.src} alt="palisade" />
             </Flex>
           </Flex>
         </Flex>
