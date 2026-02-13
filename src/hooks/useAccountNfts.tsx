@@ -25,7 +25,7 @@ const fetchNftsForAccount = async ({
 
   const indexer = new SequenceIndexer(
     sequenceEndPoint,
-    import.meta.env.VITE_SEQUENCE_API_KEY
+    process.env.NEXT_PUBLIC_SEQUENCE_API_KEY!
   );
 
   const nftBalances = await indexer.getTokenBalances({

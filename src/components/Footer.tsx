@@ -1,4 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
+"use client";
+
+import NextLink from "next/link";
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { BsTwitterX } from "react-icons/bs";
 import { BsTelegram } from "react-icons/bs";
@@ -22,43 +24,47 @@ export const Footer = () => {
         gap={{ base: "0srem", md: "2rem" }}
       >
         <Flex align="center" justify="center" gap="3rem" wrap="wrap">
-          <Image src={GrapeAvatar} w={{ base: "150px", md: "250px" }} />
+          <Image
+            src={GrapeAvatar.src}
+            w={{ base: "150px", md: "250px" }}
+            alt="grape"
+          />
           <Flex direction="column" gap=".5rem">
-            <RouterLink to="/">
+            <NextLink href="/">
               <Heading color="brand.black" size="md">
                 Home
               </Heading>
-            </RouterLink>
-            <RouterLink to="/buy-wine">
+            </NextLink>
+            <NextLink href="/buy-wine">
               <Heading color="brand.black" size="md">
                 Buy Bottles
               </Heading>
-            </RouterLink>
-            <RouterLink to="/cellar">
+            </NextLink>
+            <NextLink href="/cellar">
               <Heading color="brand.black" size="md">
                 My Cellar
               </Heading>
-            </RouterLink>
-            <RouterLink to="/market">
+            </NextLink>
+            <NextLink href="/market">
               <Heading color="brand.black" size="md">
                 Wine Market
               </Heading>
-            </RouterLink>
-            {/* <RouterLink to="/account">
+            </NextLink>
+            {/* <NextLink href="/account">
               <Heading color="brand.black" size="md">
                 My Account
               </Heading>
-            </RouterLink> */}
-            <RouterLink to="/about">
+            </NextLink> */}
+            <NextLink href="/about">
               <Heading color="brand.black" size="md">
                 About
               </Heading>
-            </RouterLink>
-            <RouterLink to="/faq">
+            </NextLink>
+            <NextLink href="/faq">
               <Heading color="brand.black" size="md">
                 FAQ & Shipping Info
               </Heading>
-            </RouterLink>
+            </NextLink>
           </Flex>
           <Flex direction="column" gap="0.5rem">
             <Flex gap="0.5rem" fontSize="24px">

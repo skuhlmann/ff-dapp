@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Heading,
@@ -10,8 +11,33 @@ import {
 } from "@chakra-ui/react";
 
 import { SectionHeader } from "../components/SectionHeader";
+import { useEffect } from "react";
 
 function Faq() {
+  useEffect(() => {
+    // Re-initialize VinoShipper when component mounts
+    if (window.Vinoshipper) {
+      window.Vinoshipper.init(3680, {
+        cartButton: false,
+      });
+    } else {
+      // If Vinoshipper hasn't loaded yet, wait for it
+      const handler = () => {
+        window.Vinoshipper?.init(3680, {
+          cartButton: false,
+        });
+      };
+      window.document.addEventListener("vinoshipper:loaded", handler, {
+        once: true,
+      });
+
+      // Cleanup
+      return () => {
+        window.document.removeEventListener("vinoshipper:loaded", handler);
+      };
+    }
+  }, []);
+
   return (
     <>
       <SectionHeader title="FAQ" />
@@ -69,14 +95,14 @@ function Faq() {
               <h2>
                 <AccordionButton>
                   <Box as="span" flex="1" textAlign="left" fontSize="lg">
-                    What's a skele-grape?
+                    What&apos;s a skele-grape?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                It's your wine's digital twin. One-of-a-kind, collectible, and
-                full of personality.
+                It&apos;s your wine&apos;s digital twin. One-of-a-kind,
+                collectible, and full of personality.
               </AccordionPanel>
             </AccordionItem>
 

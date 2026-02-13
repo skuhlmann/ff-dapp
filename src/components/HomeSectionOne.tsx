@@ -35,16 +35,27 @@ export const HomeSectionOne = () => {
             special… until they did. It’s delicious.
           </Text>
           <Text maxW="475px" mb="2rem">
+            A mysterious blend of Merlot, Mourvedre, Malbec, Zweigelt and
+            rebellious spirit.
+          </Text>
+          <Text maxW="475px" mb="2rem">
             On the nose, you’ll catch blueberry and currant. On the palate,
             expect rich dried fruit, fig, spices, and just a whisper of
-            cherry-laced nostalgia. It’s dark.
+            cherry-laced nostalgia.
           </Text>
-          <Text maxW="475px" mb="2rem" fontWeight="700">
-            It’s a mullet in wine form: business upfront, party in the glass.
+          <Text maxW="475px" mb="2rem">
+            This dry red is bold and complex. It’s the wine equivalent of a
+            mullet: business on the nose, party in the glass. Here&apos;s to
+            taking life’s rejects and turning them into something worth
+            toasting.
           </Text>
         </Box>
 
-        <Image src={BottleMock} w={{ base: "290px", xl: "360px" }} />
+        <Image
+          src={BottleMock.src}
+          w={{ base: "290px", xl: "360px" }}
+          alt="bottle"
+        />
       </Flex>
       <Flex
         mt={{ base: "3rem", md: "5rem" }}
@@ -82,6 +93,16 @@ export const HomeSectionOne = () => {
             legendary canyon breeze create the perfect home for grapes with
             something to prove.
           </Text>
+
+          <Text
+            maxW="475px"
+            textAlign={{ base: "left", md: "right" }}
+            mb="2rem"
+          >
+            We source grapes directly from the growers, rescue the grapes
+            destined for the ground and turn them into bold, complex wines —
+            wines that are dry, chewy, and impossible to ignore.
+          </Text>
           <Text
             maxW="475px"
             textAlign={{ base: "left", md: "right" }}
@@ -100,7 +121,11 @@ export const HomeSectionOne = () => {
             and a knack for coaxing big personality out of Colorado-grown fruit.
           </Text>
         </Flex>
-        <Image src={Sauvage} w={{ base: "400px", xl: "500px" }} />
+        <Image
+          src={Sauvage.src}
+          w={{ base: "400px", xl: "500px" }}
+          alt="sauvage"
+        />
       </Flex>
     </>
   );

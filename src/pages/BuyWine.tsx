@@ -1,3 +1,4 @@
+"use client";
 import { usePrivy } from "@privy-io/react-auth";
 import { MintCard } from "../components/MintCard";
 import { Box, Flex, Image, Text, Heading } from "@chakra-ui/react";
@@ -33,8 +34,9 @@ function BuyWine() {
             Forgotten Fruit Alpha Red
           </Heading>
           <Image
-            src={WineBottlePic}
+            src={WineBottlePic.src}
             w="100%"
+            alt="buywine"
             h={{ base: "auto", lg: "600px" }}
             objectFit="contain"
             borderRadius="20px"
@@ -51,8 +53,8 @@ function BuyWine() {
         >
           <Flex direction="column" gap="1rem" color="brand.blue">
             <Text fontSize="sm" lineHeight="1.6">
-              Ever wonder what happens to the grapes that don't make the cut?
-              Meet Alpha Red, the rowdy rebel of the vineyard.
+              Ever wonder what happens to the grapes that don&apos;t make the
+              cut? Meet Alpha Red, the rowdy rebel of the vineyard.
             </Text>
 
             <Text fontSize="sm" lineHeight="1.6">

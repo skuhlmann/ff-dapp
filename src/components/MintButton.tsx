@@ -1,4 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
+"use client";
+
+import NextLink from "next/link";
 import {
   Button,
   Flex,
@@ -105,7 +107,7 @@ export const MintButton = () => {
               gap="1rem"
             >
               {isConfirmed && (
-                <RouterLink to="/cellar">
+                <NextLink href="/cellar">
                   <Button
                     fontWeight="700"
                     my="1rem"
@@ -123,7 +125,7 @@ export const MintButton = () => {
                   >
                     Your bottle and skele-grape are in your cellar
                   </Button>
-                </RouterLink>
+                </NextLink>
               )}
 
               {isConfirming && (

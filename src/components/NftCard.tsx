@@ -1,4 +1,6 @@
-// import { Link as RouterLink } from "react-router-dom";
+"use client";
+
+// import NextLink from "next/link";
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { NftItem } from "../utils/types";
 import {
@@ -47,7 +49,7 @@ export const NftCard = ({
               {`${truncateAddress(token.contractAddress)}/${token.tokenID}`}
             </Link>
           </Flex>
-          <Image mb=".5rem" src={img} />
+          <Image mb=".5rem" src={img} alt="nft" />
           <Text fontSize="xs">{token.tokenMetadata?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {tokenStatus}

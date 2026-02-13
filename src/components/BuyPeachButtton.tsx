@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Button,
   Flex,
@@ -74,7 +75,7 @@ export const BuyPeachButton = ({
       const signer = provider.getSigner();
 
       const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+        apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
       });
 
       const tx = await sdk.order.buy({
@@ -146,7 +147,7 @@ export const BuyPeachButton = ({
               <Text fontSize="lg" fontWeight={700} textAlign="center">
                 Buy this Peach NFT for {price}
               </Text>
-              <Image src={peachAvatar} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach avatar" />
 
               {!isProcessing && !isConfirmed && !isListing && (
                 <Button
@@ -185,7 +186,7 @@ export const BuyPeachButton = ({
                   <Link
                     color="brand.orange"
                     style={{ textDecoration: "underline" }}
-                    to="/farm"
+                    href="/farm"
                   >
                     Your Farm
                   </Link>

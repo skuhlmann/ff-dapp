@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Button,
   Flex,
@@ -74,7 +75,7 @@ export const UnListPeachButton = ({
       const signer = provider.getSigner();
 
       const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+        apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
       });
 
       const cancelled = await sdk.order.cancel({
@@ -157,7 +158,7 @@ export const UnListPeachButton = ({
                 Remove this Peach NFT from the Peach Market. You can put it back
                 on sale anytime.
               </Text>
-              <Image src={peachAvatar} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach avatar" />
 
               {!isProcessing && !isConfirmed && !isListing && (
                 <Button
@@ -196,7 +197,7 @@ export const UnListPeachButton = ({
                   <Link
                     color="brand.orange"
                     style={{ textDecoration: "underline" }}
-                    to="/market"
+                    href="/market"
                   >
                     Peach Market
                   </Link>

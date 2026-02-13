@@ -15,7 +15,7 @@ import {
   SALE_STATE,
 } from "../utils/constants";
 import { useNftPrice } from "../hooks/useNftPrice";
-import { fromWei } from "../utils/formatting";
+import { displayPrice } from "../utils/formatting";
 import { LogIn } from "./LogIn";
 import GrapeAvatar from "../assets/grape_logo.png";
 import { MintButton } from "./MintButton";
@@ -25,7 +25,7 @@ import erc20Abi from "../abis/ERC20.json";
 
 export const MintCard = ({ account }: { account?: string }) => {
   const [paymentMethod, setPaymentMethod] = useState<"native" | "erc20">(
-    "native"
+    "native",
   );
 
   const {
@@ -38,13 +38,15 @@ export const MintCard = ({ account }: { account?: string }) => {
     userAddress: account as `0x${string}` | undefined,
   });
 
+  console.log("account", account);
+
   console.log(
     "userMintPrice, baselineMintPrice, userErc20MintPrice, baselineErc20MintPrice, hasDiscount",
     userMintPrice,
     baselineMintPrice,
     userErc20MintPrice,
     baselineErc20MintPrice,
-    hasDiscount
+    hasDiscount,
   );
 
   const mintPrice = userMintPrice ?? baselineMintPrice;
@@ -111,7 +113,8 @@ export const MintCard = ({ account }: { account?: string }) => {
         overflow="hidden"
       >
         <Image
-          src={GrapeAvatar}
+          src={GrapeAvatar.src}
+          alt="grapeavatar"
           position="absolute"
           top="0"
           left="50%"
@@ -132,11 +135,11 @@ export const MintCard = ({ account }: { account?: string }) => {
           </Text> */}
           <Flex direction="column" align="center" gap="0.5rem" mt="1rem">
             {SALE_STATE === "presale" ? (
-              <Heading size="sm" color="brand.orange">
+              <Heading size="lg" color="brand.orange">
                 Presale Price{" "}
                 <span
                   style={{
-                    fontSize: "12px",
+                    fontSize: "20px",
                   }}
                 >
                   (15% off)
@@ -158,27 +161,28 @@ export const MintCard = ({ account }: { account?: string }) => {
                       textDecoration="line-through"
                       opacity={0.6}
                     >
-                      ${fromWei(currentBaselinePrice.toString())} {symbol}
+                      {displayPrice(currentBaselinePrice, paymentMethod)}{" "}
+                      {symbol}
                     </Text>
-                    <Heading size="sm" color="brand.orange">
-                      You qualify for $
+                    <Heading size="md" color="brand.orange">
+                      You qualify for
                       {SALE_STATE === "presale" ? "an additonal" : "a"}{" "}
                       discount!{" "}
                       <span
                         style={{
-                          fontSize: "12px",
+                          fontSize: "20px",
                         }}
                       >
-                        (15% off)
+                        (another 10% off)
                       </span>
                     </Heading>
                     <Text size="lg" color="brand.blue" fontWeight={700}>
-                      ${fromWei(currentUserPrice.toString())} {symbol}
+                      {displayPrice(currentUserPrice, paymentMethod)} {symbol}
                     </Text>
                   </>
                 ) : (
                   <Heading size="lg" color="brand.blue">
-                    ${fromWei(currentBaselinePrice.toString())}
+                    {displayPrice(currentBaselinePrice, paymentMethod)} {symbol}
                   </Heading>
                 )}
               </>

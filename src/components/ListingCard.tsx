@@ -1,4 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
+"use client";
+
+import NextLink from "next/link";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import type { Item } from "@rarible/api-client";
@@ -37,16 +39,16 @@ export const ListingCard = ({
         <Flex direction="column" align="center">
           <Flex w="100%" justify="flex-start" mb="1rem">
             {peach.contract && (
-              <RouterLink to={`/market/${tokenId}`} color="brand.orange">
+              <NextLink href={`/market/${tokenId}`} color="brand.orange">
                 <Text fontSize="xs" color="brand.orange">
                   {`${truncateAddress(
-                    peach.contract?.split(":")[1]
+                    peach.contract?.split(":")[1],
                   )}/${tokenId}`}
                 </Text>
-              </RouterLink>
+              </NextLink>
             )}
           </Flex>
-          <Image mb=".5rem" src={img} />
+          <Image mb=".5rem" src={img} alt="peach listing" />
           <Text fontSize="xs">{peach.meta?.name}</Text>
           <Text fontSize="sm" my="1rem" fontWeight="700">
             {tokenStatus}

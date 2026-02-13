@@ -1,4 +1,5 @@
-import { Link as RouterLink } from "react-router-dom";
+"use client";
+import NextLink from "next/link";
 import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
@@ -33,13 +34,17 @@ export const HomeSectionThree = () => {
         <Text maxW="375px" fontSize="sm">
           We are only able to ship wine to addresses in certain locations in
           United States.
-          <Link as={RouterLink} to="/shipping" color="brand.orange" mx=".5rem">
+          <Link as={NextLink} href="/faq" color="brand.orange" mx=".5rem">
             Valid shipping locations
           </Link>
         </Text>
       </Box>
 
-      <Image src={WineStamp} w={{ base: "290px", xl: "360px" }} />
+      <Image
+        src={WineStamp.src}
+        w={{ base: "290px", xl: "360px" }}
+        alt="wine stamp"
+      />
     </Flex>
   );
 };

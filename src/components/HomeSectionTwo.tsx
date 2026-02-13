@@ -114,7 +114,11 @@ export const HomeSectionTwo = () => {
           </Text>
         </Box>
 
-        <Image src={GrapeNft} w={{ base: "400px", xl: "537px" }} />
+        <Image
+          src={GrapeNft.src}
+          w={{ base: "400px", xl: "537px" }}
+          alt="grapenft"
+        />
       </Flex>
     </Flex>
   );

@@ -1,5 +1,7 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { RiCloseFill } from "react-icons/ri";
 import { RiMenu5Fill } from "react-icons/ri";
@@ -9,7 +11,7 @@ import { MenuLinks } from "./MenuLinks";
 import GrapeAvatar from "../assets/grape_logo.png";
 
 export const NavBar = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +19,7 @@ export const NavBar = () => {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <>
@@ -40,7 +42,7 @@ export const NavBar = () => {
         zIndex={9}
         background="brand.purple"
       >
-        <Link to="/">
+        <Link href="/">
           <>
             <Flex
               direction="row"
@@ -48,7 +50,7 @@ export const NavBar = () => {
               justifyContent="start"
               display={{ base: "none", md: "flex" }}
             >
-              <Image width="56px" src={GrapeAvatar} />
+              <Image width="56px" src={GrapeAvatar.src} alt="grape" />
               <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
             <Flex
@@ -58,7 +60,7 @@ export const NavBar = () => {
               display={{ base: "flex", md: "none" }}
               w="100%"
             >
-              <Image src={GrapeAvatar} w="36px" />
+              <Image src={GrapeAvatar.src} w="36px" alt="grape logo" />
               <Heading>FORGOTTEN FRUIT</Heading>
             </Flex>
           </>

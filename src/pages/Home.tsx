@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -44,7 +45,11 @@ function Home() {
             mt={{ base: 4, md: 8 }}
             gap={{ base: 4, md: 0 }}
           >
-            <Image src={SkullGrapeBundle} w={{ base: "300px", xl: "500px" }} />
+            <Image
+              src={SkullGrapeBundle.src}
+              w={{ base: "300px", xl: "500px" }}
+              alt="skull grapes"
+            />
             <Flex
               direction="column"
               alignItems="center"
@@ -91,7 +96,7 @@ function Home() {
                 )}
                 <Button
                   as={Link}
-                  to="/buy-wine"
+                  href="/buy-wine"
                   variant="solid"
                   fontSize="3xl"
                   borderRadius=".125rem"
@@ -169,7 +174,7 @@ function Home() {
         {SALE_STATE !== "upcoming" && (
           <Button
             as={Link}
-            to="/buy-wine"
+            href="/buy-wine"
             variant="solid"
             fontSize="3xl"
             borderRadius=".125rem"

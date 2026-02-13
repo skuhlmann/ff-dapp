@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createPublicClient, http } from "viem";
 
 import {
+  ALCHEMY_RPC,
   CHAIN_OBJ,
   NFT_CONTRACT_ADDRESS,
   TARGET_NETWORK,
@@ -17,7 +18,7 @@ const fetchNftPrice = async ({
 }) => {
   const publicClient = createPublicClient({
     chain: CHAIN_OBJ,
-    transport: http(),
+    transport: http(ALCHEMY_RPC),
   });
 
   // Read baseline prices
@@ -87,4 +88,3 @@ export const useNftPrice = ({
 
   return { error, ...data, ...rest };
 };
-

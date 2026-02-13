@@ -1,4 +1,4 @@
-import { formatEther } from "viem";
+import { formatEther, formatUnits } from "viem";
 import {
   BLOCK_EXPLORER_URL,
   NFT_CONTRACT_ADDRESS,
@@ -19,6 +19,15 @@ export const handlePluralNoun = (noun: Noun, count: number) =>
   count === 1 ? noun.singular : noun.plural;
 export const fromWei = (amt: string): string => {
   return formatEther(BigInt(amt)).toString();
+};
+export const displayPrice = (
+  amt: bigint,
+  paymentMethod: "native" | "erc20"
+): string => {
+  if (paymentMethod === "native") {
+    return formatEther(amt);
+  }
+  return formatUnits(amt, 6);
 };
 export const toBigInt = (
   amt?: string | number | boolean | bigint

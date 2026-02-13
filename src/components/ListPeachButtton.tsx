@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Button,
   Flex,
@@ -87,7 +88,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
       const signer = provider.getSigner();
 
       const sdk = createRaribleSdk(signer, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+        apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
       });
 
       const contractAddress = PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
@@ -183,7 +184,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
               <Text fontSize="sm">
                 Put this peach NFT up for sale in the Peach Market.
               </Text>
-              <Image src={peachAvatar} w="32px" />
+              <Image src={peachAvatar.src} w="32px" alt="peach" />
 
               <Flex
                 direction="column"
@@ -252,7 +253,7 @@ export const ListPeachButton = ({ tokenId }: { tokenId: string }) => {
                   <Link
                     color="brand.orange"
                     style={{ textDecoration: "underline" }}
-                    to="/market"
+                    href="/market"
                   >
                     Peach Market
                   </Link>
