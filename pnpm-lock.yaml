@@ -35,6 +35,9 @@ importers:
       '@rarible/sdk':
         specifier: ^0.13.68-fix.29
         version: 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(axios@1.6.2)(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
+      '@rarible/sdk-wallet':
+        specifier: ^0.13.68-fix.29
+        version: 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
       '@tanstack/react-query':
         specifier: ^5.59.20
         version: 5.62.0(react@18.3.1)
@@ -9747,6 +9750,34 @@ snapshots:
       - utf-8-validate
       - web3
 
+  '@rarible/sdk-wallet@0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
+    dependencies:
+      '@ethersproject/abstract-signer': 5.7.0
+      '@rarible/api-client': 0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1))
+      '@rarible/aptos-wallet': 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(tslib@2.3.1)
+      '@rarible/ethereum-provider': 0.13.68-fix.29(tslib@2.3.1)
+      '@rarible/ethers-ethereum': 0.13.68-fix.29(@rarible/types@0.9.27(tslib@2.3.1))(bufferutil@4.0.8)(tslib@2.3.1)(utf-8-validate@5.0.10)
+      '@rarible/fcl-types': 0.5.78
+      '@rarible/flow-sdk': 0.5.78-fix.3(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)
+      '@rarible/solana-common': 0.13.68-fix.29(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)
+      '@rarible/solana-wallet': 0.13.68-fix.29(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)
+      '@rarible/tezos-sdk': 0.1.46(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)
+      '@rarible/types': 0.9.27(tslib@2.3.1)
+      '@rarible/web3-ethereum': 0.13.68-fix.29(@rarible/types@0.9.27(tslib@2.3.1))(tslib@2.3.1)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
+      text-encoding: 0.7.0
+      tslib: 2.3.1
+    transitivePeerDependencies:
+      - '@aptos-labs/ts-sdk'
+      - '@aptos-labs/wallet-adapter-core'
+      - '@onflow/util-config'
+      - '@solana/web3.js'
+      - bufferutil
+      - debug
+      - encoding
+      - supports-color
+      - utf-8-validate
+      - web3
+
   '@rarible/sdk@0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(axios@1.6.2)(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
     dependencies:
       '@ethersproject/keccak256': 5.7.0
@@ -9789,6 +9820,11 @@ snapshots:
       '@solana/web3.js': 1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10)
       tslib: 2.3.1
 
+  '@rarible/solana-common@0.13.68-fix.29(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)':
+    dependencies:
+      '@solana/web3.js': 1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10)
+      tslib: 2.3.1
+
   '@rarible/solana-sdk@0.13.68-fix.29(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)':
     dependencies:
       '@metaplex-foundation/mpl-auction': 0.0.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10)
@@ -9821,6 +9857,15 @@ snapshots:
     dependencies:
       '@rarible/solana-common': 0.13.68-fix.29(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)
       '@solana/web3.js': 1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10)
+      '@types/bs58': 4.0.4
+      bs58: 5.0.0
+      tslib: 2.3.1
+      tweetnacl: 1.0.3
+
+  '@rarible/solana-wallet@0.13.68-fix.29(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)':
+    dependencies:
+      '@rarible/solana-common': 0.13.68-fix.29(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(tslib@2.3.1)
+      '@solana/web3.js': 1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10)
       '@types/bs58': 4.0.4
       bs58: 5.0.0
       tslib: 2.3.1
