@@ -1,6 +1,8 @@
+"use client";
+
 import { ReactNode, useMemo } from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useBalance } from "wagmi";
 
 export const BalanceCheck = ({
@@ -30,7 +32,7 @@ export const BalanceCheck = ({
         {message && <Text>{message}</Text>}
         <Button
           as={Link}
-          to="/account"
+          href="/account"
           variant="outline"
           fontFamily="heading"
           fontSize="xl"

@@ -1,7 +1,8 @@
+"use client";
 import { usePrivy } from "@privy-io/react-auth";
 import { Button, Flex, Text } from "@chakra-ui/react";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { BottleList } from "../components/BottleList";
 import { SectionHeader } from "../components/SectionHeader";
 import { SALE_STATE } from "../utils/constants";
@@ -65,7 +66,7 @@ function Cellar() {
         {SALE_STATE !== "upcoming" && (
           <Button
             as={Link}
-            to="/buy-wine"
+            href="/buy-wine"
             variant="solid"
             fontSize="3xl"
             borderRadius=".125rem"

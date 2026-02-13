@@ -63,7 +63,7 @@ export const RedeemPeachButton = ({
       });
 
       const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
-        apiKey: import.meta.env.VITE_RARIBLE_KEY,
+        apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
       });
 
       await sdk.apis.item.resetItemMeta({

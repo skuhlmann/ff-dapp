@@ -1,3 +1,4 @@
+"use client";
 import { Box, Button, Flex, useToast, Text } from "@chakra-ui/react";
 import { usePrivy } from "@privy-io/react-auth";
 import { AccountAvatar } from "../components/AccountAvatar";

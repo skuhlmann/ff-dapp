@@ -1,11 +1,11 @@
+"use client";
+
 import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
-import { Link, useParams } from "react-router-dom";
+import Link from "next/link";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { ListingWrapper } from "../components/ListingWrapper";
 
-function Listing() {
-  const { tokenId } = useParams();
-
+function Listing({ tokenId }: { tokenId: string }) {
   return (
     <>
       <Box w="100%" textAlign="center" my="3rem">
@@ -50,7 +50,7 @@ function Listing() {
       <Flex mt={5} ml={3} mb={8}>
         <Box width="10vw" />
         <Box width="15vw">
-          <Link to="/market">
+          <Link href="/market">
             <Flex color="brand.orange" align="center" gap="0.5rem">
               <FaLongArrowAltLeft />
               <Text fontSize="md" color="brand.orange">

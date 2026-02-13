@@ -13,7 +13,7 @@ const fetchItem = async ({ tokenId }: { tokenId: string }) => {
   const contractAddress = PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK];
 
   const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
-    apiKey: import.meta.env.VITE_RARIBLE_KEY,
+    apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
   });
 
   console.log("fetch", tokenId);

@@ -8,6 +8,7 @@ import {
   // RARIBLE_PREFIX,
   // RARIBLE_STAGE,
   TARGET_NETWORK,
+  ALCHEMY_RPC,
 } from "../utils/constants";
 import nftAbi from "../abis/GrapeERC721.json";
 
@@ -27,7 +28,7 @@ const fetchTokenStatus = async ({
 
   const publicClient = createPublicClient({
     chain: CHAIN_OBJ,
-    transport: http(),
+    transport: http(ALCHEMY_RPC),
   });
 
   const tokenState = (await publicClient.readContract({
@@ -40,7 +41,7 @@ const fetchTokenStatus = async ({
   const imgIpfs = TOKEN_IMG_IPFS_HASH[tokenState];
 
   // const sdk = createRaribleSdk(undefined, RARIBLE_STAGE, {
-  //   apiKey: import.meta.env.VITE_RARIBLE_KEY,
+  //   apiKey: process.env.NEXT_PUBLIC_RARIBLE_KEY,
   // });
 
   // // ETHEREUM:${token}:${tokenId}

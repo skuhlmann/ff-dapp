@@ -50,7 +50,7 @@ export const HomeSectionOne = () => {
           </Text>
         </Box>
 
-        <Image src={BottleMock} w={{ base: "290px", xl: "360px" }} />
+        <Image src={BottleMock.src} w={{ base: "290px", xl: "360px" }} />
       </Flex>
       <Flex
         mt={{ base: "3rem", md: "5rem" }}
@@ -116,7 +116,7 @@ export const HomeSectionOne = () => {
             and a knack for coaxing big personality out of Colorado-grown fruit.
           </Text>
         </Flex>
-        <Image src={Sauvage} w={{ base: "400px", xl: "500px" }} />
+        <Image src={Sauvage.src} w={{ base: "400px", xl: "500px" }} />
       </Flex>
     </>
   );

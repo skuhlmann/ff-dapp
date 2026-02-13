@@ -1,3 +1,4 @@
+"use client";
 // import { useEffect, useState } from "react";
 import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { SectionHeader } from "../components/SectionHeader";

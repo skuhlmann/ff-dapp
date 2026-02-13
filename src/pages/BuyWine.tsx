@@ -1,3 +1,4 @@
+"use client";
 import { usePrivy } from "@privy-io/react-auth";
 import { MintCard } from "../components/MintCard";
 import { Box, Flex, Image, Text, Heading } from "@chakra-ui/react";
@@ -33,8 +34,9 @@ function BuyWine() {
             Forgotten Fruit Alpha Red
           </Heading>
           <Image
-            src={WineBottlePic}
+            src={WineBottlePic.src}
             w="100%"
+            alt="buywine"
             h={{ base: "auto", lg: "600px" }}
             objectFit="contain"
             borderRadius="20px"

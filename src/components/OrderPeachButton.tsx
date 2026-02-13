@@ -151,7 +151,7 @@ export const OrderPeachButton = ({
                 align="center"
                 mb=".5rem"
               >
-                <Image mb=".5rem" height="200px" src={peachBoxImg} />
+                <Image mb=".5rem" height="200px" src={peachBoxImg.src} />
               </Flex>
 
               {order.webUrl && !order.orderId && (
