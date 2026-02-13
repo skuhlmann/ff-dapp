@@ -36,6 +36,11 @@
     "viem": "^2.21.44",
     "wagmi": "^2.12.29"
   },
+  "pnpm": {
+    "patchedDependencies": {
+      "@rarible/sdk-wallet@0.13.68-fix.29": "patches/@rarible__sdk-wallet@0.13.68-fix.29.patch"
+    }
+  },
   "devDependencies": {
     "@rarible/types": "~0.10.0-alpha.22",
     "@types/react": "^18.2.43",

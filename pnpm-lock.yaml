@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@rarible/sdk-wallet@0.13.68-fix.29':
+    hash: 4c4844f1b1d2229f6802656c30a13855ff3c3b1fade66ab100b4ae52d24c8d4f
+    path: patches/@rarible__sdk-wallet@0.13.68-fix.29.patch
+
 importers:
 
   .:
@@ -37,7 +42,7 @@ importers:
         version: 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(axios@1.6.2)(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
       '@rarible/sdk-wallet':
         specifier: ^0.13.68-fix.29
-        version: 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
+        version: 0.13.68-fix.29(patch_hash=4c4844f1b1d2229f6802656c30a13855ff3c3b1fade66ab100b4ae52d24c8d4f)(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
       '@tanstack/react-query':
         specifier: ^5.59.20
         version: 5.62.0(react@18.3.1)
@@ -9722,7 +9727,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@rarible/sdk-wallet@0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
+  '@rarible/sdk-wallet@0.13.68-fix.29(patch_hash=4c4844f1b1d2229f6802656c30a13855ff3c3b1fade66ab100b4ae52d24c8d4f)(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
     dependencies:
       '@ethersproject/abstract-signer': 5.7.0
       '@rarible/api-client': 0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1))
@@ -9750,7 +9755,7 @@ snapshots:
       - utf-8-validate
       - web3
 
-  '@rarible/sdk-wallet@0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
+  '@rarible/sdk-wallet@0.13.68-fix.29(patch_hash=4c4844f1b1d2229f6802656c30a13855ff3c3b1fade66ab100b4ae52d24c8d4f)(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.95.5(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))':
     dependencies:
       '@ethersproject/abstract-signer': 5.7.0
       '@rarible/api-client': 0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1))
@@ -9791,7 +9796,7 @@ snapshots:
       '@rarible/protocol-ethereum-sdk': 0.13.68-fix.29(@rarible/types@0.9.27(tslib@2.3.1))(axios@1.6.2)(tslib@2.3.1)
       '@rarible/sdk-common': 0.13.68-fix.29(@rarible/types@0.9.27(tslib@2.3.1))(tslib@2.3.1)
       '@rarible/sdk-transaction': 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(axios@1.6.2)(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)
-      '@rarible/sdk-wallet': 0.13.68-fix.29(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
+      '@rarible/sdk-wallet': 0.13.68-fix.29(patch_hash=4c4844f1b1d2229f6802656c30a13855ff3c3b1fade66ab100b4ae52d24c8d4f)(@aptos-labs/ts-sdk@1.18.1)(@rarible/api-client@0.18.0-alpha.1(@rarible/types@0.10.0-alpha-mantle.1(tslib@2.3.1)))(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)(web3@1.10.4(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))
       '@rarible/solana-sdk': 0.13.68-fix.29(@solana/web3.js@1.54.2(bufferutil@4.0.8)(encoding@0.1.13)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)
       '@rarible/tezos-sdk': 0.1.46(bufferutil@4.0.8)(encoding@0.1.13)(tslib@2.3.1)(utf-8-validate@5.0.10)
       '@rarible/types': 0.9.27(tslib@2.3.1)
