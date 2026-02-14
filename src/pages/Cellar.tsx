@@ -9,21 +9,38 @@ import { SectionHeader } from "../components/SectionHeader";
 import { useEmailSignup } from "../hooks/useEmailSignup";
 import { SALE_STATE } from "../utils/constants";
 
+/**
+ * Renders the email signup banner + hook.
+ * Extracted into its own component so the useQuery/useQueryClient calls
+ * only run client-side (this component is conditionally rendered when
+ * loggedIn is true, which is always false during SSR).
+ */
+function EmailSignupSection({
+  walletAddress,
+  privyHasEmail,
+}: {
+  walletAddress: string;
+  privyHasEmail: boolean;
+}) {
+  const { showBanner, isSubmitting, submitError, isSubmitted, submitEmail } =
+    useEmailSignup({ walletAddress, privyHasEmail });
+
+  if (!showBanner && !isSubmitted) return null;
+
+  return (
+    <EmailSignupBanner
+      isSubmitting={isSubmitting}
+      submitError={submitError}
+      isSubmitted={isSubmitted}
+      onSubmit={submitEmail}
+    />
+  );
+}
+
 function Cellar() {
   const { ready, authenticated, user } = usePrivy();
 
   const loggedIn = ready && authenticated && user?.wallet?.address;
-
-  const {
-    showBanner,
-    isSubmitting,
-    submitError,
-    isSubmitted,
-    submitEmail,
-  } = useEmailSignup({
-    walletAddress: loggedIn ? user?.wallet?.address : undefined,
-    privyHasEmail: !!user?.email?.address,
-  });
 
   return (
     <>
@@ -70,12 +87,10 @@ function Cellar() {
             PRESALE IS OPENING SOON!
           </Text>
         )}
-        {loggedIn && (showBanner || isSubmitted) && (
-          <EmailSignupBanner
-            isSubmitting={isSubmitting}
-            submitError={submitError}
-            isSubmitted={isSubmitted}
-            onSubmit={submitEmail}
+        {loggedIn && user?.wallet?.address && (
+          <EmailSignupSection
+            walletAddress={user.wallet.address}
+            privyHasEmail={!!user?.email?.address}
           />
         )}
         {loggedIn && user?.wallet?.address && (
