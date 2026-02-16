@@ -104,9 +104,11 @@ function ClaimForm() {
         setIsResolvingEns(true);
         setEnsError(null);
 
-        console.log("trimmed", trimmed);
+        console.log("trimmed", trimmed.toLowerCase());
         try {
-          const address = await ensClient.getEnsAddress({ name: trimmed });
+          const address = await ensClient.getEnsAddress({
+            name: trimmed.toLowerCase(),
+          });
           if (address) {
             setResolvedWallet(address);
           } else {
