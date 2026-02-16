@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const Account = dynamic(() => import("@/pages/Account"), { ssr: false });
+const Account = dynamic(() => import("@/views/Account"), { ssr: false });
 export default function Page() {
   return <Account />;
 }

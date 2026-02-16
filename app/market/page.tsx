@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const Marketplace = dynamic(() => import("@/pages/Marketplace"), {
+const Marketplace = dynamic(() => import("@/views/Marketplace"), {
   ssr: false,
 });
 export default function Page() {

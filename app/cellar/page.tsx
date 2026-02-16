@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const Cellar = dynamic(() => import("@/pages/Cellar"), { ssr: false });
+const Cellar = dynamic(() => import("@/views/Cellar"), { ssr: false });
 export default function Page() {
   return <Cellar />;
 }
