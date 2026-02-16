@@ -7,6 +7,11 @@ import { BsTelegram } from "react-icons/bs";
 import { SiFarcaster } from "react-icons/si";
 
 import GrapeAvatar from "../assets/ff_logo_outline_black.png";
+import {
+  BLOCK_EXPLORER_URL,
+  NFT_CONTRACT_ADDRESS,
+  TARGET_NETWORK,
+} from "@/utils/constants";
 
 export const Footer = () => {
   return (
@@ -83,14 +88,15 @@ export const Footer = () => {
                 Sauvage Spectrum Wines
               </Heading>
             </Link>
-            {/* <Link
-              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${PEACH_NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
+            <Link
+              href={`${BLOCK_EXPLORER_URL[TARGET_NETWORK]}address/${NFT_CONTRACT_ADDRESS[TARGET_NETWORK]}`}
               isExternal
             >
-              <Heading color="brand.black" size="md">
+              <Heading color="brand.black" size="sm">
                 Grapes on Basescan
               </Heading>
             </Link>
+            {/*
             <Link
               href="https://rarible.com/collection/base/0xa9d3c833df8415233e1626f29e33ccba37d2a187/items"
               isExternal

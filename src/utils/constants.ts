@@ -9,7 +9,7 @@ export const RARIBLE_STAGE = TARGET_NETWORK === "0x2105" ? "prod" : "testnet";
 // export const SALE_STATE = "upcoming";
 // export const SALE_STATE = "ongoing";
 export const SALE_STATE: "presale" | "upcoming" | "ongoing" | "closed" =
-  "upcoming";
+  "presale";
 
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"

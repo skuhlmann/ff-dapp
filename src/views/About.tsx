@@ -12,6 +12,8 @@ import {
 
 import waxbones from "../assets/waxbones.jpg";
 import palisade from "../assets/palisades_orchard.jpeg";
+import sauvage from "../assets/ss_logo.png";
+
 import { SectionHeader } from "../components/SectionHeader";
 
 function About() {
@@ -21,8 +23,15 @@ function About() {
 
       <Box px={{ base: "1rem", sm: "2rem" }} color="brand.blue">
         <Flex wrap="wrap" justify="space-between" align="center">
-          <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-            <Heading size="2xl" mb="2rem" color="brand.orange">
+          <Box
+            w={{ base: "100%", md: "50%" }}
+            mb={{ base: "0.5rem", md: "2rem" }}
+          >
+            <Heading
+              size="2xl"
+              mb={{ base: "0.5rem", md: "2rem" }}
+              color="brand.orange"
+            >
               Meet The Grand Valley AVA
             </Heading>
             <Text mb="2rem" fontSize="14px">
@@ -67,21 +76,40 @@ function About() {
           </Flex>
         </Flex>
 
-        <Flex wrap="wrap" justify="space-between" align="center">
-          <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-            <Heading size="2xl" mb="2rem" color="brand.tan">
+        <Flex
+          wrap="wrap"
+          justify="space-between"
+          align="center"
+          mt={{ base: "1.5rem", md: "2rem" }}
+        >
+          <Box
+            w={{ base: "100%", md: "50%" }}
+            mb={{ base: "0.5rem", md: "2rem" }}
+          >
+            <Heading
+              size="2xl"
+              mb={{ base: "0.5rem", md: "2rem" }}
+              color="brand.tan"
+            >
               Meet the Wine Makers
             </Heading>
             <Text mb="2rem" fontSize="14px">
-              Great wine starts with great people, and **Sauvage Spectrum** is
-              the real deal.
+              Great wine starts with great people, and{" "}
+              <Link
+                href="https://sauvagespectrum.com/"
+                isExternal
+                color="brand.orange"
+              >
+                Sauvage Spectrum{" "}
+              </Link>
+              is the real deal.
             </Text>
             <Text mb="2rem" fontSize="14px">
               Based in Palisade, they blend traditional winemaking knowledge
               with experimental curiosity — an approach that fits Forgotten
               Fruit like a glove. Sauvage Spectrum is known for:
             </Text>
-            <UnorderedList fontSize="14px">
+            <UnorderedList fontSize="14px" mb="2rem">
               <ListItem>Big, expressive blends</ListItem>
               <ListItem>
                 Estate-grown grapes from Colorado’s best parcels
@@ -92,18 +120,40 @@ function About() {
               </ListItem>
             </UnorderedList>
 
-            <Text mb="2rem" fontSize="14px">
+            <Text fontSize="14px">
               They’re not afraid to break the mold, bend some rules, or get a
               little weird in the pursuit of great wine. Which is perfect,
               because we had a bunch of misfit grapes with something to prove —
               and they knew exactly how to help them shine.
             </Text>
           </Box>
+          <Flex
+            w={{ base: "100%", md: "45%" }}
+            direction="column"
+            alignItems={{ base: "center", md: "flex-end" }}
+            mb="1rem"
+          >
+            <Flex direction="column" align="center">
+              <Image src={sauvage.src} alt="sauvage spectrum" />
+            </Flex>
+          </Flex>
         </Flex>
 
-        <Flex wrap="wrap" justify="space-between" align="center">
-          <Box w={{ base: "100%", md: "50%" }} mb="2rem">
-            <Heading size="2xl" mb="2rem" color="brand.orange">
+        <Flex
+          wrap="wrap"
+          justify="space-between"
+          align="center"
+          mt={{ base: "1.5rem", md: "2rem" }}
+        >
+          <Box
+            w={{ base: "100%", md: "50%" }}
+            mb={{ base: "0.5rem", md: "2rem" }}
+          >
+            <Heading
+              size="2xl"
+              mb={{ base: "0.5rem", md: "2rem" }}
+              color="brand.orange"
+            >
               Meet the Artist
             </Heading>
             <Text mb="2rem" fontSize="14px">
@@ -129,7 +179,7 @@ function About() {
               punk, hardcore and related genres of music, as well as tattoo
               culture.
             </Text>
-            <Text mb="2rem" fontSize="14px">
+            <Text fontSize="14px">
               His work has been exhibited all over the world and even sent to
               the International Space Station, and has recently worked with
               commercial clients integrating web3 elements - The Masked Singer
@@ -140,10 +190,10 @@ function About() {
             w={{ base: "100%", md: "45%" }}
             direction="column"
             alignItems={{ base: "center", md: "flex-end" }}
-            mb="1rem"
+            mb="3rem"
           >
             <Flex direction="column" align="center">
-              <Image src={waxbones.src} />
+              <Image src={waxbones.src} alt="waxbones" />
             </Flex>
           </Flex>
         </Flex>

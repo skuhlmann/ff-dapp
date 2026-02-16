@@ -2,10 +2,10 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { MintCard } from "../components/MintCard";
 import { Box, Flex, Image, Text, Heading } from "@chakra-ui/react";
-import { RemainingSupply } from "../components/RemainingSupply";
+// import { RemainingSupply } from "../components/RemainingSupply";
 import { SectionHeader } from "../components/SectionHeader";
 
-import WineBottlePic from "../assets/wine_bottle_1.jpg";
+import WineBottlePic from "../assets/alpha_red_2.jpg";
 import { SALE_STATE } from "../utils/constants";
 
 function BuyWine() {
@@ -20,17 +20,21 @@ function BuyWine() {
 
       <Flex
         direction={{ base: "column", lg: "row" }}
-        gap={{ base: "2rem", lg: "4rem" }}
+        gap={{ base: "1rem", lg: "2rem" }}
         px={{ base: "5vw", md: "10vw", lg: "8vw" }}
         mb="3rem"
         alignItems={{ base: "center", lg: "flex-start" }}
       >
         {/* Product Image */}
-        <Box
+        <Flex
           w={{ base: "100%", lg: "auto" }}
           maxW={{ base: "500px", lg: "none" }}
+          direction="column"
+          justify="start"
+          align="start"
+          gap="0rem"
         >
-          <Heading size="2xl" color="brand.orange" mb="0.5rem">
+          <Heading size="2xl" color="brand.orange" mb="0rem">
             Forgotten Fruit Alpha Red
           </Heading>
           <Image
@@ -41,7 +45,28 @@ function BuyWine() {
             objectFit="contain"
             borderRadius="20px"
           />
-        </Box>
+          <Box>
+            <Flex direction="column" gap="1rem" color="brand.blue">
+              <Text fontSize="sm" lineHeight="1.6">
+                Ever wonder what happens to the grapes that don&apos;t make the
+                cut? Meet Alpha Red, the rowdy rebel of the vineyard.
+              </Text>
+
+              <Text fontSize="sm" lineHeight="1.6">
+                Notes of blueberry and currant hit the nose, while dried fruit,
+                fig, and spices dance on the palate — like your childhood fruit
+                leather… with cherry liqueur. Bold, complex, and
+                unapologetically fun. Pair it with pizza, charcuterie, or a good
+                story.
+              </Text>
+
+              <Text fontSize="sm" lineHeight="1.6">
+                Each bottle comes with an NFT containing unique skele-grape
+                digital artwork.
+              </Text>
+            </Flex>
+          </Box>
+        </Flex>
 
         {/* Product Details & Purchase */}
         <Flex
@@ -51,29 +76,10 @@ function BuyWine() {
           gap=".5rem"
           mt={{ base: "0rem", lg: "3.5rem" }}
         >
-          <Flex direction="column" gap="1rem" color="brand.blue">
-            <Text fontSize="sm" lineHeight="1.6">
-              Ever wonder what happens to the grapes that don&apos;t make the
-              cut? Meet Alpha Red, the rowdy rebel of the vineyard.
-            </Text>
-
-            <Text fontSize="sm" lineHeight="1.6">
-              Notes of blueberry and currant hit the nose, while dried fruit,
-              fig, and spices dance on the palate — like your childhood fruit
-              leather… with cherry liqueur. Bold, complex, and unapologetically
-              fun. Pair it with pizza, charcuterie, or a good story.
-            </Text>
-
-            <Text fontSize="sm" lineHeight="1.6">
-              Each bottle comes with an NFT containing unique skele-grape
-              digital artwork.
-            </Text>
-          </Flex>
-
           <Box mt="1rem">
             {SALE_STATE !== "upcoming" && (
               <>
-                <RemainingSupply />
+                {/* <RemainingSupply /> */}
                 <MintCard account={user?.wallet?.address} />
               </>
             )}

@@ -14,7 +14,7 @@ export const SectionHeader = ({
       direction="row"
       alignItems="center"
       justifyContent="start"
-      mt={10}
+      mt={{ base: 0, md: 5 }}
       mb={10}
     >
       <Divider
@@ -34,14 +34,16 @@ export const SectionHeader = ({
         {title}
       </Text>
       {showPresale && (
-        <Text
-          color="brand.orange"
-          fontSize={{ base: "0.65rem", md: "1rem" }}
-          fontWeight="bold"
-          ml="1rem"
-        >
-          Presales are open!
-        </Text>
+        <>
+          <Text
+            color="brand.orange"
+            fontSize={{ base: "0.65rem", md: "1rem" }}
+            fontWeight="bold"
+            ml="1rem"
+          >
+            Presale is open!
+          </Text>
+        </>
       )}
       <Divider
         mt={4}
