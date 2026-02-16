@@ -136,13 +136,13 @@ export const MintCard = ({ account }: { account?: string }) => {
           <Flex direction="column" align="center" gap="0.5rem" mt="1rem">
             {SALE_STATE === "presale" ? (
               <Heading size="lg" color="brand.orange">
-                Presale Price{" "}
+                Price{" "}
                 <span
                   style={{
                     fontSize: "20px",
                   }}
                 >
-                  (15% off)
+                  (Presale pricing ends soon)
                 </span>
               </Heading>
             ) : (
@@ -166,22 +166,15 @@ export const MintCard = ({ account }: { account?: string }) => {
                     </Text>
                     <Heading size="md" color="brand.orange">
                       You qualify for
-                      {SALE_STATE === "presale" ? "an additonal" : "a"}{" "}
+                      {SALE_STATE === "presale" ? ` an additonal` : "a"}{" "}
                       discount!{" "}
-                      <span
-                        style={{
-                          fontSize: "20px",
-                        }}
-                      >
-                        (another 10% off)
-                      </span>
                     </Heading>
-                    <Text size="lg" color="brand.blue" fontWeight={700}>
+                    <Text size="lg" fontWeight={700}>
                       {displayPrice(currentUserPrice, paymentMethod)} {symbol}
                     </Text>
                   </>
                 ) : (
-                  <Heading size="lg" color="brand.blue">
+                  <Heading size="lg">
                     {displayPrice(currentBaselinePrice, paymentMethod)} {symbol}
                   </Heading>
                 )}
@@ -243,16 +236,23 @@ export const MintCard = ({ account }: { account?: string }) => {
               )}
 
             {hasEnoughOfBoth && (
-              <Flex align="center" mt="2rem" mb="1rem">
+              <Flex
+                direction={{ base: "column", md: "row" }}
+                align="center"
+                justify="center"
+                mt="2rem"
+                mb="1rem"
+                width="full"
+              >
                 <Text
-                  w="220px"
+                  w={{ base: "full", md: "220px" }}
                   fontSize="xs"
                   color="brand.blue"
-                  fontWeight={700}
+                  textAlign="center"
                 >
                   Payment Method
                 </Text>
-                <ButtonGroup isAttached variant="outline" w="full">
+                <ButtonGroup isAttached variant="outline">
                   <Button
                     isActive={paymentMethod === "erc20"}
                     onClick={() => setPaymentMethod("erc20")}

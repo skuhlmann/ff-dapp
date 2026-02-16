@@ -2,7 +2,7 @@ import { Box, Flex, Text, Link, Image } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
-import BottleMock from "../assets/ff_bottle_temp.png";
+import BottleMock from "../assets/alpha_red_1.jpg";
 import Sauvage from "../assets/sauvage.png";
 
 export const HomeSectionOne = () => {

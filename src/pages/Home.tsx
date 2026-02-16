@@ -69,17 +69,28 @@ function Home() {
 
               <Box w="full" position="relative" mt="12px">
                 {SALE_STATE === "presale" && (
-                  <Text
-                    color="brand.orange"
-                    fontSize="2xl"
-                    fontWeight="700"
-                    textAlign="center"
-                    mb="2rem"
-                    lineHeight="1.5"
-                    w={{ base: "300px" }}
-                  >
-                    PRESALES ARE OPEN!
-                  </Text>
+                  <Box mb="2rem">
+                    <Text
+                      color="brand.orange"
+                      fontSize="2xl"
+                      fontWeight="700"
+                      textAlign="center"
+                      lineHeight="1.5"
+                      w={{ base: "300px" }}
+                    >
+                      PRESALE IS OPEN!
+                    </Text>
+                    <Text
+                      color="brand.orange"
+                      fontSize="lg"
+                      fontWeight="700"
+                      textAlign="center"
+                      lineHeight="1.5"
+                      w={{ base: "300px" }}
+                    >
+                      Lock in presale pricing — prices go up soon.
+                    </Text>
+                  </Box>
                 )}
                 {SALE_STATE === "upcoming" && (
                   <Text
@@ -111,7 +122,7 @@ function Home() {
                   px="3rem"
                   pt=".75rem"
                 >
-                  BUY A BOTTLE
+                  BUY BOTTLES
                 </Button>
               </Box>
             </Flex>
@@ -144,17 +155,28 @@ function Home() {
         justify="center"
       >
         {SALE_STATE === "presale" && (
-          <Text
-            color="brand.orange"
-            fontSize="2xl"
-            fontWeight="700"
-            textAlign="center"
-            mb="2rem"
-            lineHeight="1.5"
-            w={{ base: "300px" }}
-          >
-            PRESALES ARE OPEN!
-          </Text>
+          <Box mb="2rem">
+            <Text
+              color="brand.orange"
+              fontSize="2xl"
+              fontWeight="700"
+              textAlign="center"
+              lineHeight="1.5"
+              w={{ base: "300px" }}
+            >
+              PRESALE IS OPEN!
+            </Text>
+            <Text
+              color="brand.orange"
+              fontSize="lg"
+              fontWeight="700"
+              textAlign="center"
+              lineHeight="1.5"
+              w={{ base: "300px" }}
+            >
+              Lock in presale pricing — prices go up soon.
+            </Text>
+          </Box>
         )}
 
         {SALE_STATE === "upcoming" && (
@@ -189,7 +211,7 @@ function Home() {
             px="3rem"
             pt=".75rem"
           >
-            BUY A BOTTLE
+            BUY BOTTLES
           </Button>
         )}
       </Flex>

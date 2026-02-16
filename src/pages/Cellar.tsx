@@ -116,7 +116,7 @@ function Cellar() {
             px="3rem"
             pt=".75rem"
           >
-            BUY A BOTTLE
+            BUY BOTTLES
           </Button>
         )}
       </Flex>
