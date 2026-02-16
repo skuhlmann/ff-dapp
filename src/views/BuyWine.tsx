@@ -32,20 +32,20 @@ function BuyWine() {
           direction="column"
           justify="start"
           align="start"
-          gap="0rem"
+          gap={{ base: "0.5rem", md: "1rem" }}
         >
           <Heading size="2xl" color="brand.orange" mb="0rem">
             Forgotten Fruit Alpha Red
           </Heading>
           <Image
             src={WineBottlePic.src}
-            w="100%"
             alt="buywine"
-            h={{ base: "auto", lg: "600px" }}
+            h={{ base: "auto" }}
+            maxH="500px"
             objectFit="contain"
             borderRadius="20px"
           />
-          <Box>
+          <Box maxW="665px">
             <Flex direction="column" gap="1rem" color="brand.blue">
               <Text fontSize="sm" lineHeight="1.6">
                 Ever wonder what happens to the grapes that don&apos;t make the
