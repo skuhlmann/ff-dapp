@@ -1,6 +1,6 @@
 "use client";
 import { usePrivy } from "@privy-io/react-auth";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
 import Link from "next/link";
 import { BottleList } from "../components/BottleList";
@@ -8,6 +8,7 @@ import { EmailSignupBanner } from "../components/EmailSignupBanner";
 import { SectionHeader } from "../components/SectionHeader";
 import { useEmailSignup } from "../hooks/useEmailSignup";
 import { SALE_STATE } from "../utils/constants";
+import { LogIn } from "@/components/LogIn";
 
 /**
  * Renders the email signup banner + hook.
@@ -44,7 +45,7 @@ function Cellar() {
 
   return (
     <>
-      <SectionHeader title="My Cellar" />
+      <SectionHeader title="Your Cellar" />
 
       <Flex
         direction="column"
@@ -120,6 +121,12 @@ function Cellar() {
           </Button>
         )}
       </Flex>
+
+      {authenticated && user && user.wallet && (
+        <Box mb="15rem">
+          <LogIn />
+        </Box>
+      )}
     </>
   );
 }
