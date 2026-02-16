@@ -43,7 +43,7 @@ export const MenuLinks = ({
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/buy-wine">Buy Bottles</MenuItem>
-        <MenuItem to="/cellar">My Cellar</MenuItem>
+        <MenuItem to="/cellar">Your Cellar</MenuItem>
         <MenuItem to="/market">Wine Market</MenuItem>
         {/* <MenuItem to="/account">My Account</MenuItem> */}
         <MenuItem to="/about">About</MenuItem>
