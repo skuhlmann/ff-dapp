@@ -47,7 +47,7 @@ export const Footer = () => {
             </NextLink>
             <NextLink href="/cellar">
               <Heading color="brand.black" size="md">
-                My Cellar
+                Your Cellar
               </Heading>
             </NextLink>
             <NextLink href="/market">
