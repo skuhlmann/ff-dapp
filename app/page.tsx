@@ -1,2 +1,6 @@
-import Home from "@/pages/Home";
-export default Home;
+import dynamic from "next/dynamic";
+
+const Home = dynamic(() => import("@/pages/Home"), { ssr: false });
+export default function Page() {
+  return <Home />;
+}

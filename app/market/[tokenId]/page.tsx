@@ -1,4 +1,6 @@
-import Listing from "@/pages/Listing";
+import dynamic from "next/dynamic";
+
+const Listing = dynamic(() => import("@/pages/Listing"), { ssr: false });
 
 export default async function ListingPage({
   params,
