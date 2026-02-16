@@ -1,2 +1,8 @@
-import Marketplace from "@/pages/Marketplace";
-export default Marketplace;
+import dynamic from "next/dynamic";
+
+const Marketplace = dynamic(() => import("@/views/Marketplace"), {
+  ssr: false,
+});
+export default function Page() {
+  return <Marketplace />;
+}

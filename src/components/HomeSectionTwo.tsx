@@ -61,7 +61,7 @@ export const HomeSectionTwo = () => {
               minH={{ base: "30px", md: "50px" }}
               lineHeight={{ base: "1.55", md: "1.85" }}
             >
-              • 1. BUY A BOTTLE •
+              • 1. BUY BOTTLES •
             </LabelBadge>
           </Flex>
 
