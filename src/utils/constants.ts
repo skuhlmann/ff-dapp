@@ -37,7 +37,7 @@ export const NFT_CONTRACT_ADDRESS: Record<string, `0x${string}`> = {
 };
 // https://basescan.org/address/0x1b8d8139772599a636410245bd4E1e6ab304558e#code
 export const ERC20_PAYMENT_TOKEN: Record<string, string> = {
-  "0xaa36a7": "0x53c8156592A64E949A4736c6D3309002fa0b2Aba",
+  "0xaa36a7": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
   "0x2105": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
 };
 
