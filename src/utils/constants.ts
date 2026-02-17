@@ -11,11 +11,18 @@ export const RARIBLE_STAGE = TARGET_NETWORK === "0x2105" ? "prod" : "testnet";
 export const SALE_STATE: "presale" | "upcoming" | "ongoing" | "closed" =
   "presale";
 
+// export const ALCHEMY_RPC =
+//   TARGET_NETWORK === "0x2105"
+//     ? `https://base-mainnet.g.alchemy.com/v2/${
+//         process.env.NEXT_PUBLIC_ALCHEMY_KEY
+//       }`
+//     : `https://eth-sepolia.g.alchemy.com/v2/${
+//         process.env.NEXT_PUBLIC_ALCHEMY_KEY
+//       }`;
+
 export const ALCHEMY_RPC =
   TARGET_NETWORK === "0x2105"
-    ? `https://base-mainnet.g.alchemy.com/v2/${
-        process.env.NEXT_PUBLIC_ALCHEMY_KEY
-      }`
+    ? `https://base-rpc.publicnode.com`
     : `https://eth-sepolia.g.alchemy.com/v2/${
         process.env.NEXT_PUBLIC_ALCHEMY_KEY
       }`;
