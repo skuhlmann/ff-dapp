@@ -21,7 +21,7 @@ import { SALE_STATE } from "../utils/constants";
 
 // Bottles total / remaining — update these when numbers change
 const BOTTLES_TOTAL = 400;
-const BOTTLES_REMAINING = 220;
+const BOTTLES_REMAINING = 320;
 
 function Home() {
   return (
@@ -31,12 +31,7 @@ function Home() {
       ═══════════════════════════════════════════════════ */}
       <Box position="relative" overflow="hidden" mb="5rem">
         {/* Background vineyard image — very subtle */}
-        <Box
-          position="absolute"
-          inset="0"
-          zIndex={0}
-          pointerEvents="none"
-        >
+        <Box position="absolute" inset="0" zIndex={0} pointerEvents="none">
           <Image
             src={OrchardBg.src}
             alt=""
@@ -60,7 +55,11 @@ function Home() {
           zIndex={1}
         >
           {/* Left — Copy */}
-          <Flex direction="column" flex="1" maxW={{ base: "100%", lg: "580px" }}>
+          <Flex
+            direction="column"
+            flex="1"
+            maxW={{ base: "100%", lg: "580px" }}
+          >
             <Heading
               fontSize={{ base: "56px", md: "80px", xl: "100px" }}
               lineHeight={{ base: "1", md: "0.95" }}
@@ -71,11 +70,21 @@ function Home() {
               Exceptional Wine.
             </Heading>
 
-            <Text color="brand.blue" fontSize={{ base: "lg", md: "xl" }} mb="0.75rem" maxW="480px">
+            <Text
+              color="brand.blue"
+              fontSize={{ base: "lg", md: "xl" }}
+              mb="0.75rem"
+              maxW="480px"
+            >
               Boutique wines crafted from grapes that weren&apos;t supposed to
               matter — until they did.
             </Text>
-            <Text color="brand.blue" fontSize={{ base: "md", md: "lg" }} mb="2rem" maxW="460px">
+            <Text
+              color="brand.blue"
+              fontSize={{ base: "md", md: "lg" }}
+              mb="2rem"
+              maxW="460px"
+            >
               Each bottle comes with a{" "}
               <Text as="span" color="brand.tan" fontWeight="700">
                 digital collectible
@@ -89,7 +98,12 @@ function Home() {
             {/* Sale state messaging */}
             {SALE_STATE === "presale" && (
               <Box mb="1.5rem">
-                <Text color="brand.orange" fontSize="xl" fontWeight="700" lineHeight="1.4">
+                <Text
+                  color="brand.orange"
+                  fontSize="xl"
+                  fontWeight="700"
+                  lineHeight="1.4"
+                >
                   PRESALE IS OPEN!
                 </Text>
                 <Text color="brand.orange" fontSize="md" fontWeight="700">
@@ -135,7 +149,11 @@ function Home() {
                 borderRadius=".125rem"
                 color="brand.blue"
                 borderColor="brand.blue"
-                _hover={{ bg: "brand.purple", borderColor: "brand.purple", color: "brand.tan" }}
+                _hover={{
+                  bg: "brand.purple",
+                  borderColor: "brand.purple",
+                  color: "brand.tan",
+                }}
                 size="lg"
                 height="60px"
                 px="2.5rem"
@@ -223,11 +241,11 @@ function Home() {
 
       {/* ═══════════════════════════════════════════════════
           THE MISFIT GRAPES STORY
-      ═══════════════════════════════════════════════════ */}
+      ═══════════════════════════════════════════════════ 
       <Box mb="6rem">
         <HomeSectionFour />
       </Box>
-
+*/}
       {/* ═══════════════════════════════════════════════════
           FINAL CTA
       ═══════════════════════════════════════════════════ */}
@@ -294,7 +312,12 @@ function Home() {
             >
               {BOTTLES_TOTAL}
             </Text>
-            <Text fontSize="xs" color="brand.blue" textTransform="uppercase" letterSpacing="wider">
+            <Text
+              fontSize="xs"
+              color="brand.blue"
+              textTransform="uppercase"
+              letterSpacing="wider"
+            >
               Total Bottles
             </Text>
           </Flex>
@@ -308,7 +331,12 @@ function Home() {
             >
               {BOTTLES_REMAINING}
             </Text>
-            <Text fontSize="xs" color="brand.blue" textTransform="uppercase" letterSpacing="wider">
+            <Text
+              fontSize="xs"
+              color="brand.blue"
+              textTransform="uppercase"
+              letterSpacing="wider"
+            >
               Remaining
             </Text>
           </Flex>
@@ -343,12 +371,7 @@ function Home() {
           </Box>
         )}
         {SALE_STATE === "upcoming" && (
-          <Text
-            color="brand.orange"
-            fontSize="xl"
-            fontWeight="700"
-            mb="1.5rem"
-          >
+          <Text color="brand.orange" fontSize="xl" fontWeight="700" mb="1.5rem">
             PRESALE IS OPENING SOON!
           </Text>
         )}
