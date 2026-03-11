@@ -1,132 +1,326 @@
-import { Box, Flex, Text, Link, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Link, Image, Grid, Tag } from "@chakra-ui/react";
 
 import { LabelBadge } from "./SharedLayout";
 
 import BottleMock from "../assets/alpha_red_1.jpg";
+import FarmSunset from "../assets/farm_sunset.jpg";
 import Sauvage from "../assets/sauvage.png";
+import SsLogo from "../assets/ss_logo.png";
+
+const grapeVarietals = ["Merlot", "Mourvèdre", "Malbec", "Zweigelt"];
+const tastingNotes = ["Blueberry", "Currant", "Dried Fig", "Spice"];
+const terriorBullets = [
+  "Concentrated flavor",
+  "Vibrant acidity",
+  "Complex aromatics",
+];
 
 export const HomeSectionOne = () => {
   return (
-    <>
+    <Box>
+      {/* ── Alpha Red ─────────────────────────────────────── */}
       <Flex
-        mt={{ base: "0", md: "100px" }}
+        mt={{ base: "0", md: "80px" }}
         direction={{ base: "column", md: "row" }}
-        justifyContent="start"
+        justifyContent="center"
         alignItems="center"
-        px={{ base: "5vw", md: "15vw" }}
-        color="brand.blue"
-        gap="1rem"
+        px={{ base: "6vw", md: "12vw" }}
+        gap={{ base: "2rem", md: "4rem" }}
       >
-        <Box flex="1" minW={{ base: "none", md: "250px" }}>
-          <Flex gap="1rem" align="center" mb="1.5rem">
-            <LabelBadge
-              bg="brand.lightPurple"
-              color="brand.blue"
-              size="lg"
-              minH={{ base: "30px", md: "50px" }}
-              lineHeight={{ base: "1.55", md: "1.85" }}
-            >
-              • THE WINE •
-            </LabelBadge>
-          </Flex>
-          <Text maxW="475px" mb="2rem">
-            Alpha Red is our debut misfit masterpiece — a bold, dry red blend
-            rescued from the grapes that weren’t supposed to become anything
-            special… until they did. It’s delicious.
-          </Text>
-          <Text maxW="475px" mb="2rem">
-            A mysterious blend of Merlot, Mourvedre, Malbec, Zweigelt and
-            rebellious spirit.
-          </Text>
-          <Text maxW="475px" mb="2rem">
-            On the nose, you’ll catch blueberry and currant. On the palate,
-            expect rich dried fruit, fig, spices, and just a whisper of
-            cherry-laced nostalgia.
-          </Text>
-          <Text maxW="475px" mb="2rem">
-            This dry red is bold and complex. It’s the wine equivalent of a
-            mullet: business on the nose, party in the glass. Here&apos;s to
-            taking life’s rejects and turning them into something worth
-            toasting.
-          </Text>
+        {/* Bottle image */}
+        <Box position="relative" flexShrink={0}>
+          <Box
+            position="absolute"
+            inset="-8px"
+            border="2px solid"
+            borderColor="brand.lightPurple"
+            transform="rotate(-1.5deg)"
+            borderRadius="2px"
+            zIndex={0}
+          />
+          <Image
+            src={BottleMock.src}
+            w={{ base: "260px", md: "300px", xl: "340px" }}
+            alt="Alpha Red bottle"
+            position="relative"
+            zIndex={1}
+          />
         </Box>
 
-        <Image
-          src={BottleMock.src}
-          w={{ base: "290px", xl: "360px" }}
-          alt="bottle"
-        />
-      </Flex>
-      <Flex
-        mt={{ base: "3rem", md: "5rem" }}
-        direction={{ base: "column", md: "row-reverse" }}
-        justifyContent="start"
-        alignItems="center"
-        px={{ base: "5vw", md: "15vw" }}
-        color="brand.blue"
-      >
-        <Flex
-          direction="column"
-          alignItems={{ base: "start", md: "end" }}
-          flex="1"
-          ml={{ base: "0px", md: "50px" }}
-        >
-          <Flex gap="1rem" align="center" mb="1rem">
-            <LabelBadge
-              bg="brand.lightPurple"
-              color="brand.blue"
-              size="lg"
-              minH={{ base: "30px", md: "50px" }}
-              lineHeight={{ base: "1.55", md: "1.85" }}
-            >
-              • THE GRAPES •
-            </LabelBadge>
+        {/* Content */}
+        <Box flex="1" maxW="520px" color="brand.blue">
+          <LabelBadge
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            minH={{ base: "30px", md: "50px" }}
+            lineHeight={{ base: "1.55", md: "1.85" }}
+            mb="1.5rem"
+          >
+            • THE WINE •
+          </LabelBadge>
+
+          <Text
+            fontFamily="AntiqueStories"
+            fontSize={{ base: "48px", md: "64px" }}
+            lineHeight="1"
+            color="brand.tan"
+            mb="0.5rem"
+          >
+            Alpha Red
+          </Text>
+          <Text
+            color="brand.orange"
+            fontSize="lg"
+            mb="1.5rem"
+            fontStyle="italic"
+          >
+            A bold dry blend rescued from overlooked grapes.
+          </Text>
+
+          {/* Varietals */}
+          <Flex gap="0.5rem" flexWrap="wrap" mb="1.5rem">
+            {grapeVarietals.map((v) => (
+              <Tag
+                key={v}
+                bg="brand.purple"
+                color="brand.tan"
+                fontSize="sm"
+                px="0.75rem"
+                py="0.35rem"
+                borderRadius="2px"
+                fontFamily="body"
+              >
+                {v}
+              </Tag>
+            ))}
           </Flex>
 
           <Text
-            maxW="475px"
-            textAlign={{ base: "left", md: "right" }}
-            mb="2rem"
+            fontSize="sm"
+            color="brand.blue"
+            mb="0.75rem"
+            fontWeight="700"
+            textTransform="uppercase"
+            letterSpacing="wider"
           >
-            This bottle is born in the Grand Valley AVA — Colorado’s rising wine
-            star — where high-desert heat, cool nights, fertile soils, and a
-            legendary canyon breeze create the perfect home for grapes with
-            something to prove.
+            Tasting Notes
           </Text>
+          <Grid
+            templateColumns="1fr 1fr"
+            gap="0.4rem"
+            mb="1.75rem"
+            maxW="280px"
+          >
+            {tastingNotes.map((note) => (
+              <Flex key={note} align="center" gap="0.4rem">
+                <Box
+                  w="6px"
+                  h="6px"
+                  bg="brand.orange"
+                  borderRadius="full"
+                  flexShrink={0}
+                />
+                <Text fontSize="sm">{note}</Text>
+              </Flex>
+            ))}
+          </Grid>
+
+          <Text fontSize="sm" color="brand.tan" fontStyle="italic">
+            Drink now or age for complexity.
+          </Text>
+        </Box>
+      </Flex>
+
+      {/* ── Grand Valley AVA ──────────────────────────────── */}
+      <Flex
+        mt={{ base: "5rem", md: "8rem" }}
+        direction={{ base: "column", md: "row-reverse" }}
+        justifyContent="center"
+        alignItems="center"
+        px={{ base: "6vw", md: "12vw" }}
+        gap={{ base: "2rem", md: "4rem" }}
+      >
+        {/* Vineyard image */}
+        <Box position="relative" flexShrink={0}>
+          <Box
+            position="absolute"
+            inset="-8px"
+            border="2px solid"
+            borderColor="brand.orange"
+            transform="rotate(1.5deg)"
+            borderRadius="2px"
+            zIndex={0}
+          />
+          <Image
+            src={FarmSunset.src}
+            w={{ base: "300px", md: "380px", xl: "440px" }}
+            h={{ base: "220px", md: "280px", xl: "320px" }}
+            objectFit="cover"
+            alt="Grand Valley vineyard — placeholder for vineyard rows shot"
+            position="relative"
+            zIndex={1}
+          />
+          <Box
+            position="absolute"
+            bottom="0"
+            left="0"
+            right="0"
+            bg="blackAlpha.600"
+            p="0.5rem 0.75rem"
+            zIndex={2}
+          >
+            <Text fontSize="xs" color="brand.tan" fontStyle="italic">
+              Placeholder — vineyard rows / barrel room shot
+            </Text>
+          </Box>
+        </Box>
+
+        {/* Content */}
+        <Box flex="1" maxW="480px" color="brand.blue">
+          <LabelBadge
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            minH={{ base: "30px", md: "50px" }}
+            lineHeight={{ base: "1.55", md: "1.85" }}
+            mb="1.5rem"
+          >
+            • THE GRAPES •
+          </LabelBadge>
 
           <Text
-            maxW="475px"
-            textAlign={{ base: "left", md: "right" }}
-            mb="2rem"
+            fontFamily="AntiqueStories"
+            fontSize={{ base: "36px", md: "52px" }}
+            lineHeight="1.1"
+            color="brand.tan"
+            mb="0.5rem"
           >
-            We source grapes directly from the growers, rescue the grapes
-            destined for the ground and turn them into bold, complex wines —
-            wines that are dry, chewy, and impossible to ignore.
+            The Grand Valley AVA
           </Text>
           <Text
-            maxW="475px"
-            textAlign={{ base: "left", md: "right" }}
-            mb="2rem"
+            color="brand.orange"
+            fontSize="lg"
+            mb="1.5rem"
+            fontStyle="italic"
           >
-            Alpha Red is crafted in partnership with our friends at{" "}
-            <Link
-              href="https://sauvagespectrum.com/"
-              target="_blank"
-              color="brand.orange"
-            >
-              Sauvage Spectrum
-            </Link>
-            , one of the Grand Valley’s most exciting and innovative wineries.
-            They’ve built a reputation for bold blends, meticulous winemaking,
-            and a knack for coaxing big personality out of Colorado-grown fruit.
+            Colorado&apos;s hidden wine region.
           </Text>
-        </Flex>
-        <Image
-          src={Sauvage.src}
-          w={{ base: "400px", xl: "500px" }}
-          alt="sauvage"
-        />
+
+          {/* Stat chips */}
+          <Flex gap="0.5rem" flexWrap="wrap" mb="1.5rem">
+            {[
+              "4,500–4,900 ft elevation",
+              "Hot desert days",
+              "Cool mountain nights",
+            ].map((stat) => (
+              <Tag
+                key={stat}
+                bg="transparent"
+                color="brand.tan"
+                border="1px solid"
+                borderColor="brand.tan"
+                fontSize="sm"
+                px="0.75rem"
+                py="0.35rem"
+                borderRadius="2px"
+              >
+                {stat}
+              </Tag>
+            ))}
+          </Flex>
+
+          <Text mb="1rem">
+            These conditions push grapes to their limits — and that tension
+            creates something special.
+          </Text>
+
+          <Box borderLeft="3px solid" borderColor="brand.lightPurple" pl="1rem">
+            {terriorBullets.map((b) => (
+              <Text key={b} fontSize="sm" mb="0.35rem">
+                — {b}
+              </Text>
+            ))}
+          </Box>
+        </Box>
       </Flex>
-    </>
+
+      {/* ── Sauvage Spectrum ──────────────────────────────── */}
+      <Flex
+        mt={{ base: "5rem", md: "8rem" }}
+        direction={{ base: "column", md: "row" }}
+        justifyContent="center"
+        alignItems="center"
+        px={{ base: "6vw", md: "12vw" }}
+        gap={{ base: "2rem", md: "4rem" }}
+      >
+        {/* Images */}
+        <Flex direction="column" gap="1rem" flexShrink={0} alignItems="center">
+          <Image
+            src={Sauvage.src}
+            w={{ base: "240px", md: "300px", xl: "340px" }}
+            alt="Sauvage Spectrum winery"
+          />
+          <Image
+            src={SsLogo.src}
+            w={{ base: "120px", md: "150px" }}
+            alt="Sauvage Spectrum logo"
+            opacity={0.85}
+          />
+        </Flex>
+
+        {/* Content */}
+        <Box flex="1" maxW="480px" color="brand.blue">
+          <LabelBadge
+            bg="brand.lightPurple"
+            color="brand.blue"
+            size="lg"
+            minH={{ base: "30px", md: "50px" }}
+            lineHeight={{ base: "1.55", md: "1.85" }}
+            mb="1.5rem"
+          >
+            • THE WINEMAKERS •
+          </LabelBadge>
+
+          <Text
+            fontFamily="AntiqueStories"
+            fontSize={{ base: "36px", md: "52px" }}
+            lineHeight="1.1"
+            color="brand.tan"
+            mb="1.5rem"
+          >
+            Sauvage Spectrum
+          </Text>
+
+          <Box
+            borderLeft="3px solid"
+            borderColor="brand.orange"
+            pl="1.25rem"
+            mb="1.5rem"
+          >
+            <Text fontStyle="italic" color="brand.tan" mb="0.75rem">
+              &ldquo;Sauvage Spectrum isn&apos;t afraid to experiment.&rdquo;
+            </Text>
+            <Text>
+              They specialize in bold blends and unconventional grapes — which
+              made them the perfect partner for Forgotten Fruit.
+            </Text>
+          </Box>
+
+          <Link
+            href="https://sauvagespectrum.com/"
+            target="_blank"
+            color="brand.orange"
+            fontSize="sm"
+            fontWeight="700"
+            textDecoration="underline"
+            textUnderlineOffset="3px"
+            _hover={{ color: "brand.tan" }}
+          >
+            sauvagespectrum.com →
+          </Link>
+        </Box>
+      </Flex>
+    </Box>
   );
 };

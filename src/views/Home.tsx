@@ -10,185 +10,368 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import SkullGrapeBundle from "../assets/ff_skull_grapes.png";
+import BottleHero from "../assets/alpha_red_2.jpg";
+import OrchardBg from "../assets/palisades_orchard.jpeg";
 
 import { HomeSectionOne } from "../components/HomeSectionOne";
 import { HomeSectionTwo } from "../components/HomeSectionTwo";
 import { HomeSectionThree } from "../components/HomeSectionThree";
+// import { HomeSectionFour } from "../components/HomeSectionFour";
 import { SALE_STATE } from "../utils/constants";
+
+// Bottles total / remaining — update these when numbers change
+const BOTTLES_TOTAL = 400;
+const BOTTLES_REMAINING = 320;
 
 function Home() {
   return (
     <>
-      <Box mb="3rem">
-        <Flex direction="row" justify="center">
-          <Box w="auto">
+      {/* ═══════════════════════════════════════════════════
+          HERO
+      ═══════════════════════════════════════════════════ */}
+      <Box position="relative" overflow="hidden" mb="5rem">
+        {/* Background vineyard image — very subtle */}
+        <Box position="absolute" inset="0" zIndex={0} pointerEvents="none">
+          <Image
+            src={OrchardBg.src}
+            alt=""
+            aria-hidden
+            w="full"
+            h="full"
+            objectFit="cover"
+            filter="brightness(0.12) saturate(0.4)"
+          />
+        </Box>
+
+        <Flex
+          direction={{ base: "column", lg: "row" }}
+          justify="center"
+          align="center"
+          px={{ base: "6vw", md: "10vw", xl: "12vw" }}
+          pt={{ base: "4rem", md: "6rem" }}
+          pb={{ base: "3rem", md: "5rem" }}
+          gap={{ base: "3rem", lg: "5rem" }}
+          position="relative"
+          zIndex={1}
+        >
+          {/* Left — Copy */}
+          <Flex
+            direction="column"
+            flex="1"
+            maxW={{ base: "100%", lg: "580px" }}
+          >
             <Heading
-              fontSize={{ base: "64px", md: "90px", lg: "120px" }}
-              lineHeight={{
-                base: "64px",
-                md: "90px",
-                lg: "150px",
-              }}
-              textAlign="center"
+              fontSize={{ base: "56px", md: "80px", xl: "100px" }}
+              lineHeight={{ base: "1", md: "0.95" }}
+              mb="1.5rem"
             >
-              FROM TRASH TO TIPSY
+              Misfit Grapes.
+              <br />
+              Exceptional Wine.
             </Heading>
+
+            <Text
+              color="brand.blue"
+              fontSize={{ base: "lg", md: "xl" }}
+              mb="0.75rem"
+              maxW="480px"
+            >
+              Boutique wines crafted from grapes that weren&apos;t supposed to
+              matter — until they did.
+            </Text>
+            <Text
+              color="brand.blue"
+              fontSize={{ base: "md", md: "lg" }}
+              mb="2rem"
+              maxW="460px"
+            >
+              Each bottle comes with a{" "}
+              <Text as="span" color="brand.tan" fontWeight="700">
+                digital collectible
+              </Text>{" "}
+              and can be{" "}
+              <Text as="span" color="brand.tan" fontWeight="700">
+                aged, traded, or redeemed.
+              </Text>
+            </Text>
+
+            {/* Sale state messaging */}
+            {SALE_STATE === "presale" && (
+              <Box mb="1.5rem">
+                <Text
+                  color="brand.orange"
+                  fontSize="xl"
+                  fontWeight="700"
+                  lineHeight="1.4"
+                >
+                  PRESALE IS OPEN!
+                </Text>
+                <Text color="brand.orange" fontSize="md" fontWeight="700">
+                  Lock in presale pricing — prices go up soon.
+                </Text>
+              </Box>
+            )}
+            {SALE_STATE === "upcoming" && (
+              <Text
+                color="brand.orange"
+                fontSize="xl"
+                fontWeight="700"
+                mb="1.5rem"
+                lineHeight="1.4"
+              >
+                PRESALE IS OPENING SOON!
+              </Text>
+            )}
+
+            {/* CTAs */}
+            <Flex gap="1rem" wrap="wrap" mb="1.25rem">
+              <Button
+                as={Link}
+                href="/buy-wine"
+                variant="solid"
+                fontSize="xl"
+                borderRadius=".125rem"
+                color="brand.orange"
+                bg="brand.purple"
+                _hover={{ transform: "translate(0px, 2px)" }}
+                size="lg"
+                height="60px"
+                px="2.5rem"
+                pt=".5rem"
+              >
+                Reserve a Bottle
+              </Button>
+              <Button
+                as={Link}
+                href="#how-it-works"
+                variant="outline"
+                fontSize="xl"
+                borderRadius=".125rem"
+                color="brand.blue"
+                borderColor="brand.blue"
+                _hover={{
+                  bg: "brand.purple",
+                  borderColor: "brand.purple",
+                  color: "brand.tan",
+                }}
+                size="lg"
+                height="60px"
+                px="2.5rem"
+                pt=".5rem"
+              >
+                How It Works
+              </Button>
+            </Flex>
+
+            <Text color="brand.orange" fontSize="sm" fontStyle="italic">
+              &gt; Limited presale. Bottles age in your digital cellar.
+            </Text>
+          </Flex>
+
+          {/* Right — Bottle image */}
+          <Box flexShrink={0} position="relative">
+            <Box
+              position="absolute"
+              inset="-10px"
+              border="2px solid"
+              borderColor="brand.orange"
+              transform="rotate(2deg)"
+              borderRadius="2px"
+              zIndex={0}
+            />
+            <Box
+              position="absolute"
+              inset="-20px"
+              border="1px solid"
+              borderColor="brand.lightPurple"
+              transform="rotate(-1deg)"
+              borderRadius="2px"
+              zIndex={0}
+              opacity={0.5}
+            />
+            <Image
+              src={BottleHero.src}
+              w={{ base: "260px", md: "320px", xl: "380px" }}
+              alt="Alpha Red bottle"
+              position="relative"
+              zIndex={1}
+            />
+            <Box
+              position="absolute"
+              bottom="-1px"
+              left="-1px"
+              right="-1px"
+              h="80px"
+              bgGradient="linear(to-t, brand.black, transparent)"
+              zIndex={2}
+            />
           </Box>
         </Flex>
-        <Flex direction="column" justifyContent="start" alignItems="center">
-          <Flex
-            direction={{ base: "column", md: "row" }}
-            justifyContent="center"
-            alignItems={{ base: "center", md: "start" }}
-            zIndex={"2"}
-            mt={{ base: 4, md: 8 }}
-            gap={{ base: 4, md: 0 }}
-          >
-            <Image
-              src={SkullGrapeBundle.src}
-              w={{ base: "300px", xl: "500px" }}
-              alt="skull grapes"
-            />
-            <Flex
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-              mt={{ base: "0", md: 8 }}
-              mx={{ base: "0", md: 20 }}
-            >
-              <Text
-                color="brand.blue"
-                mb={{ base: 8, md: 8, xl: 12 }}
-                w={{ base: "300px" }}
-              >
-                Boutique wines from misfit grapes, each bottle comes with its
-                very own skele-grape digital collectible. Age it. Sip it. Trade
-                it. Repeat.
-              </Text>
 
-              <Box w="full" position="relative" mt="12px">
-                {SALE_STATE === "presale" && (
-                  <Box mb="2rem">
-                    <Text
-                      color="brand.orange"
-                      fontSize="2xl"
-                      fontWeight="700"
-                      textAlign="center"
-                      lineHeight="1.5"
-                      w={{ base: "300px" }}
-                    >
-                      PRESALE IS OPEN!
-                    </Text>
-                    <Text
-                      color="brand.orange"
-                      fontSize="lg"
-                      fontWeight="700"
-                      textAlign="center"
-                      lineHeight="1.5"
-                      w={{ base: "300px" }}
-                    >
-                      Lock in presale pricing — prices go up soon.
-                    </Text>
-                  </Box>
-                )}
-                {SALE_STATE === "upcoming" && (
-                  <Text
-                    color="brand.orange"
-                    fontSize="2xl"
-                    fontWeight="700"
-                    textAlign="center"
-                    mb="2rem"
-                    lineHeight="1.5"
-                    w={{ base: "300px" }}
-                  >
-                    PRESALE IS OPENING SOON!
-                  </Text>
-                )}
-                <Button
-                  as={Link}
-                  href="/buy-wine"
-                  variant="solid"
-                  fontSize="3xl"
-                  borderRadius=".125rem"
-                  color="brand.orange"
-                  bg="brand.purple"
-                  _hover={{
-                    transform: "translate(0px, 2px)",
-                  }}
-                  size="lg"
-                  height="72px"
-                  w="full"
-                  px="3rem"
-                  pt=".75rem"
-                >
-                  BUY BOTTLES
-                </Button>
-              </Box>
-            </Flex>
-          </Flex>
-          <Divider
-            zIndex={"1"}
-            mt={{ base: 10, md: "-30px", xl: "-60px" }}
-            borderTop="solid 2px"
-            borderColor="brand.blue"
-            borderBottom="none"
-            background="none"
-          />
-        </Flex>
+        <Divider
+          position="relative"
+          zIndex={1}
+          borderTop="solid 2px"
+          borderColor="brand.blue"
+          borderBottom="none"
+          background="none"
+        />
       </Box>
-      <Box mb="5rem">
+
+      {/* ═══════════════════════════════════════════════════
+          WINE / GRAPES / WINEMAKERS
+      ═══════════════════════════════════════════════════ */}
+      <Box mb="6rem">
         <HomeSectionOne />
       </Box>
-      <Box mb="5rem">
+
+      {/* ═══════════════════════════════════════════════════
+          HOW IT WORKS
+      ═══════════════════════════════════════════════════ */}
+      <Box mb="6rem" id="how-it-works">
         <HomeSectionTwo />
       </Box>
-      <Box mb="5rem">
+
+      {/* ═══════════════════════════════════════════════════
+          YOUR DIGITAL CELLAR
+      ═══════════════════════════════════════════════════ */}
+      <Box mb="6rem">
         <HomeSectionThree />
       </Box>
 
+      {/* ═══════════════════════════════════════════════════
+          THE MISFIT GRAPES STORY
+      ═══════════════════════════════════════════════════ 
+      <Box mb="6rem">
+        <HomeSectionFour />
+      </Box>
+*/}
+      {/* ═══════════════════════════════════════════════════
+          FINAL CTA
+      ═══════════════════════════════════════════════════ */}
       <Flex
         direction="column"
-        mb="5rem"
-        w="full"
-        alignItems="center"
+        align="center"
         justify="center"
+        mb="5rem"
+        px={{ base: "6vw", md: "10vw" }}
+        py={{ base: "4rem", md: "5rem" }}
+        position="relative"
+        overflow="hidden"
       >
-        {SALE_STATE === "presale" && (
-          <Box mb="2rem">
+        {/* Decorative border lines */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          right="0"
+          h="2px"
+          bg="brand.orange"
+        />
+        <Box
+          position="absolute"
+          bottom="0"
+          left="0"
+          right="0"
+          h="2px"
+          bg="brand.orange"
+        />
+
+        <Text
+          fontSize="xs"
+          fontWeight="700"
+          letterSpacing="widest"
+          textTransform="uppercase"
+          color="brand.orange"
+          mb="0.75rem"
+        >
+          Alpha Red Release
+        </Text>
+
+        <Heading
+          fontSize={{ base: "56px", md: "80px", xl: "100px" }}
+          lineHeight={{ base: "1", md: "0.95" }}
+          textAlign="center"
+          mb="1.5rem"
+        >
+          Reserve Summer
+        </Heading>
+
+        <Text color="brand.blue" textAlign="center" maxW="420px" mb="2rem">
+          Secure your bottle before the release sells out.
+        </Text>
+
+        {/* Scarcity counters */}
+        <Flex gap="2rem" mb="2.5rem" align="center">
+          <Flex direction="column" align="center">
             <Text
-              color="brand.orange"
-              fontSize="2xl"
-              fontWeight="700"
-              textAlign="center"
-              lineHeight="1.5"
-              w={{ base: "300px" }}
+              fontFamily="AntiqueStories"
+              fontSize="48px"
+              color="brand.tan"
+              lineHeight="1"
             >
-              PRESALE IS OPEN!
+              {BOTTLES_TOTAL}
             </Text>
             <Text
-              color="brand.orange"
-              fontSize="lg"
-              fontWeight="700"
-              textAlign="center"
-              lineHeight="1.5"
-              w={{ base: "300px" }}
+              fontSize="xs"
+              color="brand.blue"
+              textTransform="uppercase"
+              letterSpacing="wider"
             >
+              Total Bottles
+            </Text>
+          </Flex>
+          <Box w="1px" h="50px" bg="brand.lightPurple" />
+          <Flex direction="column" align="center">
+            <Text
+              fontFamily="AntiqueStories"
+              fontSize="48px"
+              color="brand.orange"
+              lineHeight="1"
+            >
+              {BOTTLES_REMAINING}
+            </Text>
+            <Text
+              fontSize="xs"
+              color="brand.blue"
+              textTransform="uppercase"
+              letterSpacing="wider"
+            >
+              Remaining
+            </Text>
+          </Flex>
+        </Flex>
+
+        {/* Progress bar */}
+        <Box
+          w={{ base: "280px", md: "400px" }}
+          h="6px"
+          bg="brand.purple"
+          borderRadius="full"
+          mb="2.5rem"
+          overflow="hidden"
+        >
+          <Box
+            h="full"
+            bg="brand.orange"
+            w={`${((BOTTLES_TOTAL - BOTTLES_REMAINING) / BOTTLES_TOTAL) * 100}%`}
+            borderRadius="full"
+          />
+        </Box>
+
+        {/* Sale state messages */}
+        {SALE_STATE === "presale" && (
+          <Box mb="1.5rem" textAlign="center">
+            <Text color="brand.orange" fontSize="xl" fontWeight="700">
+              PRESALE IS OPEN!
+            </Text>
+            <Text color="brand.orange" fontSize="md" fontWeight="700">
               Lock in presale pricing — prices go up soon.
             </Text>
           </Box>
         )}
-
         {SALE_STATE === "upcoming" && (
-          <Text
-            color="brand.orange"
-            fontSize="2xl"
-            fontWeight="700"
-            textAlign="center"
-            mb="2rem"
-            lineHeight="1.5"
-            w={{ base: "300px" }}
-          >
+          <Text color="brand.orange" fontSize="xl" fontWeight="700" mb="1.5rem">
             PRESALE IS OPENING SOON!
           </Text>
         )}
@@ -198,20 +381,17 @@ function Home() {
             as={Link}
             href="/buy-wine"
             variant="solid"
-            fontSize="3xl"
+            fontSize="2xl"
             borderRadius=".125rem"
             color="brand.orange"
             bg="brand.purple"
-            _hover={{
-              transform: "translate(0px, 2px)",
-            }}
+            _hover={{ transform: "translate(0px, 2px)" }}
             size="lg"
             height="72px"
-            w="300px"
-            px="3rem"
+            px="4rem"
             pt=".75rem"
           >
-            BUY BOTTLES
+            Reserve Your Bottle
           </Button>
         )}
       </Flex>

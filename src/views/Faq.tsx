@@ -65,13 +65,13 @@ function Faq() {
               <h2>
                 <AccordionButton>
                   <Box as="span" flex="1" textAlign="left" fontSize="lg">
-                    What is a ticket?
+                    What is a token?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                A ticket is your digital golden grape: it gives you a unique
+                A token is your digital golden grape: it gives you a unique
                 skele-grape NFT and a claim to a real bottle of wine.
               </AccordionPanel>
             </AccordionItem>
@@ -86,7 +86,7 @@ function Faq() {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Yep — US customers can redeem a ticket for a bottle shipped
+                Yep — US customers can redeem a token for a bottle shipped
                 straight to their door.
               </AccordionPanel>
             </AccordionItem>
@@ -116,7 +116,7 @@ function Faq() {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Nope. All NFT and ticket mechanics are handled for you — just
+                Nope. All NFT and token mechanics are handled for you — just
                 pick your misfit and sip.
               </AccordionPanel>
             </AccordionItem>

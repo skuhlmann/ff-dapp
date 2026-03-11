@@ -130,7 +130,7 @@ export const MintCard = ({ account }: { account?: string }) => {
           zIndex={1}
         >
           {/* <Text mb="1rem">
-            Purchase a ticket (NFT) redeemable for 1 Bottle of Forgotten Fruit
+            Purchase a token (NFT) redeemable for 1 Bottle of Forgotten Fruit
             Alpha Red
           </Text> */}
           <Flex direction="column" align="center" gap="0.5rem" mt="1rem">
