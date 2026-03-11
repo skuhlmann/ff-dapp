@@ -58,7 +58,7 @@ function Marketplace() {
           width={{ base: "90%", lg: "50%" }}
           mx="auto"
         >
-          Buy Tickets / Bottles: Hunt for rare skele-grapes, each one tied to a
+          Buy Tokens / Bottles: Hunt for rare skele-grapes, each one tied to a
           real-life bottle.
         </Text>
 
