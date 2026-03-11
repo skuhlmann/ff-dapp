@@ -14,7 +14,7 @@ function BuyWine() {
   return (
     <>
       <SectionHeader
-        title="Buy Bottles"
+        title="Reserve Your Bottle"
         showPresale={SALE_STATE === "presale"}
       />
 

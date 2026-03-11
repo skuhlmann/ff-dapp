@@ -42,7 +42,7 @@ export const MenuLinks = ({
         textTransform="uppercase"
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/buy-wine">Buy Bottles</MenuItem>
+        <MenuItem to="/buy-wine">Reserve Your Bottle</MenuItem>
         <MenuItem to="/cellar">Your Cellar</MenuItem>
         <MenuItem to="/market">Wine Market</MenuItem>
         {/* <MenuItem to="/account">My Account</MenuItem> */}

@@ -1,72 +1,118 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 
-// import peach from "../assets/10-peach-trans.png";
-// import peachBite from "../assets/10-bite-trans.png";
-
-// import peachFive from "../assets/box-1.jpg";
-// import peachSix from "../assets/box-2.jpg";
+import Orchard from "../assets/palisades_orchard.jpeg";
 
 export const HomeSectionFour = () => {
   return (
-    <Flex direction="column" align="center" justify="center" w="100%">
-      <Flex
-        w="full"
-        border="none"
-        direction="row"
-        align="center"
-        justify="center"
-        mb={20}
+    <Flex
+      direction={{ base: "column", md: "row" }}
+      align="stretch"
+      minH={{ base: "auto", md: "480px" }}
+      overflow="hidden"
+    >
+      {/* Image panel */}
+      <Box
+        flex={{ base: "none", md: "1" }}
+        position="relative"
+        minH={{ base: "260px", md: "auto" }}
+        overflow="hidden"
       >
-        <Divider
-          mt={8}
-          mr={8}
-          flex="1"
-          borderTop="solid 2px"
-          borderColor={"brand.orange"}
-          borderBottom="none"
-          background="none"
+        <Image
+          src={Orchard.src}
+          alt="Palisades orchard — placeholder for misfit grape close-up"
+          position="absolute"
+          inset="0"
+          w="full"
+          h="full"
+          objectFit="cover"
+          filter="brightness(0.55) saturate(0.8)"
         />
+        {/* Overlay label */}
+        <Box
+          position="absolute"
+          bottom="1.25rem"
+          left="1.25rem"
+          bg="brand.black"
+          px="0.75rem"
+          py="0.3rem"
+          border="1px solid"
+          borderColor="brand.orange"
+          borderRadius="2px"
+        >
+          <Text fontSize="xs" color="brand.orange" fontStyle="italic">
+            Placeholder — misfit grape close-up / vineyard shot
+          </Text>
+        </Box>
+      </Box>
+
+      {/* Text panel */}
+      <Flex
+        flex={{ base: "none", md: "1" }}
+        direction="column"
+        justify="center"
+        bg="brand.black"
+        px={{ base: "8vw", md: "6vw", xl: "8vw" }}
+        py={{ base: "4rem", md: "5rem" }}
+        borderLeft={{ base: "none", md: "3px solid" }}
+        borderTop={{ base: "3px solid", md: "none" }}
+        borderColor="brand.orange"
+      >
+        <Text
+          fontSize="xs"
+          fontWeight="700"
+          letterSpacing="widest"
+          textTransform="uppercase"
+          color="brand.orange"
+          mb="1rem"
+        >
+          • The Story •
+        </Text>
+
         <Text
           fontFamily="AntiqueStories"
-          color="brand.orange"
-          fontSize="50px"
-          fontWeight="bold"
+          fontSize={{ base: "48px", md: "64px", xl: "80px" }}
+          color="brand.tan"
+          lineHeight="1"
+          mb="2rem"
         >
-          Proof-of-fruit
+          The Misfit Grapes
         </Text>
-        <Divider
-          mt={8}
-          ml={8}
-          flex="1"
-          borderTop="solid 2px"
-          borderColor={"brand.orange"}
-          borderBottom="none"
-          background="none"
-        />
-      </Flex>
-      <Flex direction="column" align="center" textAlign="center" gap="1rem">
-        <Text fontSize="lg" w={{ base: "100%", md: "70%" }} color="brand.blue">
-          Another DigiEdible from your frens at Peach Tycoon.
+
+        <Text color="brand.blue" mb="1.25rem" maxW="420px">
+          Every harvest leaves behind grapes that don&apos;t fit the expected
+          blend.
         </Text>
-      </Flex>
-      <Flex wrap="wrap" gap="1rem" align="center" justify="center" mb="1rem">
-        {/* <Image src={peach} w={{ base: "200px", md: "300px" }} />
-        <Image src={peachBite} w={{ base: "200px", md: "300px" }} /> */}
-      </Flex>
-      <Flex wrap="wrap" gap="1rem" align="center" justify="center">
-        {/* <Image src={peachSix} w={{ base: "200px", md: "300px" }} />
-        <Image src={peachFive} w={{ base: "200px", md: "300px" }} /> */}
-      </Flex>
-      <Flex
-        direction="column"
-        align="center"
-        textAlign="center"
-        my={20}
-        gap="1rem"
-      >
-        <Text fontSize="sm" w={{ base: "100%", md: "70%" }} color="brand.blue">
-          Discount for tree holders?
+
+        <Text
+          color="brand.tan"
+          fontSize={{ base: "lg", md: "xl" }}
+          fontStyle="italic"
+          mb="1.25rem"
+          maxW="360px"
+          lineHeight="1.6"
+        >
+          Wrong ratios.
+          <br />
+          Wrong timing.
+          <br />
+          Wrong reputation.
         </Text>
+
+        <Text color="brand.blue" maxW="420px">
+          But sometimes those misfits create the most interesting wine.
+        </Text>
+
+        <Box
+          mt="2rem"
+          borderLeft="3px solid"
+          borderColor="brand.lightPurple"
+          pl="1.25rem"
+          maxW="380px"
+        >
+          <Text color="brand.tan" fontStyle="italic">
+            Forgotten Fruit exists to prove that.
+          </Text>
+        </Box>
       </Flex>
     </Flex>
   );
