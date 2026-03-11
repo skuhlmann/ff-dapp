@@ -16,7 +16,7 @@ import OrchardBg from "../assets/palisades_orchard.jpeg";
 import { HomeSectionOne } from "../components/HomeSectionOne";
 import { HomeSectionTwo } from "../components/HomeSectionTwo";
 import { HomeSectionThree } from "../components/HomeSectionThree";
-import { HomeSectionFour } from "../components/HomeSectionFour";
+// import { HomeSectionFour } from "../components/HomeSectionFour";
 import { SALE_STATE } from "../utils/constants";
 
 // Bottles total / remaining — update these when numbers change
