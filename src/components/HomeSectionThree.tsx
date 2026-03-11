@@ -9,10 +9,26 @@ import GrapeNft from "../assets/ff_nft_example_1.jpg";
 import Waxbones from "../assets/waxbones.jpg";
 
 const cellarActions = [
-  { icon: "⏳", label: "Age It", desc: "Let time work its magic. Bottles appreciate in your cellar." },
-  { icon: "↔️", label: "Trade It", desc: "List on the marketplace. Set your price. Find your buyer." },
-  { icon: "🎁", label: "Gift It", desc: "Transfer ownership to anyone. Wine makes a great gift." },
-  { icon: "🍷", label: "Redeem It", desc: "Claim your bottle and have it shipped to your door." },
+  {
+    icon: "⏳",
+    label: "Age It",
+    desc: "Let time work its magic. Bottles appreciate in your cellar.",
+  },
+  {
+    icon: "↔️",
+    label: "Trade It",
+    desc: "List on the marketplace. Set your price. Find your buyer.",
+  },
+  {
+    icon: "🎁",
+    label: "Gift It",
+    desc: "Transfer ownership to anyone. Wine makes a great gift.",
+  },
+  {
+    icon: "🍷",
+    label: "Redeem It",
+    desc: "Claim your bottle and have it shipped to your door.",
+  },
 ];
 
 export const HomeSectionThree = () => {
@@ -63,8 +79,8 @@ export const HomeSectionThree = () => {
           Every bottle lives here.
         </Text>
         <Text color="brand.blue" maxW="480px" mx="auto">
-          Your cellar tracks the story of every bottle — where it came from,
-          how long it&apos;s been aging, and what it&apos;s worth today.
+          Your cellar tracks the story of every bottle — where it came from, how
+          long it&apos;s been aging, and what it&apos;s worth today.
         </Text>
       </Box>
 
@@ -89,7 +105,9 @@ export const HomeSectionThree = () => {
               transition: "all 0.2s",
             }}
           >
-            <Text fontSize="2xl" mb="0.5rem">{action.icon}</Text>
+            <Text fontSize="2xl" mb="0.5rem">
+              {action.icon}
+            </Text>
             <Text
               color="brand.tan"
               fontWeight="700"
@@ -130,7 +148,7 @@ export const HomeSectionThree = () => {
           <Image
             src={GrapeNft.src}
             w={{ base: "180px", md: "220px" }}
-            alt="Skel-Grape collectible example"
+            alt="Skele-Grape collectible example"
             position="relative"
             zIndex={1}
           />
@@ -150,7 +168,7 @@ export const HomeSectionThree = () => {
           <Text mb="1rem">
             Each bottle comes with a{" "}
             <Text as="span" color="brand.orange" fontWeight="700">
-              Skel-Grape collectible
+              Skele-Grape collectible
             </Text>{" "}
             designed by{" "}
             <Link
