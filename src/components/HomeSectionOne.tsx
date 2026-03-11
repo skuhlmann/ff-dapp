@@ -3,7 +3,6 @@ import { Box, Flex, Text, Link, Image, Grid, Tag } from "@chakra-ui/react";
 import { LabelBadge } from "./SharedLayout";
 
 import BottleMock from "../assets/alpha_red_1.jpg";
-import BottleMock2 from "../assets/alpha_red_2.jpg";
 import FarmSunset from "../assets/farm_sunset.jpg";
 import Sauvage from "../assets/sauvage.png";
 import SsLogo from "../assets/ss_logo.png";
@@ -70,7 +69,12 @@ export const HomeSectionOne = () => {
           >
             Alpha Red
           </Text>
-          <Text color="brand.orange" fontSize="lg" mb="1.5rem" fontStyle="italic">
+          <Text
+            color="brand.orange"
+            fontSize="lg"
+            mb="1.5rem"
+            fontStyle="italic"
+          >
             A bold dry blend rescued from overlooked grapes.
           </Text>
 
@@ -92,13 +96,31 @@ export const HomeSectionOne = () => {
             ))}
           </Flex>
 
-          <Text fontSize="sm" color="brand.blue" mb="0.75rem" fontWeight="700" textTransform="uppercase" letterSpacing="wider">
+          <Text
+            fontSize="sm"
+            color="brand.blue"
+            mb="0.75rem"
+            fontWeight="700"
+            textTransform="uppercase"
+            letterSpacing="wider"
+          >
             Tasting Notes
           </Text>
-          <Grid templateColumns="1fr 1fr" gap="0.4rem" mb="1.75rem" maxW="280px">
+          <Grid
+            templateColumns="1fr 1fr"
+            gap="0.4rem"
+            mb="1.75rem"
+            maxW="280px"
+          >
             {tastingNotes.map((note) => (
               <Flex key={note} align="center" gap="0.4rem">
-                <Box w="6px" h="6px" bg="brand.orange" borderRadius="full" flexShrink={0} />
+                <Box
+                  w="6px"
+                  h="6px"
+                  bg="brand.orange"
+                  borderRadius="full"
+                  flexShrink={0}
+                />
                 <Text fontSize="sm">{note}</Text>
               </Flex>
             ))}
@@ -176,13 +198,22 @@ export const HomeSectionOne = () => {
           >
             The Grand Valley AVA
           </Text>
-          <Text color="brand.orange" fontSize="lg" mb="1.5rem" fontStyle="italic">
+          <Text
+            color="brand.orange"
+            fontSize="lg"
+            mb="1.5rem"
+            fontStyle="italic"
+          >
             Colorado&apos;s hidden wine region.
           </Text>
 
           {/* Stat chips */}
           <Flex gap="0.5rem" flexWrap="wrap" mb="1.5rem">
-            {["4,500–4,900 ft elevation", "Hot desert days", "Cool mountain nights"].map((stat) => (
+            {[
+              "4,500–4,900 ft elevation",
+              "Hot desert days",
+              "Cool mountain nights",
+            ].map((stat) => (
               <Tag
                 key={stat}
                 bg="transparent"
