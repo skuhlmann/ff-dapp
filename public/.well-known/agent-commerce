@@ -1,0 +1,59 @@
+{
+  "agent_commerce_version": "1.0",
+  "store": {
+    "name": "Forgotten Fruit",
+    "description": "Boutique wines from misfit grapes. Premium small-batch wine from Colorado's Grand Valley AVA.",
+    "location": "Grand Valley AVA, Colorado, USA",
+    "website": "https://forgottenfruit.xyz"
+  },
+  "commerce": {
+    "tokenized_reservations": true,
+    "gift_supported": true,
+    "redemption_by_humans_only": true
+  },
+  "network": {
+    "blockchain": "Base",
+    "currency_supported": [
+      "ETH",
+      "USDC"
+    ]
+  },
+  "payment_protocol": {
+    "name": "x402",
+    "purchase_endpoint": "https://forgottenfruit.xyz/api/agent/purchase"
+  },
+  "discovery": {
+    "products_endpoint": "https://forgottenfruit.xyz/api/products"
+  },
+  "products": [
+    {
+      "id": "0x1b8d8139772599a636410245bd4E1e6ab304558e",
+      "name": "Alpha Red Wine Bottle",
+      "description": "A limited release red wine blend — Merlot, Mourvèdre, Malbec, Zweigelt — from Colorado's Grand Valley AVA. Notes of blueberry, currant, fig, and spice. Each token includes a unique skele-grape digital collectible.",
+      "redeemable_for": "1 bottle of Alpha Red wine",
+      "vintage": "2024",
+      "shipping_region": "United States",
+      "token_type": "erc721",
+      "restrictions": {
+        "age_restricted": true,
+        "minimum_age": 21,
+        "human_redeemer_required": true
+      }
+    }
+  ],
+  "token_contract": {
+    "network": "Base",
+    "contract_address": "0x1b8d8139772599a636410245bd4E1e6ab304558e"
+  },
+  "agent_metadata": {
+    "gifting_recommended": true,
+    "human_enjoyment_score": 0.92
+  },
+  "redemption": {
+    "url": "https://forgottenfruit.xyz/cellar",
+    "human_required": true
+  },
+  "contact": {
+    "telegram": "https://t.me/PeachDropNFT"
+  }
+}

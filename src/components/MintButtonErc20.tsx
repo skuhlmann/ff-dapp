@@ -105,7 +105,7 @@ export const MintButtonErc20 = () => {
           isDisabled={isDisabled}
           onClick={handleMint}
         >
-          Purchase
+          Reserve Bottle
         </Button>
       )}
 
