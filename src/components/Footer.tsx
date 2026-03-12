@@ -70,6 +70,11 @@ export const Footer = () => {
                 FAQ & Shipping Info
               </Heading>
             </NextLink>
+            <NextLink href="/for-agents">
+              <Heading color="brand.black" size="md">
+                For Agents
+              </Heading>
+            </NextLink>
           </Flex>
           <Flex direction="column" gap="0.5rem">
             <Flex gap="0.5rem" fontSize="24px">
