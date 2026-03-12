@@ -48,38 +48,36 @@ function Marketplace() {
           width={{ base: "90%", lg: "50%" }}
           mx="auto"
         >
-          Welcome to the Forgotten Fruit Marketplace. The only place to snag a
-          bottle if you missed the first drop.
+          Trade bottles before redemption.
         </Text>
 
         <Text
-          fontSize="sm"
+          fontSize="md"
           mt="1rem"
           width={{ base: "90%", lg: "50%" }}
           mx="auto"
         >
-          Buy Tokens / Bottles: Hunt for rare skele-grapes, each one tied to a
-          real-life bottle.
+          Buy rare bottles from collectors.
         </Text>
 
         <Text
-          fontSize="sm"
+          fontSize="md"
           mt="1rem"
           width={{ base: "90%", lg: "50%" }}
           mx="auto"
         >
-          Set your price, list your bottle, and share the love (or profit) of
-          misfit grapes.
+          Every transaction is recorded on-chain.
         </Text>
 
         <Text
           fontSize="sm"
-          mt="1rem"
-          width={{ base: "90%", lg: "50%" }}
+          mt="2rem"
+          width={{ base: "90%", lg: "40%" }}
           mx="auto"
+          opacity={0.75}
         >
-          Every transaction is handled on-chain, but don’t worry — blockchain
-          doesn’t bite.
+          Each bottle comes with a unique Skele-Grape collectible. Some are
+          rarer than others.
         </Text>
       </Box>
       <Flex

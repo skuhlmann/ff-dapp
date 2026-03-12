@@ -57,13 +57,9 @@ function Cellar() {
       >
         <Text fontSize="sm">
           Meet your skele-grapes, digital misfits as bold as the wine they
-          represents.
-        </Text>
-
-        <Text fontSize="sm">
-          Every grape is one-of-a-kind with unique features, accessories and
-          buddies. Each is redeemable for a real bottle, ageable in your cellar,
-          resellable on our marketplace.
+          represents. Every grape is one-of-a-kind with unique features,
+          accessories and buddies. Each is redeemable for a real bottle, ageable
+          in your cellar, resellable on our marketplace.
         </Text>
       </Flex>
 

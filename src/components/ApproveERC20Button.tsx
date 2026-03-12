@@ -71,7 +71,7 @@ export const ApproveERC20 = ({
           isDisabled={isPending || isConfirming}
           onClick={handleApprove}
         >
-          Purchase (Step 1)
+          Reserve Bottle (Step 1)
         </Button>
       )}
     </>

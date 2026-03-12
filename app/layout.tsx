@@ -43,6 +43,7 @@ export default function RootLayout({
         <Script id="global-polyfill" strategy="beforeInteractive">
           {`if (typeof global === 'undefined') { var global = window; }`}
         </Script>
+        <link rel="agent-commerce" href="/.well-known/agent-commerce" />
       </head>
       <body>
         <Providers>
