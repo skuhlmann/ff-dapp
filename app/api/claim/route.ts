@@ -13,8 +13,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAddress } from "viem";
 
 import { walletHasLoot } from "@/lib/subgraph";
-import { mintLootToAddress } from "@/lib/mintLoot";
 import { writeCampaignClaim } from "@/lib/airtable";
+import { mintLootToAddress } from "@/lib/mintLoot";
 import {
   TARGET_NETWORK,
   DISCOUNT_DAO_ADDRESS,

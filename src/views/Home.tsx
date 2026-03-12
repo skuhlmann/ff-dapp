@@ -18,12 +18,14 @@ import { HomeSectionTwo } from "../components/HomeSectionTwo";
 import { HomeSectionThree } from "../components/HomeSectionThree";
 // import { HomeSectionFour } from "../components/HomeSectionFour";
 import { SALE_STATE } from "../utils/constants";
-
-// Bottles total / remaining — update these when numbers change
-const BOTTLES_TOTAL = 400;
-const BOTTLES_REMAINING = 320;
+import { useNftSupply } from "../hooks/useNftSupply";
 
 function Home() {
+  const { maxSupply, remaining } = useNftSupply();
+
+  const bottlesTotal = maxSupply ?? 0;
+  const bottlesRemaining = remaining ?? 0;
+
   return (
     <>
       {/* ═══════════════════════════════════════════════════
@@ -294,7 +296,7 @@ function Home() {
           textAlign="center"
           mb="1.5rem"
         >
-          Reserve Summer
+          Reserve Your Bottle Today
         </Heading>
 
         <Text color="brand.blue" textAlign="center" maxW="420px" mb="2rem">
@@ -310,7 +312,7 @@ function Home() {
               color="brand.tan"
               lineHeight="1"
             >
-              {BOTTLES_TOTAL}
+              {bottlesTotal}
             </Text>
             <Text
               fontSize="xs"
@@ -329,7 +331,7 @@ function Home() {
               color="brand.orange"
               lineHeight="1"
             >
-              {BOTTLES_REMAINING}
+              {bottlesRemaining}
             </Text>
             <Text
               fontSize="xs"
@@ -354,7 +356,7 @@ function Home() {
           <Box
             h="full"
             bg="brand.orange"
-            w={`${((BOTTLES_TOTAL - BOTTLES_REMAINING) / BOTTLES_TOTAL) * 100}%`}
+            w={`${bottlesTotal > 0 ? ((bottlesTotal - bottlesRemaining) / bottlesTotal) * 100 : 0}%`}
             borderRadius="full"
           />
         </Box>
