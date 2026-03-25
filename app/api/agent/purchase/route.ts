@@ -11,7 +11,7 @@ import {
 import { parsePaymentProof, verifyPayment } from "@/lib/paymentVerifier";
 import GrapeERC721Abi from "@/abis/GrapeERC721.json";
 
-const PRODUCT_ID = "0x1b8d8139772599a636410245bd4E1e6ab304558e";
+const PRODUCT_ID = "alpha-red-2024";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
