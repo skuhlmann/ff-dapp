@@ -47,23 +47,37 @@ export async function GET() {
         }) as Promise<bigint>,
       ]);
 
-    const available = Number(maxSupply - totalSupply);
+    const inventoryTotal = Number(maxSupply);
+    const inventoryRemaining = Number(maxSupply - totalSupply);
 
     const product = {
-      id: NFT_ADDRESS_BASE,
+      id: "alpha-red-2024",
       name: "Alpha Red Wine Bottle",
       description:
         "A limited release red wine blend from Colorado's Grand Valley AVA. Merlot · Mourvèdre · Malbec · Zweigelt. Each token includes a unique skele-grape digital collectible.",
-      price_eth: Number(priceEthWei) / 1e18,
-      price_usdc: Number(priceErc20Units) / 10 ** PAYMENT_ERC20_DECIMALS,
+      price: {
+        eth: Number(priceEthWei) / 1e18,
+        usdc: Number(priceErc20Units) / 10 ** PAYMENT_ERC20_DECIMALS,
+        currencies: ["ETH", "USDC"],
+      },
       payment_token_address: PAYMENT_ERC20_ADDRESS,
-      available,
-      redeemable: true,
+      inventory_total: inventoryTotal,
+      inventory_remaining: inventoryRemaining,
+      availability_status: inventoryRemaining > 0 ? "available" : "sold_out",
       vintage: "2024",
-      token_contract: NFT_ADDRESS_BASE,
+      drink_window_start: 2026,
+      peak_window: "2028-2032",
+      shipping_region: "United States",
+      redeemable: true,
+      tradable: true,
+      giftable: true,
+      human_redemption_required: true,
+      contract_address: NFT_ADDRESS_BASE,
+      purchase_endpoint: "https://forgottenfruit.xyz/api/agent/purchase",
+      last_updated: new Date().toISOString(),
     };
 
-    return NextResponse.json([product], { headers: CORS_HEADERS });
+    return NextResponse.json({ products: [product] }, { headers: CORS_HEADERS });
   } catch (err) {
     console.error("[GET /api/products]", err);
     return NextResponse.json(
