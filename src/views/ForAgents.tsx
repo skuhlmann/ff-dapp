@@ -121,9 +121,9 @@ function ForAgents() {
           <Text fontSize="14px" mb="1.5rem" maxW="600px">
             The purchase endpoint uses the{" "}
             <strong>x402 payment protocol</strong>. Send a POST with the product
-            ID and recipient wallet. If no payment proof is attached, you'll
-            receive a 402 with payment options. Pay on Base, then retry with
-            your transaction hash as the Authorization header.
+            ID and recipient wallet. If no payment proof is attached,
+            you&apos;ll receive a 402 with payment options. Pay on Base, then
+            retry with your transaction hash as the Authorization header.
           </Text>
 
           <Heading size="sm" color="brand.tan" mb="0.5rem">
@@ -236,9 +236,8 @@ Idempotency-Key: <unique-key>
           <Box fontSize="14px">
             <UnorderedList spacing="0.4rem">
               <ListItem>
-                <Code fontSize="12px">202 Accepted</Code> — mint submitted,
-                poll for confirmation using the returned{" "}
-                <code>mint_tx_hash</code>
+                <Code fontSize="12px">202 Accepted</Code> — mint submitted, poll
+                for confirmation using the returned <code>mint_tx_hash</code>
               </ListItem>
               <ListItem>
                 <Code fontSize="12px">400</Code> — invalid{" "}

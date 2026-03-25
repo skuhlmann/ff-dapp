@@ -17,7 +17,7 @@ export default function VinoshipperTestPage() {
     dobYear: "",
   });
 
-  const [response, setResponse] = useState<any>(null);
+  const [response, setResponse] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -429,7 +429,7 @@ export default function VinoshipperTestPage() {
       )}
 
       {/* Response Display */}
-      {response && (
+      {response != null && (
         <div
           style={{
             padding: "15px",
