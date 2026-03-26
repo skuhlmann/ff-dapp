@@ -1,5 +1,6 @@
 {
   "agent_commerce_version": "1.0",
+  "last_updated": "2026-03-25",
   "store": {
     "name": "Forgotten Fruit",
     "description": "Boutique wines from misfit grapes. Premium small-batch wine from Colorado's Grand Valley AVA.",
@@ -9,7 +10,10 @@
   "commerce": {
     "tokenized_reservations": true,
     "gift_supported": true,
-    "redemption_by_humans_only": true
+    "redemption_by_humans_only": true,
+    "age_restricted": true,
+    "minimum_age": 21,
+    "shipping_region": "United States"
   },
   "network": {
     "blockchain": "Base",
@@ -27,13 +31,26 @@
   },
   "products": [
     {
-      "id": "0x1b8d8139772599a636410245bd4E1e6ab304558e",
+      "id": "alpha-red-2024",
       "name": "Alpha Red Wine Bottle",
       "description": "A limited release red wine blend — Merlot, Mourvèdre, Malbec, Zweigelt — from Colorado's Grand Valley AVA. Notes of blueberry, currant, fig, and spice. Each token includes a unique skele-grape digital collectible.",
       "redeemable_for": "1 bottle of Alpha Red wine",
       "vintage": "2024",
+      "drink_window_start": 2026,
+      "peak_window": "2028-2032",
+      "aging_phase": "early",
       "shipping_region": "United States",
       "token_type": "erc721",
+      "contract_address": "0x1b8d8139772599a636410245bd4E1e6ab304558e",
+      "inventory_total": 500,
+      "inventory_remaining": "see /api/products for live count",
+      "availability_status": "available",
+      "seasonal_scarcity": false,
+      "fixed_vintage": true,
+      "giftable": true,
+      "tradable": true,
+      "redeemable": true,
+      "human_redemption_required": true,
       "restrictions": {
         "age_restricted": true,
         "minimum_age": 21,
@@ -43,11 +60,14 @@
   ],
   "token_contract": {
     "network": "Base",
+    "standard": "ERC-721",
     "contract_address": "0x1b8d8139772599a636410245bd4E1e6ab304558e"
   },
   "agent_metadata": {
     "gifting_recommended": true,
-    "human_enjoyment_score": 0.92
+    "aging_asset": true,
+    "portfolio_compatible": true,
+    "early_acquisition_advantage": true
   },
   "redemption": {
     "url": "https://forgottenfruit.xyz/cellar",
