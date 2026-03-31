@@ -2,11 +2,13 @@ import { Flex, Spinner, Box, Heading } from "@chakra-ui/react";
 import { NftItem } from "../utils/types";
 import { NftCard } from "./NftCard";
 import { useAccountNfts } from "../hooks/useAccountNfts";
+import { useRedemptionWindow } from "../hooks/useRedemptionWindow";
 
 export const BottleList = ({ account }: { account: string }) => {
   const { accountNfts, isLoading } = useAccountNfts({
     accountAddress: account,
   });
+  const { isRedemptionOpen = false } = useRedemptionWindow();
 
   return (
     <Box mb="5rem">
@@ -22,7 +24,7 @@ export const BottleList = ({ account }: { account: string }) => {
         >
           {accountNfts.balances.map((token: NftItem) => {
             return (
-              <NftCard token={token} key={token.tokenID} account={account} />
+              <NftCard token={token} key={token.tokenID} account={account} isRedemptionOpen={isRedemptionOpen} />
             );
           })}
         </Flex>

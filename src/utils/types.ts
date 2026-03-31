@@ -95,3 +95,20 @@ export type ClaimResponse =
   | { status: "success"; tx: string; expires: string }
   | { status: "already_claimed"; expires: string }
   | { status: "error"; message: string };
+
+export type WineOrderStatus = "SUCCESS" | "PENDING" | "CANCELLED" | "FAILED";
+
+export type WineOrderProblem = {
+  code: string;
+  description: string;
+  type: string;
+};
+
+export type WineOrderRecord = {
+  airtableId?: string;
+  tokenId: string;
+  orderNumber: string;
+  orderStatus: WineOrderStatus;
+  orderProblems: WineOrderProblem[];
+  createdAt: string;
+};
