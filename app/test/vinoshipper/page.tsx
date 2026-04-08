@@ -7,6 +7,7 @@ export default function VinoshipperTestPage() {
     email: "",
     firstName: "",
     lastName: "",
+    phone: "",
     street1: "",
     street2: "",
     city: "",
@@ -20,6 +21,11 @@ export default function VinoshipperTestPage() {
   const [response, setResponse] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [orderLookupId, setOrderLookupId] = useState("");
+  const [orderLookupResponse, setOrderLookupResponse] = useState<unknown>(null);
+  const [orderLookupLoading, setOrderLookupLoading] = useState(false);
+  const [orderLookupError, setOrderLookupError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +44,7 @@ export default function VinoshipperTestPage() {
             email: formData.email,
             firstName: formData.firstName,
             lastName: formData.lastName,
+            phone: formData.phone,
             address: {
               street1: formData.street1,
               street2: formData.street2 || null,
@@ -70,6 +77,30 @@ export default function VinoshipperTestPage() {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleOrderLookup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setOrderLookupLoading(true);
+    setOrderLookupError(null);
+    setOrderLookupResponse(null);
+
+    try {
+      const res = await fetch(
+        `/api/test/vinoshipper-get-order?orderNumber=${encodeURIComponent(orderLookupId)}`,
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to fetch order");
+      }
+
+      setOrderLookupResponse(data);
+    } catch (err) {
+      setOrderLookupError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setOrderLookupLoading(false);
+    }
   };
 
   return (
@@ -105,7 +136,13 @@ export default function VinoshipperTestPage() {
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
               required
-              style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+              style={{
+                width: "100%",
+                padding: "8px",
+                fontSize: "14px",
+                color: "#000",
+                backgroundColor: "#fff",
+              }}
               placeholder="customer@example.com"
             />
           </div>
@@ -130,7 +167,13 @@ export default function VinoshipperTestPage() {
                 value={formData.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)}
                 required
-                style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  fontSize: "14px",
+                  color: "#000",
+                  backgroundColor: "#fff",
+                }}
                 placeholder="John"
               />
             </div>
@@ -148,10 +191,40 @@ export default function VinoshipperTestPage() {
                 value={formData.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)}
                 required
-                style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  fontSize: "14px",
+                  color: "#000",
+                  backgroundColor: "#fff",
+                }}
                 placeholder="Doe"
               />
             </div>
+          </div>
+
+          <div style={{ marginTop: "15px" }}>
+            <label
+              htmlFor="phone"
+              style={{ display: "block", marginBottom: "5px" }}
+            >
+              Phone *
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => handleInputChange("phone", e.target.value)}
+              required
+              style={{
+                width: "100%",
+                padding: "8px",
+                fontSize: "14px",
+                color: "#000",
+                backgroundColor: "#fff",
+              }}
+              placeholder="555-555-5555"
+            />
           </div>
         </fieldset>
 
@@ -180,7 +253,13 @@ export default function VinoshipperTestPage() {
               value={formData.street1}
               onChange={(e) => handleInputChange("street1", e.target.value)}
               required
-              style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+              style={{
+                width: "100%",
+                padding: "8px",
+                fontSize: "14px",
+                color: "#000",
+                backgroundColor: "#fff",
+              }}
               placeholder="123 Main St"
             />
           </div>
@@ -197,7 +276,13 @@ export default function VinoshipperTestPage() {
               type="text"
               value={formData.street2}
               onChange={(e) => handleInputChange("street2", e.target.value)}
-              style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+              style={{
+                width: "100%",
+                padding: "8px",
+                fontSize: "14px",
+                color: "#000",
+                backgroundColor: "#fff",
+              }}
               placeholder="Apt 4B"
             />
           </div>
@@ -222,7 +307,13 @@ export default function VinoshipperTestPage() {
                 value={formData.city}
                 onChange={(e) => handleInputChange("city", e.target.value)}
                 required
-                style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  fontSize: "14px",
+                  color: "#000",
+                  backgroundColor: "#fff",
+                }}
                 placeholder="Napa"
               />
             </div>
@@ -243,7 +334,13 @@ export default function VinoshipperTestPage() {
                 }
                 required
                 maxLength={2}
-                style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  fontSize: "14px",
+                  color: "#000",
+                  backgroundColor: "#fff",
+                }}
                 placeholder="CA"
               />
             </div>
@@ -263,7 +360,13 @@ export default function VinoshipperTestPage() {
                   handleInputChange("postalCode", e.target.value)
                 }
                 required
-                style={{ width: "100%", padding: "8px", fontSize: "14px" }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  fontSize: "14px",
+                  color: "#000",
+                  backgroundColor: "#fff",
+                }}
                 placeholder="94559"
               />
             </div>
@@ -445,12 +548,108 @@ export default function VinoshipperTestPage() {
               padding: "15px",
               borderRadius: "5px",
               overflow: "auto",
+              color: "#000",
             }}
           >
             {JSON.stringify(response, null, 2)}
           </pre>
         </div>
       )}
+
+      {/* Order Lookup */}
+      <div style={{ marginTop: "50px" }}>
+        <h2>Look Up Order by ID</h2>
+        <p style={{ color: "#666", marginBottom: "20px" }}>
+          Fetch an existing order from Vinoshipper by order number.
+        </p>
+
+        <form
+          onSubmit={handleOrderLookup}
+          style={{ display: "flex", gap: "10px", marginBottom: "20px" }}
+        >
+          <input
+            type="text"
+            value={orderLookupId}
+            onChange={(e) => setOrderLookupId(e.target.value)}
+            required
+            placeholder="Order number (e.g. TEST-1234567890)"
+            style={{
+              flex: 1,
+              padding: "10px",
+              fontSize: "14px",
+              color: "#000",
+              backgroundColor: "#fff",
+              border: "1px solid #ddd",
+              borderRadius: "5px",
+            }}
+          />
+          <button
+            type="submit"
+            disabled={orderLookupLoading}
+            style={{
+              padding: "10px 20px",
+              fontSize: "14px",
+              fontWeight: "bold",
+              backgroundColor: orderLookupLoading ? "#ccc" : "#8B0000",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: orderLookupLoading ? "not-allowed" : "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {orderLookupLoading ? "Fetching..." : "Get Order"}
+          </button>
+        </form>
+
+        {orderLookupError && (
+          <div
+            style={{
+              padding: "15px",
+              backgroundColor: "#fee",
+              border: "1px solid #fcc",
+              borderRadius: "5px",
+              marginBottom: "20px",
+            }}
+          >
+            <h3 style={{ color: "#c00", margin: "0 0 10px 0" }}>Error</h3>
+            <pre
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                wordWrap: "break-word",
+                color: "#900",
+              }}
+            >
+              {orderLookupError}
+            </pre>
+          </div>
+        )}
+
+        {orderLookupResponse != null && (
+          <div
+            style={{
+              padding: "15px",
+              backgroundColor: "#efe",
+              border: "1px solid #cfc",
+              borderRadius: "5px",
+            }}
+          >
+            <h3 style={{ color: "#060", margin: "0 0 10px 0" }}>Order Found</h3>
+            <pre
+              style={{
+                backgroundColor: "#f5f5f5",
+                padding: "15px",
+                borderRadius: "5px",
+                overflow: "auto",
+                color: "#000",
+              }}
+            >
+              {JSON.stringify(orderLookupResponse, null, 2)}
+            </pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

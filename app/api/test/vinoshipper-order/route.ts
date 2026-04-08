@@ -4,6 +4,7 @@ interface CustomerData {
   email: string;
   firstName: string;
   lastName: string;
+  phone: string;
   address: {
     street1: string;
     street2: string | null;
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest) {
     const body: VinoshipperOrderRequest = await request.json();
     const { customer } = body;
 
-    if (!customer.email || !customer.firstName || !customer.lastName) {
+    if (!customer.email || !customer.firstName || !customer.lastName || !customer.phone) {
       return NextResponse.json(
         { error: "Missing required customer fields" },
         { status: 400 },
@@ -82,15 +83,17 @@ export async function POST(request: NextRequest) {
 
     const authString = Buffer.from(`${apiKey}:${apiSecret}`).toString("base64");
 
-    const dobString = `${customer.dateOfBirth.year}-${String(customer.dateOfBirth.month).padStart(2, "0")}-${String(customer.dateOfBirth.day).padStart(2, "0")}`;
-
     const vinoshipperPayload = {
       productIdType: productIdType,
       customer: {
         email: customer.email,
         firstName: customer.firstName,
         lastName: customer.lastName,
-        dateOfBirth: dobString,
+        dateOfBirth: {
+          day: customer.dateOfBirth.day,
+          month: customer.dateOfBirth.month,
+          year: customer.dateOfBirth.year,
+        },
         address: {
           street1: customer.address.street1,
           street2: customer.address.street2,
@@ -100,12 +103,31 @@ export async function POST(request: NextRequest) {
           country: "US",
         },
       },
-      items: [
+      products: [
         {
-          id: productId,
+          productId: productId,
           quantity: 1,
         },
       ],
+      shipToAddress: {
+        street1: customer.address.street1,
+        street2: customer.address.street2,
+        city: customer.address.city,
+        stateCode: customer.address.stateCode,
+        postalCode: customer.address.postalCode,
+        country: "US",
+        firstName: customer.firstName,
+        lastName: customer.lastName,
+        phone: {
+          number: customer.phone,
+          country: 1,
+        },
+      },
+      shippingRate: {
+        carrier: "UPS",
+        rateCode: "03",
+        rateDescription: "UPS Ground",
+      },
       isPaid: true,
       orderNumber: `TEST-${Date.now()}`,
     };
