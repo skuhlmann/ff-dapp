@@ -3,7 +3,7 @@ import { Box, Flex, Text, Link, Image, Grid, Tag } from "@chakra-ui/react";
 import { LabelBadge } from "./SharedLayout";
 
 import BottleMock from "../assets/alpha_red_1.jpg";
-import FarmSunset from "../assets/farm_sunset.jpg";
+import FarmSunset from "../assets/pali_vineyard.jpg";
 import Sauvage from "../assets/sauvage.png";
 import SsLogo from "../assets/ss_logo.png";
 
@@ -169,11 +169,7 @@ export const HomeSectionOne = () => {
             bg="blackAlpha.600"
             p="0.5rem 0.75rem"
             zIndex={2}
-          >
-            <Text fontSize="xs" color="brand.tan" fontStyle="italic">
-              Placeholder — vineyard rows / barrel room shot
-            </Text>
-          </Box>
+          ></Box>
         </Box>
 
         {/* Content */}
