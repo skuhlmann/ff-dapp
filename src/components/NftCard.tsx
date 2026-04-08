@@ -17,9 +17,11 @@ import { TokenActions } from "./TokenActions";
 export const NftCard = ({
   token,
   account,
+  isRedemptionOpen,
 }: {
   token: NftItem;
   account: string;
+  isRedemptionOpen: boolean;
 }) => {
   // const { tokenStatus, tokenState, img, orders } = useTokenStatus({
   const { tokenStatus, tokenState, img } = useTokenStatus({
@@ -127,6 +129,7 @@ export const NftCard = ({
               tokenImage={img}
               account={account}
               tokenState={tokenState}
+              isRedemptionOpen={isRedemptionOpen}
             />
           )}
         </Flex>

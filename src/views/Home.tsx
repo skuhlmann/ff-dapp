@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 
 import BottleHero from "../assets/alpha_red_2.jpg";
+import SkelegrapeNftAlt from "../assets/69.png";
+import SkelegrapeNft from "../assets/100_unredeemed.png";
 import OrchardBg from "../assets/palisades_orchard.jpeg";
 
 import { HomeSectionOne } from "../components/HomeSectionOne";
@@ -170,43 +172,91 @@ function Home() {
             </Text>
           </Flex>
 
-          {/* Right — Bottle image */}
-          <Box flexShrink={0} position="relative">
+          {/* Right — Bottle + collectible composition */}
+          <Box
+            flexShrink={0}
+            position="relative"
+            w={{ base: "320px", md: "470px", xl: "580px" }}
+            h={{ base: "420px", md: "570px", xl: "690px" }}
+          >
             <Box
               position="absolute"
-              inset="-10px"
+              top={{ base: "14px", md: "22px", xl: "28px" }}
+              right={{ base: "18px", md: "26px", xl: "34px" }}
+              left={{ base: "18px", md: "26px", xl: "34px" }}
+              h={{ base: "252px", md: "340px", xl: "404px" }}
               border="2px solid"
               borderColor="brand.orange"
               transform="rotate(2deg)"
+              transformOrigin="center"
               borderRadius="2px"
               zIndex={0}
             />
             <Box
               position="absolute"
-              inset="-20px"
+              top={{ base: "4px", md: "12px", xl: "18px" }}
+              right={{ base: "8px", md: "14px", xl: "20px" }}
+              left={{ base: "8px", md: "14px", xl: "20px" }}
+              h={{ base: "252px", md: "340px", xl: "404px" }}
               border="1px solid"
               borderColor="brand.lightPurple"
               transform="rotate(-1deg)"
+              transformOrigin="center"
               borderRadius="2px"
               zIndex={0}
               opacity={0.5}
             />
             <Image
               src={BottleHero.src}
-              w={{ base: "260px", md: "320px", xl: "380px" }}
+              w={{ base: "284px", md: "400px", xl: "486px" }}
               alt="Alpha Red bottle"
-              position="relative"
-              zIndex={1}
+              position="absolute"
+              left="50%"
+              top={{ base: "22px", md: "30px", xl: "38px" }}
+              transform="translateX(-50%) rotate(2deg)"
+              transformOrigin="center"
+              zIndex={2}
             />
             <Box
               position="absolute"
-              bottom="-1px"
-              left="-1px"
-              right="-1px"
-              h="80px"
-              bgGradient="linear(to-t, brand.black, transparent)"
-              zIndex={2}
-            />
+              left={{ base: "24px", md: "36px", xl: "56px" }}
+              bottom={{ base: "78px", md: "106px", xl: "126px" }}
+              w={{ base: "138px", md: "176px", xl: "208px" }}
+              p={{ base: "8px", md: "10px" }}
+              bg="rgba(16, 10, 18, 0.92)"
+              border="1px solid"
+              borderColor="brand.blue"
+              boxShadow="0 18px 40px rgba(0, 0, 0, 0.35)"
+              transform={{ base: "rotate(-9deg)", md: "rotate(-10deg)" }}
+              zIndex={10}
+            >
+              <Image
+                src={SkelegrapeNft.src}
+                alt="Skelegrape NFT collectible"
+                w="full"
+                h="auto"
+              />
+            </Box>
+            <Box
+              position="absolute"
+              right={{ base: "24px", md: "36px", xl: "56px" }}
+              bottom={{ base: "70px", md: "96px", xl: "116px" }}
+              w={{ base: "132px", md: "170px", xl: "200px" }}
+              p={{ base: "8px", md: "10px" }}
+              bg="rgba(16, 10, 18, 0.88)"
+              border="1px solid"
+              borderColor="brand.orange"
+              boxShadow="0 16px 34px rgba(0, 0, 0, 0.28)"
+              transform={{ base: "rotate(8deg)", md: "rotate(9deg)" }}
+              zIndex={10}
+            >
+              <Image
+                src={SkelegrapeNftAlt.src}
+                alt="Alternate Skelegrape NFT collectible"
+                w="full"
+                h="auto"
+              />
+            </Box>
           </Box>
         </Flex>
 
