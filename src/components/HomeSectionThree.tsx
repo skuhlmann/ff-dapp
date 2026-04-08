@@ -188,7 +188,7 @@ export const HomeSectionThree = () => {
           </Text>
           <Link
             as={NextLink}
-            href="/marketplace"
+            href="/market"
             color="brand.orange"
             fontSize="sm"
             fontWeight="700"
