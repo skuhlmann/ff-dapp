@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic";
-
-const Listing = dynamic(() => import("@/views/Listing"), { ssr: false });
+import ListingClient from "./listing-client";
 
 export default async function ListingPage({
   params,
@@ -8,5 +6,5 @@ export default async function ListingPage({
   params: Promise<{ tokenId: string }>;
 }) {
   const { tokenId } = await params;
-  return <Listing tokenId={tokenId} />;
+  return <ListingClient tokenId={tokenId} />;
 }

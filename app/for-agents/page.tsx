@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 const ForAgents = dynamic(() => import("@/views/ForAgents"), { ssr: false });
