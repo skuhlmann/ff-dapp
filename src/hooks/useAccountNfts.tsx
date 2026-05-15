@@ -25,7 +25,7 @@ const fetchNftsForAccount = async ({
 
   const indexer = new SequenceIndexer(
     sequenceEndPoint,
-    process.env.NEXT_PUBLIC_SEQUENCE_API_KEY!
+    process.env.NEXT_PUBLIC_SEQUENCE_API_KEY!,
   );
 
   const nftBalances = await indexer.getTokenBalances({
@@ -33,6 +33,8 @@ const fetchNftsForAccount = async ({
     accountAddress: accountAddress,
     includeMetadata: true,
   });
+
+  console.log("nftBalances", nftBalances);
 
   return { balances: nftBalances, page: nftBalances.page };
 };

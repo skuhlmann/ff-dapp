@@ -10,7 +10,7 @@ export const MenuLinks = ({
   isOpen: boolean;
   toggle: () => void;
 }) => {
-  const { ready, authenticated, logout } = usePrivy();
+  const { ready, authenticated, logout, login } = usePrivy();
 
   const handleLogout = () => {
     logout();
@@ -55,6 +55,15 @@ export const MenuLinks = ({
             _hover={{ cursor: "pointer" }}
           >
             Log Out
+          </Heading>
+        )}
+        {ready && !authenticated && (
+          <Heading
+            onClick={login}
+            color="brand.red"
+            _hover={{ cursor: "pointer" }}
+          >
+            Log In
           </Heading>
         )}
       </Stack>

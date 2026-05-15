@@ -33,6 +33,8 @@ export const NftCard = ({
   const attributes = token.tokenMetadata?.attributes;
   const imageUrl = token.tokenMetadata?.image;
 
+  console.log("token", token);
+
   // const isListed = orders && orders.length > 0;
 
   return (
